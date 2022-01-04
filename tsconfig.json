@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "resolveJsonModule": true,
+        "moduleResolution": "Node",
+        "esModuleInterop": true
+    },
+    "exclude": [
+        "./tests/",
+        "./node_modules/",
+        "./dist/"
+    ]
+}
