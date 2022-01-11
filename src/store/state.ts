@@ -1,6 +1,7 @@
+import { MercCollection } from "../models/mercCollection";
+
 export interface State {
-    mercenaries: any;
-    [props: string]: any;
+    mercenaries: MercCollection;
 }
 
 export function state() {

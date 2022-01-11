@@ -188,19 +188,16 @@
                 {
                     "name": "The Life-Binder",
                     "description": "Deal 55 damage using Dragon Breath.",
-                    "ability": "Dragon Breath",
                     "quote": "I am the protector of all life, a solemn charge that carries greater weight than ever."
                 },
                 {
                     "name": "Firebreathing for Two",
                     "description": "Deal 240 damage using Flame Buffet.",
-                    "ability": "Flame Buffet",
                     "quote": "Sometimes life must be preserved through more… aggressive means."
                 },
                 {
                     "name": "The Strong Shall Quake",
                     "description": "Deal 70 damage using Dragonqueen's Gambit.",
-                    "ability": "Dragonqueen's Gambit",
                     "quote": "Spread your wings and anything is possible."
                 },
                 {
@@ -236,7 +233,6 @@
                 {
                     "name": "Flames of Life",
                     "description": "Deal 180 damage using Dragon Breath.",
-                    "ability": "Dragon Breath",
                     "quote": "There are always more problems for me to solve."
                 },
                 {
@@ -247,7 +243,6 @@
                 {
                     "name": "Two for one",
                     "description": "Destroy two enemies in one turn using Flame Buffet 15 times.",
-                    "ability": "Flame Buffet",
                     "quote": "I fear this one may require more effort."
                 },
                 {
@@ -258,7 +253,6 @@
                 {
                     "name": "They Stood in the Fire",
                     "description": "Deal 900 damage to adjacent enemies using Flame Buffet.",
-                    "ability": "Flame Buffet",
                     "quote": "To safeguard some, I must rein others."
                 },
                 {
@@ -274,7 +268,6 @@
                 {
                     "name": "Their Strength is Mine",
                     "description": "Destroy 40 enemies using Dragonqueen's Gambit.",
-                    "ability": "Dragonqueen's Gambit",
                     "quote": "There are always more problems for me to solve."
                 },
                 {
@@ -467,13 +460,11 @@
                 {
                     "name": "There Must Be a Way",
                     "description": "Deal 55 damage using Penance.",
-                    "ability": "Penance",
                     "quote": "Light be with you, mercenary. Can you aid me in bringing peace to these lands?"
                 },
                 {
                     "name": "Hope is all we have",
                     "description": "Restore 145 Health using Holy Nova.",
-                    "ability": "Holy Nova",
                     "quote": "Never lose your hope."
                 },
                 {
@@ -534,7 +525,6 @@
                 {
                     "name": "Penance",
                     "description": "Restore 450 Health using Penance.",
-                    "ability": "Penance",
                     "quote": "Bring them peace."
                 },
                 {
@@ -737,18 +727,15 @@
                 {
                     "name": "A Simple Fireball",
                     "description": "Deal 100 damage using Fireball.",
-                    "ability": "Fireball",
                     "quote": "This is a land full of unexpected perils… Perhaps you are the key to navigating them?"
                 },
                 {
                     "name": "Flamestrike",
-                    "ability": "Flamestrike",
                     "description": "Deal 145 damage using Flamestrike.",
                     "quote": "Magic is dangerous when wielded by the unworthy. Let us ensure they learn their lesson!"
                 },
                 {
                     "name": "Flurry of Fire",
-                    "ability": "Fireball Storm",
                     "description": "Deal 95 damage using Fireball Storm.",
                     "quote": "Keep your wits about you, and this will go quickly."
                 },
@@ -780,13 +767,11 @@
                 {
                     "name": "Defend the Kirin Tor",
                     "description": "Destroy two enemies in one turn using Flamestrike 10 times.",
-                    "ability": "Flamestrike",
                     "quote": "If I complete this one, maybe I'll write about it in one of my books."
                 },
                 {
                     "name": "Incineration",
                     "description": "Destroy 15 enemies using Fireball.",
-                    "ability": "Fireball",
                     "quote": "Only someone like me could handle this."
                 },
                 {
@@ -797,7 +782,6 @@
                 {
                     "name": "Rolling Flames",
                     "description": "Destroy three enemies in one turn using Fireball Storm 15 times.",
-                    "ability": "Fireball Storm",
                     "quote": "Magic is dangerous when wielded by the unworthy. Let us ensure they learn their lesson!"
                 },
                 {
@@ -808,7 +792,6 @@
                 {
                     "name": "Teaching the Novices",
                     "description": "Deal 450 damage using Fireball.",
-                    "ability": "Fireball",
                     "quote": "Do precisely as I say, and all will be well."
                 },
                 {
