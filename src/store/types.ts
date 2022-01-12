@@ -1,0 +1,1 @@
+export const SET_MERCENARIES = "set_mercenaries"
