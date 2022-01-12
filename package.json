@@ -9,12 +9,12 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha -r ts-node/register 'tests/**/*.ts'"
+        "test": "mocha -r ts-node/register 'tests/**/*.ts'"
     },
     "dependencies": {
         "typescript": "^4.5.4",
         "vue": "^3.2.25",
-        "vuex": "4"
+        "vuex": "^4"
     },
     "devDependencies": {
         "@types/chai": "^4.3.0",

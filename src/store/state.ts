@@ -4,7 +4,7 @@ export interface State {
     mercenaries: MercCollection;
 }
 
-export function state() {
+export function state(): State {
     return {
         mercenaries: {}
     }

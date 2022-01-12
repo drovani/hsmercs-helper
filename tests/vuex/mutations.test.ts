@@ -4,6 +4,7 @@ import { State } from '../../src/store/state';
 import { SET_MERCENARIES } from '../../src/store/types';
 
 describe('Mercenary Data Mutations', () => {
+
     it('sets mercenaries collection', () => {
         const state: State = { mercenaries: {} };
 
@@ -20,7 +21,7 @@ describe('Mercenary Data Mutations', () => {
             }
         });
 
-        expect(state.mercenaries).to.deep.equal({
+        expect(state.mercenaries).deep.equal({
             "Alexstrasza": {
                 role: "Protector",
                 rarity: "Rare",

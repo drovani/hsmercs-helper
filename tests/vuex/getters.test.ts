@@ -3,6 +3,7 @@ import getters from "../../src/store/getters";
 import { State } from '../../src/store/state';
 
 describe('Mercenary Data Getters', () => {
+
     it('gets mercenaries collection', () => {
         const state: State = {
             mercenaries: {
@@ -21,7 +22,7 @@ describe('Mercenary Data Getters', () => {
 
         const result = getters.getMercenaries(state);
 
-        expect(result).to.deep.equal({
+        expect(result).deep.equal({
             "Alexstrasza": {
                 role: "Protector",
                 rarity: "Rare",
