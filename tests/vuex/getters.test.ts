@@ -10,7 +10,7 @@ describe('Mercenary Data Getters', () => {
                 "Alexstrasza": {
                     role: "Protector",
                     rarity: "Rare",
-                    race: "Dragon",
+                    tribe: "Dragon",
                     attack: 10,
                     health: 80,
                     abilities: {},
@@ -26,7 +26,7 @@ describe('Mercenary Data Getters', () => {
             "Alexstrasza": {
                 role: "Protector",
                 rarity: "Rare",
-                race: "Dragon",
+                tribe: "Dragon",
                 attack: 10,
                 health: 80,
                 abilities: {},

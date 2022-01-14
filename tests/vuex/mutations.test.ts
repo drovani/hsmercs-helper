@@ -12,7 +12,7 @@ describe('Mercenary Data Mutations', () => {
             "Alexstrasza": {
                 role: "Protector",
                 rarity: "Rare",
-                race: "Dragon",
+                tribe: "Dragon",
                 attack: 10,
                 health: 80,
                 abilities: {},
@@ -25,7 +25,7 @@ describe('Mercenary Data Mutations', () => {
             "Alexstrasza": {
                 role: "Protector",
                 rarity: "Rare",
-                race: "Dragon",
+                tribe: "Dragon",
                 attack: 10,
                 health: 80,
                 abilities: {},

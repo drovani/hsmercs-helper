@@ -3,7 +3,7 @@
         "Alexstrasza": {
             "role": "Protector",
             "rarity": "Legendary",
-            "race": "Dragon",
+            "tribe": "Dragon",
             "attack": 7,
             "health": 76,
             "abilities": {
@@ -280,7 +280,7 @@
         "Anduin Wrynn": {
             "role": "Caster",
             "rarity": "Legendary",
-            "race": "Human",
+            "tribe": "Human",
             "attack": 9,
             "health": 72,
             "abilities": {
@@ -552,7 +552,7 @@
         "Antonidas": {
             "role": "Caster",
             "rarity": "Epic",
-            "race": "Human",
+            "tribe": "Human",
             "attack": 6,
             "health": 73,
             "abilities": {
@@ -819,7 +819,7 @@
         "Baron Geddon": {
             "role": "Caster",
             "rarity": "Epic",
-            "race": "Elemental",
+            "tribe": "Elemental",
             "attack": 10,
             "health": 82,
             "abilities": {
@@ -1092,7 +1092,7 @@
         "Blademaster Samuro": {
             "role": "Fighter",
             "rarity": "Rare",
-            "race": "Orc",
+            "tribe": "Orc",
             "attack": 10,
             "health": 66,
             "abilities": {
@@ -1323,7 +1323,7 @@
         "Blink Fox": {
             "role": "Caster",
             "rarity": "Rare",
-            "race": "Beast",
+            "tribe": "Beast",
             "attack": 10,
             "health": 79,
             "abilities": {
@@ -1606,7 +1606,7 @@
         "Brightwing": {
             "role": "Caster",
             "rarity": "Epic",
-            "race": "Dragon",
+            "tribe": "Dragon",
             "attack": 6,
             "health": 72,
             "abilities": {
@@ -1909,7 +1909,7 @@
             ]
         },
         "Bru'kan": {
-            "race": "Troll",
+            "tribe": "Troll",
             "rarity": "Rare",
             "role": "Caster",
             "health": 76,
@@ -2253,7 +2253,7 @@
             ]
         },
         "Cairne Bloodhoof": {
-            "race": "Tauren",
+            "tribe": "Tauren",
             "role": "Protector",
             "rarity": "Epic",
             "attack": 12,
@@ -2564,7 +2564,7 @@
             ]
         },
         "Cariel Roame": {
-            "race": "Human",
+            "tribe": "Human",
             "rarity": "Rare",
             "role": "Protector",
             "attack": 10,
@@ -2843,7 +2843,7 @@
             ]
         },
         "Cookie, the Cook": {
-            "race": "Murloc",
+            "tribe": "Murloc",
             "rarity": "Rare",
             "role": "Caster",
             "attack": 5,
@@ -2943,7 +2943,7 @@
                                 "summon": {
                                     "name": "Helmet Hermit",
                                     "description": "Deathrattle: Give all enemies +{0}/+{0}.",
-                                    "race": "Beast",
+                                    "tribe": "Beast",
                                     "health": 15
                                 }
                             },
@@ -2951,7 +2951,7 @@
                                 "summon": {
                                     "name": "Shimmering Sunfish",
                                     "description": "Deathrattle: Restore {0} Health to all enemy characters.",
-                                    "race": "Beast",
+                                    "tribe": "Beast",
                                     "health": 15
                                 }
                             },
@@ -2959,7 +2959,7 @@
                                 "summon": {
                                     "name": "Swordfish",
                                     "description": "Deathrattle: Deal {0} damage to all friendly characters.",
-                                    "race": "Beast",
+                                    "tribe": "Beast",
                                     "health": 15
                                 }
                             }
@@ -3290,7 +3290,7 @@
             ]
         },
         "Cornelius Roame": {
-            "race": "Human",
+            "tribe": "Human",
             "rarity": "Rare",
             "role": "Protector",
             "attack": 11,
@@ -3573,7 +3573,7 @@
             ]
         },
         "Diablo": {
-            "race": "Demon",
+            "tribe": "Demon",
             "rarity": "Legendary",
             "role": "Fighter",
             "attack": 11,
@@ -3832,7 +3832,7 @@
             ]
         },
         "Edwin, Defias Kingpin": {
-            "race": "Pirate",
+            "tribe": "Pirate",
             "rarity": "Legendary",
             "role": "Fighter",
             "attack": 12,
@@ -4149,7 +4149,7 @@
             ]
         },
         "Eudora": {
-            "race": "Pirate",
+            "tribe": "Pirate",
             "rarity": "Epic",
             "role": "Fighter",
             "attack": 9,
@@ -4455,7 +4455,7 @@
             ]
         },
         "Garrosh Hellscream": {
-            "race": "Orc",
+            "tribe": "Orc",
             "rarity": "Legendary",
             "role": "Protector",
             "attack": 10,
@@ -4802,7 +4802,7 @@
             ]
         },
         "Grommash Hellscream": {
-            "race": "Orc",
+            "tribe": "Orc",
             "rarity": "Legendary",
             "role": "Protector",
             "attack": 11,
@@ -5192,7 +5192,7 @@
                     "cooldown": 1,
                     "summon": {
                         "name": "Dragonmaw Poacher",
-                        "race": "Orc",
+                        "tribe": "Orc",
                         "description": "Battlecry: If your opponent controls a Dragon, gain +{0}/+{0} and Rush."
                     },
                     "tiers": [
@@ -5424,7 +5424,7 @@
             ]
         },
         "Guff Runetotem": {
-            "race": "Tauren",
+            "tribe": "Tauren",
             "rarity": "Rare",
             "role": "Caster",
             "attack": 9,
@@ -5771,7 +5771,7 @@
             ]
         },
         "Gul'dan": {
-            "race": "Orc",
+            "tribe": "Orc",
             "rarity": "Legendary",
             "role": "Caster",
             "attack": 4,
@@ -6028,7 +6028,7 @@
             ]
         },
         "Illidan Stormrage": {
-            "race": "Night Elf",
+            "tribe": "Night Elf",
             "rarity": "Legendary",
             "role": "Fighter",
             "attack": 12,
@@ -6260,7 +6260,7 @@
             ]
         },
         "Jaina Proudmoore": {
-            "race": "Human",
+            "tribe": "Human",
             "rarity": "Legendary",
             "role": "Caster",
             "attack": 7,
@@ -6349,7 +6349,7 @@
                     "summon": {
                         "name": "Water Elemental",
                         "description": "Taunt. Whenever this damages a character, Freeze them.",
-                        "race": "Elemental"
+                        "tribe": "Elemental"
                     },
                     "tiers": [
                         {
@@ -6586,7 +6586,7 @@
             ]
         },
         "King Krush": {
-            "race": "Beast",
+            "tribe": "Beast",
             "rarity": "Epic",
             "role": "Fighter",
             "attack": 11,
@@ -6643,7 +6643,7 @@
                     "cooldown": 1,
                     "summon": {
                         "name": "Devilsaur",
-                        "race": "Beast",
+                        "tribe": "Beast",
                         "description": "Rush"
                     },
                     "tiers": [
@@ -6879,7 +6879,7 @@
             ]
         },
         "King Mukla": {
-            "race": "Beast",
+            "tribe": "Beast",
             "rarity": "Epic",
             "role": "Protector",
             "attack": 11,
@@ -7123,7 +7123,7 @@
             ]
         },
         "Kurtus Ashfallen": {
-            "race": "Night Elf",
+            "tribe": "Night Elf",
             "rarity": "Rare",
             "role": "Protector",
             "attack": 13,
@@ -7380,7 +7380,7 @@
             ]
         },
         "Lady Anacondra": {
-            "race": "Night Elf",
+            "tribe": "Night Elf",
             "rarity": "Rare",
             "role": "Fighter",
             "attack": 7,
@@ -7474,7 +7474,7 @@
                     "summon": {
                         "name": "Nightmare Viper",
                         "description": "This minion's Attack is always equal to its Health.",
-                        "race": "Beast"
+                        "tribe": "Beast"
                     },
                     "tiers": [
                         {
@@ -7698,7 +7698,7 @@
             ]
         },
         "Lord Jaraxxus": {
-            "race": "Demon",
+            "tribe": "Demon",
             "rarity": "Legendary",
             "role": "Protector",
             "attack": 9,
@@ -7773,7 +7773,7 @@
                     "summon": {
                         "name": "Fel Infernal",
                         "description": "+{0} Fel Damage",
-                        "race": "Demon"
+                        "tribe": "Demon"
                     },
                     "tiers": [
                         {
@@ -7986,7 +7986,7 @@
             ]
         },
         "Malfurion Stormrage": {
-            "race": "Night Elf",
+            "tribe": "Night Elf",
             "rarity": "Legendary",
             "role": "Protector",
             "attack": 6,
@@ -8301,7 +8301,7 @@
             ]
         },
         "Mannoroth": {
-            "race": "Demon",
+            "tribe": "Demon",
             "rarity": "Epic",
             "role": "Protector",
             "attack": 10,
@@ -8580,7 +8580,7 @@
             ]
         },
         "Millhouse Manastorm": {
-            "race": "Gnome",
+            "tribe": "Gnome",
             "rarity": "Rare",
             "role": "Caster",
             "attack": 5,
@@ -8887,7 +8887,7 @@
             ]
         },
         "Morgl the Oracle": {
-            "race": "Murloc",
+            "tribe": "Murloc",
             "rarity": "Rare",
             "role": "Caster",
             "attack": 8,
@@ -9185,7 +9185,7 @@
             ]
         },
         "Mr. Smite": {
-            "race": "Pirate",
+            "tribe": "Pirate",
             "rarity": "Rare",
             "role": "Protector",
             "attack": 6,
@@ -9453,7 +9453,7 @@
             ]
         },
         "Mutanus": {
-            "race": "Murloc",
+            "tribe": "Murloc",
             "rarity": "Epic",
             "role": "Fighter",
             "attack": 8,
@@ -9737,7 +9737,7 @@
             ]
         },
         "Natalie Seline": {
-            "race": "Human",
+            "tribe": "Human",
             "rarity": "Epic",
             "role": "Caster",
             "attack": 4,
@@ -10047,7 +10047,7 @@
             ]
         },
         "Old Murk-Eye": {
-            "race": "Murloc",
+            "tribe": "Murloc",
             "rarity": "Rare",
             "role": "Fighter",
             "attack": 10,
@@ -10101,7 +10101,7 @@
                     "summon": {
                         "name": "Felfin Navigator",
                         "description": "Battlecry: Give your other Murlocs +{0}/+{0}.",
-                        "race": "Murloc"
+                        "tribe": "Murloc"
                     },
                     "tiers": [
                         {
@@ -10163,7 +10163,7 @@
                     "summon": {
                         "name": "Giantfin",
                         "description": "Rush",
-                        "race": "Murloc"
+                        "tribe": "Murloc"
                     },
                     "tiers": [
                         {
@@ -10459,7 +10459,7 @@
             ]
         },
         "Prophet Velen": {
-            "race": "Draenei",
+            "tribe": "Draenei",
             "rarity": "Epic",
             "role": "Caster",
             "attack": 6,
@@ -10748,7 +10748,7 @@
             ]
         },
         "Ragnaros": {
-            "race": "Elemental",
+            "tribe": "Elemental",
             "rarity": "Legendary",
             "role": "Protector",
             "attack": 8,
@@ -11054,7 +11054,7 @@
             ]
         },
         "Rathorian": {
-            "race": "Demon",
+            "tribe": "Demon",
             "rarity": "Rare",
             "role": "Fighter",
             "attack": 11,
@@ -11089,7 +11089,7 @@
                     "summon": {
                         "name": "Hulking Overfiend",
                         "description": "Battlecry: Attack the lowest Health enemy. Deathblow: Attack the lowest Health enemy.",
-                        "race": "Demon"
+                        "tribe": "Demon"
                     },
                     "tiers": [
                         {
@@ -11348,7 +11348,7 @@
             ]
         },
         "Rexxar": {
-            "race": "Half-Orc",
+            "tribe": "Half-Orc",
             "rarity": "Legendary",
             "role": "Fighter",
             "attack": 10,
@@ -11400,21 +11400,21 @@
                         {
                             "summon": {
                                 "name": "Huffer",
-                                "race": "Beast",
+                                "tribe": "Beast",
                                 "description": "Rush"
                             }
                         },
                         {
                             "summon": {
                                 "name": "Leokk",
-                                "race": "Beast",
+                                "tribe": "Beast",
                                 "description": "Your other characters have +{0} Attack."
                             }
                         },
                         {
                             "summon": {
                                 "name": "Misha",
-                                "race": "Beast",
+                                "tribe": "Beast",
                                 "description": "Taunt"
                             }
                         }
@@ -11780,7 +11780,7 @@
             ]
         },
         "Rokara": {
-            "race": "Orc",
+            "tribe": "Orc",
             "rarity": "Rare",
             "role": "Fighter",
             "attack": 9,
@@ -12089,7 +12089,7 @@
             ]
         },
         "Saurfang": {
-            "race": "Orc",
+            "tribe": "Orc",
             "rarity": "Epic",
             "role": "Fighter",
             "attack": 9,
@@ -12176,7 +12176,7 @@
                     "cooldown": 1,
                     "summon": {
                         "name": "Bladehand Berserker",
-                        "race": "Orc",
+                        "tribe": "Orc",
                         "description": "Whenever a character takes damage, gain +{0} Attack."
                     },
                     "tiers": [
@@ -12449,7 +12449,7 @@
             ]
         },
         "Scabbs Cutterbutter": {
-            "race": "Gnome",
+            "tribe": "Gnome",
             "rarity": "Rare",
             "role": "Fighter",
             "attack": 10,
@@ -12878,7 +12878,7 @@
             ]
         },
         "Sneed": {
-            "race": "Pirate",
+            "tribe": "Pirate",
             "rarity": "Epic",
             "role": "Protector",
             "attack": 6,
@@ -13199,7 +13199,7 @@
             ]
         },
         "Sylvanas Windrunner": {
-            "race": "Undead",
+            "tribe": "Undead",
             "rarity": "Legendary",
             "role": "Fighter",
             "attack": 9,
@@ -13472,7 +13472,7 @@
             ]
         },
         "Sky Admiral Rogers": {
-            "race": "Human",
+            "tribe": "Human",
             "rarity": "Epic",
             "role": "Caster",
             "attack": 10,
@@ -13767,7 +13767,7 @@
             ]
         },
         "Tamsin Roame": {
-            "race": "Undead",
+            "tribe": "Undead",
             "rarity": "Rare",
             "role": "Caster",
             "attack": 8,
@@ -13803,7 +13803,7 @@
                     "summon": {
                         "name": "Void Consumer",
                         "description": "Taunt. After you cast a Shadow ability, gain +{0}/+{0}.",
-                        "race": "Demon"
+                        "tribe": "Demon"
                     },
                     "tiers": [
                         {
@@ -14096,7 +14096,7 @@
             ]
         },
         "Tavish Stormpike": {
-            "race": "Dwarf",
+            "tribe": "Dwarf",
             "rarity": "Rare",
             "role": "Fighter",
             "attack": 6,
@@ -14171,7 +14171,7 @@
                     "info": {
                         "summon": {
                             "name": "Bear",
-                            "race": "Beast",
+                            "tribe": "Beast",
                             "description": "Taunt"
                         }
                     },
@@ -14499,7 +14499,7 @@
             ]
         },
         "The Lich King": {
-            "race": "Human",
+            "tribe": "Human",
             "rarity": "Legendary",
             "role": "Protector",
             "attack": 12,
@@ -14820,7 +14820,7 @@
             ]
         },
         "Thrall": {
-            "race": "Orc",
+            "tribe": "Orc",
             "rarity": "Legendary",
             "role": "Protector",
             "attack": 10,
@@ -15074,7 +15074,7 @@
             ]
         },
         "Tirion Fordring": {
-            "race": "Human",
+            "tribe": "Human",
             "rarity": "Epic",
             "role": "Fighter",
             "attack": 12,
@@ -15406,7 +15406,7 @@
             ]
         },
         "Tyrande": {
-            "race": "Night Elf",
+            "tribe": "Night Elf",
             "rarity": "Epic",
             "role": "Fighter",
             "attack": 7,
@@ -15672,7 +15672,7 @@
             ]
         },
         "Uther": {
-            "race": "Human",
+            "tribe": "Human",
             "rarity": "Legendary",
             "role": "Caster",
             "attack": 10,
@@ -15959,7 +15959,7 @@
             ]
         },
         "Varden Dawngrasp": {
-            "race": "Blood Elf",
+            "tribe": "Blood Elf",
             "rarity": "Rare",
             "role": "Caster",
             "attack": 6,
@@ -16225,7 +16225,7 @@
             ]
         },
         "Valeera Sanguinar": {
-            "race": "Blood Elf",
+            "tribe": "Blood Elf",
             "rarity": "Legendary",
             "role": "Fighter",
             "attack": 12,
@@ -16503,7 +16503,7 @@
             ]
         },
         "Vanessa VanCleef": {
-            "race": "Pirate",
+            "tribe": "Pirate",
             "rarity": "Epic",
             "role": "Protector",
             "attack": 9,
@@ -16816,7 +16816,7 @@
             ]
         },
         "Varian Wrynn": {
-            "race": "Human",
+            "tribe": "Human",
             "rarity": "Epic",
             "role": "Protector",
             "attack": 12,
@@ -17096,7 +17096,7 @@
             ]
         },
         "Vol'jin": {
-            "race": "Troll",
+            "tribe": "Troll",
             "rarity": "Epic",
             "role": "Caster",
             "attack": 5,
@@ -17421,7 +17421,7 @@
             ]
         },
         "War Master Voone": {
-            "race": "Troll",
+            "tribe": "Troll",
             "rarity": "Epic",
             "role": "Fighter",
             "attack": 8,
@@ -17480,7 +17480,7 @@
                     "summon": {
                         "name": "Evasive Wyrm",
                         "description": "Divine Shield, Rush",
-                        "race": "Dragon"
+                        "tribe": "Dragon"
                     },
                     "tiers": [
                         {
@@ -17719,7 +17719,7 @@
             ]
         },
         "Xyrella": {
-            "race": "Draenei",
+            "tribe": "Draenei",
             "rarity": "Rare",
             "role": "Caster",
             "attack": 5,
@@ -18088,7 +18088,7 @@
             ]
         },
         "Trigore the Lasher": {
-            "race": "Beast",
+            "tribe": "Beast",
             "rarity": "Rare",
             "role": "Protector",
             "attack": 9,
