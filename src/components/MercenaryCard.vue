@@ -2,7 +2,8 @@
   <div>
     <header>
       <h2><slot /></h2>
-      <Tribe :tribe="tribe" />
+      <Role :role="role" />
+      <Tribe v-if="tribe" :tribe="tribe" />
       <Rarity :rarity="rarity" />
     </header>
     <Attack :role="role" :attack="attack" />
@@ -25,6 +26,7 @@ import Attack from "./Attack.vue";
 import Health from "./Health.vue";
 import Item from "./Item.vue";
 import Rarity from "./Rarity.vue";
+import Role from "./Role.vue";
 import Tribe from "./Tribe.vue";
 
 export default defineComponent({
@@ -44,6 +46,7 @@ export default defineComponent({
     Health,
     Item,
     Rarity,
+    Role,
     Tribe,
   },
 });

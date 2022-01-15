@@ -3,6 +3,6 @@ import Mercenaries from "./components/Mercenaries.vue";
 </script>
 
 <template>
-  <h1>HSMercs Helper</h1>
+  <div>HSMercs Helper</div>
   <Mercenaries></Mercenaries>
 </template>

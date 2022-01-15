@@ -1,12 +1,15 @@
 <template>
   <section>
-    <h2>Mercenaries</h2>
-    <MercenaryCard
-      v-for="(merc, mercName) in mercenaries"
-      :key="mercName"
-      v-bind="merc"
-      >{{ mercName }}
-    </MercenaryCard>
+    <h1>Mercenaries</h1>
+    <div class="flex flex-wrap">
+      <MercenaryCard
+        v-for="(merc, mercName) in mercenaries"
+        :key="mercName"
+        v-bind="merc"
+        class="w-72 rounded-md border m-2"
+        >{{ mercName }}
+      </MercenaryCard>
+    </div>
   </section>
 </template>
 <script lang="ts">

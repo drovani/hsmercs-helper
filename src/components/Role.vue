@@ -1,5 +1,5 @@
 <template>
-  <div>{{ attack }}</div>
+  <div>{{ role }}</div>
 </template>
 
 <script lang="ts">
@@ -7,13 +7,9 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   props: {
-    attack: {
-      type: Number,
-      required: true,
-    },
     role: {
       type: String,
-      default: "Neutral"
+      required: true,
     },
   },
 });

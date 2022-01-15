@@ -13,6 +13,7 @@ export default defineComponent({
     },
     role: {
       type: String,
+      default: "Neutral",
     },
   },
 });
