@@ -6,7 +6,6 @@
 defineProps({
   tribe: {
     type: String,
-    required: true,
   },
 });
 </script>

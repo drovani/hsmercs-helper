@@ -4,5 +4,5 @@ import Mercenaries from "./components/Mercenaries.vue";
 
 <template>
   <div>HSMercs Helper</div>
-  <Mercenaries></Mercenaries>
+  <Mercenaries class="max-w-screen-lg"></Mercenaries>
 </template>
