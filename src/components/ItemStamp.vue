@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="border rounded text-sm sm:text-base text-center">
     <slot />
   </div>
 </template>

@@ -1,12 +1,11 @@
 <template>
   <section>
-    <h1>Mercenaries</h1>
-    <div class="flex flex-wrap gap-4 px-2">
+    <h1 class="text-xl mx-8">Collectable Mercenaries</h1>
+    <div class="flex flex-wrap gap-2 px-2">
       <MercenaryCard
         v-for="(merc, mercName) in mercenaries"
         :key="mercName"
         v-bind="merc"
-        class="w-72 md:w-80 rounded-md border-2"
         >{{ mercName }}
       </MercenaryCard>
     </div>
