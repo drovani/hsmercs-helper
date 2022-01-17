@@ -9,7 +9,7 @@
   >
     <div>
       <div
-        class="flex justify-between px-2 py-1 text-white"
+        class="flex justify-between px-2 py-1 text-white bg-gray-700"
         :class="{
           'bg-protector': role == 'Protector',
           'bg-fighter': role == 'Fighter',
