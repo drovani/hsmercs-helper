@@ -1,10 +1,11 @@
 <template>
   <div>
     <img
-      class="max-h-6 inline mr-1"
+      class="max-h-6 inline"
       :src="`./assets/${rarity.toLowerCase()}.png`"
       :alt="rarity"
-    />{{ rarity }}
+    />
+    {{ rarity }}
   </div>
 </template>
 

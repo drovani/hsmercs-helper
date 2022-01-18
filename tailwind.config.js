@@ -8,9 +8,6 @@ module.exports = {
         protector: colors.red[800],
         fighter: colors.green[800],
         caster: colors.blue[800],
-        legendary: colors.yellow,
-        epic: colors.purple,
-        rare: colors.blue
       },
     },
   },
