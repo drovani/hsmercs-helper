@@ -2,7 +2,7 @@
   <div
     class="bg-center bg-no-repeat bg-contain h-10 whitespace-nowrap min-w-[6rem] text-center"
     :style="{
-      'background-image': faction == 'Neutral' ? 'unset' : `url('/assets/${faction.toLowerCase()}-watermark.png')`,
+      'background-image': backgroundImage,
     }"
   >
     <span class="align-middle">{{ tribe }}</span>
@@ -11,34 +11,37 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import {
+AllianceTribes,
+HordeTribes,
+NeutralTribes,
+Tribe
+} from "../models/tribes";
+
 const props = defineProps({
   tribe: {
-    type: String,
+    type: String as () => Tribe,
   },
 });
-const horde = [
-  "Blood Elf",
-  "Goblin",
-  "Half-Orc",
-  "Orc",
-  "Tauren",
-  "Troll",
-  "Undead",
-];
-const alliance = [
-  "Draenei",
-  "Dwarf",
-  "Gnome",
-  "High Elf",
-  "Human",
-  "Night Elf",
-];
 
-const faction = computed(() => {
-  return horde.indexOf(props.tribe) >= 0
-    ? "Horde"
-    : alliance.indexOf(props.tribe) >= 0
-    ? "Alliance"
-    : "Neutral";
+const faction = computed((): string | null => {
+  if (props.tribe === null) {
+    return null;
+  } else if (HordeTribes.includes(props.tribe as any)) {
+    return "Horde";
+  } else if (AllianceTribes.includes(props.tribe as any)) {
+    return "Alliance";
+  } else if (NeutralTribes.includes(props.tribe as any)) {
+    return "Neutral";
+  } else {
+    return null;
+  }
+});
+
+const backgroundImage = computed((): string => {
+  if (faction.value === "Horde" || faction.value === "Alliance") {
+    return `url('/assets/${faction.value.toLowerCase()}-watermark.png')`;
+  }
+  return "unset";
 });
 </script>

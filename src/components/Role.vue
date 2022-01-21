@@ -2,15 +2,13 @@
   <div>{{ role }}</div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { Role } from "../models/roles";
 
-export default defineComponent({
-  props: {
-    role: {
-      type: String,
-      required: true,
-    },
+defineProps({
+  role: {
+    type: String as () => Role,
+    required: true,
   },
 });
 </script>

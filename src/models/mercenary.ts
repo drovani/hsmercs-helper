@@ -1,8 +1,11 @@
+import { Rarity } from "./rarities";
+import { Role } from "./roles";
+import { Tribe } from "./tribes";
 
-export interface Mercenary {
-    role: "Protector" | "Fighter" | "Caster",
-    rarity: "Rare" | "Epic" | "Legendary",
-    tribe?: "Beast" | "Blood Elf" | "Demon" | "Draenei" | "Dragon" | "Dwarf" | "Elemental" | "Gnome" | "Half-Orc" | "High Elf" | "Human" | "Murloc" | "Night Elf" | "Orc" | "Pirate" | "Tauren" | "Troll" | "Undead"
+export default interface Mercenary {
+    role: Role,
+    rarity: Rarity,
+    tribe: Tribe | null,
     attack: number,
     health: number,
     abilities: { [name: string]: any },

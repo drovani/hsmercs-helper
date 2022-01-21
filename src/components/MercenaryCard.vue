@@ -19,12 +19,13 @@
         <h2 class="font-bold text-xl whitespace-nowrap">
           <slot />
         </h2>
+        <RoleVue :role="role" />
       </div>
       <div class="grid grid-cols-5 justify-around place-items-center px-2">
         <Attack :role="role" :attack="attack" />
-        <Tribe :tribe="tribe" />
+        <TribeVue :tribe="tribe" />
         <Health :role="role" :health="health" />
-        <Rarity class="col-span-2" :rarity="rarity" />
+        <RarityVue class="col-span-2" :rarity="rarity" />
       </div>
     </div>
     <div class="grid grid-cols-3 gap-x-1">
@@ -48,19 +49,22 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
+import { Rarity } from "../models/rarities";
+import { Role } from "../models/roles";
+import { Tribe } from "../models/tribes";
 import AbilityStamp from "./AbilityStamp.vue";
 import Attack from "./Attack.vue";
 import Health from "./Health.vue";
 import ItemStamp from "./ItemStamp.vue";
-import Rarity from "./Rarity.vue";
-import Role from "./Role.vue";
-import Tribe from "./Tribe.vue";
+import RarityVue from "./Rarity.vue";
+import RoleVue from "./Role.vue";
+import TribeVue from "./Tribe.vue";
 
 export default defineComponent({
   props: {
-    role: String,
-    tribe: String,
-    rarity: String,
+    role: String as () => Role,
+    tribe: String as () => Tribe | null,
+    rarity: String as () => Rarity,
     attack: Number,
     health: Number,
     abilities: Object,
@@ -70,9 +74,9 @@ export default defineComponent({
   components: {
     Attack,
     Health,
-    Rarity,
-    Role,
-    Tribe,
+    RarityVue,
+    RoleVue,
+    TribeVue,
     AbilityStamp,
     ItemStamp,
   },
