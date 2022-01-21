@@ -195,7 +195,7 @@ describe('Mercenary Data Getters', () => {
             }
         };
         const filter: MercFilter = {
-            tribes: AllianceTribes
+            tribes: [...AllianceTribes]
         };
 
         const result = getters.getMercenaries(state)(filter);
