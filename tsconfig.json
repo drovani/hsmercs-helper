@@ -4,6 +4,9 @@
         "moduleResolution": "Node",
         "esModuleInterop": true,
         "resolveJsonModule": true,
+        "types": [
+            "vite/client", "mocha"
+        ]
     },
     "exclude": [
         "./node_modules/",
