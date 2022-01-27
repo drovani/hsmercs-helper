@@ -1,9 +1,10 @@
 import { MercCollection } from "../models/mercCollection";
 import MercFilter from "../models/mercFilter";
 import { State } from "./state";
+import { GET_MERCENARIES } from "./types";
 
 export default {
-  getMercenaries: (state: State) => (filter?: MercFilter): MercCollection => {
+  [GET_MERCENARIES]: (state: State) => (filter?: MercFilter): MercCollection => {
     if (filter === undefined) {
       return state.mercenaries;
     }
