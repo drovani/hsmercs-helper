@@ -1,208 +1,116 @@
-import { expect } from 'chai';
-import Mercenary from '../../src/models/mercenary';
-import MercFilter from '../../src/models/mercFilter';
-import { AllianceTribes } from '../../src/models/tribes';
+import { beforeEach, describe, expect, it } from "vitest";
+import MercFilter from "../../src/models/mercFilter";
+import { AllianceTribes } from "../../src/models/tribes";
 import getters from "../../src/store/getters";
-import { State } from '../../src/store/state';
+import { State } from "../../src/store/state";
+import { GET_MERCENARIES } from "../../src/store/types";
+import { BlademasterSamuro, JainaProudmoore, KingMukla } from "../constants";
 
-describe('Mercenary Data Getters', () => {
+describe("Mercenary Data Getters", () => {
+    let state: State;
 
-    it('gets mercenaries collection', () => {
-        const state: State = {
+    beforeEach(() => {
+        state = {
             mercenaries: {
-                "Alexstrasza": {
-                    role: "Protector",
-                    rarity: "Rare",
-                    tribe: "Dragon",
-                    attack: 10,
-                    health: 80,
-                    abilities: {},
-                    equipment: {},
-                    tasks: []
-                }
-            }
+                "King Mukla": { ...KingMukla },
+                "Blademaster Samuro": { ...BlademasterSamuro },
+                "Jaina Proudmoore": { ...JainaProudmoore },
+            },
         };
+    });
 
-        const result = getters.getMercenaries(state)();
+    it("gets mercenaries collection", () => {
+        const result = getters[GET_MERCENARIES](state)();
 
         expect(result).deep.equal({
-            "Alexstrasza": {
-                role: "Protector",
-                rarity: "Rare",
-                tribe: "Dragon",
-                attack: 10,
-                health: 80,
-                abilities: {},
-                equipment: {},
-                tasks: []
-            }
+            "King Mukla": KingMukla,
+            "Blademaster Samuro": BlademasterSamuro,
+            "Jaina Proudmoore": JainaProudmoore,
         });
     });
 
-    const mukla: Mercenary = {
-        role: "Protector",
-        rarity: "Epic",
-        tribe: "Beast",
-        attack: 10,
-        health: 73,
-        abilities: {},
-        equipment: {},
-        tasks: []
-    };
-    const samuro: Mercenary = {
-        role: "Fighter",
-        rarity: "Rare",
-        tribe: "Orc",
-        attack: 10,
-        health: 66,
-        abilities: {},
-        equipment: {},
-        tasks: []
-    };
-    const jaina: Mercenary = {
-        role: "Caster",
-        rarity: "Legendary",
-        tribe: "Human",
-        attack: 7,
-        health: 72,
-        abilities: {},
-        equipment: {},
-        tasks: []
-    };
-
-    it('filters mercs by single role', () => {
-        const state: State = {
-            mercenaries: {
-                "King Mukla": mukla,
-                "Blademaster Samuro": samuro,
-                "Jaina Proudmoore": jaina
-            }
-        };
+    it("filters mercs by single role", () => {
         const filter: MercFilter = {
-            roles: ['Protector']
+            roles: ["Protector"],
         };
 
-        const result = getters.getMercenaries(state)(filter);
+        const result = getters[GET_MERCENARIES](state)(filter);
 
-        expect(result).deep.equal({ "King Mukla": mukla });
-
+        expect(result).deep.equal({ "King Mukla": KingMukla });
     });
 
-    it('filters mercs by two roles', () => {
-        const state: State = {
-            mercenaries: {
-                "King Mukla": mukla,
-                "Blademaster Samuro": samuro,
-                "Jaina Proudmoore": jaina
-            }
-        };
+    it("filters mercs by two roles", () => {
         const filter: MercFilter = {
-            roles: ["Fighter", "Caster"]
+            roles: ["Fighter", "Caster"],
         };
 
-        const result = getters.getMercenaries(state)(filter);
+        const result = getters[GET_MERCENARIES](state)(filter);
 
         expect(result).deep.equal({
-            "Blademaster Samuro": samuro,
-            "Jaina Proudmoore": jaina
-        })
+            "Blademaster Samuro": BlademasterSamuro,
+            "Jaina Proudmoore": JainaProudmoore,
+        });
     });
 
-    it('filters mercs by one rarity', () => {
-        const state: State = {
-            mercenaries: {
-                "King Mukla": mukla,
-                "Blademaster Samuro": samuro,
-                "Jaina Proudmoore": jaina
-            }
-        };
+    it("filters mercs by one rarity", () => {
         const filter: MercFilter = {
-            rarities: ["Rare"]
+            rarities: ["Rare"],
         };
 
-        const result = getters.getMercenaries(state)(filter);
+        const result = getters[GET_MERCENARIES](state)(filter);
 
         expect(result).deep.equal({
-            "Blademaster Samuro": samuro,
-        })
+            "Blademaster Samuro": BlademasterSamuro,
+        });
     });
 
-    it('filters mercs by two rarities', () => {
-        const state: State = {
-            mercenaries: {
-                "King Mukla": mukla,
-                "Blademaster Samuro": samuro,
-                "Jaina Proudmoore": jaina
-            }
-        };
+    it("filters mercs by two rarities", () => {
         const filter: MercFilter = {
-            rarities: ["Epic", "Legendary"]
+            rarities: ["Epic", "Legendary"],
         };
 
-        const result = getters.getMercenaries(state)(filter);
+        const result = getters[GET_MERCENARIES](state)(filter);
 
         expect(result).deep.equal({
-            "King Mukla": mukla,
-            "Jaina Proudmoore": jaina
-        })
+            "King Mukla": KingMukla,
+            "Jaina Proudmoore": JainaProudmoore,
+        });
     });
 
-    it('filters mercs by one tribe', () => {
-        const state: State = {
-            mercenaries: {
-                "King Mukla": mukla,
-                "Blademaster Samuro": samuro,
-                "Jaina Proudmoore": jaina
-            }
-        };
+    it("filters mercs by one tribe", () => {
         const filter: MercFilter = {
-            tribes: ["Beast"]
+            tribes: ["Beast"],
         };
 
-        const result = getters.getMercenaries(state)(filter);
+        const result = getters[GET_MERCENARIES](state)(filter);
 
         expect(result).deep.equal({
-            "King Mukla": mukla,
-        })
+            "King Mukla": KingMukla,
+        });
     });
 
-    it('filters mercs by two tribes', () => {
-        const state: State = {
-            mercenaries: {
-                "King Mukla": mukla,
-                "Blademaster Samuro": samuro,
-                "Jaina Proudmoore": jaina
-            }
-        };
+    it("filters mercs by two tribes", () => {
         const filter: MercFilter = {
-            tribes: ["Human", "Orc"]
+            tribes: ["Human", "Orc"],
         };
 
-        const result = getters.getMercenaries(state)(filter);
+        const result = getters[GET_MERCENARIES](state)(filter);
 
         expect(result).deep.equal({
-            "Blademaster Samuro": samuro,
-            "Jaina Proudmoore": jaina
-        })
+            "Blademaster Samuro": BlademasterSamuro,
+            "Jaina Proudmoore": JainaProudmoore,
+        });
     });
 
-    it('filters mercs by faction array', () => {
-        const state: State = {
-            mercenaries: {
-                "King Mukla": mukla,
-                "Blademaster Samuro": samuro,
-                "Jaina Proudmoore": jaina
-            }
-        };
+    it("filters mercs by faction array", () => {
         const filter: MercFilter = {
-            tribes: [...AllianceTribes]
+            tribes: [...AllianceTribes],
         };
 
-        const result = getters.getMercenaries(state)(filter);
+        const result = getters[GET_MERCENARIES](state)(filter);
 
         expect(result).deep.equal({
-            "Jaina Proudmoore": jaina
-        })
+            "Jaina Proudmoore": JainaProudmoore,
+        });
     });
-
 });

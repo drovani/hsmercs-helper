@@ -37,37 +37,18 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import { MercCollection } from "../models/mercCollection";
 import MercFilter from "../models/mercFilter";
 import { Rarities } from "../models/rarities";
 import { Roles } from "../models/roles";
 import mercjson from "../static/mercenaries.json";
-import { SET_MERCENARIES } from "../store/types";
+import { GET_MERCENARIES, SET_MERCENARIES } from "../store/types";
 import MercenaryCard from "./MercenaryCard.vue";
 import RarityFilter from "./RarityFilter.vue";
 import RoleFilter from "./RoleFilter.vue";
 
 export default defineComponent({
-  computed: {
-    ...mapGetters(["getMercenaries"]),
-    mercenaries(): MercCollection {
-      return this.getMercenaries(this.filter);
-    },
-    showingAllMercenaries(): boolean {
-      return (
-        this.filter.roles.length === Roles.length &&
-        this.filter.rarities.length === Rarities.length
-      );
-    },
-    filterBorderColor() {
-      if (this.filter.roles.length === 1) {
-        return "border-" + this.filter.roles[0].toLowerCase();
-      } else {
-        return "border-gray-800";
-      }
-    },
-  },
   data: () => {
     return {
       Roles,
@@ -77,15 +58,35 @@ export default defineComponent({
       } as MercFilter,
     };
   },
+  computed: {
+    ...mapGetters([GET_MERCENARIES]),
+    mercenaries(): MercCollection {
+      return this[GET_MERCENARIES](this.filter);
+    },
+    showingAllMercenaries(): boolean {
+      return (
+        this.filter.roles.length === Roles.length &&
+        this.filter.rarities.length === Rarities.length
+      );
+    },
+    filterBorderColor(): string {
+      if (this.filter.roles.length === 1) {
+        return "border-" + this.filter.roles[0].toLowerCase();
+      } else {
+        return "border-gray-800";
+      }
+    },
+  },
   methods: {
-    showAllMercenaries() {
+    ...mapMutations([SET_MERCENARIES]),
+    showAllMercenaries(): void {
       this.filter.roles = [...Roles];
       this.filter.rarities = [...Rarities];
     },
-    filterRole(role: string) {
+    filterRole(role: string): void {
       this.filter.roles = [role];
     },
-    toggleRole(role: string) {
+    toggleRole(role: string): void {
       const idx = this.filter.roles.indexOf(role);
       if (idx < 0) {
         this.filter.roles.push(role);
@@ -93,7 +94,7 @@ export default defineComponent({
         this.filter.roles.splice(idx, 1);
       }
     },
-    toggleRarity(rarity: string) {
+    toggleRarity(rarity: string): void {
       const idx = this.filter.rarities.indexOf(rarity);
       if (idx < 0) {
         this.filter.rarities.push(rarity);
@@ -104,7 +105,7 @@ export default defineComponent({
   },
   mounted(): void {
     if (Object.keys(this.mercenaries ?? {}).length === 0) {
-      this.$store.commit(SET_MERCENARIES, mercjson.mercenaries);
+      this[SET_MERCENARIES](mercjson.mercenaries);
     }
   },
   components: { MercenaryCard, RoleFilter, RarityFilter },

@@ -1,4 +1,4 @@
-import { expect } from 'chai';
+import { describe, expect, it } from "vitest";
 import mutations from "../../src/store/mutations";
 import { State } from '../../src/store/state';
 import { SET_MERCENARIES } from '../../src/store/types';
