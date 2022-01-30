@@ -10,9 +10,11 @@
 </template>
 
 <script setup lang="ts">
+import { Rarity } from "../models/rarities";
+
 defineProps({
   rarity: {
-    type: String,
+    type: String as () => Rarity,
     require: true,
   },
 });

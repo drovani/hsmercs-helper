@@ -1,9 +1,13 @@
 {
     "compilerOptions": {
-        "module": "CommonJS",
+        "module": "ESNext",
         "moduleResolution": "Node",
         "esModuleInterop": true,
         "resolveJsonModule": true,
+        "types": [
+            "vite/client",
+        ],
+        "alwaysStrict": true
     },
     "exclude": [
         "./node_modules/",
