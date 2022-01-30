@@ -113,4 +113,20 @@ describe("Mercenary Data Getters", () => {
             "Jaina Proudmoore": JainaProudmoore,
         });
     });
+
+    it("sorts mercs alphabetically and reverse", () => {
+        // validate that this test starts with an unordered list
+        expect(Object.keys(state.mercenaries)).to.have.ordered.members(["King Mukla", "Blademaster Samuro", "Jaina Proudmoore"]);
+
+        const filter: MercFilter = {
+            sort: "AZ"
+        };
+        const resultaz = getters[GET_MERCENARIES](state)(filter);
+        expect(Object.keys(resultaz)).to.have.ordered.members(["Blademaster Samuro", "Jaina Proudmoore", "King Mukla"]);
+
+        filter.sort = "ZA";
+        const resultza = getters[GET_MERCENARIES](state)(filter);
+        expect(Object.keys(resultza)).to.have.ordered.members(["King Mukla", "Jaina Proudmoore", "Blademaster Samuro"]);
+    })
+
 });

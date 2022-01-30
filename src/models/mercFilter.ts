@@ -5,5 +5,6 @@ import { Tribe } from "./tribes";
 export default interface MercFilter {
     roles?: Role[],
     rarities?: Rarity[],
-    tribes?: Tribe[]
+    tribes?: Tribe[],
+    sort?: "AZ" | "ZA"
 }

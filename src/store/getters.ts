@@ -21,6 +21,13 @@ export default {
       mercs = mercs.filter(m => filter.tribes.includes(m[1].tribe));
     }
 
+    if (filter.sort !== undefined) {
+      mercs.sort((a, b) => a[0] < b[0] ? -1 : 1);
+      if (filter.sort === "ZA") {
+        mercs.reverse();
+      }
+    }
+
     return Object.fromEntries(mercs);
   }
 }

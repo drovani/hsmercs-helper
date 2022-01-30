@@ -24,6 +24,10 @@
         :enabled-rarities="filter.rarities"
         @toggle-rarity="toggleRarity"
       />
+      <div class="flex gap-2 ml-48">
+        <div class="cursor-pointer rounded-t-md bg-gray-800 px-2" @click="sort('AZ')">A-Z</div>
+        <div class="cursor-pointer rounded-t-md bg-gray-800 px-2" @click="sort('ZA')">Z-A</div>
+      </div>
     </div>
     <div class="flex flex-wrap gap-2">
       <MercenaryCard
@@ -55,6 +59,7 @@ export default defineComponent({
       filter: {
         roles: [...Roles],
         rarities: [...Rarities],
+        sort: "AZ"
       } as MercFilter,
     };
   },
@@ -101,6 +106,9 @@ export default defineComponent({
       } else {
         this.filter.rarities.splice(idx, 1);
       }
+    },
+    sort(direction: "AZ" | "ZA"): void {
+      this.filter.sort = direction;
     },
   },
   mounted(): void {
