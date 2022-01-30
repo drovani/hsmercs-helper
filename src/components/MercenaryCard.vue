@@ -33,17 +33,17 @@
         v-for="(ability, abilityName) in abilities"
         :key="abilityName"
         :ability="ability"
+        :ability-name="abilityName"
         class="rounded"
-        >{{ abilityName }}
-      </AbilityStamp>
+      />
     </div>
     <div class="grid grid-cols-3 gap-x-1">
       <ItemStamp
         v-for="(item, itemName) in equipment"
         :key="itemName"
         :item="item"
-        >{{ itemName }}
-      </ItemStamp>
+        :item-name="itemName"
+      />
     </div>
   </div>
 </template>
