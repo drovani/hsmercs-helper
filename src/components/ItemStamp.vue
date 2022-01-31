@@ -1,37 +1,31 @@
 <template>
-  <div class="border rounded text-sm sm:text-base text-center">
-    <span v-if="everythingElse">{{ everythingElse }}</span>
-    <span class="whitespace-nowrap">{{ keepTogether }}</span>
+  <div class="flex flex-col border rounded text-sm sm:text-base text-center">
+    <div class="flex-1">
+      <TaillessWrap :text="`${itemName} 1`" />
+    </div>
+    <UpDownButtons
+      @increment="$emit('increment')"
+      @decrement="$emit('decrement')"
+    />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import TaillessWrap from "./TaillessWrap.vue";
+import UpDownButtons from "./UpDownButtons.vue";
 
-export default defineComponent({
-  props: {
-    itemName: {
-      type: String,
-      require: true,
-    },
-    item: {
-      type: Object,
-      require: true,
-    },
+defineProps({
+  itemName: {
+    type: String,
+    require: true,
   },
-  computed: {
-    everythingElse(): string {
-      return this.itemName.lastIndexOf(" ") === -1
-        ? null
-        : this.itemName.slice(0, this.itemName.lastIndexOf(" ") + 1);
-    },
-    keepTogether(): string {
-      return (
-        (this.itemName.lastIndexOf(" ") === -1
-          ? this.itemName
-          : this.itemName.slice(this.itemName.lastIndexOf(" ") + 1)) + " 1"
-      );
-    },
+  item: {
+    type: Object,
+    require: true,
   },
 });
+defineEmits<{
+  (event: "increment"): void;
+  (event: "decrement"): void;
+}>();
 </script>

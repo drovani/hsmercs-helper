@@ -1,2 +1,7 @@
 export const SET_MERCENARIES = "set_mercenaries"
 export const GET_MERCENARIES = "get_mercenaries"
+export const MERC_COLLECT = "merc_collect"
+export const ABILITY_INCREMENT = "ability_increment"
+export const ABILITY_DECREMENT = "ability_decrement"
+export const ITEM_INCREMENT = "item_increment"
+export const ITEM_DECREMENT = "item_decrement"

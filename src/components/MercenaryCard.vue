@@ -35,6 +35,8 @@
         :ability="ability"
         :ability-name="abilityName"
         class="rounded"
+        @increment="$emit('abilityIncrement', abilityName)"
+        @decrement="$emit('abilityDecrement', abilityName)"
       />
     </div>
     <div class="grid grid-cols-3 gap-x-1">
@@ -43,12 +45,13 @@
         :key="itemName"
         :item="item"
         :item-name="itemName"
+        @increment="$emit('itemIncrement', itemName)"
+        @decrement="$emit('itemDecrement', itemName)"
       />
     </div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import { Rarity } from "../models/rarities";
 import { Role } from "../models/roles";
 import { Tribe } from "../models/tribes";
@@ -60,25 +63,21 @@ import RarityVue from "./Rarity.vue";
 import RoleVue from "./Role.vue";
 import TribeVue from "./Tribe.vue";
 
-export default defineComponent({
-  props: {
-    role: String as () => Role,
-    tribe: String as () => Tribe | null,
-    rarity: String as () => Rarity,
-    attack: Number,
-    health: Number,
-    abilities: Object,
-    equipment: Object,
-    tasks: Array,
-  },
-  components: {
-    Attack,
-    Health,
-    RarityVue,
-    RoleVue,
-    TribeVue,
-    AbilityStamp,
-    ItemStamp,
-  },
+defineProps({
+  role: String as () => Role,
+  tribe: String as () => Tribe | null,
+  rarity: String as () => Rarity,
+  attack: Number,
+  health: Number,
+  abilities: Object,
+  equipment: Object,
+  tasks: Array,
 });
+
+defineEmits<{
+  (event: "abilityIncrement", abilityName: string): void;
+  (event: "abilityDecrement", abilityName: string): void;
+  (event: "itemIncrement", itemName: string): void;
+  (event: "itemDecrement", itemName: string): void;
+}>();
 </script>

@@ -12,3 +12,16 @@ export default interface Mercenary {
     equipment: { [name: string]: any },
     tasks: any[]
 }
+
+export interface Collected {
+    collected: Boolean,
+    tasksCompleted: number,
+    itemEquipped: string,
+    level: number,
+    abilities: {
+        [name: string]: number
+    },
+    equipment: {
+        [name: string]: number
+    },
+}
