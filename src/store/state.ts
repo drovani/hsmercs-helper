@@ -1,7 +1,8 @@
-import { MercCollection } from "../models/mercCollection";
+import MercCollection from "../models/mercCollection";
+import MercLibrary from "../models/mercLibrary";
 
 export interface State {
-    mercenaries: MercCollection;
+    mercenaries: MercLibrary;
     collection: MercCollection;
 }
 

@@ -25,14 +25,25 @@
         @toggle-rarity="toggleRarity"
       />
       <div class="flex gap-2 ml-48">
-        <div class="cursor-pointer rounded-t-md bg-gray-800 px-2" @click="sort('AZ')">A-Z</div>
-        <div class="cursor-pointer rounded-t-md bg-gray-800 px-2" @click="sort('ZA')">Z-A</div>
+        <div
+          class="cursor-pointer rounded-t-md bg-gray-800 px-2"
+          @click="sort('AZ')"
+        >
+          A-Z
+        </div>
+        <div
+          class="cursor-pointer rounded-t-md bg-gray-800 px-2"
+          @click="sort('ZA')"
+        >
+          Z-A
+        </div>
       </div>
     </div>
     <div class="flex flex-wrap gap-2">
       <MercenaryCard
         v-for="(merc, mercName) in mercenaries"
         :key="mercName"
+        mercLibrary
         v-bind="merc"
         >{{ mercName }}
       </MercenaryCard>
@@ -42,12 +53,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapGetters, mapMutations } from "vuex";
-import { MercCollection } from "../models/mercCollection";
 import MercFilter from "../models/mercFilter";
+import MercLibrary from "../models/mercLibrary";
 import { Rarities } from "../models/rarities";
 import { Roles } from "../models/roles";
 import mercjson from "../static/mercenaries.json";
-import { GET_MERCENARIES, SET_MERCENARIES } from "../store/types";
+import { GET_MERC_LIBRARY, SET_MERC_LIBRARY } from "../store/types";
 import MercenaryCard from "./MercenaryCard.vue";
 import RarityFilter from "./RarityFilter.vue";
 import RoleFilter from "./RoleFilter.vue";
@@ -59,14 +70,14 @@ export default defineComponent({
       filter: {
         roles: [...Roles],
         rarities: [...Rarities],
-        sort: "AZ"
+        sort: "AZ",
       } as MercFilter,
     };
   },
   computed: {
-    ...mapGetters([GET_MERCENARIES]),
-    mercenaries(): MercCollection {
-      return this[GET_MERCENARIES](this.filter);
+    ...mapGetters([GET_MERC_LIBRARY]),
+    mercenaries(): MercLibrary {
+      return this[GET_MERC_LIBRARY](this.filter);
     },
     showingAllMercenaries(): boolean {
       return (
@@ -83,7 +94,7 @@ export default defineComponent({
     },
   },
   methods: {
-    ...mapMutations([SET_MERCENARIES]),
+    ...mapMutations([SET_MERC_LIBRARY]),
     showAllMercenaries(): void {
       this.filter.roles = [...Roles];
       this.filter.rarities = [...Rarities];
@@ -113,7 +124,7 @@ export default defineComponent({
   },
   mounted(): void {
     if (Object.keys(this.mercenaries ?? {}).length === 0) {
-      this[SET_MERCENARIES](mercjson.mercenaries);
+      this[SET_MERC_LIBRARY](mercjson.mercenaries);
     }
   },
   components: { MercenaryCard, RoleFilter, RarityFilter },

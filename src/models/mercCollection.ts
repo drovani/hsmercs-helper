@@ -1,5 +1,5 @@
-import Mercenary from "./mercenary";
+import { CollectedMerc } from "./collectedMerc";
 
-export interface MercCollection {
-    [name: string]: Mercenary;
+export default interface MercCollection {
+    [name: string]: CollectedMerc;
 }
