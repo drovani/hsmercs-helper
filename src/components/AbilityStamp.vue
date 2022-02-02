@@ -1,9 +1,11 @@
 <template>
   <div class="flex flex-col border rounded text-sm sm:text-base text-center">
     <div class="flex-1">
-      <TaillessWrap :text="`${abilityName} 1`" />
+      <TaillessWrap :text="`${abilityName} ${activeTier}`" />
     </div>
     <UpDownButtons
+      :show-increment="activeTier < 5"
+      :show-decrement="activeTier > 1"
       @increment="$emit('increment')"
       @decrement="$emit('decrement')"
     />
@@ -21,6 +23,10 @@ defineProps({
   },
   ability: {
     type: Object,
+    required: true,
+  },
+  activeTier: {
+    type: Number,
     required: true,
   },
 });

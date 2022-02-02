@@ -52,12 +52,34 @@ describe('Mercenary Data Mutations', () => {
             }
         };
 
-        mutations[ADD_MERC_TO_COLLECTION](state, "King Mukla", { ...collectedMerc });
+        mutations[ADD_MERC_TO_COLLECTION](state, { mercName: "King Mukla", mercCollected: { ...collectedMerc } });
 
         expect(state.collection["King Mukla"]).deep.equals(collectedMerc);
     });
 
-    it('adds empty collected merc to collection', () => {
+    it('adds initialized uncollected merc to collection', () => {
+        const collectedMerc: CollectedMerc = {
+            collected: false,
+            tasksCompleted: 0,
+            itemEquipped: null,
+            level: 30,
+            abilities: {
+                "Banana Frenzy": 1,
+                "Dinner Time": 1,
+                "Primal Power": 1
+            }, equipment: {
+                "Refreshing Bananas": 1,
+                "Radioactive Bananas": 3,
+                "Mukla's Big Brother": 1
+            }
+        };
+
+        mutations[ADD_MERC_TO_COLLECTION](state, { mercName: "King Mukla" });
+
+        expect(state.collection["King Mukla"]).deep.equals(collectedMerc);
+    });
+
+    it('adds initialized collected merc to collection', () => {
         const collectedMerc: CollectedMerc = {
             collected: true,
             tasksCompleted: 0,
@@ -74,7 +96,7 @@ describe('Mercenary Data Mutations', () => {
             }
         };
 
-        mutations[ADD_MERC_TO_COLLECTION](state, "King Mukla");
+        mutations[ADD_MERC_TO_COLLECTION](state, { mercName: "King Mukla", mercCollected: true });
 
         expect(state.collection["King Mukla"]).deep.equals(collectedMerc);
     });
@@ -112,28 +134,28 @@ describe('Collected Ability & Equipment Mutations', () => {
     it('increments ability', () => {
         expect(state.collection["King Mukla"].abilities["Banana Frenzy"]).to.equal(2);
 
-        mutations[ABILITY_INCREMENT](state, "King Mukla", "Banana Frenzy");
+        mutations[ABILITY_INCREMENT](state, { mercName: "King Mukla", abilityName: "Banana Frenzy" });
 
         expect(state.collection["King Mukla"].abilities["Banana Frenzy"]).to.equal(3);
     })
     it('will not increment ability above 5', () => {
         expect(state.collection["King Mukla"].abilities["Primal Power"]).to.equal(5);
 
-        mutations[ABILITY_INCREMENT](state, "King Mukla", "Primal Power");
+        mutations[ABILITY_INCREMENT](state, { mercName: "King Mukla", abilityName: "Primal Power" });
 
         expect(state.collection["King Mukla"].abilities["Primal Power"]).to.equal(5);
     })
     it('decrements ability', () => {
         expect(state.collection["King Mukla"].abilities["Banana Frenzy"]).to.equal(2);
 
-        mutations[ABILITY_DECREMENT](state, "King Mukla", "Banana Frenzy");
+        mutations[ABILITY_DECREMENT](state, { mercName: "King Mukla", abilityName: "Banana Frenzy" });
 
         expect(state.collection["King Mukla"].abilities["Banana Frenzy"]).to.equal(1);
     })
     it('will not decrement ability below 1', () => {
         expect(state.collection["King Mukla"].abilities["Dinner Time"]).to.equal(1);
 
-        mutations[ABILITY_DECREMENT](state, "King Mukla", "Dinner Time");
+        mutations[ABILITY_DECREMENT](state, { mercName: "King Mukla", abilityName: "Dinner Time" });
 
         expect(state.collection["King Mukla"].abilities["Dinner Time"]).to.equal(1);
     })
@@ -141,36 +163,36 @@ describe('Collected Ability & Equipment Mutations', () => {
     it('increments item', () => {
         expect(state.collection["King Mukla"].equipment["Refreshing Bananas"]).to.equal(2);
 
-        mutations[ITEM_INCREMENT](state, "King Mukla", "Refreshing Bananas");
+        mutations[ITEM_INCREMENT](state, { mercName: "King Mukla", itemName: "Refreshing Bananas" });
 
         expect(state.collection["King Mukla"].equipment["Refreshing Bananas"]).to.equal(3);
     })
     it('will not increment item above 4', () => {
         expect(state.collection["King Mukla"].equipment["Mukla's Big Brother"]).to.equal(4);
 
-        mutations[ITEM_INCREMENT](state, "King Mukla", "Mukla's Big Brother");
+        mutations[ITEM_INCREMENT](state, { mercName: "King Mukla", itemName: "Mukla's Big Brother" });
 
         expect(state.collection["King Mukla"].equipment["Mukla's Big Brother"]).to.equal(4);
     })
     it('decrements item', () => {
         expect(state.collection["King Mukla"].equipment["Refreshing Bananas"]).to.equal(2);
 
-        mutations[ITEM_DECREMENT](state, "King Mukla", "Refreshing Bananas");
+        mutations[ITEM_DECREMENT](state, { mercName: "King Mukla", itemName: "Refreshing Bananas" });
 
         expect(state.collection["King Mukla"].equipment["Refreshing Bananas"]).to.equal(1);
     })
     it('will not decrement item with 4 tiers below 1', () => {
         expect(state.collection["King Mukla"].equipment["Refreshing Bananas"]).to.equal(2);
 
-        mutations[ITEM_DECREMENT](state, "King Mukla", "Refreshing Bananas");
-        mutations[ITEM_DECREMENT](state, "King Mukla", "Refreshing Bananas");
+        mutations[ITEM_DECREMENT](state, { mercName: "King Mukla", itemName: "Refreshing Bananas" });
+        mutations[ITEM_DECREMENT](state, { mercName: "King Mukla", itemName: "Refreshing Bananas" });
 
         expect(state.collection["King Mukla"].equipment["Refreshing Bananas"]).to.equal(1);
     })
     it('will not decrement item with 2 tiers below 3', () => {
         expect(state.collection["King Mukla"].equipment["Radioactive Bananas"]).to.equal(3);
 
-        mutations[ITEM_DECREMENT](state, "King Mukla", "Radioactive Bananas");
+        mutations[ITEM_DECREMENT](state, { mercName: "King Mukla", itemName: "Radioactive Bananas" });
 
         expect(state.collection["King Mukla"].equipment["Radioactive Bananas"]).to.equal(3);
     })

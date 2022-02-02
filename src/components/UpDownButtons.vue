@@ -7,6 +7,7 @@
       @click="$emit('decrement')"
       class="px-0.5"
       :class="{ invisible: !showDecrement }"
+      :title="'Decrease ' + title"
     >
       <icon :icon="['fas', downIcon]"></icon>
     </button>
@@ -15,6 +16,7 @@
       @click="$emit('increment')"
       class="px-0.5"
       :class="{ invisible: !showIncrement }"
+      :title="'Increase ' + title"
     >
       <icon :icon="['fas', upIcon]"></icon>
     </button>
@@ -33,6 +35,10 @@ export default defineComponent({
     showIncrement: {
       type: Boolean,
       default: true,
+    },
+    title: {
+      type: String,
+      default: "Value",
     },
     upIcon: { type: String, default: "arrow-circle-up" },
     downIcon: {
