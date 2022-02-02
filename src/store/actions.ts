@@ -2,12 +2,12 @@ import { ActionContext, ActionTree } from "vuex";
 import { State } from "./state";
 import { ABILITY_DECREMENT, ABILITY_INCREMENT, ADD_MERC_TO_COLLECTION, GET_COLLECTED_MERC, ITEM_DECREMENT, ITEM_INCREMENT } from "./types";
 
-export default {
+export default <ActionTree<State, State>>{
 
-    [ABILITY_INCREMENT]({ commit, getters }: ActionContext<State, State>,
+    [ABILITY_INCREMENT]({ commit, getters,state }: ActionContext<State, State>,
         { mercName, abilityName }: { mercName: string, abilityName: string }): void {
 
-        if (!getters[GET_COLLECTED_MERC](mercName)) {
+        if (!getters[GET_COLLECTED_MERC](state)(mercName)) {
             commit(ADD_MERC_TO_COLLECTION, { mercName });
         }
         commit(ABILITY_INCREMENT, { mercName, abilityName });
@@ -41,4 +41,4 @@ export default {
 
     },
 
-} as ActionTree<State, State>
+}

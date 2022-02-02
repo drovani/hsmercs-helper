@@ -1,5 +1,8 @@
 import { beforeEach, describe, expect, it } from "vitest";
+import { createStore, Store } from "vuex";
 import actions from "../../src/store/actions";
+import getters from "../../src/store/getters";
+import mutations from "../../src/store/mutations";
 import { State } from "../../src/store/state";
 import { ABILITY_DECREMENT, ABILITY_INCREMENT, ADD_MERC_TO_COLLECTION, ITEM_DECREMENT, ITEM_INCREMENT } from "../../src/store/types";
 import { BlademasterSamuro, JainaProudmoore, KingMukla } from "../constants";
@@ -7,6 +10,7 @@ import { actionTestHelper } from "./actions.helper";
 
 describe('Mercenary Data Actions', () => {
     let state: State;
+    let store: Store<State>;
 
     beforeEach(() => {
         state = {
@@ -17,10 +21,20 @@ describe('Mercenary Data Actions', () => {
             },
             collection: {}
         };
+        store = createStore<State>({
+            actions,
+            getters,
+            mutations,
+            state
+        })
     })
 
-    it.skip('ability increment adds merc to collection when not already present', (done) => {
+    it('ability increment adds merc to collection when not already present', (done) => {
         const expectedMutations = [
+            {
+                type: ADD_MERC_TO_COLLECTION,
+                payload: { mercName: "King Mukla" }
+            },
             {
                 type: ABILITY_INCREMENT,
                 payload: {
@@ -28,16 +42,10 @@ describe('Mercenary Data Actions', () => {
                     abilityName: "Banana Frenzy"
                 }
             },
-            {
-                type: ADD_MERC_TO_COLLECTION,
-                payload: { mercName: "King Mukla" }
-            },
-
         ];
-debugger;
         actionTestHelper(actions[ABILITY_INCREMENT],
             { mercName: "King Mukla", abilityName: "Banana Frenzy" },
-            state,
+            store,
             expectedMutations,
             done);
     })

@@ -92,7 +92,7 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapGetters([GET_MERC_LIBRARY]),
+    ...mapGetters([GET_MERC_LIBRARY, GET_COLLECTED_MERC]),
     mercenaries(): MercLibrary {
       return this[GET_MERC_LIBRARY](this.filter);
     },
@@ -123,7 +123,7 @@ export default defineComponent({
       this.filter.rarities = [...Rarities];
     },
     getCollectedMerc(mercName: string): CollectedMerc | undefined {
-      return this.$store.getters[GET_COLLECTED_MERC](mercName);
+      return this[GET_COLLECTED_MERC](mercName);
     },
     filterRole(role: string): void {
       this.filter.roles = [role];
