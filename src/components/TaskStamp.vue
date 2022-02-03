@@ -1,6 +1,9 @@
 <template>
-  <div class="flex flex-row justify-center gap-4">
-    <div>Task #{{ tasksCompleted + 1 }}</div>
+  <div class="flex flex-row">
+    <div v-if="tasksCompleted < 18" class="flex-1">
+      Task #{{ tasksCompleted + 1 }}: {{ tasks[tasksCompleted].description }}
+    </div>
+    <div v-else class="flex-1">All Tasks Completed!</div>
     <UpDownButtons
       down-icon="undo"
       up-icon="check-circle"
@@ -12,11 +15,16 @@
   </div>
 </template>
 <script setup lang="ts">
+import { MercTask } from "../models/mercenary";
 import UpDownButtons from "./UpDownButtons.vue";
 
 defineProps({
   tasksCompleted: {
     type: Number,
+    required: true,
+  },
+  tasks: {
+    type: Array as () => MercTask[],
     required: true,
   },
 });

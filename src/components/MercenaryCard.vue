@@ -67,6 +67,8 @@
     <div>
       <TaskStamp
         :tasks-completed="collectedMerc?.tasksCompleted ?? 0"
+        :tasks="tasks"
+        class="h-12 mx-2"
         @task-complete="$emit('taskIncrement', mercName)"
         @task-undo="$emit('taskDecrement', mercName)"
       />
@@ -87,6 +89,7 @@ import TribeVue from "./Tribe.vue";
 import TaillessWrap from "./TaillessWrap.vue";
 import TaskStamp from "./TaskStamp.vue";
 import CollectedMerc from "../models/collectedMerc";
+import { MercTask } from "../models/mercenary";
 
 const props = defineProps({
   role: String as () => Role,
@@ -96,7 +99,7 @@ const props = defineProps({
   health: Number,
   abilities: Object,
   equipment: Object,
-  tasks: Array,
+  tasks: Array as () => MercTask[],
   mercName: {
     type: String,
     required: true,
