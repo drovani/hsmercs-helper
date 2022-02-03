@@ -61,6 +61,9 @@ describe('Mercenary Data Actions', () => {
             store,
             expectedMutations,
             done);
+
+            expect(state.collection["King Mukla"]).to.not.be.undefined;
+            expect(state.collection["King Mukla"].equipment["Banana Frenzy"]).to.equal(2);
     })
     it('item increment adds merc to collection when not already present', (done) => {
         const expectedMutations = [

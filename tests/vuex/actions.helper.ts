@@ -1,6 +1,5 @@
 import { DoneCallback, expect } from "vitest";
 import { Action, Store } from "vuex";
-import getters from "../../src/store/getters";
 import { State } from "../../src/store/state";
 
 export const actionTestHelper = (action: Action<State, State>, actionPayload: any, store: Store<State>, expectedMutations: any[], done: DoneCallback) => {
@@ -24,10 +23,10 @@ export const actionTestHelper = (action: Action<State, State>, actionPayload: an
         expect(count).to.equal(0);
         done();
     } else {
-        if ("call" in action) {
-            action.call(store, { commit, getters, state: store.state }, actionPayload);
+        if ("handler" in action) {
+            action.handler.call(store, { getters: store.getters, commit }, actionPayload);
         } else {
-            action.handler.call(store, { commit, getters, state: store.state }, actionPayload);
+            action.call(store, { getters: store.getters, commit }, actionPayload);
         }
     }
 };
