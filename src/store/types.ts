@@ -6,3 +6,6 @@ export const ABILITY_INCREMENT = "ability_increment"
 export const ABILITY_DECREMENT = "ability_decrement"
 export const ITEM_INCREMENT = "item_increment"
 export const ITEM_DECREMENT = "item_decrement"
+export const TASK_INCREMENT = "task_increment"
+export const TASK_DECREMENT = "task_decrement"
+

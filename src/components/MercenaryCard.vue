@@ -64,6 +64,13 @@
         @decrement="$emit('itemDecrement', mercName, itemName)"
       />
     </div>
+    <div>
+      <TaskStamp
+        :tasks-completed="collectedMerc?.tasksCompleted ?? 0"
+        @task-complete="$emit('taskIncrement', mercName)"
+        @task-undo="$emit('taskDecrement', mercName)"
+      />
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -78,6 +85,7 @@ import RarityVue from "./Rarity.vue";
 import RoleVue from "./Role.vue";
 import TribeVue from "./Tribe.vue";
 import TaillessWrap from "./TaillessWrap.vue";
+import TaskStamp from "./TaskStamp.vue";
 import CollectedMerc from "../models/collectedMerc";
 
 const props = defineProps({
@@ -115,5 +123,7 @@ defineEmits<{
   (event: "itemDecrement", mercName: string, itemName: string): void;
   (event: "addToCollection", mercName: string): void;
   (event: "removeFromCollection", mercName: string): void;
+  (event: "taskIncrement", mercName: string): void;
+  (event: "taskDecrement", mercName: string): void;
 }>();
 </script>

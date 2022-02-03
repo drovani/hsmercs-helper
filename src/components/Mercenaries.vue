@@ -53,6 +53,8 @@
         @item-decrement="itemDecrement"
         @add-to-collection="addCollectedMerc"
         @remove-from-collection="removeCollectedMerc"
+        @task-increment="taskIncrement"
+        @task-decrement="taskDecrement"
       />
     </div>
   </section>
@@ -74,7 +76,9 @@ GET_COLLECTED_MERC,
 GET_MERC_LIBRARY,
 ITEM_DECREMENT,
 ITEM_INCREMENT,
-SET_MERC_LIBRARY
+SET_MERC_LIBRARY,
+TASK_DECREMENT,
+TASK_INCREMENT
 } from "../store/types";
 import MercenaryCard from "./MercenaryCard.vue";
 import RarityFilter from "./RarityFilter.vue";
@@ -117,6 +121,8 @@ export default defineComponent({
       ABILITY_DECREMENT,
       ITEM_INCREMENT,
       ITEM_DECREMENT,
+      TASK_INCREMENT,
+      TASK_DECREMENT
     ]),
     showAllMercenaries(): void {
       this.filter.roles = [...Roles];
@@ -161,6 +167,12 @@ export default defineComponent({
     },
     itemDecrement(mercName: string, itemName: string): void {
       this[ITEM_DECREMENT]({ mercName, itemName });
+    },
+    taskIncrement(mercName: string): void {
+      this[TASK_INCREMENT]({ mercName });
+    },
+    taskDecrement(mercName: string): void {
+      this[TASK_DECREMENT]({ mercName });
     },
     addCollectedMerc(mercName: string): void {
       this[ADD_MERC_TO_COLLECTION]({ mercName, mercCollected: true });
