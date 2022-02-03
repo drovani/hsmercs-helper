@@ -49,26 +49,53 @@ describe('Mercenary Data Actions', () => {
             expectedMutations,
             done);
     })
-    it.skip('ability decrement adds merc to collection when not already present', () => {
-        expect(state.collection["King Mukla"]).to.be.undefined;
-
-        actions[ABILITY_DECREMENT](state, { mercName: "King Mukla", abilityName: "Banana Frenzy" });
-
-        expect(state.collection["King Mukla"]).to.not.be.undefined;
-        expect(state.collection["King Mukla"].abilities["Banana Frenzy"]).to.equal(1);
+    it('ability decrement adds merc to collection when not already present, does not decrement', (done) => {
+        const expectedMutations = [
+            {
+                type: ADD_MERC_TO_COLLECTION,
+                payload: { mercName: "King Mukla" }
+            }
+        ];
+        actionTestHelper(actions[ABILITY_DECREMENT],
+            { mercName: "King Mukla", abilityName: "Banana Frenzy" },
+            store,
+            expectedMutations,
+            done);
     })
-    it.skip('item increment adds merc to collection when not already present', () => {
-        expect(state.collection["King Mukla"]).to.be.undefined;
+    it('item increment adds merc to collection when not already present', (done) => {
+        const expectedMutations = [
+            {
+                type: ADD_MERC_TO_COLLECTION,
+                payload: { mercName: "King Mukla" }
+            },
+            {
+                type: ITEM_INCREMENT,
+                payload: { mercName: "King Mukla", itemName: "Refreshing Bananas" }
+            }
+        ]
 
-        actions[ITEM_INCREMENT](state, { mercName: "King Mukla", itemName: "Refreshing Bananas" });
+        actionTestHelper(actions[ITEM_INCREMENT],
+            { mercName: "King Mukla", itemName: "Refreshing Bananas" },
+            store,
+            expectedMutations,
+            done);
 
         expect(state.collection["King Mukla"]).to.not.be.undefined;
         expect(state.collection["King Mukla"].equipment["Refreshing Bananas"]).to.equal(2);
     })
-    it.skip('item decrement adds merc to collection when not already present', () => {
-        expect(state.collection["King Mukla"]).to.be.undefined;
+    it('item decrement adds merc to collection when not already present, does not decrement', (done) => {
+        const expectedMutations = [
+            {
+                type: ADD_MERC_TO_COLLECTION,
+                payload: { mercName: "King Mukla" }
+            }
+        ]
 
-        actions[ITEM_DECREMENT](state, { mercName: "King Mukla", itemName: "Refreshing Bananas" });
+        actionTestHelper(actions[ITEM_DECREMENT],
+            { mercName: "King Mukla", itemName: "Refreshing Bananas" },
+            store,
+            expectedMutations,
+            done);
 
         expect(state.collection["King Mukla"]).to.not.be.undefined;
         expect(state.collection["King Mukla"].equipment["Refreshing Bananas"]).to.equal(1);
