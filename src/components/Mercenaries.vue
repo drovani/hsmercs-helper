@@ -23,31 +23,59 @@
         class="ml-8"
         :enabled-rarities="filter.rarities"
         @toggle-rarity="toggleRarity"
+        @filter-rarity="filterRarity"
       />
       <div class="flex gap-2 ml-48">
-        <div class="cursor-pointer rounded-t-md bg-gray-800 px-2" @click="sort('AZ')">A-Z</div>
-        <div class="cursor-pointer rounded-t-md bg-gray-800 px-2" @click="sort('ZA')">Z-A</div>
+        <div
+          class="cursor-pointer rounded-t-md bg-gray-800 px-2"
+          @click="sort('AZ')"
+        >
+          A-Z
+        </div>
+        <div
+          class="cursor-pointer rounded-t-md bg-gray-800 px-2"
+          @click="sort('ZA')"
+        >
+          Z-A
+        </div>
       </div>
     </div>
     <div class="flex flex-wrap gap-2">
       <MercenaryCard
         v-for="(merc, mercName) in mercenaries"
         :key="mercName"
+        :merc-name="(mercName as string)"
+        :collected-merc="getCollectedMerc(mercName as string)"
         v-bind="merc"
-        >{{ mercName }}
-      </MercenaryCard>
+        @ability-increment="abilityIncrement"
+        @ability-decrement="abilityDecrement"
+        @item-increment="itemIncrement"
+        @item-decrement="itemDecrement"
+        @add-to-collection="addCollectedMerc"
+        @remove-from-collection="removeCollectedMerc"
+      />
     </div>
   </section>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapGetters, mapMutations } from "vuex";
-import { MercCollection } from "../models/mercCollection";
+import { mapActions, mapGetters, mapMutations } from "vuex";
+import CollectedMerc from "../models/collectedMerc";
 import MercFilter from "../models/mercFilter";
+import MercLibrary from "../models/mercLibrary";
 import { Rarities } from "../models/rarities";
 import { Roles } from "../models/roles";
 import mercjson from "../static/mercenaries.json";
-import { GET_MERCENARIES, SET_MERCENARIES } from "../store/types";
+import {
+ABILITY_DECREMENT,
+ABILITY_INCREMENT,
+ADD_MERC_TO_COLLECTION,
+GET_COLLECTED_MERC,
+GET_MERC_LIBRARY,
+ITEM_DECREMENT,
+ITEM_INCREMENT,
+SET_MERC_LIBRARY
+} from "../store/types";
 import MercenaryCard from "./MercenaryCard.vue";
 import RarityFilter from "./RarityFilter.vue";
 import RoleFilter from "./RoleFilter.vue";
@@ -59,14 +87,14 @@ export default defineComponent({
       filter: {
         roles: [...Roles],
         rarities: [...Rarities],
-        sort: "AZ"
+        sort: "AZ",
       } as MercFilter,
     };
   },
   computed: {
-    ...mapGetters([GET_MERCENARIES]),
-    mercenaries(): MercCollection {
-      return this[GET_MERCENARIES](this.filter);
+    ...mapGetters([GET_MERC_LIBRARY, GET_COLLECTED_MERC]),
+    mercenaries(): MercLibrary {
+      return this[GET_MERC_LIBRARY](this.filter);
     },
     showingAllMercenaries(): boolean {
       return (
@@ -83,10 +111,19 @@ export default defineComponent({
     },
   },
   methods: {
-    ...mapMutations([SET_MERCENARIES]),
+    ...mapMutations([SET_MERC_LIBRARY, ADD_MERC_TO_COLLECTION]),
+    ...mapActions([
+      ABILITY_INCREMENT,
+      ABILITY_DECREMENT,
+      ITEM_INCREMENT,
+      ITEM_DECREMENT,
+    ]),
     showAllMercenaries(): void {
       this.filter.roles = [...Roles];
       this.filter.rarities = [...Rarities];
+    },
+    getCollectedMerc(mercName: string): CollectedMerc | undefined {
+      return this[GET_COLLECTED_MERC](mercName);
     },
     filterRole(role: string): void {
       this.filter.roles = [role];
@@ -99,6 +136,9 @@ export default defineComponent({
         this.filter.roles.splice(idx, 1);
       }
     },
+    filterRarity(rarity: string): void {
+      this.filter.rarities = [rarity];
+    },
     toggleRarity(rarity: string): void {
       const idx = this.filter.rarities.indexOf(rarity);
       if (idx < 0) {
@@ -110,10 +150,28 @@ export default defineComponent({
     sort(direction: "AZ" | "ZA"): void {
       this.filter.sort = direction;
     },
+    abilityIncrement(mercName: string, abilityName: string): void {
+      this[ABILITY_INCREMENT]({ mercName, abilityName });
+    },
+    abilityDecrement(mercName: string, abilityName: string): void {
+      this[ABILITY_DECREMENT]({ mercName, abilityName });
+    },
+    itemIncrement(mercName: string, itemName: string): void {
+      this[ITEM_INCREMENT]({ mercName, itemName });
+    },
+    itemDecrement(mercName: string, itemName: string): void {
+      this[ITEM_DECREMENT]({ mercName, itemName });
+    },
+    addCollectedMerc(mercName: string): void {
+      this[ADD_MERC_TO_COLLECTION]({ mercName, mercCollected: true });
+    },
+    removeCollectedMerc(mercName: string): void {
+      this[ADD_MERC_TO_COLLECTION]({ mercName, mercCollected: false });
+    },
   },
   mounted(): void {
     if (Object.keys(this.mercenaries ?? {}).length === 0) {
-      this[SET_MERCENARIES](mercjson.mercenaries);
+      this[SET_MERC_LIBRARY](mercjson.mercenaries);
     }
   },
   components: { MercenaryCard, RoleFilter, RarityFilter },

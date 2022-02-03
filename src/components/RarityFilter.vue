@@ -4,6 +4,7 @@
       v-for="rarity in Rarities"
       :key="rarity"
       @click="$emit('toggleRarity', rarity)"
+      @dblclick="$emit('filterRarity', rarity)"
       class="cursor-pointer"
     >
       <img
@@ -30,5 +31,6 @@ defineProps({
 
 defineEmits<{
   (event: "toggleRarity", rarity?: Rarity): void;
+  (event: "filterRarity", rarity?: Rarity): void;
 }>();
 </script>

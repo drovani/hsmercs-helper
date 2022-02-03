@@ -3,7 +3,7 @@ import MercFilter from "../../src/models/mercFilter";
 import { AllianceTribes } from "../../src/models/tribes";
 import getters from "../../src/store/getters";
 import { State } from "../../src/store/state";
-import { GET_MERCENARIES } from "../../src/store/types";
+import { GET_MERC_LIBRARY } from "../../src/store/types";
 import { BlademasterSamuro, JainaProudmoore, KingMukla } from "../constants";
 
 describe("Mercenary Data Getters", () => {
@@ -16,11 +16,12 @@ describe("Mercenary Data Getters", () => {
                 "Blademaster Samuro": { ...BlademasterSamuro },
                 "Jaina Proudmoore": { ...JainaProudmoore },
             },
+            collection: {}
         };
     });
 
     it("gets mercenaries collection", () => {
-        const result = getters[GET_MERCENARIES](state)();
+        const result = getters[GET_MERC_LIBRARY](state)();
 
         expect(result).deep.equal({
             "King Mukla": KingMukla,
@@ -34,7 +35,7 @@ describe("Mercenary Data Getters", () => {
             roles: ["Protector"],
         };
 
-        const result = getters[GET_MERCENARIES](state)(filter);
+        const result = getters[GET_MERC_LIBRARY](state)(filter);
 
         expect(result).deep.equal({ "King Mukla": KingMukla });
     });
@@ -44,7 +45,7 @@ describe("Mercenary Data Getters", () => {
             roles: ["Fighter", "Caster"],
         };
 
-        const result = getters[GET_MERCENARIES](state)(filter);
+        const result = getters[GET_MERC_LIBRARY](state)(filter);
 
         expect(result).deep.equal({
             "Blademaster Samuro": BlademasterSamuro,
@@ -57,7 +58,7 @@ describe("Mercenary Data Getters", () => {
             rarities: ["Rare"],
         };
 
-        const result = getters[GET_MERCENARIES](state)(filter);
+        const result = getters[GET_MERC_LIBRARY](state)(filter);
 
         expect(result).deep.equal({
             "Blademaster Samuro": BlademasterSamuro,
@@ -69,7 +70,7 @@ describe("Mercenary Data Getters", () => {
             rarities: ["Epic", "Legendary"],
         };
 
-        const result = getters[GET_MERCENARIES](state)(filter);
+        const result = getters[GET_MERC_LIBRARY](state)(filter);
 
         expect(result).deep.equal({
             "King Mukla": KingMukla,
@@ -82,7 +83,7 @@ describe("Mercenary Data Getters", () => {
             tribes: ["Beast"],
         };
 
-        const result = getters[GET_MERCENARIES](state)(filter);
+        const result = getters[GET_MERC_LIBRARY](state)(filter);
 
         expect(result).deep.equal({
             "King Mukla": KingMukla,
@@ -94,7 +95,7 @@ describe("Mercenary Data Getters", () => {
             tribes: ["Human", "Orc"],
         };
 
-        const result = getters[GET_MERCENARIES](state)(filter);
+        const result = getters[GET_MERC_LIBRARY](state)(filter);
 
         expect(result).deep.equal({
             "Blademaster Samuro": BlademasterSamuro,
@@ -107,7 +108,7 @@ describe("Mercenary Data Getters", () => {
             tribes: [...AllianceTribes],
         };
 
-        const result = getters[GET_MERCENARIES](state)(filter);
+        const result = getters[GET_MERC_LIBRARY](state)(filter);
 
         expect(result).deep.equal({
             "Jaina Proudmoore": JainaProudmoore,
@@ -121,11 +122,11 @@ describe("Mercenary Data Getters", () => {
         const filter: MercFilter = {
             sort: "AZ"
         };
-        const resultaz = getters[GET_MERCENARIES](state)(filter);
+        const resultaz = getters[GET_MERC_LIBRARY](state)(filter);
         expect(Object.keys(resultaz)).to.have.ordered.members(["Blademaster Samuro", "Jaina Proudmoore", "King Mukla"]);
 
         filter.sort = "ZA";
-        const resultza = getters[GET_MERCENARIES](state)(filter);
+        const resultza = getters[GET_MERC_LIBRARY](state)(filter);
         expect(Object.keys(resultza)).to.have.ordered.members(["King Mukla", "Jaina Proudmoore", "Blademaster Samuro"]);
     })
 

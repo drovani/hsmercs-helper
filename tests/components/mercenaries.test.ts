@@ -2,7 +2,7 @@ import { shallowMount } from "@vue/test-utils";
 import { beforeEach, describe, expect, it } from "vitest";
 import Mercenaries from "../../src/components/Mercenaries.vue";
 import { store } from "../../src/store";
-import { GET_MERCENARIES } from "../../src/store/types";
+import { GET_MERC_LIBRARY } from "../../src/store/types";
 import { BlademasterSamuro, JainaProudmoore, KingMukla } from "../constants";
 
 describe("Mercenaries.vue component", () => {
@@ -22,7 +22,7 @@ describe("Mercenaries.vue component", () => {
     })
 
     it('gets mercenaries collection', () => {
-        const result = mercvue.vm[GET_MERCENARIES]();
+        const result = mercvue.vm[GET_MERC_LIBRARY]();
 
         expect(result).to.eql({
             "King Mukla": KingMukla,
