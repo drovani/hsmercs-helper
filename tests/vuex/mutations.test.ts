@@ -100,7 +100,53 @@ describe('Mercenary Data Mutations', () => {
 
         expect(state.collection["King Mukla"]).deep.equals(collectedMerc);
     });
+
+    it('updates collected status when merc already in collection', () => {
+        const collectedMerc: CollectedMerc = {
+            collected: false,
+            tasksCompleted: 0,
+            itemEquipped: null,
+            level: 30,
+            abilities: {
+                "Banana Frenzy": 1,
+                "Dinner Time": 1,
+                "Primal Power": 1
+            }, equipment: {
+                "Refreshing Bananas": 1,
+                "Radioactive Bananas": 3,
+                "Mukla's Big Brother": 1
+            }
+        };
+        state.collection["King Mukla"] = {...collectedMerc};
+
+        mutations[ADD_MERC_TO_COLLECTION](state, {mercName: "King Mukla", mercCollected: true});
+
+        expect(state.collection["King Mukla"].collected).to.be.true;
+    })
+    it('does nothing when merc already in collection and no parameters passed', () => {
+        const collectedMerc: CollectedMerc = {
+            collected: false,
+            tasksCompleted: 0,
+            itemEquipped: null,
+            level: 30,
+            abilities: {
+                "Banana Frenzy": 1,
+                "Dinner Time": 1,
+                "Primal Power": 1
+            }, equipment: {
+                "Refreshing Bananas": 1,
+                "Radioactive Bananas": 3,
+                "Mukla's Big Brother": 1
+            }
+        };
+        state.collection["King Mukla"] = {...collectedMerc};
+
+        mutations[ADD_MERC_TO_COLLECTION](state, {mercName: "King Mukla"});
+
+        expect(state.collection["King Mukla"]).to.deep.equal({...collectedMerc});
+    })
 });
+
 describe('Collected Ability & Equipment Mutations', () => {
     let state: State;
 
