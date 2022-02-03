@@ -9,19 +9,15 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  props: {
-    attack: {
-      type: Number,
-      required: true,
-    },
-    role: {
-      type: String,
-      default: "Neutral",
-    },
+<script setup lang="ts">
+defineProps({
+  attack: {
+    type: Number,
+    required: true,
+  },
+  role: {
+    type: String,
+    default: "Neutral",
   },
 });
 </script>
