@@ -2,7 +2,7 @@
   <section class="px-2">
     <h1 class="text-2xl font-bold m-4 md:m-8">Collectable Mercenaries</h1>
     <div
-      class="text-white font-bold text-xl mb-1 md:pl-4 border-b-8 justify-center flex gap-2"
+      class="text-white font-bold text-xl mb-1 border-b-8 justify-center flex gap-2 md:gap-4 lg:gap-8"
       :class="[filterBorderColor]"
     >
       <div class="flex lg:gap-2">
