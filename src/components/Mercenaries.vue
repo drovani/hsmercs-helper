@@ -1,46 +1,44 @@
 <template>
   <section class="px-2">
-    <h1 class="text-2xl font-bold m-8">Collectable Mercenaries</h1>
+    <h1 class="text-2xl font-bold m-4 md:m-8">Collectable Mercenaries</h1>
     <div
-      class="flex text-white font-bold text-xl gap-2 mb-1 pl-4 border-b-8"
+      class="text-white font-bold text-xl mb-1 md:pl-4 border-b-8 justify-center flex gap-2"
       :class="[filterBorderColor]"
     >
-      <div
-        class="bg-gray-800 rounded-t-md px-2 cursor-pointer opacity-50"
-        :class="{
-          'opacity-100': showingAllMercenaries,
-        }"
-        @click="showAllMercenaries"
-      >
-        All Mercenaries
+      <div class="flex lg:gap-2">
+        <div
+          class="bg-gray-800 rounded-t-md px-2 cursor-pointer opacity-50 whitespace-nowrap"
+          :class="{
+            'opacity-100': showingAllMercenaries,
+          }"
+          @click="showAllMercenaries"
+        >
+          <span class="inline md:hidden">All</span>
+          <span class="hidden md:inline">All Mercenaries</span>
+        </div>
+        <RoleFilter
+          :enabled-roles="filter.roles"
+          @filter-role="filterRole"
+          @toggle-role="toggleRole"
+        />
       </div>
-      <RoleFilter
-        :enabled-roles="filter.roles"
-        @filter-role="filterRole"
-        @toggle-role="toggleRole"
-      />
       <RarityFilter
-        class="ml-8"
         :enabled-rarities="filter.rarities"
         @toggle-rarity="toggleRarity"
         @filter-rarity="filterRarity"
       />
-      <div class="flex gap-2 ml-48">
-        <div
-          class="cursor-pointer rounded-t-md bg-gray-800 px-2"
-          @click="sort('AZ')"
-        >
-          A-Z
-        </div>
-        <div
-          class="cursor-pointer rounded-t-md bg-gray-800 px-2"
-          @click="sort('ZA')"
-        >
-          Z-A
-        </div>
+      <div class="flex md:gap-2">
+        <icon
+          :icon="[
+            'fas',
+            filter.sort === 'ZA' ? 'arrow-down-z-a' : 'arrow-down-a-z',
+          ]"
+          class="cursor-pointer rounded-t-md bg-gray-800 px-2 whitespace-nowrap h-full"
+          @click="toggleSort"
+        />
       </div>
     </div>
-    <div class="flex flex-wrap gap-2">
+    <div class="flex flex-wrap gap-2 justify-center">
       <MercenaryCard
         v-for="(merc, mercName) in mercenaries"
         :key="mercName"
@@ -122,7 +120,7 @@ export default defineComponent({
       ITEM_INCREMENT,
       ITEM_DECREMENT,
       TASK_INCREMENT,
-      TASK_DECREMENT
+      TASK_DECREMENT,
     ]),
     showAllMercenaries(): void {
       this.filter.roles = [...Roles];
@@ -153,8 +151,8 @@ export default defineComponent({
         this.filter.rarities.splice(idx, 1);
       }
     },
-    sort(direction: "AZ" | "ZA"): void {
-      this.filter.sort = direction;
+    toggleSort(): void {
+      this.filter.sort = this.filter.sort === "AZ" ? "ZA" : "AZ";
     },
     abilityIncrement(mercName: string, abilityName: string): void {
       this[ABILITY_INCREMENT]({ mercName, abilityName });
