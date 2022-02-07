@@ -29,12 +29,14 @@
       />
       <div class="flex md:gap-2">
         <icon
-          :icon="[
-            'fas',
-            filter.sort === 'ZA' ? 'arrow-down-z-a' : 'arrow-down-a-z',
-          ]"
+          :icon="sortNameIcon"
           class="cursor-pointer rounded-t-md bg-gray-800 px-2 whitespace-nowrap h-full w-6"
-          @click="toggleSort"
+          @click="toggleSort('name')"
+        />
+        <icon
+          :icon="sortTasksIcon"
+          class="cursor-pointer rounded-t-md bg-gray-800 px-2 whitespace-nowrap h-full w-6"
+          @click="toggleSort('tasks')"
         />
       </div>
       <div class="flex md:gap-2 bg-gray-800 rounded-t-md px-1">
@@ -110,7 +112,10 @@ export default defineComponent({
       filter: {
         roles: [...Roles],
         rarities: [...Rarities],
-        sort: "AZ",
+        sort: {
+          field: "name",
+          direction: "ascending",
+        },
       } as MercFilter,
     };
   },
@@ -130,6 +135,26 @@ export default defineComponent({
         return "border-" + this.filter.roles[0].toLowerCase();
       } else {
         return "border-gray-800";
+      }
+    },
+    sortNameIcon(): string[] {
+      if (
+        this.filter.sort.field === "name" &&
+        this.filter.sort.direction === "descending"
+      ) {
+        return ["fas", "arrow-down-z-a"];
+      } else {
+        return ["fas", "arrow-down-a-z"];
+      }
+    },
+    sortTasksIcon(): string[] {
+      if (
+        this.filter.sort.field === "tasks" &&
+        this.filter.sort.direction === "descending"
+      ) {
+        return ["fas", "arrow-down-9-1"];
+      } else {
+        return ["fas", "arrow-down-1-9"];
       }
     },
   },
@@ -177,8 +202,18 @@ export default defineComponent({
         this.filter.rarities.splice(idx, 1);
       }
     },
-    toggleSort(): void {
-      this.filter.sort = this.filter.sort === "AZ" ? "ZA" : "AZ";
+    toggleSort(field: "name" | "tasks"): void {
+      if (field === this.filter.sort.field) {
+        this.filter.sort.direction =
+          this.filter.sort.direction === "ascending"
+            ? "descending"
+            : "ascending";
+      } else {
+        this.filter.sort = {
+          field: field,
+          direction: "ascending",
+        };
+      }
     },
     abilityIncrement(mercName: string, abilityName: string): void {
       this[ABILITY_INCREMENT]({ mercName, abilityName });

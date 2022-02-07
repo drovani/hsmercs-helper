@@ -24,15 +24,20 @@ export default {
     }
 
     if (filter.sort !== undefined) {
-      mercs.sort((a, b) => a[0] < b[0] ? -1 : 1);
-      if (filter.sort === "ZA") {
+      if (filter.sort.field === "name") {
+        mercs.sort((a, b) => a[0] < b[0] ? -1 : 1);
+      } else if (filter.sort.field === "tasks") {
+        mercs.sort((a, b) => (state.collection[a[0]]?.tasksCompleted ?? -1) - (state.collection[b[0]]?.tasksCompleted ?? -1));
+      }
+
+      if (filter.sort.direction === "descending") {
         mercs.reverse();
       }
     }
 
     return Object.fromEntries(mercs);
   },
-  [GET_MERC_COLLECTION]:(state: State) : MercCollection => {
+  [GET_MERC_COLLECTION]: (state: State): MercCollection => {
     return state.collection;
   },
   [GET_COLLECTED_MERC]: (state: State) => (mercName: string): CollectedMerc => {
