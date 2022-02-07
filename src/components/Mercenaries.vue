@@ -33,9 +33,27 @@
             'fas',
             filter.sort === 'ZA' ? 'arrow-down-z-a' : 'arrow-down-a-z',
           ]"
-          class="cursor-pointer rounded-t-md bg-gray-800 px-2 whitespace-nowrap h-full"
+          class="cursor-pointer rounded-t-md bg-gray-800 px-2 whitespace-nowrap h-full w-6"
           @click="toggleSort"
         />
+      </div>
+      <div class="flex md:gap-2 bg-gray-800 rounded-t-md px-1">
+        <div class="cursor-pointer">
+          <label for="importCollection">
+            <icon :icon="['fas', 'file-import']" />
+            <input
+              class="hidden"
+              type="file"
+              @change="importCollection"
+              id="importCollection"
+            />
+          </label>
+        </div>
+        <div class="cursor-pointer">
+          <a @click.prevent="exportCollection">
+            <icon :icon="['fas', 'file-export']" />
+          </a>
+        </div>
       </div>
     </div>
     <div class="flex flex-wrap gap-2 justify-center">
@@ -70,10 +88,13 @@ import {
 ABILITY_DECREMENT,
 ABILITY_INCREMENT,
 ADD_MERC_TO_COLLECTION,
+CLEAR_MERC_COLLECTION,
 GET_COLLECTED_MERC,
+GET_MERC_COLLECTION,
 GET_MERC_LIBRARY,
 ITEM_DECREMENT,
 ITEM_INCREMENT,
+SET_MERC_COLLECTION,
 SET_MERC_LIBRARY,
 TASK_DECREMENT,
 TASK_INCREMENT
@@ -94,7 +115,7 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapGetters([GET_MERC_LIBRARY, GET_COLLECTED_MERC]),
+    ...mapGetters([GET_MERC_LIBRARY, GET_COLLECTED_MERC, GET_MERC_COLLECTION]),
     mercenaries(): MercLibrary {
       return this[GET_MERC_LIBRARY](this.filter);
     },
@@ -113,7 +134,11 @@ export default defineComponent({
     },
   },
   methods: {
-    ...mapMutations([SET_MERC_LIBRARY, ADD_MERC_TO_COLLECTION]),
+    ...mapMutations([
+      SET_MERC_LIBRARY,
+      ADD_MERC_TO_COLLECTION,
+      CLEAR_MERC_COLLECTION,
+    ]),
     ...mapActions([
       ABILITY_INCREMENT,
       ABILITY_DECREMENT,
@@ -121,6 +146,7 @@ export default defineComponent({
       ITEM_DECREMENT,
       TASK_INCREMENT,
       TASK_DECREMENT,
+      SET_MERC_COLLECTION,
     ]),
     showAllMercenaries(): void {
       this.filter.roles = [...Roles];
@@ -177,6 +203,27 @@ export default defineComponent({
     },
     removeCollectedMerc(mercName: string): void {
       this[ADD_MERC_TO_COLLECTION]({ mercName, mercCollected: false });
+    },
+    exportCollection() {
+      const data = JSON.stringify({
+        collection: this[GET_MERC_COLLECTION],
+      });
+      const blob = new Blob([data], { type: "text/plain" }),
+        a = document.createElement("a");
+      a.download = "collection.json";
+      a.href = window.URL.createObjectURL(blob);
+      a.click();
+      window.URL.revokeObjectURL(a.href);
+    },
+    importCollection(event: InputEvent) {
+      this[SET_MERC_COLLECTION]({
+        jsonMercCollectionFile: (<HTMLInputElement>event.target).files[0],
+      });
+    },
+    clearCollection() {
+      if (confirm("Clear Mercenary Collection?")) {
+        this[CLEAR_MERC_COLLECTION]();
+      }
     },
   },
   mounted(): void {
