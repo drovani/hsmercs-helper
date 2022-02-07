@@ -40,7 +40,7 @@ const faction = computed((): string | null => {
 
 const backgroundImage = computed((): string => {
   if (faction.value === "Horde" || faction.value === "Alliance") {
-    return `url('/assets/${faction.value.toLowerCase()}-watermark.png')`;
+    return `url('/images/${faction.value.toLowerCase()}-watermark.png')`;
   }
   return "unset";
 });

@@ -12,7 +12,7 @@
         :class="{
           'opacity-100': enabledRarities.includes(rarity),
         }"
-        :src="`./assets/${rarity.toLowerCase()}.png`"
+        :src="`/images/${rarity.toLowerCase()}.png`"
         :alt="rarity"
       />
     </div>

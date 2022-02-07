@@ -2,7 +2,7 @@
   <div>
     <img
       class="max-h-6 inline"
-      :src="`./assets/${rarity.toLowerCase()}.png`"
+      :src="`/images/${rarity.toLowerCase()}.png`"
       :alt="rarity"
     />
     {{ rarity }}

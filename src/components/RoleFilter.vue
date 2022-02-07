@@ -10,7 +10,7 @@
     @click="$emit('filterRole', role)"
   >
     <img
-      :src="`/assets/${role.toLowerCase()}-attack.png`"
+      :src="`/images/${role.toLowerCase()}-attack.png`"
       class="max-h-8 inline md:hidden lg:inline"
     />
     <div class="hidden md:block">{{ role }}s</div>
