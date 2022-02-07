@@ -9,6 +9,8 @@
       up-icon="check-circle"
       :show-decrement="tasksCompleted > 0"
       :show-increment="tasksCompleted < 18"
+      :class="{ 'opacity-20': tasksCompleted >= 18 }"
+      title="Tasks Completed"
       @increment="$emit('taskComplete')"
       @decrement="$emit('taskUndo')"
     />

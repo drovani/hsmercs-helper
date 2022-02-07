@@ -1,5 +1,11 @@
 <template>
-  <div>{{ role }}</div>
+  <div>
+    <img
+      :src="`/images/${role.toLowerCase()}-attack.png`"
+      class="max-h-8"
+      :title="role"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">

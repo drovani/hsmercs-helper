@@ -6,6 +6,10 @@
     <UpDownButtons
       :show-increment="activeTier < 4"
       :show-decrement="activeTier > 4 - numTiers + 1"
+      :class="{
+        'opacity-20': activeTier >= 4,
+      }"
+      title="Item Active Tier"
       @increment="$emit('increment')"
       @decrement="$emit('decrement')"
       >{{ costToMax > 0 ? costToMax : "" }}</UpDownButtons
