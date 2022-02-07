@@ -2,12 +2,20 @@ import CollectedMerc from "../models/collectedMerc";
 import MercLibrary from "../models/mercLibrary";
 import { State } from "./state";
 import {
-    ABILITY_DECREMENT, ABILITY_INCREMENT, ADD_MERC_TO_COLLECTION, ITEM_DECREMENT, ITEM_INCREMENT, SET_MERC_LIBRARY
+    ABILITY_DECREMENT, ABILITY_INCREMENT, ADD_MERC_TO_COLLECTION, CLEAR_MERC_COLLECTION, ITEM_DECREMENT, ITEM_INCREMENT, SET_MERC_COLLECTION, SET_MERC_LIBRARY, TASK_DECREMENT, TASK_INCREMENT
 } from "./types";
 
 export default {
     [SET_MERC_LIBRARY](state: State, mercenaries: MercLibrary): void {
         state.mercenaries = mercenaries;
+    },
+    [CLEAR_MERC_COLLECTION](state: State): void {
+        state.collection = {};
+    },
+    [SET_MERC_COLLECTION](state: State, { collection }: { collection: { [name: string]: CollectedMerc } }): void {
+        console.debug(collection);
+        state.collection = { ...collection };
+        console.debug(state);
     },
     [ADD_MERC_TO_COLLECTION](state: State, { mercName, mercCollected = false }: { mercName: string, mercCollected?: CollectedMerc | boolean }): void {
         if (state.collection[mercName]) {
@@ -58,6 +66,17 @@ export default {
         const numTiers = state.mercenaries[mercName].equipment[itemName].tiers?.length ?? 1;
         if (state.collection[mercName].equipment[itemName] > 4 - numTiers + 1) {
             state.collection[mercName].equipment[itemName]--;
+        }
+    },
+
+    [TASK_INCREMENT](state: State, { mercName }: { mercName: string }): void {
+        if (state.collection[mercName].tasksCompleted < 18) {
+            state.collection[mercName].tasksCompleted++;
+        }
+    },
+    [TASK_DECREMENT](state: State, { mercName }: { mercName: string }): void {
+        if (state.collection[mercName].tasksCompleted > 0) {
+            state.collection[mercName].tasksCompleted--;
         }
     },
 }

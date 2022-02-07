@@ -10,6 +10,12 @@ module.exports = {
         caster: colors.blue[800],
       },
     },
+    screens: {
+      sm: "400px",
+      md: "800px",
+      lg: "1200px",
+      xl: "1600px",
+    },
   },
   plugins: [],
 };

@@ -1,46 +1,62 @@
 <template>
   <section class="px-2">
-    <h1 class="text-2xl font-bold m-8">Collectable Mercenaries</h1>
+    <h1 class="text-2xl font-bold m-4 md:m-8">Collectable Mercenaries</h1>
     <div
-      class="flex text-white font-bold text-xl gap-2 mb-1 pl-4 border-b-8"
+      class="text-white font-bold text-xl mb-1 border-b-8 justify-center flex gap-2 md:gap-4 lg:gap-8"
       :class="[filterBorderColor]"
     >
-      <div
-        class="bg-gray-800 rounded-t-md px-2 cursor-pointer opacity-50"
-        :class="{
-          'opacity-100': showingAllMercenaries,
-        }"
-        @click="showAllMercenaries"
-      >
-        All Mercenaries
+      <div class="flex lg:gap-2">
+        <div
+          class="bg-gray-800 rounded-t-md px-2 cursor-pointer opacity-50 whitespace-nowrap"
+          :class="{
+            'opacity-100': showingAllMercenaries,
+          }"
+          @click="showAllMercenaries"
+        >
+          <span class="inline md:hidden">All</span>
+          <span class="hidden md:inline">All Mercenaries</span>
+        </div>
+        <RoleFilter
+          :enabled-roles="filter.roles"
+          @filter-role="filterRole"
+          @toggle-role="toggleRole"
+        />
       </div>
-      <RoleFilter
-        :enabled-roles="filter.roles"
-        @filter-role="filterRole"
-        @toggle-role="toggleRole"
-      />
       <RarityFilter
-        class="ml-8"
         :enabled-rarities="filter.rarities"
         @toggle-rarity="toggleRarity"
         @filter-rarity="filterRarity"
       />
-      <div class="flex gap-2 ml-48">
-        <div
-          class="cursor-pointer rounded-t-md bg-gray-800 px-2"
-          @click="sort('AZ')"
-        >
-          A-Z
+      <div class="flex md:gap-2">
+        <icon
+          :icon="[
+            'fas',
+            filter.sort === 'ZA' ? 'arrow-down-z-a' : 'arrow-down-a-z',
+          ]"
+          class="cursor-pointer rounded-t-md bg-gray-800 px-2 whitespace-nowrap h-full w-6"
+          @click="toggleSort"
+        />
+      </div>
+      <div class="flex md:gap-2 bg-gray-800 rounded-t-md px-1">
+        <div class="cursor-pointer">
+          <label for="importCollection">
+            <icon :icon="['fas', 'file-import']" />
+            <input
+              class="hidden"
+              type="file"
+              @change="importCollection"
+              id="importCollection"
+            />
+          </label>
         </div>
-        <div
-          class="cursor-pointer rounded-t-md bg-gray-800 px-2"
-          @click="sort('ZA')"
-        >
-          Z-A
+        <div class="cursor-pointer">
+          <a @click.prevent="exportCollection">
+            <icon :icon="['fas', 'file-export']" />
+          </a>
         </div>
       </div>
     </div>
-    <div class="flex flex-wrap gap-2">
+    <div class="flex flex-wrap gap-2 justify-center">
       <MercenaryCard
         v-for="(merc, mercName) in mercenaries"
         :key="mercName"
@@ -53,6 +69,8 @@
         @item-decrement="itemDecrement"
         @add-to-collection="addCollectedMerc"
         @remove-from-collection="removeCollectedMerc"
+        @task-increment="taskIncrement"
+        @task-decrement="taskDecrement"
       />
     </div>
   </section>
@@ -70,11 +88,16 @@ import {
 ABILITY_DECREMENT,
 ABILITY_INCREMENT,
 ADD_MERC_TO_COLLECTION,
+CLEAR_MERC_COLLECTION,
 GET_COLLECTED_MERC,
+GET_MERC_COLLECTION,
 GET_MERC_LIBRARY,
 ITEM_DECREMENT,
 ITEM_INCREMENT,
-SET_MERC_LIBRARY
+SET_MERC_COLLECTION,
+SET_MERC_LIBRARY,
+TASK_DECREMENT,
+TASK_INCREMENT
 } from "../store/types";
 import MercenaryCard from "./MercenaryCard.vue";
 import RarityFilter from "./RarityFilter.vue";
@@ -92,7 +115,7 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapGetters([GET_MERC_LIBRARY, GET_COLLECTED_MERC]),
+    ...mapGetters([GET_MERC_LIBRARY, GET_COLLECTED_MERC, GET_MERC_COLLECTION]),
     mercenaries(): MercLibrary {
       return this[GET_MERC_LIBRARY](this.filter);
     },
@@ -111,12 +134,19 @@ export default defineComponent({
     },
   },
   methods: {
-    ...mapMutations([SET_MERC_LIBRARY, ADD_MERC_TO_COLLECTION]),
+    ...mapMutations([
+      SET_MERC_LIBRARY,
+      ADD_MERC_TO_COLLECTION,
+      CLEAR_MERC_COLLECTION,
+    ]),
     ...mapActions([
       ABILITY_INCREMENT,
       ABILITY_DECREMENT,
       ITEM_INCREMENT,
       ITEM_DECREMENT,
+      TASK_INCREMENT,
+      TASK_DECREMENT,
+      SET_MERC_COLLECTION,
     ]),
     showAllMercenaries(): void {
       this.filter.roles = [...Roles];
@@ -147,8 +177,8 @@ export default defineComponent({
         this.filter.rarities.splice(idx, 1);
       }
     },
-    sort(direction: "AZ" | "ZA"): void {
-      this.filter.sort = direction;
+    toggleSort(): void {
+      this.filter.sort = this.filter.sort === "AZ" ? "ZA" : "AZ";
     },
     abilityIncrement(mercName: string, abilityName: string): void {
       this[ABILITY_INCREMENT]({ mercName, abilityName });
@@ -162,11 +192,38 @@ export default defineComponent({
     itemDecrement(mercName: string, itemName: string): void {
       this[ITEM_DECREMENT]({ mercName, itemName });
     },
+    taskIncrement(mercName: string): void {
+      this[TASK_INCREMENT]({ mercName });
+    },
+    taskDecrement(mercName: string): void {
+      this[TASK_DECREMENT]({ mercName });
+    },
     addCollectedMerc(mercName: string): void {
       this[ADD_MERC_TO_COLLECTION]({ mercName, mercCollected: true });
     },
     removeCollectedMerc(mercName: string): void {
       this[ADD_MERC_TO_COLLECTION]({ mercName, mercCollected: false });
+    },
+    exportCollection() {
+      const data = JSON.stringify({
+        collection: this[GET_MERC_COLLECTION],
+      });
+      const blob = new Blob([data], { type: "text/plain" }),
+        a = document.createElement("a");
+      a.download = "collection.json";
+      a.href = window.URL.createObjectURL(blob);
+      a.click();
+      window.URL.revokeObjectURL(a.href);
+    },
+    importCollection(event: InputEvent) {
+      this[SET_MERC_COLLECTION]({
+        jsonMercCollectionFile: (<HTMLInputElement>event.target).files[0],
+      });
+    },
+    clearCollection() {
+      if (confirm("Clear Mercenary Collection?")) {
+        this[CLEAR_MERC_COLLECTION]();
+      }
     },
   },
   mounted(): void {

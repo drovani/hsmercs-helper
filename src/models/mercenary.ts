@@ -10,5 +10,12 @@ export default interface Mercenary {
     health: number,
     abilities: { [name: string]: any },
     equipment: { [name: string]: any },
-    tasks: any[]
+    tasks: MercTask[]
+}
+
+export interface MercTask {
+    name: string,
+    description: string,
+    quote: string,
+    ability?: string
 }

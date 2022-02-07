@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-2">
+  <div class="flex md:gap-2">
     <div
       v-for="rarity in Rarities"
       :key="rarity"
