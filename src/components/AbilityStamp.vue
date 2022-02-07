@@ -8,15 +8,18 @@
       :show-decrement="activeTier > 1"
       @increment="$emit('increment')"
       @decrement="$emit('decrement')"
-    />
+      >{{ costToMax > 0 ? costToMax : "" }}</UpDownButtons
+    >
   </div>
 </template>
 
 <script setup lang="ts">
 import UpDownButtons from "./UpDownButtons.vue";
 import TaillessWrap from "./TaillessWrap.vue";
+import { AbilityUpgradeCosts } from "../models/constants";
+import { computed } from "vue";
 
-defineProps({
+const props = defineProps({
   abilityName: {
     type: String,
     required: true,
@@ -29,6 +32,13 @@ defineProps({
     type: Number,
     required: true,
   },
+});
+
+const costToMax = computed(() => {
+  return AbilityUpgradeCosts.slice(props.activeTier).reduce(
+    (c, p) => (c += p),
+    0
+  );
 });
 
 defineEmits<{ (event: "increment"): void; (event: "decrement"): void }>();

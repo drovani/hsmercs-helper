@@ -7,7 +7,7 @@
         "node": "^16"
     },
     "scripts": {
-        "dev": "vite",
+        "dev": "vite serve",
         "build": "vite build",
         "test": "vitest",
         "test:coverage": "vitest --coverage"

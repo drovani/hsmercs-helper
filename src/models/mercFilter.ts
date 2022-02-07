@@ -6,5 +6,8 @@ export default interface MercFilter {
     roles?: Role[],
     rarities?: Rarity[],
     tribes?: Tribe[],
-    sort?: "AZ" | "ZA"
+    sort?: {
+        field: "name" | "tasks",
+        direction: "ascending" | "descending"
+    }
 }
