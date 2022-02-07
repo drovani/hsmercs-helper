@@ -39,7 +39,10 @@
       </div>
       <div class="flex md:gap-2 bg-gray-800 rounded-t-md px-1">
         <div class="cursor-pointer">
-          <label for="importCollection">
+          <label
+            for="importCollection"
+            title="Import JSON Mercenary Collection"
+          >
             <icon :icon="['fas', 'file-import']" />
             <input
               class="hidden"
@@ -50,7 +53,10 @@
           </label>
         </div>
         <div class="cursor-pointer">
-          <a @click.prevent="exportCollection">
+          <a
+            @click.prevent="exportCollection"
+            title="Export JSON Mercenary Collection"
+          >
             <icon :icon="['fas', 'file-export']" />
           </a>
         </div>
