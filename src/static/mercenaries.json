@@ -1529,92 +1529,92 @@
             },
             "tasks": [
                 {
-                    "name": "Task 1: Speed and Illusions",
+                    "name": "Speed and Illusions",
                     "description": "Deal 80 damage using Arcane Fling.",
                     "quote": "<With my speed, they see the illusion of where I was.>"
                 },
                 {
-                    "name": "Task 2: Arcane Powers",
+                    "name": "Arcane Powers",
                     "description": "Deal 225 Arcane Damage with a team that includes this Mercenary.",
                     "quote": "<Blink and I'll be gone. Blink again and I return.>"
                 },
                 {
-                    "name": "Task 3: Now It Is Mine",
+                    "name": "Now It Is Mine",
                     "description": "Use Mind Thief 12 times.",
                     "quote": "<This seems like fun, I think I'll borrow it!>"
                 },
                 {
-                    "name": "Task 4: My Teeth are Sharp",
+                    "name": "My Teeth are Sharp",
                     "description": "Deal 150 damage.",
                     "quote": "<Now you see me! Now you don't!>"
                 },
                 {
-                    "name": "Task 5: Protecting the Forest",
+                    "name": "Protecting the Forest",
                     "description": "Complete a bounty while at level 30.",
                     "quote": "<We must protect the forest and those who dwell in it.>"
                 },
                 {
-                    "name": "Task 6: Bark and Bite",
+                    "name": "Bark and Bite",
                     "description": "Destroy 40 minions.",
                     "quote": "<There's bite to my bark.>"
                 },
                 {
-                    "name": "Task 7: Try to Catch Me",
+                    "name": "Try to Catch Me",
                     "description": "Defeat 2 Heroic bosses.",
                     "quote": "<They may be strong, but they must catch me first.>"
                 },
                 {
-                    "name": "Task 8: Seeing the Spirits",
+                    "name": "Seeing the Spirits",
                     "description": "Use the Spirit Healer coin 4 times.",
                     "quote": "<A brief rest before we continue this adventure.>"
                 },
                 {
-                    "name": "Task 9: Speed for All",
-                    "description": "Increase the speed of friendly abilities by a total of 10.",
-                    "quote": ""
+                    "name": "Helping Friends",
+                    "description": "Give 60 Health or Attack to friendly Mercenaries.",
+                    "quote": "This will make Brightwing very happy!"
                 },
                 {
-                    "name": "Task 10: A Quick Fling",
+                    "name": "A Quick Fling",
                     "description": "Deal 450 Arcane Damage with a team that includes this Mercenary.",
                     "quote": "<I've never really tested my true power. This seems as good a time as any.>"
                 },
                 {
-                    "name": "Task 11: From Here to There",
+                    "name": "From Here to There",
                     "description": "Deal 450 damage.",
                     "quote": "<With my speed, they see the illusion of where I was.>"
                 },
                 {
-                    "name": "Task 12: Counterpunch",
+                    "name": "Counterpunch",
                     "description": "Deal 450 damage with Beasts with a team that includes this Mercenary.",
                     "quote": "<This seems like fun, I think I'll borrow it!>"
                 },
                 {
-                    "name": "Task 13: Strength vs Speed",
+                    "name": "Strength vs Speed",
                     "description": "Complete 4 Heroic Bounties.",
                     "quote": "<They may be strong, but they must catch me first.>"
                 },
                 {
-                    "name": "Task 14: Zoom!",
+                    "name": "Zoom!",
                     "description": "Increase the speed of a friendly ability by (5) in one turn 15 times.",
                     "quote": ""
                 },
                 {
-                    "name": "Task 15: Arcane Speed",
+                    "name": "Arcane Speed",
                     "description": "Complete 6 Bounties.",
                     "quote": "<We must protect the forest and those who dwell in it.>"
                 },
                 {
-                    "name": "Task 16: Can they Catch Me?",
+                    "name": "Can they Catch Me?",
                     "description": "Deal 900 damage to Protectors.",
                     "quote": "<There's bite to my bark.>"
                 },
                 {
-                    "name": "Task 17: Fling Me at Them",
+                    "name": "Fling Me at Them",
                     "description": "Deal 900 Arcane Damage with a team that includes this Mercenary.",
                     "quote": "<Blink and I'll be gone. Blink again and I return.>"
                 },
                 {
-                    "name": "Task 18: They call me Blink Fox",
+                    "name": "They call me Blink Fox",
                     "description": "Deal 450 damage to Heroic bosses.",
                     "quote": "<A brief rest before we continue this adventure.>                "
                 }
@@ -3670,7 +3670,7 @@
             "equipment": {
                 "Black Soulstone": {
                     "unlock": "Task 7",
-                    "position": "left",
+                    "position": "right",
                     "description": "Passive: After a character dies, this Merc gains +{0} Health.",
                     "tiers": [
                         {
@@ -3689,7 +3689,7 @@
                 },
                 "Magma Horns": {
                     "unlock": "Task 2",
-                    "position": "middle",
+                    "position": "left",
                     "affects": "Apocalypse",
                     "description": "Apocalypse deals {0} more damage.",
                     "tiers": [
@@ -3721,7 +3721,7 @@
                 },
                 "Claws of Terror": {
                     "unlock": "Level 30",
-                    "position": "right",
+                    "position": "middle",
                     "affects": "Doom Charge",
                     "description": "Passive: +{0} Attack. Doom Charge slows the enemy by ({0}) Speed more.",
                     "tiers": [
@@ -3966,7 +3966,7 @@
                 },
                 "Even Shares": {
                     "unlock": "Task 7",
-                    "position": "middle",
+                    "position": "right",
                     "affects": "Kingpin's Bounty",
                     "description": "Kingpin's Bounty{slot1} affects all friendly {slot2}.",
                     "tiers": [
@@ -4026,7 +4026,7 @@
                 },
                 "Round of Drinks": {
                     "unlock": "Task 7",
-                    "position": "right",
+                    "position": "middle",
                     "affects": "Assisted Strike",
                     "description": "Assisted Strike{slot1} always has Immune while Attacking.",
                     "tiers": [
@@ -13044,7 +13044,7 @@
                 },
                 "Skull Dust": {
                     "unlock": "Task 2",
-                    "position": "middle",
+                    "position": "left",
                     "affects": "Bzzz!!!",
                     "description": "Bzzz!!! gains Bleed ({0}).",
                     "tiers": [
@@ -13308,7 +13308,7 @@
             "equipment": {
                 "Mourneblade": {
                     "unlock": "Level 30",
-                    "position": "left",
+                    "position": "middle",
                     "description": "Passive: +{0} Attack.",
                     "tiers": [
                         {
@@ -15188,7 +15188,7 @@
             "equipment": {
                 "Ashbringer": {
                     "unlock": "Level 30",
-                    "position": "right",
+                    "position": "middle",
                     "description": "Deathrattle: Give all Mercs on your battlefield and bench +{0}/+{0}.",
                     "tiers": [
                         {
@@ -15299,7 +15299,7 @@
                 },
                 "Tirion's Shield": {
                     "unlock": "Task 7",
-                    "position": "middle",
+                    "position": "right",
                     "description": "Passive: +{0} Health. This Merc starts the game with Divine Shield.",
                     "tiers": [
                         {
@@ -16348,7 +16348,7 @@
             "equipment": {
                 "Hidden Paths": {
                     "unlock": "Level 30",
-                    "position": "right",
+                    "position": "middle",
                     "description": "Passive: Whenever a friendly character loses Stealth, give them +{0} Attack.",
                     "tiers": [
                         {
@@ -16367,7 +16367,7 @@
                 },
                 "Unnatural Smoke": {
                     "unlock": "Task 2",
-                    "position": "middle",
+                    "position": "right",
                     "description": "Passive: While this Merc has Stealth, friendly characters are ({0}) Speed faster.",
                     "tiers": [
                         {
@@ -16925,7 +16925,7 @@
             "equipment": {
                 "Bounding Boots": {
                     "unlock": "Level 30",
-                    "position": "left",
+                    "position": "middle",
                     "affects": "Heroic Leap",
                     "description": "Heroic Leap deals {0} more damage.",
                     "tiers": [
@@ -16957,7 +16957,7 @@
                 },
                 "War Banner": {
                     "unlock": "Task 2",
-                    "position": "middle",
+                    "position": "right",
                     "affects": "Retaliation",
                     "description": "Retaliation gives an additional +{0} Attack.",
                     "tiers": [
@@ -16989,7 +16989,7 @@
                 },
                 "Shalamayne": {
                     "unlock": "Task 7",
-                    "position": "right",
+                    "position": "left",
                     "description": "Passive: +{0} Attack",
                     "tiers": [
                         {

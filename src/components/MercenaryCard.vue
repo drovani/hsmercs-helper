@@ -42,7 +42,7 @@
     </div>
     <div class="grid grid-cols-3 gap-x-1">
       <AbilityStamp
-        v-for="(ability, abilityName) in abilities"
+        v-for="(ability, abilityName) in abilitiesOrdered"
         :key="abilityName"
         :ability="ability"
         :ability-name="abilityName"
@@ -54,7 +54,7 @@
     </div>
     <div class="grid grid-cols-3 gap-x-1">
       <ItemStamp
-        v-for="(item, itemName) in equipment"
+        v-for="(item, itemName) in equipmentOrdered"
         :key="itemName"
         :item="item"
         :item-name="itemName"
@@ -90,6 +90,7 @@ import TaillessWrap from "./TaillessWrap.vue";
 import TaskStamp from "./TaskStamp.vue";
 import CollectedMerc from "../models/collectedMerc";
 import { MercTask } from "../models/mercenary";
+import { computed } from "vue";
 
 const props = defineProps({
   role: String as () => Role,
@@ -105,6 +106,19 @@ const props = defineProps({
     required: true,
   },
   collectedMerc: Object as () => CollectedMerc,
+});
+
+const abilitiesOrdered = computed(() => {
+  return Object.fromEntries(
+    Object.entries(props.abilities).sort((a, b) => a[1].unlock - b[1].unlock)
+  );
+});
+const equipmentOrdered = computed(() => {
+  return Object.fromEntries(
+    Object.entries(props.equipment).sort((a, b) =>
+      a[1].position.localeCompare(b[1].position)
+    )
+  );
 });
 
 function abilityActiveTier(abilityName: string): number {
