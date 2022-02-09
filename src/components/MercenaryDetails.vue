@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-rows-3 w-96 rounded-md border-2 gap-y-1 pb-1"
+    class="grid grid-rows-3 w-full rounded-md border-2 gap-y-1 pb-1 lg:max-w-6xl"
     :class="{
       'border-protector': role == 'Protector',
       'border-fighter': role == 'Fighter',
@@ -31,9 +31,7 @@
           />
         </div>
         <h2 class="font-bold text-xl whitespace-nowrap flex-1">
-          <router-link :to="'/merc/' + mercName" replace>
-            <TaillessWrap :text="mercName" />
-          </router-link>
+          <TaillessWrap :text="mercName" />
         </h2>
         <RoleVue :role="role" />
       </div>
