@@ -1,0 +1,179 @@
+{
+    "mercname": {
+        "tribe": "",
+        "rarity": "",
+        "role": "",
+        "attack": 0,
+        "health": 0,
+        "abilities": {
+            "ability1": {
+                "unlock": 1,
+                "speed": 0,
+                "cooldown": 0,
+                "description": "",
+                "tiers": [
+                    {
+                        "description": []
+                    },
+                    {
+                        "description": []
+                    },
+                    {
+                        "description": []
+                    },
+                    {
+                        "description": []
+                    },
+                    {
+                        "description": []
+                    }
+                ]
+            },
+            "ability2": {
+                "unlock": 5,
+                "speed": 0,
+                "cooldown": 0,
+                "description": "",
+                "tiers": [
+                    {
+                        "description": []
+                    },
+                    {
+                        "description": []
+                    },
+                    {
+                        "description": []
+                    },
+                    {
+                        "description": []
+                    },
+                    {
+                        "description": []
+                    }
+                ]
+            },
+            "ability3": {
+                "unlock": 15,
+                "speed": 0,
+                "cooldown": 0,
+                "description": "",
+                "tiers": [
+                    {
+                        "description": []
+                    },
+                    {
+                        "description": []
+                    },
+                    {
+                        "description": []
+                    },
+                    {
+                        "description": []
+                    },
+                    {
+                        "description": []
+                    }
+                ]
+            }
+        },
+        "equipment": {
+            "item1": {
+                "unlock": "Level 30",
+                "position": "left",
+                "affects": "",
+                "description": "",
+                "tiers": [
+                    {
+                        "description": [],
+                        "modifier": {
+                            "description": []
+                        }
+                    },
+                    {
+                        "description": [],
+                        "modifier": {
+                            "description": []
+                        }
+                    },
+                    {
+                        "description": [],
+                        "modifier": {
+                            "description": []
+                        }
+                    },
+                    {
+                        "description": [],
+                        "modifier": {
+                            "description": []
+                        }
+                    }
+                ]
+            },
+            "item2": {
+                "unlock": "Task 2",
+                "position": "middle",
+                "affects": "",
+                "description": "",
+                "tiers": [
+                    {
+                        "description": [],
+                        "modifier": {
+                            "description": []
+                        }
+                    },
+                    {
+                        "description": [],
+                        "modifier": {
+                            "description": []
+                        }
+                    },
+                    {
+                        "description": [],
+                        "modifier": {
+                            "description": []
+                        }
+                    },
+                    {
+                        "description": [],
+                        "modifier": {
+                            "description": []
+                        }
+                    }
+                ]
+            },
+            "item3": {
+                "unlock": "Task 7",
+                "position": "right",
+                "affects": "",
+                "description": "",
+                "tiers": [
+                    {
+                        "description": [],
+                        "modifier": {
+                            "description": []
+                        }
+                    },
+                    {
+                        "description": [],
+                        "modifier": {
+                            "description": []
+                        }
+                    },
+                    {
+                        "description": [],
+                        "modifier": {
+                            "description": []
+                        }
+                    },
+                    {
+                        "description": [],
+                        "modifier": {
+                            "description": []
+                        }
+                    }
+                ]
+            }
+        },
+        "tasks": []
+    }
+}
