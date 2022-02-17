@@ -19904,6 +19904,1446 @@
                     "quote": "Let us see what you are truly made of."
                 }
             ]
+        },
+        "Chi-Ji": {
+            "tribe": "Beast",
+            "rarity": "Epic",
+            "role": "Caster",
+            "attack": 6,
+            "health": 74,
+            "abilities": {
+                "Blazing Song": {
+                    "unlock": 1,
+                    "speed": 3,
+                    "spell_school": "Fire",
+                    "description": "Deal {0} damage. Gain +{0} Heal Power.",
+                    "tiers": [
+                        {
+                            "description": [
+                                4,
+                                1
+                            ]
+                        },
+                        {
+                            "description": [
+                                6,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                8,
+                                3
+                            ]
+                        },
+                        {
+                            "description": [
+                                9,
+                                3
+                            ]
+                        },
+                        {
+                            "description": [
+                                10,
+                                3
+                            ]
+                        }
+                    ]
+                },
+                "Inspiring Song": {
+                    "unlock": 5,
+                    "speed": 4,
+                    "spell_school": "Fire",
+                    "description": "Restore {0} Health to all friendly characters.",
+                    "tiers": [
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 6
+                        },
+                        {
+                            "description": 8
+                        },
+                        {
+                            "description": 9
+                        },
+                        {
+                            "description": 10
+                        }
+                    ]
+                },
+                "Firestorm": {
+                    "unlock": 15,
+                    "speed": 5,
+                    "cooldown": 1,
+                    "spell_school": "Fire",
+                    "description": "Deal {0} damage to all enemies. Restore {0} Health to all allies. (Damage increased by Heal Power.)",
+                    "tiers": [
+                        {
+                            "description": [
+                                1,
+                                1
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                3,
+                                3
+                            ]
+                        },
+                        {
+                            "description": [
+                                4,
+                                4
+                            ]
+                        },
+                        {
+                            "description": [
+                                5,
+                                5
+                            ]
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "Blazing Band": {
+                    "unlock": "Defeat Kazakus (Heroic)",
+                    "position": "left",
+                    "affects": "Blazing Song",
+                    "description": "Blazing Song deals {0} more damage and gives an additional +{0} Heal Power.",
+                    "tiers": [
+                        {
+                            "description": [
+                                1,
+                                1
+                            ],
+                            "modifier": {
+                                "description": [
+                                    1,
+                                    1
+                                ]
+                            }
+                        },
+                        {
+                            "description": [
+                                2,
+                                1
+                            ],
+                            "modifier": {
+                                "description": [
+                                    2,
+                                    1
+                                ]
+                            }
+                        },
+                        {
+                            "description": [
+                                3,
+                                2
+                            ],
+                            "modifier": {
+                                "description": [
+                                    3,
+                                    2
+                                ]
+                            }
+                        },
+                        {
+                            "description": [
+                                4,
+                                2
+                            ],
+                            "modifier": {
+                                "description": [
+                                    4,
+                                    2
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "Staff of Chi-Ji": {
+                    "unlock": "Task 2",
+                    "position": "middle",
+                    "affects": "Inspiring Song",
+                    "description": "Inspiring Song restores {0} more Health.",
+                    "tiers": [
+                        {
+                            "description": 4,
+                            "modifier": {
+                                "description": 4
+                            }
+                        },
+                        {
+                            "description": 6,
+                            "modifier": {
+                                "description": 6
+                            }
+                        },
+                        {
+                            "description": 8,
+                            "modifier": {
+                                "description": 8
+                            }
+                        },
+                        {
+                            "description": 10,
+                            "modifier": {
+                                "description": 10
+                            }
+                        }
+                    ]
+                },
+                "Flameheart Crystal": {
+                    "unlock": "Level 30",
+                    "position": "right",
+                    "description": "Passive: After a friendly Beast is healed give them +{0} Health.",
+                    "tiers": [
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 5
+                        }
+                    ]
+                }
+            },
+            "tasks": [
+                {
+                    "name": "Master of Song",
+                    "description": "Deal 55 damage using Blazing Song.",
+                    "quote": "Peace be with you. Have you come to learn the way of the Red Crane?"
+                },
+                {
+                    "name": "Ritual Propriety",
+                    "description": "Restore 65 Health using Inspiring Song.",
+                    "quote": "We must never give in to despair."
+                },
+                {
+                    "name": "Hope of Pandaria",
+                    "description": "Use Firestorm 10 times.",
+                    "quote": "When faced with challenges, what do you hope for?"
+                },
+                {
+                    "name": "Birds of a Feather",
+                    "description": "Deal 150 damage.",
+                    "quote": "Seek balance in all things."
+                },
+                {
+                    "name": "Order of the Crane Wing",
+                    "description": "Complete a Bounty while at level 30.",
+                    "quote": "Push forward. Do not give up on yourself."
+                },
+                {
+                    "name": "The Majestic Flight to the West",
+                    "description": "Destroy 40 minions.",
+                    "quote": "Become the beacon of hope others so very need."
+                },
+                {
+                    "name": "Hope is the Sun",
+                    "description": "Complete 2 Heroic Bounties.",
+                    "quote": "Learn to look at the world in a different light."
+                },
+                {
+                    "name": "Inner Heart",
+                    "description": "Use the Boon: Caster coin 4 times.",
+                    "quote": "Another challenge awaits."
+                },
+                {
+                    "name": "Meek Beak",
+                    "description": "Deal 180 damage using Blazing Song.",
+                    "quote": "Without hope, there is no light in the future!"
+                },
+                {
+                    "name": "Gate of Eternal Blossoms",
+                    "description": "Deal 180 damage with Beasts with a team that includes this Mercenary.",
+                    "quote": "Create the destiny you seek."
+                },
+                {
+                    "name": "Tears in the Vale",
+                    "description": "Deal 300 Fire Damage with this Mercenary.",
+                    "quote": "Your hope shines brightly. Now go, seek out the others and light their path like I once lit yours."
+                },
+                {
+                    "name": "Benevolence and Righteousness",
+                    "description": "Restore 150 Health using Inspiring Song.",
+                    "quote": "Peace be with you. Have you come to learn the way of the Red Crane?"
+                },
+                {
+                    "name": "Radiant Plumage",
+                    "description": "Complete 4 Heroic Bounties.",
+                    "quote": "We must never give in to despair."
+                },
+                {
+                    "name": "Celestials United",
+                    "description": "Deal 900 damage with Beasts with a team that includes this Mercenary.",
+                    "quote": "When faced with challenges, what do you hope for?"
+                },
+                {
+                    "name": "Be Weary of the Sha",
+                    "description": "Complete 6 Bounties.",
+                    "quote": "Seek balance in all things."
+                },
+                {
+                    "name": "Doing is Knowing",
+                    "description": "Deal 500 damage to Heroic bosses.",
+                    "quote": "Push forward. Do not give up on yourself."
+                },
+                {
+                    "name": "Sungraced Talons",
+                    "description": "Deathblow 550 times.",
+                    "quote": "Become the beacon of hope others so very need."
+                },
+                {
+                    "name": "Test of Hope",
+                    "description": "Deal 450 to Heroic Bosses.",
+                    "quote": "Learn to look at the world in a different light.                "
+                }
+            ]
+        },
+        "Long'xin": {
+            "tribe": "Dragon",
+            "rarity": "Legendary",
+            "role": "Caster",
+            "attack": 5,
+            "health": 81,
+            "abilities": {
+                "Celestial Breath": {
+                    "unlock": 1,
+                    "speed": 7,
+                    "spell_school": "Arcane",
+                    "description": "Deal {0} damage to an enemy. Any excess continues to the left or right.",
+                    "tiers": [
+                        {
+                            "description": 8
+                        },
+                        {
+                            "description": 13
+                        },
+                        {
+                            "description": 17
+                        },
+                        {
+                            "description": 18
+                        },
+                        {
+                            "description": 19
+                        }
+                    ]
+                },
+                "Starfire Blessing": {
+                    "unlock": 5,
+                    "speed": 2,
+                    "cooldown": 1,
+                    "spell_school": "Arcane",
+                    "description": "For two turns, gain +{0} Arcane Damage and \"After this Merc is damaged, deal {0} damage to a random enemy.\"",
+                    "tiers": [
+                        {
+                            "description": [
+                                1,
+                                6
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
+                                9
+                            ]
+                        },
+                        {
+                            "description": [
+                                3,
+                                12
+                            ]
+                        },
+                        {
+                            "description": [
+                                3,
+                                13
+                            ]
+                        },
+                        {
+                            "description": [
+                                3,
+                                14
+                            ]
+                        }
+                    ]
+                },
+                "Among the Stars": {
+                    "unlock": 15,
+                    "speed": 1,
+                    "cooldown": 1,
+                    "spell_school": "Arcane",
+                    "description": "Give an ally +{0} Health and swap places with it. Enemy abilities targetting the Mercs swap targets (if possible).",
+                    "tiers": [
+                        {
+                            "description": 6
+                        },
+                        {
+                            "description": 9
+                        },
+                        {
+                            "description": 11
+                        },
+                        {
+                            "description": 12
+                        },
+                        {
+                            "description": 13
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "Bottle of Infinite Stars": {
+                    "unlock": "Level 30",
+                    "position": "left",
+                    "affects": "Among the Stars",
+                    "description": "Among the Stars gives {0} more Health and also grants Health to your Dragons.",
+                    "tiers": [
+                        {
+                            "description": 1,
+                            "modifier": {
+                                "description": 1
+                            }
+                        },
+                        {
+                            "description": 2,
+                            "modifier": {
+                                "description": 2
+                            }
+                        },
+                        {
+                            "description": 3,
+                            "modifier": {
+                                "description": 3
+                            }
+                        },
+                        {
+                            "description": 4,
+                            "modifier": {
+                                "description": 4
+                            }
+                        }
+                    ]
+                },
+                "Kun-Lai Crystal": {
+                    "unlock": "Task 2",
+                    "position": "middle",
+                    "affects": "Among the Stars",
+                    "description": "Among the Stars starts off Cooldown. Passive: +{0} Nature Resistance.",
+                    "tiers": [
+                        {
+                            "description": 5
+                        },
+                        {
+                            "description": 6
+                        },
+                        {
+                            "description": 7
+                        },
+                        {
+                            "description": 8
+                        }
+                    ]
+                },
+                "Band of Bursting Novas": {
+                    "unlock": "Defeat Ichman (Heroic)",
+                    "position": "right",
+                    "description": "Battlecry: Gain +{0} Arcane Damage for each of your {Beasts and }Dragons that has died this game.",
+                    "tiers": [
+                        {
+                            "description": [
+                                1,
+                                ""
+                            ]
+                        },
+                        {
+                            "description": 1
+                        },
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        }
+                    ]
+                }
+            },
+            "tasks": [
+                {
+                    "name": "Kun-Lai Ascent",
+                    "description": "Deal 40 damage using Celestial Breath.",
+                    "quote": "Look above, friend. Do you wish to wield the power of the stars?"
+                },
+                {
+                    "name": "Forsaken Town",
+                    "description": "Use Starfire Blessing 5 times.",
+                    "quote": "I am here to guide your path."
+                },
+                {
+                    "name": "Ancient Cave",
+                    "description": "Use Among the Stars 5 times.",
+                    "quote": "I require your aid."
+                },
+                {
+                    "name": "Face Yourself",
+                    "description": "Deal 150 damage.",
+                    "quote": "A quest for you, my dear."
+                },
+                {
+                    "name": "Through the Cosmos",
+                    "description": "Complete 1 Bounty while at level 30.",
+                    "quote": "Imagine all the wonderful things we will find there."
+                },
+                {
+                    "name": "Celestial Retreat",
+                    "description": "Destroy 40 minions.",
+                    "quote": "Do not fear darkness. Without it, we would never see the stars."
+                },
+                {
+                    "name": "Sorting Hardships",
+                    "description": "Complete 2 Heroic Bounties.",
+                    "quote": "My blessings upon you."
+                },
+                {
+                    "name": "The Mountain's Edge",
+                    "description": "Deal 120 Arcane Damage with a team that includes this Mercenary.",
+                    "quote": "There is so much to be done here."
+                },
+                {
+                    "name": "Calming Sunset",
+                    "description": "Deal 200 damage.",
+                    "quote": "Our journey continues."
+                },
+                {
+                    "name": "Learn to Soar",
+                    "description": "Gain 4 Health using Among the Stars.",
+                    "quote": "Together we are limitless."
+                },
+                {
+                    "name": "Face the Temple",
+                    "description": "Deal 450 damage.",
+                    "quote": "I require your aid."
+                },
+                {
+                    "name": "Help Xuen",
+                    "description": "Deal 250 damage with Beasts with a team that includes this Mercenary.",
+                    "quote": "I am here to guide your path."
+                },
+                {
+                    "name": "Inner Turmoil",
+                    "description": "Complete 4 Heroic Bounties",
+                    "quote": "A quest for you, my dear."
+                },
+                {
+                    "name": "Part of Me",
+                    "description": "Deal 300 damage with Dragons with a team that includes this Mercenary.",
+                    "quote": "There is so much to be done here."
+                },
+                {
+                    "name": "Self Acceptance",
+                    "description": "Complete 6 Bounties.",
+                    "quote": "Do not fear darkness. Without it, we would never see the stars."
+                },
+                {
+                    "name": "Kun-Lai's Summit",
+                    "description": "Destroy 10 enemies using Celestial Breath.",
+                    "quote": "Imagine all the wonderful things we will find there."
+                },
+                {
+                    "name": "Overcome Everything",
+                    "description": "Deal 40 damage to adjacent enemies using Celestial Breath.",
+                    "quote": "Together we are limitless."
+                },
+                {
+                    "name": "Farewell, Mercenary.",
+                    "description": "Deal 450 damage to Heroic bosses.",
+                    "quote": "Our time spent together fills me with joy, friend. One day our stars will cross again."
+                }
+            ]
+        },
+        "Niuzao": {
+            "tribe": "Beast",
+            "rarity": "Rare",
+            "role": "Protector",
+            "attack": 9,
+            "health": 75,
+            "abilities": {
+                "Headbutt": {
+                    "unlock": 1,
+                    "speed": 7,
+                    "description": "Attack an enemy. If it has higher Attack than this Merc, deal {0} damage to it instead.",
+                    "tiers": [
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 8
+                        },
+                        {
+                            "description": 12
+                        },
+                        {
+                            "description": 14
+                        },
+                        {
+                            "description": 16
+                        }
+                    ]
+                },
+                "Bullish Fortitude": {
+                    "unlock": 5,
+                    "speed": 2,
+                    "cooldown": 1,
+                    "description": "Gain Taunt and your other characters take {0} less damage for {0} turns",
+                    "tiers": [
+                        {
+                            "description": [
+                                1,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                3,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                4,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                5,
+                                2
+                            ]
+                        }
+                    ]
+                },
+                "Blessing of the Ox": {
+                    "unlock": 15,
+                    "speed": 3,
+                    "cooldown": 1,
+                    "spell_school": "Arcane",
+                    "description": "{Each} time{s} a friendly character is damaged this turn, give them Divine Shield.",
+                    "tiers": [
+                        {
+                            "description": [
+                                "The first",
+                                ""
+                            ]
+                        },
+                        {
+                            "description": "The first 2"
+                        },
+                        {
+                            "description": "The first 3"
+                        },
+                        {
+                            "description": "The first 4"
+                        },
+                        {
+                            "description": [
+                                null,
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "Bullish Belt": {
+                    "unlock": "Defeat Balinda Stonehearth (Heroic)",
+                    "position": "left",
+                    "affects": "Bullish Fortitude",
+                    "description": "Bullish Fortitue reduces damage taken by {0} more, but has +{0} Cooldown",
+                    "tiers": [
+                        {
+                            "description": 2,
+                            "modifier": {
+                                "description": 2,
+                                "cooldown": 1
+                            }
+                        },
+                        {
+                            "description": 3,
+                            "modifier": {
+                                "description": 3,
+                                "cooldown": 1
+                            }
+                        },
+                        {
+                            "description": 4,
+                            "modifier": {
+                                "description": 4,
+                                "cooldown": 1
+                            }
+                        },
+                        {
+                            "description": 5,
+                            "modifier": {
+                                "description": 5,
+                                "cooldown": 1
+                            }
+                        }
+                    ]
+                },
+                "Helm of Niuzao": {
+                    "unlock": "Task 2",
+                    "position": "middle",
+                    "description": "Passive: -{0}/+{0}. After an enemy Attacks this Merc, deals {0} damage to them.",
+                    "tiers": [
+                        {
+                            "description": [
+                                2,
+                                10,
+                                2
+                            ],
+                            "modifier": {
+                                "attack": -2,
+                                "health": 10
+                            }
+                        },
+                        {
+                            "description": [
+                                2,
+                                12,
+                                3
+                            ],
+                            "modifier": {
+                                "attack": -2,
+                                "health": 12
+                            }
+                        },
+                        {
+                            "description": [
+                                2,
+                                14,
+                                4
+                            ],
+                            "modifier": {
+                                "attack": -2,
+                                "health": 14
+                            }
+                        },
+                        {
+                            "description": [
+                                2,
+                                16,
+                                5
+                            ],
+                            "modifier": {
+                                "attack": -2,
+                                "health": 16
+                            }
+                        }
+                    ]
+                },
+                "Talisman of the Ox": {
+                    "unlock": "Level 30",
+                    "position": "right",
+                    "description": "Passive: After a friendly character loses Divine Shield, give them +{0} Health.",
+                    "tiers": [
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 5
+                        },
+                        {
+                            "description": 6
+                        }
+                    ]
+                }
+            },
+            "tasks": [
+                {
+                    "name": "Strength of the West",
+                    "description": "Deal 35 damage using Headbutt.",
+                    "quote": "Your trial begins. You will be surrounded by foes greater than you can imagine."
+                },
+                {
+                    "name": "Protector of the Weak",
+                    "description": "Use Bullish Fortitude 5 times.",
+                    "quote": "But your fortitude shall allow you to endure."
+                },
+                {
+                    "name": "Celestial Blessings",
+                    "description": "Use Blessing of the Ox 5 times.",
+                    "quote": "When faced with adversity, you must persevere."
+                },
+                {
+                    "name": "Pandaria's Powerhouse",
+                    "description": "Deal 150 damage.",
+                    "quote": "True strength lies deep within your spirit."
+                },
+                {
+                    "name": "Fear is in the Mind",
+                    "description": "Complete 1 Bounty while at level 30.",
+                    "quote": "Vanquish your fears."
+                },
+                {
+                    "name": "Smasher of Mantid",
+                    "description": "Destroy 40 minions.",
+                    "quote": "Be vigilant in your stand. That is the only way to achieve your goals."
+                },
+                {
+                    "name": "Test of Courage",
+                    "description": "Complete 2 Heroic Bounties.",
+                    "quote": "Can you stand victorious on the tallest of peaks?"
+                },
+                {
+                    "name": "Why Do We Fight?",
+                    "description": "Use the Boon: Protector coin 4 times.",
+                    "quote": "True strength lies deep within your spirit."
+                },
+                {
+                    "name": "Horns of the Black Ox",
+                    "description": "Deal 120 damage using Headbutt.",
+                    "quote": "Difficulties can strengthen the body and sharpen the mind."
+                },
+                {
+                    "name": "Mountain on Wheels",
+                    "description": "Use Bullish Fortitude 10 times.",
+                    "quote": "Can you stand victorious on the tallest of peaks?"
+                },
+                {
+                    "name": "Bullish Forecast",
+                    "description": "Deal 450 damage.",
+                    "quote": "Failure is a part of our journey, as is learning from those missteps."
+                },
+                {
+                    "name": "Give Them Peace",
+                    "description": "Use Blessing of the Ox 10 times.",
+                    "quote": "Endurance is the most difficult discipline."
+                },
+                {
+                    "name": "The Emperor's Mentor",
+                    "description": "Complete 4 Heroic Bounties",
+                    "quote": "Overcome the impossible."
+                },
+                {
+                    "name": "Oxen Fury",
+                    "description": "Deal 180 damage to Fighters.",
+                    "quote": "Difficulties can strengthen the body and sharpen the mind."
+                },
+                {
+                    "name": "Beast of Burden",
+                    "description": "Complete 6 Bounties.",
+                    "quote": "Endurance is the most difficult discipline."
+                },
+                {
+                    "name": "Herd Tactics",
+                    "description": "Deal 900 damage with Beasts with a team that includes this Mercenary.",
+                    "quote": "Be vigilant in your stand. That is the only way to achieve your goals."
+                },
+                {
+                    "name": "It was an Ox-ident",
+                    "description": "Destroy 80 minions.",
+                    "quote": "Failure is a part of our journey, as is learning from those missteps."
+                },
+                {
+                    "name": "Butting Heads",
+                    "description": "Deal 450 damage to Heroic bosses.",
+                    "quote": "Vanquish your fears."
+                }
+            ]
+        },
+        "Xuen": {
+            "tribe": "Beast",
+            "rarity": "Epic",
+            "role": "Fighter",
+            "attack": 8,
+            "health": 71,
+            "abilities": {
+                "Equalizing Strike": {
+                    "unlock": 1,
+                    "speed": 7,
+                    "description": "Choose an enemy. Set this Merc's Attack to {0} higher than the target and Attack them.",
+                    "tiers": [
+                        {
+                            "description": 1
+                        },
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 5
+                        }
+                    ]
+                },
+                "Pounce": {
+                    "unlock": 5,
+                    "speed": 4,
+                    "description": "Borrow {0} Attack from all friendly characters for {0} turns. Attack an enemy.",
+                    "tiers": [
+                        {
+                            "description": [
+                                1,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                3,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                4,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                5,
+                                2
+                            ]
+                        }
+                    ]
+                },
+                "Tiger Lightning": {
+                    "unlock": 15,
+                    "speed": 10,
+                    "cooldown": 1,
+                    "spell_school": "Nature",
+                    "description": "Deal this Merc's Attack damage to a random enemy. Deathblow: Gain +{0} Attack and repeat this.",
+                    "tiers": [
+                        {
+                            "description": 1
+                        },
+                        {
+                            "description": 2,
+                            "cooldown": -1
+                        },
+                        {
+                            "description": 3,
+                            "cooldown": -2
+                        },
+                        {
+                            "description": 4,
+                            "cooldown": -3
+                        },
+                        {
+                            "description": 5,
+                            "cooldown": -4
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "Spear of Xuen": {
+                    "unlock": "Task 2",
+                    "position": "left",
+                    "affects": "Equalizing Strike",
+                    "description": "Equalizing Strike sets this Merc's Attack to an Additional {0} higher than the target.",
+                    "tiers": [
+                        {
+                            "description": 1,
+                            "modifier": {
+                                "description": 1
+                            }
+                        },
+                        {
+                            "description": 2,
+                            "modifier": {
+                                "description": 2
+                            }
+                        },
+                        {
+                            "description": 3,
+                            "modifier": {
+                                "description": 3
+                            }
+                        },
+                        {
+                            "description": 4,
+                            "modifier": {
+                                "description": 4
+                            }
+                        }
+                    ]
+                },
+                "Celestial Chestplate": {
+                    "unlock": "Defeat Ivus (Heroic)",
+                    "position": "middle",
+                    "affects": "Pounce",
+                    "description": "Pounce also steals {0} Attack from a random enemy.",
+                    "tiers": [
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 5
+                        }
+                    ]
+                },
+                "Charged Gauntlets": {
+                    "unlock": "Level 30",
+                    "position": "right",
+                    "affects": "Tiger Lightning",
+                    "description": "Tiger Lightning gives an additional +{0} Attack.",
+                    "tiers": [
+                        {
+                            "description": 1,
+                            "modifier": {
+                                "description": 1
+                            }
+                        },
+                        {
+                            "description": 2,
+                            "modifier": {
+                                "description": 2
+                            }
+                        },
+                        {
+                            "description": 3,
+                            "modifier": {
+                                "description": 3
+                            }
+                        },
+                        {
+                            "description": 4,
+                            "modifier": {
+                                "description": 4
+                            }
+                        }
+                    ]
+                }
+            },
+            "tasks": [
+                {
+                    "name": "Rising Up",
+                    "description": "Deal 35 damage using Equalizing Strike.",
+                    "quote": "The trial of strength commences."
+                },
+                {
+                    "name": "Back on the Street",
+                    "description": "Gain 40 Attack using Pounce.",
+                    "quote": "Reach deep inside and awaken your true potential."
+                },
+                {
+                    "name": "Did My Time",
+                    "description": "Deal 70 damage using Tiger Lightning.",
+                    "quote": "Whatever you do, do it with purpose."
+                },
+                {
+                    "name": "Took My Chances",
+                    "description": "Deal 150 damage.",
+                    "quote": "Remember: anger does not empower you. It makes you weak."
+                },
+                {
+                    "name": "Went the Distance",
+                    "description": "Complete 1 Bounty while at level 30.",
+                    "quote": "Whenever you fight, do so with all your heart."
+                },
+                {
+                    "name": "Back on my Feet",
+                    "description": "Destroy 40 minions.",
+                    "quote": "Shall we test your might?"
+                },
+                {
+                    "name": "Will to Survive",
+                    "description": "Complete 2 Heroic Bounties.",
+                    "quote": "As long as you keep going forward, your pace doesn’t matter."
+                },
+                {
+                    "name": "So Many Times",
+                    "description": "Use the Boon: Fighter coin 2 times.",
+                    "quote": "Be not ashamed of your mistakes. Cherish them and grow with them."
+                },
+                {
+                    "name": "Happens too Fast",
+                    "description": "Destroy 15 enemies using Pounce.",
+                    "quote": "Look inside your heart. You are strong, stronger even than you realize."
+                },
+                {
+                    "name": "Passion for Glory",
+                    "description": "Deal 400 damage with Beasts with a team that includes this Mercenary.",
+                    "quote": "Invoke the power of the White Tiger and become the embodiment of strength."
+                },
+                {
+                    "name": "Don't Lose your Grip",
+                    "description": "Deal 450 damage.",
+                    "quote": "Reach deep inside and awaken your true potential."
+                },
+                {
+                    "name": "Dreams of the Past",
+                    "description": "Destroy two enemies in one turn using Tiger Lightning 10 times.",
+                    "quote": "Whatever you do, do it with purpose."
+                },
+                {
+                    "name": "You Must Fight",
+                    "description": "Complete 4 Heroic Bounties",
+                    "quote": "Remember: anger does not empower you. It makes you weak."
+                },
+                {
+                    "name": "Keep them Alive",
+                    "description": "Deal 500 damage to Casters.",
+                    "quote": "Whenever you fight, do so with all your heart."
+                },
+                {
+                    "name": "Eye of the Tiger",
+                    "description": "Complete 6 Bounties.",
+                    "quote": "Shall we test your might?"
+                },
+                {
+                    "name": "Thrill of the Fight",
+                    "description": "Complete 10 battles with 25 or more Attack.",
+                    "quote": "As long as you keep going forward, your pace doesn’t matter."
+                },
+                {
+                    "name": "Rising Up",
+                    "description": "Deathblow 25 times.",
+                    "quote": "Be not ashamed of your mistakes. Cherish them and grow with them."
+                },
+                {
+                    "name": "Challenge of our Rival",
+                    "description": "Deal 450 damage to Heroic bosses.",
+                    "quote": "You have earned your rightful place among my allies."
+                }
+            ]
+        },
+        "Yu'lon": {
+            "tribe": "Dragon",
+            "rarity": "Rare",
+            "role": "Protector",
+            "attack": 7,
+            "health": 80,
+            "abilities": {
+                "Jade Gust": {
+                    "unlock": 1,
+                    "speed": 10,
+                    "spell_school": "Nature",
+                    "description": "Deal {0} damage to an enemy. If they Attacked this turn, deal {0} damage instead.",
+                    "tiers": [
+                        {
+                            "description": [
+                                8,
+                                16
+                            ]
+                        },
+                        {
+                            "description": [
+                                12,
+                                24
+                            ]
+                        },
+                        {
+                            "description": [
+                                16,
+                                32
+                            ]
+                        },
+                        {
+                            "description": [
+                                18,
+                                36
+                            ]
+                        },
+                        {
+                            "description": [
+                                20,
+                                40
+                            ]
+                        }
+                    ]
+                },
+                "Jadeflame Buffet": {
+                    "unlock": 5,
+                    "speed": 1,
+                    "cooldown": 1,
+                    "spell_school": "Fire",
+                    "description": "Block Taunt and Stealth on all other characters for {0} turns. Give your characters +{0} Health.",
+                    "tiers": [
+                        {
+                            "description": [
+                                2,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
+                                5
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
+                                8
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
+                                9
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
+                                10
+                            ]
+                        }
+                    ]
+                },
+                "Enveloing Mist": {
+                    "unlock": 15,
+                    "speed": 4,
+                    "cooldown": 1,
+                    "description": "Gain Taunt this turn, and +{0} Nature Damage. Repeat for each other friendly Dragon.",
+                    "tiers": [
+                        {
+                            "description": 1
+                        },
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 3,
+                            "cooldown": -1
+                        },
+                        {
+                            "description": 3,
+                            "cooldown": -2
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "Jadefire Spear": {
+                    "unlock": "Task 2",
+                    "position": "left",
+                    "affects": "Jadeflame Buffet",
+                    "description": "Jadeflame Buffet gives an additional +{0} Health.",
+                    "tiers": [
+                        {
+                            "description": 2,
+                            "modifier": {
+                                "description": [
+                                    0,
+                                    2
+                                ]
+                            }
+                        },
+                        {
+                            "description": 3,
+                            "modifier": {
+                                "description": [
+                                    0,
+                                    3
+                                ]
+                            }
+                        },
+                        {
+                            "description": 4,
+                            "modifier": {
+                                "description": [
+                                    0,
+                                    4
+                                ]
+                            }
+                        },
+                        {
+                            "description": 5,
+                            "modifier": {
+                                "description": [
+                                    0,
+                                    5
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "Serpent Pendant": {
+                    "unlock": "Level 30",
+                    "position": "middle",
+                    "affects": "Enveloping Mist",
+                    "description": "Enveloping Mist gives an additional +{0} Nature Damage.",
+                    "tiers": [
+                        {
+                            "description": 1,
+                            "modifier": {
+                                "description": 1
+                            }
+                        },
+                        {
+                            "description": 2,
+                            "modifier": {
+                                "description": 2
+                            }
+                        },
+                        {
+                            "description": 3,
+                            "modifier": {
+                                "description": 3
+                            }
+                        }
+                    ]
+                },
+                "Pearl of Yu'lon": {
+                    "unlock": "Defeat Rotimer (Heroic)",
+                    "position": "right",
+                    "description": "Passive: Your other Dragons take {0} less damage.",
+                    "tiers": [
+                        {
+                            "description": 1
+                        },
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        }
+                    ]
+                }
+            },
+            "tasks": [
+                {
+                    "name": "Jadefire and Fury",
+                    "description": "Deal 55 damage using Jade Gust.",
+                    "quote": "Is it guidance you seek, my child? Come and ride with me, for there is much I wish you to see."
+                },
+                {
+                    "name": "Illuminating Jade",
+                    "description": "Use Jadeflame Buffet 10 times.",
+                    "quote": "Your emotions cloud you. You must learn to free yourself of these burdens."
+                },
+                {
+                    "name": "Bulwark of Pandaria",
+                    "description": "Use Enveloping Mist 10 times.",
+                    "quote": "We live together, or we die together."
+                },
+                {
+                    "name": "Celestial Might",
+                    "description": "Deal 150 damage.",
+                    "quote": "Look beyond yourself."
+                },
+                {
+                    "name": "Blessing of August",
+                    "description": "Complete a Bounty while at level 30.",
+                    "quote": "The cycle of life and death is clear—it neither begins nor ends with us."
+                },
+                {
+                    "name": "The Jade Serpent",
+                    "description": "Destroy 40 minions.",
+                    "quote": "Your enemies will peer into your soul and use your darkest fears against you. Resist them."
+                },
+                {
+                    "name": "There is But One Certainty",
+                    "description": "Complete 2 Heroic Bounties.",
+                    "quote": "Maintain a clear mind. Always remember your purpose."
+                },
+                {
+                    "name": "Every End Marks a New Beginning",
+                    "description": "Use the Boon: Protector coin 4 times.",
+                    "quote": "Fear can become the enemy of will. Fight it."
+                },
+                {
+                    "name": "Grasping at Pearls",
+                    "description": "Deal 180 damage using Jade Gust.",
+                    "quote": "To become the best version of yourself, you must relinquish your self-imposed limits."
+                },
+                {
+                    "name": "Dragons, Assemble!",
+                    "description": "Deal 180 damage with Dragons with a team that includes this Mercenary.",
+                    "quote": "Seek harmony and don’t be afraid to take action in order to defend it."
+                },
+                {
+                    "name": "Embodied Wisdom",
+                    "description": "Deal 300 Arcane Damage with this Mercenary.",
+                    "quote": "Someday, you may be called upon to defend all that is dear to you."
+                },
+                {
+                    "name": "Growth and Rebirth",
+                    "description": "Deal 30 or more damage in one turn using Jade Gust 15 times.",
+                    "quote": "When that day comes, seek all the light and wonder of this world, and fight."
+                },
+                {
+                    "name": "Path to the Timeless Isles",
+                    "description": "Complete 4 Heroic Bounties.",
+                    "quote": "Is it guidance you seek, my child? Come and ride with me, for there is much I wish you to see."
+                },
+                {
+                    "name": "Protecting the Vale",
+                    "description": "Deal 900 damage with Dragons with a team that includes this Mercenary.",
+                    "quote": "Your emotions cloud you. You must learn to free yourself of these burdens."
+                },
+                {
+                    "name": "All-encompassing Jade",
+                    "description": "Complete 6 Bounties.",
+                    "quote": "We live together, or we die together."
+                },
+                {
+                    "name": "Knowing is Doing",
+                    "description": "Deal 500 damage to Heroic bosses.",
+                    "quote": "Look beyond yourself."
+                },
+                {
+                    "name": "Jadefire Walk with Me",
+                    "description": "Block 40 damage using Jadeflame Buffet.",
+                    "quote": "The cycle of life and death is clear—it neither begins nor ends with us."
+                },
+                {
+                    "name": "Test of Wisdom and Faith",
+                    "description": "Deal 450 to Heroic Bosses.",
+                    "quote": "Your enemies will peer into your soul and use your darkest fears against you. Resist them."
+                }
+            ]
         }
     }
 }
