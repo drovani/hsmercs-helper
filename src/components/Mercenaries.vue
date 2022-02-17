@@ -1,17 +1,26 @@
 <template>
-  <section class="px-2">
+  <section
+    class="px-2 max-w-[400px] sm:max-w-[800px] lg:max-w-[1200px] xl:max-w-[1600px] 2xl:max-w-[2000px]"
+    @click.stop
+  >
     <h1 class="text-2xl font-bold m-4 md:m-8">Collectable Mercenaries</h1>
+    <div v-if="selectedMerc">
+      <MercenaryDetails
+        :merc-name="selectedMerc"
+        :collected-merc="getCollectedMerc(selectedMerc)"
+        v-bind="mercenaries[selectedMerc]"
+        class="mx-auto"
+      />
+    </div>
     <div
-      class="text-white font-bold text-xl mb-1 border-b-8 justify-center flex gap-2 md:gap-4 lg:gap-8"
+      class="text-white font-bold text-xl mb-1 border-b-8 justify-center flex gap-2 md:gap-4 lg:gap-8 sticky top-0 bg-white"
       :class="[filterBorderColor]"
     >
       <div class="flex lg:gap-2">
         <div
-          class="bg-gray-800 rounded-t-md px-2 cursor-pointer opacity-50 whitespace-nowrap"
-          :class="{
-            'opacity-100': showingAllMercenaries,
-          }"
-          @click="showAllMercenaries"
+          class="rounded-t-md px-2 cursor-pointer whitespace-nowrap bg-gray-800 opacity-50"
+          :class="{ 'opacity-100': showingAllMercenaries }"
+          @click.prevent="showAllMercenaries"
         >
           <span class="inline md:hidden">All</span>
           <span class="hidden md:inline">All Mercenaries</span>
@@ -108,6 +117,7 @@ TASK_DECREMENT,
 TASK_INCREMENT
 } from "../store/types";
 import MercenaryCard from "./MercenaryCard.vue";
+import MercenaryDetails from "./MercenaryDetails.vue";
 import RarityFilter from "./RarityFilter.vue";
 import RoleFilter from "./RoleFilter.vue";
 
@@ -123,6 +133,7 @@ export default defineComponent({
           direction: "ascending",
         },
       } as MercFilter,
+      selectedMerc: "",
     };
   },
   computed: {
@@ -272,6 +283,14 @@ export default defineComponent({
       this[SET_MERC_LIBRARY](mercjson.mercenaries);
     }
   },
-  components: { MercenaryCard, RoleFilter, RarityFilter },
+  created() {
+    this.$watch(
+      () => this.$route.params,
+      (toParams): void => {
+        this.selectedMerc = toParams.mercname;
+      }
+    );
+  },
+  components: { MercenaryCard, RoleFilter, RarityFilter, MercenaryDetails },
 });
 </script>

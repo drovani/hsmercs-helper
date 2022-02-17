@@ -2,11 +2,13 @@
   <div
     v-for="role in Roles"
     :key="role"
-    class="rounded-t-md px-2 gap-2 cursor-pointer opacity-50 flex justify-between flex-nowrap"
-    :class="[
-      'bg-' + role.toLowerCase(),
-      { 'opacity-100': enabledRoles.includes(role) },
-    ]"
+    class="rounded-t-md px-2 gap-2 cursor-pointer flex justify-between flex-nowrap"
+    :class="{
+      'bg-protector': role === 'Protector',
+      'bg-fighter': role === 'Fighter',
+      'bg-caster': role === 'Caster',
+      'bg-opacity-50': !isEnabled(role)
+    }"
     @click="$emit('filterRole', role)"
   >
     <img
@@ -17,27 +19,29 @@
     <div
       class="hidden md:block opacity-50"
       :class="{
-        'opacity-100': !enabledRoles.includes(role),
+        'opacity-100': !isEnabled(role),
       }"
     >
       <icon
-        :icon="[
-          'fas',
-          enabledRoles.includes(role) ? 'minus-circle' : 'plus-circle',
-        ]"
+        :icon="['fas', isEnabled(role) ? 'minus-circle' : 'plus-circle']"
         @click.stop="$emit('toggleRole', role)"
       />
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import { computed } from "vue";
 import { Role, Roles } from "../models/roles";
 
-defineProps({
+const props = defineProps({
   enabledRoles: {
     type: Array as () => Role[],
     default: [],
   },
+});
+
+const isEnabled = computed(() => (role: Role) => {
+  return props.enabledRoles.includes(role);
 });
 
 defineEmits<{

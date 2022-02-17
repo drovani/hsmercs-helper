@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid justify-center text-center text-xl sm:text-base"
+    class="grid justify-center text-center text-lg md:text-base"
     :class="{ 'grid-cols-3': $slots.default, 'grid-cols-2': !$slots.default }"
   >
     <button
