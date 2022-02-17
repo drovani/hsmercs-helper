@@ -1,6 +1,7 @@
 <template>
   <section
     class="px-2 max-w-[400px] sm:max-w-[800px] lg:max-w-[1200px] xl:max-w-[1600px] 2xl:max-w-[2000px]"
+    @click.stop
   >
     <h1 class="text-2xl font-bold m-4 md:m-8">Collectable Mercenaries</h1>
     <div v-if="selectedMerc">
@@ -17,8 +18,8 @@
     >
       <div class="flex lg:gap-2">
         <div
-          class="rounded-t-md px-2 cursor-pointer whitespace-nowrap"
-          :class="showingAllMercenaries ? 'bg-gray-800' : 'bg-gray-400'"
+          class="rounded-t-md px-2 cursor-pointer whitespace-nowrap bg-gray-800 opacity-50"
+          :class="{ 'opacity-100': showingAllMercenaries }"
           @click.prevent="showAllMercenaries"
         >
           <span class="inline md:hidden">All</span>
