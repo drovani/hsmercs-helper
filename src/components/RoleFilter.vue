@@ -2,10 +2,11 @@
   <div
     v-for="role in Roles"
     :key="role"
-    class="rounded-t-md px-2 gap-2 cursor-pointer opacity-50 flex justify-between flex-nowrap"
+    class="rounded-t-md px-2 gap-2 cursor-pointer flex justify-between flex-nowrap"
     :class="[
-      'bg-' + role.toLowerCase(),
-      { 'opacity-100': enabledRoles.includes(role) },
+      enabledRoles.includes(role)
+        ? 'bg-' + role.toLocaleLowerCase()
+        : 'bg-' + role.toLocaleLowerCase() + '-light',
     ]"
     @click="$emit('filterRole', role)"
   >

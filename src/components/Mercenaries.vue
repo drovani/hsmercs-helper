@@ -12,16 +12,14 @@
       />
     </div>
     <div
-      class="text-white font-bold text-xl mb-1 border-b-8 justify-center flex gap-2 md:gap-4 lg:gap-8"
+      class="text-white font-bold text-xl mb-1 border-b-8 justify-center flex gap-2 md:gap-4 lg:gap-8 sticky top-0 bg-white"
       :class="[filterBorderColor]"
     >
       <div class="flex lg:gap-2">
         <div
-          class="bg-gray-800 rounded-t-md px-2 cursor-pointer opacity-50 whitespace-nowrap"
-          :class="{
-            'opacity-100': showingAllMercenaries,
-          }"
-          @click="showAllMercenaries"
+          class="rounded-t-md px-2 cursor-pointer whitespace-nowrap"
+          :class="showingAllMercenaries ? 'bg-gray-800' : 'bg-gray-400'"
+          @click.prevent="showAllMercenaries"
         >
           <span class="inline md:hidden">All</span>
           <span class="hidden md:inline">All Mercenaries</span>
