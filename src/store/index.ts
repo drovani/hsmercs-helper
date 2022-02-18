@@ -21,5 +21,6 @@ export const store = createStore<State>({
 })
 
 export function useStore() {
+    console.debug(key);
     return vuexUseStore(key);
 }

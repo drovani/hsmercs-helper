@@ -6,7 +6,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import './index.css';
 import { routes } from "./routes";
-import { store } from './store';
+import { key, store } from './store';
 
 
 library.add(faArrowCircleUp, faArrowCircleDown, faCheck, faCheckDouble, faPlus,
@@ -21,6 +21,6 @@ const router = createRouter({
 
 createApp(App)
     .component('icon', FontAwesomeIcon)
-    .use(store)
+    .use(store, key)
     .use(router)
     .mount('#app')

@@ -15,6 +15,7 @@ module.exports = {
         holy: colors.amber[100],
         nature: colors.green[100],
         shadow: colors.zinc[100],
+        'black-.2': 'rgba(0,0,0,.2)'
       },
     },
     screens: {

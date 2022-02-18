@@ -18,8 +18,7 @@
       :show-increment="activeTier < 5"
       :show-decrement="activeTier > 1"
       :class="{
-        'opacity-20': activeTier >= 5,
-        '-z-10': activeTier >= 5,
+        'text-black-.2': activeTier >= 5,
       }"
       title="Ability Active Tier"
       @increment="$emit('increment')"

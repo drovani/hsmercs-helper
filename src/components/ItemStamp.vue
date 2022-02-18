@@ -7,8 +7,7 @@
       :show-increment="activeTier < 4"
       :show-decrement="activeTier > 4 - numTiers + 1"
       :class="{
-        'opacity-20': activeTier >= 4,
-        '-z-10': activeTier >= 4,
+        'text-black-.2': activeTier >= 4,
       }"
       title="Item Active Tier"
       @increment="$emit('increment')"
