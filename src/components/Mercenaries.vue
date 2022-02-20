@@ -107,27 +107,13 @@ import MercLibrary from "../models/mercLibrary";
 import { Rarities, Rarity } from "../models/rarities";
 import { Role, Roles } from "../models/roles";
 import mercjson from "../static/mercenaries.json";
-import {
-  ABILITY_DECREMENT,
-  ABILITY_INCREMENT,
-  ADD_MERC_TO_COLLECTION,
-  CLEAR_MERC_COLLECTION,
-  GET_COLLECTED_MERC,
-  GET_MERC_COLLECTION,
-  GET_MERC_LIBRARY,
-  ITEM_DECREMENT,
-  ITEM_INCREMENT,
-  SET_MERC_COLLECTION,
-  SET_MERC_LIBRARY,
-  TASK_DECREMENT,
-  TASK_INCREMENT,
-} from "../store/types";
 import MercenaryCard from "./MercenaryCard.vue";
 import MercenaryDetails from "./MercenaryDetails.vue";
 import RarityFilter from "./RarityFilter.vue";
 import RoleFilter from "./RoleFilter.vue";
-import { useStore } from "../store";
-const store = useStore();
+import { useMercStore } from "../stores/merc";
+
+const store = useMercStore();
 const route = useRoute();
 
 const filter = ref<MercFilter>({
@@ -141,7 +127,7 @@ const filter = ref<MercFilter>({
 const selectedMerc = ref("");
 
 const mercenaries = computed((): MercLibrary => {
-  return store.getters[GET_MERC_LIBRARY](filter.value);
+  return store.filteredLibrary(filter.value);
 });
 const showingAllMercenaries = computed((): boolean => {
   return (
@@ -182,7 +168,7 @@ function showAllMercenaries(): void {
   filter.value.rarities = [...Rarities];
 }
 function getCollectedMerc(mercName: string): CollectedMerc | undefined {
-  return store.getters[GET_COLLECTED_MERC](mercName);
+  return store.collection[mercName];
 }
 function filterRole(role: Role): void {
   filter.value.roles = [role];
@@ -218,32 +204,32 @@ function toggleSort(field: "name" | "tasks"): void {
   }
 }
 function abilityIncrement(mercName: string, abilityName: string): void {
-  store.dispatch(ABILITY_INCREMENT, { mercName, abilityName });
+  store.abilityIncrement(mercName, abilityName);
 }
 function abilityDecrement(mercName: string, abilityName: string): void {
-  store.dispatch(ABILITY_DECREMENT, { mercName, abilityName });
+  store.abilityDecrement(mercName, abilityName);
 }
 function itemIncrement(mercName: string, itemName: string): void {
-  store.dispatch(ITEM_INCREMENT, { mercName, itemName });
+  store.itemIncrement(mercName, itemName);
 }
 function itemDecrement(mercName: string, itemName: string): void {
-  store.dispatch(ITEM_DECREMENT, { mercName, itemName });
+  store.itemDecrement(mercName, itemName);
 }
 function taskIncrement(mercName: string): void {
-  store.dispatch(TASK_INCREMENT, { mercName });
+  store.taskIncrement(mercName);
 }
 function taskDecrement(mercName: string): void {
-  store.dispatch(TASK_DECREMENT, { mercName });
+  store.taskDecrement(mercName);
 }
 function addCollectedMerc(mercName: string): void {
-  store.commit(ADD_MERC_TO_COLLECTION, { mercName, mercCollected: true });
+  store.addMercToCollection(mercName, true);
 }
 function removeCollectedMerc(mercName: string): void {
-  store.commit(ADD_MERC_TO_COLLECTION, { mercName, mercCollected: false });
+  store.collection[mercName].collected = false;
 }
 function exportCollection() {
   const data = JSON.stringify({
-    collection: store.getters[GET_MERC_COLLECTION],
+    collection: store.collection,
   });
   const blob = new Blob([data], { type: "text/plain" }),
     a = document.createElement("a");
@@ -253,18 +239,16 @@ function exportCollection() {
   window.URL.revokeObjectURL(a.href);
 }
 function importCollection(event: InputEvent) {
-  store.dispatch(SET_MERC_COLLECTION, {
-    jsonMercCollectionFile: (<HTMLInputElement>event.target).files[0],
-  });
+  store.setMercCollection((<HTMLInputElement>event.target).files[0]);
 }
 function clearCollection() {
   if (confirm("Clear Mercenary Collection?")) {
-    store.dispatch(CLEAR_MERC_COLLECTION);
+    store.collection = {};
   }
 }
 onMounted(() => {
-  if (Object.keys(mercenaries ?? {}).length === 0) {
-    store.dispatch(SET_MERC_LIBRARY, mercjson.mercenaries);
+  if (Object.keys(mercenaries.value ?? {}).length === 0) {
+    store.setMercLibrary(mercjson.mercenaries);
   }
 });
 watch(
@@ -272,6 +256,8 @@ watch(
   (toParams): void => {
     if (typeof toParams?.mercname === "string") {
       selectedMerc.value = toParams.mercname;
+    }else{
+      selectedMerc.value = "";
     }
   },
   { immediate: true }

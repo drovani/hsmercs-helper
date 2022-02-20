@@ -1,36 +1,29 @@
+import { createTestingPinia } from '@pinia/testing';
 import { shallowMount } from "@vue/test-utils";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, fn, it } from "vitest";
 import { useRouter } from "vue-router";
 import Mercenaries from "../../src/components/Mercenaries.vue";
-import { store } from "../../src/store";
-import { GET_MERC_LIBRARY } from "../../src/store/types";
 import { BlademasterSamuro, JainaProudmoore, KingMukla } from "../constants";
 
 describe("Mercenaries.vue component", () => {
     let mercvue: typeof Mercenaries;
 
     beforeEach(() => {
-        store.state.mercenaries = {
-            "King Mukla": { ...KingMukla },
-            "Blademaster Samuro": { ...BlademasterSamuro },
-            "Jaina Proudmoore": { ...JainaProudmoore },
-        };
         mercvue = shallowMount(Mercenaries, {
             global: {
-                plugins: [store, useRouter()]
+                plugins: [createTestingPinia({
+                    initialState: {
+                        mercenaries: {
+                            "King Mukla": { ...KingMukla },
+                            "Blademaster Samuro": { ...BlademasterSamuro },
+                            "Jaina Proudmoore": { ...JainaProudmoore },
+                        }
+                    }, createSpy: fn
+                }), useRouter()]
             }
         });
     })
 
-    it('gets mercenaries collection', () => {
-        const result = mercvue.vm[GET_MERC_LIBRARY]();
-
-        expect(result).to.eql({
-            "King Mukla": KingMukla,
-            "Blademaster Samuro": BlademasterSamuro,
-            "Jaina Proudmoore": JainaProudmoore
-        })
-    });
     it('updates filters by role', () => {
         expect(mercvue.vm.filter.roles).to.have.members(["Protector", "Fighter", "Caster"]);
 
@@ -45,6 +38,7 @@ describe("Mercenaries.vue component", () => {
         mercvue.vm.showAllMercenaries();
 
         expect(mercvue.vm.filter.roles).to.have.members(["Fighter", "Protector", "Caster"]);
+        expect(mercvue.vm.filter.rarites).to.have.members(["Rare", "Epic", "Legendary"])
     });
     it('toggleRole enables/disables a role', () => {
         expect(mercvue.vm.filter.roles).to.have.members(["Fighter", "Protector", "Caster"]);

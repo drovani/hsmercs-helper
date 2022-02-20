@@ -20,7 +20,7 @@ export interface MercAbility {
     description: string,
     speed?: number,
     cooldown?: number,
-    tiers: [any],
+    tiers: any[],
     [name: string]: any
 }
 
