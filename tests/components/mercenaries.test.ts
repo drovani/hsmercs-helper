@@ -1,5 +1,6 @@
 import { shallowMount } from "@vue/test-utils";
 import { beforeEach, describe, expect, it } from "vitest";
+import { useRouter } from "vue-router";
 import Mercenaries from "../../src/components/Mercenaries.vue";
 import { store } from "../../src/store";
 import { GET_MERC_LIBRARY } from "../../src/store/types";
@@ -16,7 +17,7 @@ describe("Mercenaries.vue component", () => {
         };
         mercvue = shallowMount(Mercenaries, {
             global: {
-                plugins: [store]
+                plugins: [store, useRouter()]
             }
         });
     })

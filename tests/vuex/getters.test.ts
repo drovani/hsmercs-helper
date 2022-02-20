@@ -120,12 +120,15 @@ describe("Mercenary Data Getters", () => {
         expect(Object.keys(state.mercenaries)).to.have.ordered.members(["King Mukla", "Blademaster Samuro", "Jaina Proudmoore"]);
 
         const filter: MercFilter = {
-            sort: "AZ"
+            sort:{
+                field: "name",
+                direction: "ascending"
+            }
         };
         const resultaz = getters[GET_MERC_LIBRARY](state)(filter);
         expect(Object.keys(resultaz)).to.have.ordered.members(["Blademaster Samuro", "Jaina Proudmoore", "King Mukla"]);
 
-        filter.sort = "ZA";
+        filter.sort.direction = "descending";
         const resultza = getters[GET_MERC_LIBRARY](state)(filter);
         expect(Object.keys(resultza)).to.have.ordered.members(["King Mukla", "Jaina Proudmoore", "Blademaster Samuro"]);
     })
