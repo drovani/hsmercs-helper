@@ -1,3 +1,4 @@
+import { useStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
 import CollectedMerc from "../models/collectedMerc";
 import MercCollection from "../models/mercCollection";
@@ -11,10 +12,10 @@ interface State {
 
 export const useMercStore = defineStore('merc', {
     state: (): State => {
-        return {
+        return useStorage<State>('merc', {
             mercenaries: {},
             collection: {}
-        }
+        }).value;
     },
     getters: {
         filteredLibrary: (state) => {
