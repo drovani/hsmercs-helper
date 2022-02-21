@@ -18,7 +18,7 @@
       >
         <div class="cursor-pointer w-4">
           <icon
-            v-if="collectedMerc ? collectedMerc.collected : false"
+            v-if="collected"
             :icon="['fas', 'check']"
             @click="$emit('removeFromCollection', mercName)"
             title="Remove from collection."
@@ -31,7 +31,9 @@
           />
         </div>
         <h2 class="font-bold text-xl whitespace-nowrap flex-1">
-          <TaillessWrap :text="mercName" />
+          <router-link :to="'/merc/' + mercName" replace>
+            <TaillessWrap :text="mercName" />
+          </router-link>
         </h2>
         <RoleVue :role="role" />
       </div>
@@ -44,31 +46,26 @@
     </div>
     <div class="grid grid-cols-3 gap-x-1">
       <AbilityStamp
-        v-for="(ability, abilityName) in abilitiesOrdered"
-        :key="abilityName"
-        :ability="ability"
-        :ability-name="(abilityName as string)"
-        :active-tier="abilityActiveTier(abilityName as string)"
+        v-for="ability in abilitiesOrdered"
+        :key="ability.abilityName"
+        v-bind="ability"
         class="rounded"
-        @increment="$emit('abilityIncrement', mercName, abilityName as string)"
-        @decrement="$emit('abilityDecrement', mercName, abilityName as string)"
+        @increment="$emit('abilityIncrement', mercName, ability.abilityName)"
+        @decrement="$emit('abilityDecrement', mercName, ability.abilityName)"
       />
     </div>
     <div class="grid grid-cols-3 gap-x-1">
       <ItemStamp
-        v-for="(item, itemName) in equipmentOrdered"
-        :key="itemName"
-        :item="item"
-        :item-name="(itemName as string)"
-        :num-tiers="itemNumTiers(itemName as string)"
-        :active-tier="itemActiveTier(itemName as string)"
-        @increment="$emit('itemIncrement', mercName, itemName as string)"
-        @decrement="$emit('itemDecrement', mercName, itemName as string)"
+        v-for="item in equipmentOrdered"
+        :key="item.itemName"
+        v-bind="item"
+        @increment="$emit('itemIncrement', mercName, item.itemName)"
+        @decrement="$emit('itemDecrement', mercName, item.itemName)"
       />
     </div>
     <div>
       <TaskStamp
-        :tasks-completed="collectedMerc?.tasksCompleted ?? 0"
+        :tasks-completed="tasksCompleted"
         :tasks="tasks"
         class="h-12 mx-2"
         @task-complete="$emit('taskIncrement', mercName)"
@@ -78,9 +75,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Rarity } from "../models/rarities";
-import { Role } from "../models/roles";
-import { Tribe } from "../models/tribes";
 import AbilityStamp from "./AbilityStamp.vue";
 import Attack from "./Attack.vue";
 import Health from "./Health.vue";
@@ -90,50 +84,34 @@ import RoleVue from "./Role.vue";
 import TribeVue from "./Tribe.vue";
 import TaillessWrap from "./TaillessWrap.vue";
 import TaskStamp from "./TaskStamp.vue";
-import CollectedMerc from "../models/collectedMerc";
-import { MercTask, MercAbility } from "../models/mercenary";
+import {
+  MercAbility,
+  MercItem,
+  MercTask,
+} from "../models/mercenary";
 import { computed } from "vue";
+import { Role ,Rarity,Tribe} from "../models/constants";
 
 const props = defineProps({
+  mercName: String,
   role: String as () => Role,
-  tribe: String as () => Tribe | null,
   rarity: String as () => Rarity,
+  tribe: String as () => Tribe,
   attack: Number,
   health: Number,
-  abilities: Object as () => { [name: string]: MercAbility },
-  equipment: Object,
+  abilities: Array as () => MercAbility[],
+  equipment: Array as () => MercItem[],
   tasks: Array as () => MercTask[],
-  mercName: {
-    type: String,
-    required: true,
-  },
-  collectedMerc: Object as () => CollectedMerc,
+  tasksCompleted: Number,
+  collected: Boolean,
 });
 
 const abilitiesOrdered = computed(() => {
-  return Object.fromEntries(
-    Object.entries(props.abilities).sort((a, b) => a[1].unlock - b[1].unlock)
-  );
+  return props.abilities.sort((a, b) => a.unlock - b.unlock);
 });
 const equipmentOrdered = computed(() => {
-  return Object.fromEntries(
-    Object.entries(props.equipment).sort((a, b) =>
-      a[1].position.localeCompare(b[1].position)
-    )
-  );
+  return props.equipment.sort((a, b) => a.position.localeCompare(b.position));
 });
-
-function abilityActiveTier(abilityName: string): number {
-  return props.collectedMerc?.abilities?.[abilityName] ?? 1;
-}
-function itemNumTiers(itemName: string): number {
-  return props.equipment[itemName].tiers?.length ?? 1;
-}
-function itemActiveTier(itemName: string): number {
-  return (
-    props.collectedMerc?.equipment?.[itemName] ?? 4 - itemNumTiers(itemName) + 1
-  );
-}
 
 defineEmits<{
   (event: "abilityIncrement", mercName: string, abilityName: string): void;

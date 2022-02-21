@@ -5,10 +5,16 @@
     <h1 class="text-2xl font-bold m-4 md:m-8">Collectable Mercenaries</h1>
     <div v-if="selectedMerc">
       <MercenaryDetails
-        :merc-name="selectedMerc"
-        :collected-merc="getCollectedMerc(selectedMerc)"
-        v-bind="mercenaries[selectedMerc]"
+        v-bind="selectedMerc"
         class="mx-auto"
+        @ability-increment="abilityIncrement"
+        @ability-decrement="abilityDecrement"
+        @item-increment="itemIncrement"
+        @item-decrement="itemDecrement"
+        @add-to-collection="addCollectedMerc"
+        @remove-from-collection="removeCollectedMerc"
+        @task-increment="taskIncrement"
+        @task-decrement="taskDecrement"
       />
     </div>
     <div
@@ -74,10 +80,8 @@
     </div>
     <div class="flex flex-wrap gap-2 justify-center">
       <MercenaryCard
-        v-for="(merc, mercName) in mercenaries"
-        :key="mercName"
-        :merc-name="(mercName as string)"
-        :collected-merc="getCollectedMerc(mercName as string)"
+        v-for="merc in mercenaries"
+        :key="merc.mercName"
         v-bind="merc"
         @ability-increment="abilityIncrement"
         @ability-decrement="abilityDecrement"
@@ -101,17 +105,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { computed, onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
-import CollectedMerc from "../models/collectedMerc";
 import MercFilter from "../models/mercFilter";
-import MercLibrary from "../models/mercLibrary";
-import { Rarities, Rarity } from "../models/rarities";
-import { Role, Roles } from "../models/roles";
+import { Mercenary } from "../models/mercenary";
 import mercjson from "../static/mercenaries.json";
 import MercenaryCard from "./MercenaryCard.vue";
 import MercenaryDetails from "./MercenaryDetails.vue";
 import RarityFilter from "./RarityFilter.vue";
 import RoleFilter from "./RoleFilter.vue";
 import { useMercStore } from "../stores/merc";
+import { Roles, Rarities, Role, Rarity } from "../models/constants";
 
 const store = useMercStore();
 const route = useRoute();
@@ -124,9 +126,9 @@ const filter = ref<MercFilter>({
     direction: "ascending",
   },
 });
-const selectedMerc = ref("");
+const selectedMerc = ref<Mercenary>();
 
-const mercenaries = computed((): MercLibrary => {
+const mercenaries = computed((): Mercenary[] => {
   return store.filteredLibrary(filter.value);
 });
 const showingAllMercenaries = computed((): boolean => {
@@ -166,9 +168,6 @@ const sortTasksIcon = computed((): IconDefinition => {
 function showAllMercenaries(): void {
   filter.value.roles = [...Roles];
   filter.value.rarities = [...Rarities];
-}
-function getCollectedMerc(mercName: string): CollectedMerc | undefined {
-  return store.collection[mercName];
 }
 function filterRole(role: Role): void {
   filter.value.roles = [role];
@@ -222,14 +221,14 @@ function taskDecrement(mercName: string): void {
   store.taskDecrement(mercName);
 }
 function addCollectedMerc(mercName: string): void {
-  store.addMercToCollection(mercName, true);
+  store.setCollectedForMerc(mercName, true);
 }
 function removeCollectedMerc(mercName: string): void {
-  store.collection[mercName].collected = false;
+  store.setCollectedForMerc(mercName, false);
 }
 function exportCollection() {
   const data = JSON.stringify({
-    collection: store.collection,
+    collection: store.collectionData,
   });
   const blob = new Blob([data], { type: "text/plain" }),
     a = document.createElement("a");
@@ -241,11 +240,6 @@ function exportCollection() {
 function importCollection(event: InputEvent) {
   store.setMercCollection((<HTMLInputElement>event.target).files[0]);
 }
-function clearCollection() {
-  if (confirm("Clear Mercenary Collection?")) {
-    store.collection = {};
-  }
-}
 onMounted(() => {
   if (Object.keys(mercenaries.value ?? {}).length === 0) {
     store.setMercLibrary(mercjson.mercenaries);
@@ -255,9 +249,11 @@ watch(
   () => route.params,
   (toParams): void => {
     if (typeof toParams?.mercname === "string") {
-      selectedMerc.value = toParams.mercname;
-    }else{
-      selectedMerc.value = "";
+      selectedMerc.value = mercenaries.value.find(
+        (m) => m.mercName === toParams.mercname
+      );
+    } else {
+      selectedMerc.value = undefined;
     }
   },
   { immediate: true }

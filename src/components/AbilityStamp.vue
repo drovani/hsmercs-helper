@@ -2,23 +2,23 @@
   <div
     class="flex flex-col border rounded text-sm sm:text-base text-center bg-gradient-to-t via-transparent"
     :class="{
-      'from-arcane': ability.spell_school === 'Arcane',
-      'from-fel': ability.spell_school === 'Fel',
-      'from-fire': ability.spell_school === 'Fire',
-      'from-frost': ability.spell_school === 'Frost',
-      'from-holy': ability.spell_school === 'Holy',
-      'from-nature': ability.spell_school === 'Nature',
-      'from-shadow': ability.spell_school === 'Shadow',
+      'from-arcane': spell_school === 'Arcane',
+      'from-fel': spell_school === 'Fel',
+      'from-fire': spell_school === 'Fire',
+      'from-frost': spell_school === 'Frost',
+      'from-holy': spell_school === 'Holy',
+      'from-nature': spell_school === 'Nature',
+      'from-shadow': spell_school === 'Shadow',
     }"
   >
     <div class="flex-1">
       <TaillessWrap :text="`${abilityName} ${activeTier}`" />
     </div>
     <UpDownButtons
-      :show-increment="activeTier < 5"
+      :show-increment="activeTier < MaxAbilityTiers"
       :show-decrement="activeTier > 1"
       :class="{
-        'text-black-.2': activeTier >= 5,
+        'text-black-.2': activeTier >= MaxAbilityTiers,
       }"
       title="Ability Active Tier"
       @increment="$emit('increment')"
@@ -31,30 +31,14 @@
 <script setup lang="ts">
 import UpDownButtons from "./UpDownButtons.vue";
 import TaillessWrap from "./TaillessWrap.vue";
-import { AbilityUpgradeCosts } from "../models/constants";
-import { computed } from "vue";
-import { MercAbility } from "../models/mercenary";
+import { SpellSchool } from "../models/constants";
+import { MaxAbilityTiers } from "../models/mercenary";
 
-const props = defineProps({
-  abilityName: {
-    type: String,
-    required: true,
-  },
-  ability: {
-    type: Object as () => MercAbility,
-    required: true,
-  },
-  activeTier: {
-    type: Number,
-    required: true,
-  },
-});
-
-const costToMax = computed(() => {
-  return AbilityUpgradeCosts.slice(props.activeTier).reduce(
-    (c, p) => (c += p),
-    0
-  );
+defineProps({
+  abilityName: String,
+  spell_school: String as () => SpellSchool,
+  activeTier: Number,
+  costToMax: Number,
 });
 
 defineEmits<{ (event: "increment"): void; (event: "decrement"): void }>();

@@ -1,46 +1,49 @@
-import { useStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
-import CollectedMerc from "../models/collectedMerc";
-import MercCollection from "../models/mercCollection";
+import { MaxAbilityTiers, MaxCompletedTasks, MaxItemTiers, MercAbility, Mercenary, MercItem } from "../models/mercenary";
 import MercFilter from "../models/mercFilter";
-import MercLibrary from "../models/mercLibrary";
+import { MercLibrary } from "../models/mercLibrary";
+import { ApplyCollectedMerc, HydrateMercenary } from "../utilities/mercenary";
 
-interface State {
-    mercenaries: MercLibrary;
-    collection: MercCollection;
+export interface State {
+    mercenaries: Mercenary[];
 }
 
-export const useMercStore = defineStore('merc', {
+export const useMercStore = defineStore('mercs', {
     state: (): State => {
-        return useStorage<State>('merc', {
-            mercenaries: {},
-            collection: {}
-        }).value;
+        return {
+            mercenaries: []
+        };
     },
     getters: {
         filteredLibrary: (state) => {
-            return (filter?: MercFilter): MercLibrary => {
+            return (filter?: MercFilter): Mercenary[] => {
                 if (filter === undefined) {
-                    return state.mercenaries;
+                    return state.mercenaries.sort((a, b) => a.mercName < b.mercName ? -1 : 1);
                 }
 
-                let mercs = Object.entries(state.mercenaries);
+                let mercs = state.mercenaries;
 
                 if (Array.isArray(filter.roles)) {
-                    mercs = mercs.filter(m => filter.roles.includes(m[1].role));
+                    mercs = mercs.filter(m => filter.roles.includes(m.role));
                 }
                 if (Array.isArray(filter.rarities)) {
-                    mercs = mercs.filter(m => filter.rarities.includes(m[1].rarity));
+                    mercs = mercs.filter(m => filter.rarities.includes(m.rarity));
                 }
                 if (Array.isArray(filter.tribes)) {
-                    mercs = mercs.filter(m => filter.tribes.includes(m[1].tribe));
+                    mercs = mercs.filter(m => filter.tribes.includes(m.tribe));
                 }
 
                 if (filter.sort !== undefined) {
                     if (filter.sort.field === "name") {
-                        mercs.sort((a, b) => a[0] < b[0] ? -1 : 1);
+                        mercs.sort((a, b) => a.mercName < b.mercName ? -1 : 1);
                     } else if (filter.sort.field === "tasks") {
-                        mercs.sort((a, b) => (state.collection[a[0]]?.tasksCompleted ?? -1) - (state.collection[b[0]]?.tasksCompleted ?? -1));
+                        mercs.sort((a, b) => {
+                            if (a.tasksCompleted == b.tasksCompleted) {
+                                return a.mercName < b.mercName ? -1 : 1
+                            } else {
+                                return a.tasksCompleted < b.tasksCompleted ? -1 : 1
+                            }
+                        });
                     }
 
                     if (filter.sort.direction === "descending") {
@@ -48,98 +51,128 @@ export const useMercStore = defineStore('merc', {
                     }
                 }
 
-                return Object.fromEntries(mercs);
+                return mercs;
             }
         },
+        collectionData: (state) => {
+            const collected = state.mercenaries.filter(m => m.collected);
+            const result = {};
+            collected.forEach(c => result[c.mercName] = c.ExtractData());
+            return result;
+        },
+        getAbility: (state) => (mercName: string, abilityName: string): MercAbility => {
+            return state.mercenaries.find(m => m.mercName === mercName).abilities.find(a => a.abilityName === abilityName);
+        },
+        getItem: (state) => (mercName: string, itemName: string): MercItem => {
+            return state.mercenaries.find(m => m.mercName === mercName).equipment.find(i => i.itemName === itemName);
+        }
+
     },
     actions: {
         setMercCollection(payload: File) {
             const reader = new FileReader();
             reader.onload = (e) => {
                 if (typeof e.target.result === "string") {
-                    const mercCollection = JSON.parse(e.target.result);
-                    this.collection = mercCollection.collection;
+                    const mercCollection = JSON.parse(e.target.result) as MercLibrary;
+                    // for(const merc of (this.mercenaries as Mercenary[])){
+                    //     if (typeof mercCollection[merc.mercName] !== "undefined"){
+                    //         merc.InjestData(mercCollection[merc.mercName]);
+                    //     }
+                    // }
+                    for (const collName in mercCollection.collection) {
+                        var merc = (this.mercenaries as Mercenary[]).find(m => m.mercName === collName);
+
+                        if (typeof merc === "undefined") {
+                            Error(`${collName} not found while setting collection data.`)
+                        }else{
+                            console.debug(typeof merc);
+                        }
+
+                        ApplyCollectedMerc(merc, mercCollection.collection[collName]);
+                    }
                 }
             }
             reader.readAsText(payload);
         },
-        setMercLibrary(payload: any) {
-            this.mercenaries = payload as MercLibrary;
-        },
-        addMercToCollection(mercName: string, mercCollected: CollectedMerc | boolean = false) {
-            if (this.collection[mercName]) {
-                if (typeof mercCollected === "boolean") {
-                    this.collection[mercName].collected = mercCollected;
-                } else {
-                    this.collection[mercName] = { ...mercCollected }
-                }
-            } else {
-                let merc: CollectedMerc;
-                if (typeof mercCollected === "boolean") {
-                    const fromLibrary = this.mercenaries[mercName];
-                    const abilities = Object.entries(fromLibrary.abilities).reduce((p, c) => { p[c[0]] = 1; return p }, {});
-                    const equipment = Object.entries(fromLibrary.equipment).reduce((p, c) => { p[c[0]] = 4 - (c[1].tiers?.length ?? 1) + 1; return p; }, {});
-                    merc = {
-                        level: 30,
-                        collected: mercCollected,
-                        tasksCompleted: 0,
-                        abilities,
-                        equipment,
-                        itemEquipped: null
-                    };
-                } else {
-                    merc = { ...mercCollected };
-                }
-                this.collection[mercName] = merc;
+        setMercLibrary(payload: MercLibrary) {
+            const mercs = [] as Mercenary[];
+            for (const mercName in payload) {
+                const newmerc = HydrateMercenary(mercName, payload[mercName]);
+                mercs.push(newmerc);
             }
+            this.mercenaries = mercs;
+        },
+        setCollectedForMerc(mercName: string, collected: boolean) {
+            const merc = (this as State).mercenaries.find(m => m.mercName === mercName);
+
+            if (typeof merc === undefined) {
+                Error(`${mercName} not found while setting collected.`)
+            }
+
+            merc.collected = collected;
         },
         abilityIncrement(mercName: string, abilityName: string) {
-            if (!this.collection[mercName]) {
-                this.addMercToCollection(mercName);
+            const ability = (this as State).mercenaries.find(m => m.mercName === mercName)?.abilities.find(a => a.abilityName === abilityName);
+
+            if (typeof ability === undefined) {
+                Error(`${mercName}:${abilityName} not found while incrementing ability.`);
             }
-            if (this.collection[mercName].abilities[abilityName] < 5) {
-                this.collection[mercName].abilities[abilityName]++;
+
+            if (ability.activeTier < MaxAbilityTiers) {
+                ability.activeTier++;
             }
         },
         abilityDecrement(mercName: string, abilityName: string) {
-            if (!this.collection[mercName]) {
-                this.addMercToCollection(mercName);
+            const ability = (this as State).mercenaries.find(m => m.mercName === mercName)?.abilities.find(a => a.abilityName === abilityName);
+
+            if (typeof ability === undefined) {
+                Error(`${mercName}:${abilityName} not found while decrementing ability.`);
             }
-            if (this.collection[mercName].abilities[abilityName] > 1) {
-                this.collection[mercName].abilities[abilityName]--;
+
+            if (ability.activeTier > 1) {
+                ability.activeTier--;
             }
         },
         itemIncrement(mercName: string, itemName: string) {
-            if (!this.collection[mercName]) {
-                this.addMercToCollection(mercName);
+            const item = (this as State).mercenaries.find(m => m.mercName === mercName)?.equipment.find(a => a.itemName === itemName);
+
+            if (typeof item === undefined) {
+                Error(`${mercName}:${itemName} not found while incrementing item.`);
             }
-            if (this.collection[mercName].equipment[itemName] < 5) {
-                this.collection[mercName].equipment[itemName]++;
+
+            if (item.activeTier < MaxItemTiers) {
+                item.activeTier++;
             }
         },
         itemDecrement(mercName: string, itemName: string) {
-            if (!this.collection[mercName]) {
-                this.addMercToCollection(mercName);
+            const item = (this as State).mercenaries.find(m => m.mercName === mercName)?.equipment.find(a => a.itemName === itemName);
+
+            if (typeof item === undefined) {
+                Error(`${mercName}:${itemName} not found while incrementing item.`);
             }
-            const numTiers = this.mercenaries[mercName].equipment[itemName].tiers?.length ?? 1;
-            if (this.collection[mercName].equipment[itemName] > 4 - numTiers + 1) {
-                this.collection[mercName].equipment[itemName]--;
+
+            if (item.activeTier > MaxItemTiers - item.tiers.length + 1) {
+                item.activeTier--;
             }
         },
         taskIncrement(mercName) {
-            if (!this.collection[mercName]) {
-                this.addMercToCollection(mercName);
+            const merc = (this as State).mercenaries.find(m => m.mercName === mercName);
+
+            if (typeof merc === undefined) {
+                Error(`${mercName} not found while incrementing tasksCompleted.`)
             }
-            if (this.collection[mercName].tasksCompleted < 18) {
-                this.collection[mercName].tasksCompleted++;
+            if (merc.tasksCompleted < MaxCompletedTasks) {
+                merc.tasksCompleted++;
             }
         },
         taskDecrement(mercName) {
-            if (!this.collection[mercName]) {
-                this.addMercToCollection(mercName);
+            const merc = (this as State).mercenaries.find(m => m.mercName === mercName);
+
+            if (typeof merc === undefined) {
+                Error(`${mercName} not found while decrementing tasksCompleted.`)
             }
-            if (this.collection[mercName].tasksCompleted > 0) {
-                this.collection[mercName].tasksCompleted--;
+            if (merc.tasksCompleted > 0) {
+                merc.tasksCompleted--;
             }
         },
     }

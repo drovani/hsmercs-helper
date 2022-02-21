@@ -1,6 +1,5 @@
-import Mercenary from "../src/models/mercenary";
 
-export const KingMukla: Mercenary = {
+export const KingMukla = {
     role: "Protector",
     rarity: "Epic",
     tribe: "Beast",

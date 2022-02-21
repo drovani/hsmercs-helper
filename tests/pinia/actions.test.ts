@@ -1,77 +1,95 @@
 import { createPinia, setActivePinia } from "pinia";
 import { beforeEach, describe, expect, it } from "vitest";
+import { MaxAbilityTiers, MaxItemTiers, Mercenary } from "../../src/models/mercenary";
 import { useMercStore } from "../../src/stores/merc";
 import { BlademasterSamuro, JainaProudmoore, KingMukla } from "../constants";
 
-describe('Mercenary Data Actions', () => {
+describe('mercStore Actions', () => {
 
     beforeEach(() => {
         setActivePinia(createPinia());
         const store = useMercStore();
         store.$state = {
-            mercenaries: {
-                "King Mukla": { ...KingMukla },
-                "Blademaster Samuro": { ...BlademasterSamuro },
-                "Jaina Proudmoore": { ...JainaProudmoore },
-            },
-            collection: {}
-        };
-    })
+            mercenaries: [
+                new Mercenary("King Mukla", KingMukla),
+                new Mercenary("Blademaster Samuro", BlademasterSamuro),
+                new Mercenary("Jaina Proudmoore", JainaProudmoore)
+            ],
+        }
+    });
 
-    it('ability increment adds merc to collection when not already present', () => {
+
+
+    it('ability increment increases activeTier', () => {
         const store = useMercStore();
-        expect(store.collection["King Mukla"]).to.be.undefined;
+        expect(store.getAbility("King Mukla", "Banana Frenzy").activeTier).to.equal(1);
 
         store.abilityIncrement("King Mukla", "Banana Frenzy");
 
-        expect(store.collection["King Mukla"]).to.not.be.undefined;
-        expect(store.collection["King Mukla"].abilities["Banana Frenzy"]).to.equal(2);
+        expect(store.getAbility("King Mukla", "Banana Frenzy").activeTier).to.equal(2);
     })
-
-    it('ability decrement adds merc to collection when not already present, does not decrement', () => {
+    it('ability increment does not increase activeTier when at max', () => {
         const store = useMercStore();
-        expect(store.collection["King Mukla"]).to.be.undefined;
+        store.getAbility("King Mukla", "Banana Frenzy").activeTier = MaxAbilityTiers;
+
+        store.abilityIncrement("King Mukla", "Banana Frenzy");
+        expect(store.getAbility("King Mukla", "Banana Frenzy").activeTier).to.equal(5);
+    })
+    it('ability decrement decreases activeTier', () => {
+        const store = useMercStore();
+        store.getAbility("King Mukla", "Banana Frenzy").activeTier = 4;
 
         store.abilityDecrement("King Mukla", "Banana Frenzy");
 
-        expect(store.collection["King Mukla"]).to.not.be.undefined;
-        expect(store.collection["King Mukla"].abilities["Banana Frenzy"]).to.equal(1);
+        expect(store.getAbility("King Mukla", "Banana Frenzy").activeTier).to.equal(3);
+    })
+    it('ability decrement does not decrease activeTier when at min', () => {
+        const store = useMercStore();
+        expect(store.getAbility("King Mukla", "Banana Frenzy").activeTier).to.equal(1);
+
+        store.abilityDecrement("King Mukla", "Banana Frenzy");
+
+        expect(store.getAbility("King Mukla", "Banana Frenzy").activeTier).to.equal(1);
     })
 
-    it('item increment adds merc to collection when not already present', () => {
+
+    it('item increment increases activeTier', () => {
         const store = useMercStore();
-        expect(store.collection["King Mukla"]).to.be.undefined;
+        expect(store.getItem("King Mukla", "Refreshing Bananas").activeTier).to.equal(1);
 
         store.itemIncrement("King Mukla", "Refreshing Bananas");
 
-        expect(store.collection["King Mukla"]).to.not.be.undefined;
-        expect(store.collection["King Mukla"].equipment["Refreshing Bananas"]).to.equal(2);
+        expect(store.getItem("King Mukla", "Refreshing Bananas").activeTier).to.equal(2);
     })
-    it('item decrement adds merc to collection when not already present, does not decrement', () => {
+    it('item increment does not increase activeTier when at max', () => {
         const store = useMercStore();
-        expect(store.collection["King Mukla"]).to.be.undefined;
+        store.getItem("King Mukla", "Refreshing Bananas").activeTier = MaxItemTiers;
+
+        store.itemIncrement("King Mukla", "Refreshing Bananas");
+        expect(store.getItem("King Mukla", "Refreshing Bananas").activeTier).to.equal(4);
+    })
+    it('item decrement decreases activeTier', () => {
+        const store = useMercStore();
+        store.getItem("King Mukla", "Refreshing Bananas").activeTier = 4;
 
         store.itemDecrement("King Mukla", "Refreshing Bananas");
 
-        expect(store.collection["King Mukla"]).to.not.be.undefined;
-        expect(store.collection["King Mukla"].equipment["Refreshing Bananas"]).to.equal(1);
+        expect(store.getItem("King Mukla", "Refreshing Bananas").activeTier).to.equal(3);
     })
-    it('task increment adds merc to collection when not already present', () => {
+    it('item decrement does not decrease activeTier when at min', () => {
         const store = useMercStore();
-        expect(store.collection["King Mukla"]).to.be.undefined;
+        expect(store.getItem("King Mukla", "Refreshing Bananas").activeTier).to.equal(1);
 
-        store.taskIncrement("King Mukla");
+        store.itemDecrement("King Mukla", "Refreshing Bananas");
 
-        expect(store.collection["King Mukla"]).to.not.be.undefined;
-        expect(store.collection["King Mukla"].tasksCompleted).to.equal(1);
+        expect(store.getItem("King Mukla", "Refreshing Bananas").activeTier).to.equal(1);
     })
-    it('task decrement adds merc to collection when not already present, does not decrement', () => {
+    it('item decrement does not decrease activeTier when at min for partial item', () => {
         const store = useMercStore();
-        expect(store.collection["King Mukla"]).to.be.undefined;
+        expect(store.getItem("King Mukla", "Radioactive Bananas").activeTier).to.equal(3);
 
-        store.taskDecrement("King Mukla");
+        store.itemDecrement("King Mukla", "Radioactive Bananas");
 
-        expect(store.collection["King Mukla"]).to.not.be.undefined;
-        expect(store.collection["King Mukla"].tasksCompleted).to.equal(0);
+        expect(store.getItem("King Mukla", "Radioactive Bananas").activeTier).to.equal(3);
     })
 })

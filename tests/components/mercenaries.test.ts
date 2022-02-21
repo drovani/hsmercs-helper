@@ -5,7 +5,7 @@ import { useRouter } from "vue-router";
 import Mercenaries from "../../src/components/Mercenaries.vue";
 import { BlademasterSamuro, JainaProudmoore, KingMukla } from "../constants";
 
-describe("Mercenaries.vue component", () => {
+describe.skip("Mercenaries.vue component", () => {
     let mercvue: typeof Mercenaries;
 
     beforeEach(() => {

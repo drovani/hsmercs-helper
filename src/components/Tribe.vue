@@ -16,7 +16,7 @@ AllianceTribes,
 HordeTribes,
 NeutralTribes,
 Tribe
-} from "../models/tribes";
+} from "../models/constants";
 
 const props = defineProps({
   tribe: {
