@@ -21135,10 +21135,11 @@
                         }
                     ]
                 },
-                "Enveloing Mist": {
+                "Enveloping Mist": {
                     "unlock": 15,
                     "speed": 4,
                     "cooldown": 1,
+                    "spell_school": "Arcane",
                     "description": "Gain Taunt this turn, and +{0} Nature Damage. Repeat for each other friendly Dragon.",
                     "tiers": [
                         {
