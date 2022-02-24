@@ -4,11 +4,10 @@
       <TaillessWrap :text="`${itemName} ${activeTier}`" />
     </div>
     <UpDownButtons
-      :show-increment="activeTier < 4"
-      :show-decrement="activeTier > 4 - numTiers + 1"
+      :show-increment="activeTier < MaxItemTiers"
+      :show-decrement="activeTier > MaxItemTiers - tiers.length + 1"
       :class="{
-        'opacity-20': activeTier >= 4,
-        '-z-10': activeTier >= 4,
+        'text-black-.2': activeTier >= MaxItemTiers,
       }"
       title="Item Active Tier"
       @increment="$emit('increment')"
@@ -19,32 +18,15 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import { ItemUpgradeCosts } from "../models/constants";
 import TaillessWrap from "./TaillessWrap.vue";
 import UpDownButtons from "./UpDownButtons.vue";
+import { MaxItemTiers } from "../models/mercenary";
 
-const props = defineProps({
-  itemName: {
-    type: String,
-    require: true,
-  },
-  item: {
-    type: Object,
-    require: true,
-  },
-  activeTier: {
-    type: Number,
-    required: true,
-  },
-  numTiers: {
-    type: Number,
-    required: true,
-  },
-});
-
-const costToMax = computed(() => {
-  return ItemUpgradeCosts.slice(props.activeTier).reduce((p, c) => (c += p), 0);
+defineProps({
+  itemName: String,
+  activeTier: Number,
+  tiers: Array,
+  costToMax: Number,
 });
 
 defineEmits<{
