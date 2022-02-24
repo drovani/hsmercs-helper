@@ -1,18 +1,28 @@
-import { defineStore } from "pinia";
+import { defineStore, PiniaPluginContext } from "pinia";
+import { MercCollection } from "../models/mercCollection";
 import { MaxAbilityTiers, MaxCompletedTasks, MaxItemTiers, MercAbility, Mercenary, MercItem } from "../models/mercenary";
 import MercFilter from "../models/mercFilter";
 import { MercLibrary } from "../models/mercLibrary";
-import { ApplyCollectedMerc, HydrateMercenary } from "../utilities/mercenary";
+import { ApplyCollectedMerc, ExtractCollectedMerc, HydrateMercenary } from "../utilities/mercenary";
 
 export interface State {
     mercenaries: Mercenary[];
 }
 
-export const useMercStore = defineStore('mercs', {
+const MercStoreId = 'mercenaries' as const;
+
+export const useMercStore = defineStore('mercenaries', {
     state: (): State => {
-        return {
-            mercenaries: []
-        };
+        const fromStorage = JSON.parse(localStorage.getItem(MercStoreId));
+        const mercs = [];
+        if (fromStorage?.mercenaries) {
+            for (const merc of fromStorage?.mercenaries) {
+                mercs.push(HydrateMercenary(merc));
+            }
+        }
+        return ({
+            mercenaries: mercs
+        })
     },
     getters: {
         filteredLibrary: (state) => {
@@ -54,10 +64,10 @@ export const useMercStore = defineStore('mercs', {
                 return mercs;
             }
         },
-        collectionData: (state) => {
+        collectionData: (state): MercCollection => {
             const collected = state.mercenaries.filter(m => m.collected);
-            const result = {};
-            collected.forEach(c => result[c.mercName] = c.ExtractData());
+            const result: MercCollection = {};
+            collected.forEach(c => result[c.mercName] = ExtractCollectedMerc(c));
             return result;
         },
         getAbility: (state) => (mercName: string, abilityName: string): MercAbility => {
@@ -74,21 +84,14 @@ export const useMercStore = defineStore('mercs', {
             reader.onload = (e) => {
                 if (typeof e.target.result === "string") {
                     const mercCollection = JSON.parse(e.target.result) as MercLibrary;
-                    // for(const merc of (this.mercenaries as Mercenary[])){
-                    //     if (typeof mercCollection[merc.mercName] !== "undefined"){
-                    //         merc.InjestData(mercCollection[merc.mercName]);
-                    //     }
-                    // }
                     for (const collName in mercCollection.collection) {
                         var merc = (this.mercenaries as Mercenary[]).find(m => m.mercName === collName);
 
                         if (typeof merc === "undefined") {
-                            Error(`${collName} not found while setting collection data.`)
-                        }else{
-                            console.debug(typeof merc);
+                            throw new Error(`${collName} not found while setting collection data.`)
+                        } else {
+                            ApplyCollectedMerc(merc, mercCollection.collection[collName]);
                         }
-
-                        ApplyCollectedMerc(merc, mercCollection.collection[collName]);
                     }
                 }
             }
@@ -106,7 +109,7 @@ export const useMercStore = defineStore('mercs', {
             const merc = (this as State).mercenaries.find(m => m.mercName === mercName);
 
             if (typeof merc === undefined) {
-                Error(`${mercName} not found while setting collected.`)
+                throw new Error(`${mercName} not found while setting collected.`)
             }
 
             merc.collected = collected;
@@ -115,7 +118,7 @@ export const useMercStore = defineStore('mercs', {
             const ability = (this as State).mercenaries.find(m => m.mercName === mercName)?.abilities.find(a => a.abilityName === abilityName);
 
             if (typeof ability === undefined) {
-                Error(`${mercName}:${abilityName} not found while incrementing ability.`);
+                throw new Error(`${mercName}:${abilityName} not found while incrementing ability.`);
             }
 
             if (ability.activeTier < MaxAbilityTiers) {
@@ -126,7 +129,7 @@ export const useMercStore = defineStore('mercs', {
             const ability = (this as State).mercenaries.find(m => m.mercName === mercName)?.abilities.find(a => a.abilityName === abilityName);
 
             if (typeof ability === undefined) {
-                Error(`${mercName}:${abilityName} not found while decrementing ability.`);
+                throw new Error(`${mercName}:${abilityName} not found while decrementing ability.`);
             }
 
             if (ability.activeTier > 1) {
@@ -137,7 +140,7 @@ export const useMercStore = defineStore('mercs', {
             const item = (this as State).mercenaries.find(m => m.mercName === mercName)?.equipment.find(a => a.itemName === itemName);
 
             if (typeof item === undefined) {
-                Error(`${mercName}:${itemName} not found while incrementing item.`);
+                throw new Error(`${mercName}:${itemName} not found while incrementing item.`);
             }
 
             if (item.activeTier < MaxItemTiers) {
@@ -148,7 +151,7 @@ export const useMercStore = defineStore('mercs', {
             const item = (this as State).mercenaries.find(m => m.mercName === mercName)?.equipment.find(a => a.itemName === itemName);
 
             if (typeof item === undefined) {
-                Error(`${mercName}:${itemName} not found while incrementing item.`);
+                throw new Error(`${mercName}:${itemName} not found while incrementing item.`);
             }
 
             if (item.activeTier > MaxItemTiers - item.tiers.length + 1) {
@@ -159,7 +162,7 @@ export const useMercStore = defineStore('mercs', {
             const merc = (this as State).mercenaries.find(m => m.mercName === mercName);
 
             if (typeof merc === undefined) {
-                Error(`${mercName} not found while incrementing tasksCompleted.`)
+                throw new Error(`${mercName} not found while incrementing tasksCompleted.`)
             }
             if (merc.tasksCompleted < MaxCompletedTasks) {
                 merc.tasksCompleted++;
@@ -169,7 +172,7 @@ export const useMercStore = defineStore('mercs', {
             const merc = (this as State).mercenaries.find(m => m.mercName === mercName);
 
             if (typeof merc === undefined) {
-                Error(`${mercName} not found while decrementing tasksCompleted.`)
+                throw new Error(`${mercName} not found while decrementing tasksCompleted.`)
             }
             if (merc.tasksCompleted > 0) {
                 merc.tasksCompleted--;
@@ -177,3 +180,11 @@ export const useMercStore = defineStore('mercs', {
         },
     }
 })
+
+export function HSMercsPlugin({ store }: PiniaPluginContext) {
+    if (store.$id === MercStoreId) {
+        store.$subscribe((mutation, state: State) => {
+            localStorage.setItem(store.$id, JSON.stringify(state));
+        })
+    }
+}

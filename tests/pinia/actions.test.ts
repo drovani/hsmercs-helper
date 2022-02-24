@@ -1,7 +1,8 @@
 import { createPinia, setActivePinia } from "pinia";
 import { beforeEach, describe, expect, it } from "vitest";
-import { MaxAbilityTiers, MaxItemTiers, Mercenary } from "../../src/models/mercenary";
-import { useMercStore } from "../../src/stores/merc";
+import { MaxAbilityTiers, MaxItemTiers } from "../../src/models/mercenary";
+import { useMercStore } from "../../src/stores/mercenaries";
+import { HydrateMercenary } from "../../src/utilities/mercenary";
 import { BlademasterSamuro, JainaProudmoore, KingMukla } from "../constants";
 
 describe('mercStore Actions', () => {
@@ -11,9 +12,9 @@ describe('mercStore Actions', () => {
         const store = useMercStore();
         store.$state = {
             mercenaries: [
-                new Mercenary("King Mukla", KingMukla),
-                new Mercenary("Blademaster Samuro", BlademasterSamuro),
-                new Mercenary("Jaina Proudmoore", JainaProudmoore)
+                HydrateMercenary("King Mukla", KingMukla),
+                HydrateMercenary("Blademaster Samuro", BlademasterSamuro),
+                HydrateMercenary("Jaina Proudmoore", JainaProudmoore)
             ],
         }
     });

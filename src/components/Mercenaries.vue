@@ -112,7 +112,7 @@ import MercenaryCard from "./MercenaryCard.vue";
 import MercenaryDetails from "./MercenaryDetails.vue";
 import RarityFilter from "./RarityFilter.vue";
 import RoleFilter from "./RoleFilter.vue";
-import { useMercStore } from "../stores/merc";
+import { useMercStore } from "../stores/mercenaries";
 import { Roles, Rarities, Role, Rarity } from "../models/constants";
 
 const store = useMercStore();

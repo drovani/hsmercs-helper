@@ -7,6 +7,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import './index.css';
 import { routes } from "./routes";
+import { HSMercsPlugin } from "./stores/mercenaries";
 
 
 library.add(faArrowCircleUp, faArrowCircleDown, faCheck, faCheckDouble, faPlus,
@@ -19,8 +20,11 @@ const router = createRouter({
     routes
 });
 
+const pinia = createPinia();
+pinia.use(HSMercsPlugin);
+
 createApp(App)
     .component('icon', FontAwesomeIcon)
-    .use(createPinia())
+    .use(pinia)
     .use(router)
     .mount('#app')

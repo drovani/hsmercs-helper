@@ -3,29 +3,55 @@ import { CollectedMerc } from "../models/mercCollection";
 import { MaxItemTiers, MercAbility, Mercenary, MercItem } from "../models/mercenary";
 import { MercAbilityDto, MercenaryDto, MercItemDto } from "../models/mercLibrary";
 
-export function HydrateMercenary(mercName: string, merc: MercenaryDto): Mercenary {
+export function HydrateMercenary(merc: string | Mercenary, mercDto?: MercenaryDto): Mercenary {
+    const data = typeof merc === 'string' ? mercDto : merc;
+
     const hydrate: Mercenary = {
-        mercName: mercName,
-        role: merc.role as Role,
-        rarity: merc.rarity as Rarity,
-        tribe: merc.tribe as Tribe,
-        attack: merc.attack,
-        health: merc.health,
+        mercName: '',
+        role: data.role as Role,
+        rarity: data.rarity as Rarity,
+        tribe: data.tribe as Tribe,
+        attack: data.attack,
+        health: data.health,
         abilities: [],
         equipment: [],
         tasks: [],
         collected: false,
         costToMax: -1,
-        level: 1,
+        level: 0,
         tasksCompleted: 0
     };
-    for (const abilityName in merc.abilities) {
-        hydrate.abilities.push(HydrateAbility(abilityName, merc.abilities[abilityName]));
+
+    if (typeof merc === "object") {
+        hydrate.collected = merc.collected;
+        hydrate.level = merc.level;
+        hydrate.tasksCompleted = merc.tasksCompleted;
+        hydrate.mercName = merc.mercName;
+    } else {
+        hydrate.mercName = merc;
     }
-    for (const itemName in merc.equipment) {
-        hydrate.equipment.push(HydrateItem(itemName, merc.equipment[itemName]));
+
+    if (Array.isArray(data.abilities)) {
+        for (const ability of data.abilities) {
+            hydrate.abilities.push(HydrateAbility(ability))
+        }
+    } else {
+        for (const abilityName in data.abilities) {
+            hydrate.abilities.push(HydrateAbility(abilityName, data.abilities[abilityName]));
+        }
     }
-    for (const task of merc.tasks) {
+
+    if (Array.isArray(data.equipment)) {
+        for (const item of data.equipment) {
+            hydrate.equipment.push(HydrateItem(item));
+        }
+    } else {
+        for (const itemName in data.equipment) {
+            hydrate.equipment.push(HydrateItem(itemName, data.equipment[itemName]));
+        }
+    }
+
+    for (const task of data.tasks) {
         hydrate.tasks.push({
             description: task.description,
             name: task.name,
@@ -46,19 +72,21 @@ export function HydrateMercenary(mercName: string, merc: MercenaryDto): Mercenar
             const value = Reflect.get(target, prop, receiver);
             return typeof value === "function" ? value.bind(target) : value;
         }
-    });
+    });;
 }
 
-function HydrateAbility(abilityName: string, ability: MercAbilityDto): MercAbility {
+function HydrateAbility(ability: string | MercAbility, abilityDto?: MercAbilityDto): MercAbility {
+    const data = typeof ability === 'string' ? abilityDto : ability;
+
     const hydrate: MercAbility = {
-        abilityName: abilityName,
-        unlock: ability.unlock,
-        spell_school: ability.spell_school as SpellSchool,
-        speed: ability.speed,
-        description: ability.description,
-        tiers: [...ability.tiers],
-        cooldown: ability.cooldown,
-        activeTier: 1,
+        abilityName: typeof ability === 'string' ? ability : ability.abilityName,
+        unlock: data.unlock,
+        spell_school: data.spell_school as SpellSchool,
+        speed: data.speed,
+        description: data.description,
+        tiers: [...data.tiers],
+        cooldown: data.cooldown,
+        activeTier: typeof ability === 'string' ? 1 : ability.activeTier,
         costToMax: -1,
         unlocked: false
     };
@@ -74,19 +102,24 @@ function HydrateAbility(abilityName: string, ability: MercAbilityDto): MercAbili
         }
     })
 }
-function HydrateItem(itemName: string, item: MercItemDto): MercItem {
+function HydrateItem(item: string | MercItem, itemDto?: MercItemDto): MercItem {
+    const data = typeof item === 'string' ? itemDto : item;
+
+    const tiers = typeof item === 'string' ?
+        [...(itemDto.tiers ?? [itemDto.modifier ? { modifier: itemDto.modifier } : {}])]
+        : item.tiers;
+
     const hydrate: MercItem = {
-        itemName: itemName,
-        unlock: item.unlock,
-        position: item.position as "left" | "middle" | "right",
-        affects: item.affects,
-        description: item.description,
-        tiers: [...(item.tiers ?? [item.modifier ? { modifier: item.modifier } : {}])],
-        activeTier: -1,
+        itemName: typeof item === 'string' ? item : item.itemName,
+        unlock: data.unlock,
+        position: data.position as "left" | "middle" | "right",
+        affects: data.affects,
+        description: data.description,
+        tiers: tiers,
+        activeTier: typeof item === 'string' ? MaxItemTiers - tiers.length + 1 : item.activeTier,
         costToMax: -1,
         unlocked: false
     };
-    hydrate.activeTier = MaxItemTiers - hydrate.tiers.length + 1;
 
     return new Proxy<MercItem>(hydrate, {
         get(target, prop, receiver) {
@@ -102,22 +135,26 @@ function HydrateItem(itemName: string, item: MercItemDto): MercItem {
 
 
 
-export function ExtractCollectMerc(merc: Mercenary): CollectedMerc {
+export function ExtractCollectedMerc(merc: Mercenary): CollectedMerc {
     return {
         collected: merc.collected,
         level: merc.level,
         tasksCompleted: merc.tasksCompleted,
         itemEquipped: merc.itemEquipped,
-        abilities: merc.abilities.reduce((p, c) => p[c.abilityName] = merc.abilities.find(a => a.abilityName === c.abilityName).activeTier, {}),
-        equipment: merc.equipment.reduce((p, c) => p[c.itemName] = merc.equipment.find(i => i.itemName === c.itemName).activeTier, {})
+        abilities: merc.abilities.reduce((p, c) => { p[c.abilityName] = c.activeTier; return p; }, {}),
+        equipment: merc.equipment.reduce((p, c) => { p[c.itemName] = c.activeTier; return p; }, {})
     }
 }
 
 export function ApplyCollectedMerc(merc: Mercenary, data: CollectedMerc) {
-    merc.collected = data.collected;
-    merc.level = data.level;
-    merc.tasksCompleted = data.tasksCompleted;
-    merc.itemEquipped = data.itemEquipped;
-    merc.abilities.forEach(a => a.activeTier = data.abilities[a.abilityName]);
-    merc.equipment.forEach(i => i.activeTier = data.equipment[i.itemName]);
+    if (typeof merc === 'undefined') {
+        throw new Error('merc parameter is undefined.')
+    } else {
+        merc.collected = data.collected;
+        merc.level = data.level;
+        merc.tasksCompleted = data.tasksCompleted;
+        merc.itemEquipped = data.itemEquipped;
+        merc.abilities.forEach(a => a.activeTier = data.abilities[a.abilityName]);
+        merc.equipment.forEach(i => i.activeTier = data.equipment[i.itemName]);
+    }
 }
