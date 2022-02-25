@@ -1,4 +1,5 @@
 import { defineStore, PiniaPluginContext } from "pinia";
+import { AbilityUpgradeCosts, ItemUpgradeCosts } from "../models/constants";
 import { MercCollection } from "../models/mercCollection";
 import { MaxAbilityTiers, MaxCompletedTasks, MaxItemTiers, MercAbility, Mercenary, MercItem } from "../models/mercenary";
 import MercFilter from "../models/mercFilter";
@@ -11,7 +12,7 @@ export interface State {
 
 const MercStoreId = 'mercenaries' as const;
 
-export const useMercStore = defineStore('mercenaries', {
+export const useMercStore = defineStore(MercStoreId, {
     state: (): State => {
         const fromStorage = JSON.parse(localStorage.getItem(MercStoreId));
         const mercs = [];
@@ -76,7 +77,6 @@ export const useMercStore = defineStore('mercenaries', {
         getItem: (state) => (mercName: string, itemName: string): MercItem => {
             return state.mercenaries.find(m => m.mercName === mercName).equipment.find(i => i.itemName === itemName);
         }
-
     },
     actions: {
         setMercCollection(payload: File) {
@@ -123,6 +123,7 @@ export const useMercStore = defineStore('mercenaries', {
 
             if (ability.activeTier < MaxAbilityTiers) {
                 ability.activeTier++;
+                ability.costToMax = AbilityUpgradeCosts.slice(ability.activeTier).reduce((p, c) => p += c, 0);
             }
         },
         abilityDecrement(mercName: string, abilityName: string) {
@@ -134,6 +135,7 @@ export const useMercStore = defineStore('mercenaries', {
 
             if (ability.activeTier > 1) {
                 ability.activeTier--;
+                ability.costToMax = AbilityUpgradeCosts.slice(ability.activeTier).reduce((p, c) => p += c, 0);
             }
         },
         itemIncrement(mercName: string, itemName: string) {
@@ -145,6 +147,7 @@ export const useMercStore = defineStore('mercenaries', {
 
             if (item.activeTier < MaxItemTiers) {
                 item.activeTier++;
+                item.costToMax = ItemUpgradeCosts.slice(item.activeTier).reduce((p, c) => p += c, 0);
             }
         },
         itemDecrement(mercName: string, itemName: string) {
@@ -156,9 +159,10 @@ export const useMercStore = defineStore('mercenaries', {
 
             if (item.activeTier > MaxItemTiers - item.tiers.length + 1) {
                 item.activeTier--;
+                item.costToMax = ItemUpgradeCosts.slice(item.activeTier).reduce((p, c) => p += c, 0);
             }
         },
-        taskIncrement(mercName) {
+        taskIncrement(mercName: string) {
             const merc = (this as State).mercenaries.find(m => m.mercName === mercName);
 
             if (typeof merc === undefined) {
@@ -168,7 +172,7 @@ export const useMercStore = defineStore('mercenaries', {
                 merc.tasksCompleted++;
             }
         },
-        taskDecrement(mercName) {
+        taskDecrement(mercName: string) {
             const merc = (this as State).mercenaries.find(m => m.mercName === mercName);
 
             if (typeof merc === undefined) {

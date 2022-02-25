@@ -6,7 +6,7 @@ import { MercAbilityDto, MercenaryDto, MercItemDto } from "../models/mercLibrary
 export function HydrateMercenary(merc: string | Mercenary, mercDto?: MercenaryDto): Mercenary {
     const data = typeof merc === 'string' ? mercDto : merc;
 
-    const hydrate: Mercenary = {
+    const hydrate: Omit<Mercenary, "costToMax"> = {
         mercName: '',
         role: data.role as Role,
         rarity: data.rarity as Rarity,
@@ -17,7 +17,6 @@ export function HydrateMercenary(merc: string | Mercenary, mercDto?: MercenaryDt
         equipment: [],
         tasks: [],
         collected: false,
-        costToMax: -1,
         level: 0,
         tasksCompleted: 0
     };
@@ -60,25 +59,17 @@ export function HydrateMercenary(merc: string | Mercenary, mercDto?: MercenaryDt
         });
     }
 
-    return new Proxy<Mercenary>(hydrate, {
-        get(target, prop, receiver) {
-            if (prop === "costToMax") {
-                let sumcost = 0;
-                target.abilities.forEach(a => sumcost += a.costToMax);
-                target.equipment.forEach(e => sumcost += e.costToMax);
-                return sumcost;
-            }
-
-            const value = Reflect.get(target, prop, receiver);
-            return typeof value === "function" ? value.bind(target) : value;
-        }
-    });;
+    return {
+        ...hydrate,
+        costToMax: hydrate.abilities.reduce((p, c) => p += c.costToMax, 0)
+            + hydrate.equipment.reduce((p, c) => p += c.costToMax, 0)
+    };
 }
 
 function HydrateAbility(ability: string | MercAbility, abilityDto?: MercAbilityDto): MercAbility {
     const data = typeof ability === 'string' ? abilityDto : ability;
 
-    const hydrate: MercAbility = {
+    const hydrate: Omit<MercAbility, "costToMax"> = {
         abilityName: typeof ability === 'string' ? ability : ability.abilityName,
         unlock: data.unlock,
         spell_school: data.spell_school as SpellSchool,
@@ -87,20 +78,24 @@ function HydrateAbility(ability: string | MercAbility, abilityDto?: MercAbilityD
         tiers: [...data.tiers],
         cooldown: data.cooldown,
         activeTier: typeof ability === 'string' ? 1 : ability.activeTier,
-        costToMax: -1,
         unlocked: false
     };
 
-    return new Proxy<MercAbility>(hydrate, {
-        get(target, prop, receiver) {
-            if (prop === "costToMax") {
-                return AbilityUpgradeCosts.slice(target.activeTier).reduce((c, p) => (c += p), 0);
-            }
+    return {
+        ...hydrate,
+        costToMax: AbilityUpgradeCosts.slice(hydrate.activeTier).reduce((p, c) => p += c, 0)
+    };
 
-            const value = Reflect.get(target, prop, receiver);
-            return typeof value === 'function' ? value.bind(target) : value;
-        }
-    })
+    // return new Proxy<MercAbility>(hydrate, {
+    //     get(target, prop, receiver) {
+    //         if (prop === "costToMax") {
+    //             return AbilityUpgradeCosts.slice(target.activeTier).reduce((c, p) => (c += p), 0);
+    //         }
+
+    //         const value = Reflect.get(target, prop, receiver);
+    //         return typeof value === 'function' ? value.bind(target) : value;
+    //     }
+    // })
 }
 function HydrateItem(item: string | MercItem, itemDto?: MercItemDto): MercItem {
     const data = typeof item === 'string' ? itemDto : item;
@@ -109,7 +104,7 @@ function HydrateItem(item: string | MercItem, itemDto?: MercItemDto): MercItem {
         [...(itemDto.tiers ?? [itemDto.modifier ? { modifier: itemDto.modifier } : {}])]
         : item.tiers;
 
-    const hydrate: MercItem = {
+    const hydrate: Omit<MercItem, "costToMax"> = {
         itemName: typeof item === 'string' ? item : item.itemName,
         unlock: data.unlock,
         position: data.position as "left" | "middle" | "right",
@@ -117,20 +112,24 @@ function HydrateItem(item: string | MercItem, itemDto?: MercItemDto): MercItem {
         description: data.description,
         tiers: tiers,
         activeTier: typeof item === 'string' ? MaxItemTiers - tiers.length + 1 : item.activeTier,
-        costToMax: -1,
         unlocked: false
     };
 
-    return new Proxy<MercItem>(hydrate, {
-        get(target, prop, receiver) {
-            if (prop === "costToMax") {
-                return ItemUpgradeCosts.slice(target.activeTier).reduce((p, c) => (c += p), 0);
-            }
+    return {
+        ...hydrate,
+        costToMax: ItemUpgradeCosts.slice(hydrate.activeTier).reduce((p, c) => p += c, 0)
+    };
 
-            const value = Reflect.get(target, prop, receiver);
-            return typeof value === 'function' ? value.bind(target) : value;
-        }
-    })
+    // return new Proxy<MercItem>(hydrate, {
+    //     get(target, prop, receiver) {
+    //         if (prop === "costToMax") {
+    //             return ItemUpgradeCosts.slice(target.activeTier).reduce((p, c) => (c += p), 0);
+    //         }
+
+    //         const value = Reflect.get(target, prop, receiver);
+    //         return typeof value === 'function' ? value.bind(target) : value;
+    //     }
+    // })
 }
 
 

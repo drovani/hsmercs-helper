@@ -5,7 +5,6 @@
       :src="`/images/${rarity.toLowerCase()}.png`"
       :alt="rarity"
     />
-    {{ rarity }}
   </div>
 </template>
 
