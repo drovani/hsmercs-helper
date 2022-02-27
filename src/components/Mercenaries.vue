@@ -87,6 +87,7 @@
         @ability-decrement="abilityDecrement"
         @item-increment="itemIncrement"
         @item-decrement="itemDecrement"
+        @item-unlock="itemUnlock"
         @add-to-collection="addCollectedMerc"
         @remove-from-collection="removeCollectedMerc"
         @task-increment="taskIncrement"
@@ -114,6 +115,7 @@ import RarityFilter from "./RarityFilter.vue";
 import RoleFilter from "./RoleFilter.vue";
 import { useMercStore } from "../stores/mercenaries";
 import { Roles, Rarities, Role, Rarity } from "../models/constants";
+import { mapActions } from "pinia";
 
 const store = useMercStore();
 const route = useRoute();
@@ -202,6 +204,7 @@ function toggleSort(field: "name" | "tasks"): void {
     };
   }
 }
+
 function abilityIncrement(mercName: string, abilityName: string): void {
   store.abilityIncrement(mercName, abilityName);
 }
@@ -213,6 +216,9 @@ function itemIncrement(mercName: string, itemName: string): void {
 }
 function itemDecrement(mercName: string, itemName: string): void {
   store.itemDecrement(mercName, itemName);
+}
+function itemUnlock(mercName: string, itemName: string): void {
+  store.itemUnlock(mercName, itemName);
 }
 function taskIncrement(mercName: string): void {
   store.taskIncrement(mercName);

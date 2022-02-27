@@ -4,6 +4,7 @@
       <TaillessWrap :text="`${itemName} ${activeTier}`" />
     </div>
     <UpDownButtons
+      v-if="unlocked"
       :show-increment="activeTier < MaxItemTiers"
       :show-decrement="activeTier > MaxItemTiers - tiers.length + 1"
       :class="{
@@ -14,6 +15,17 @@
       @decrement="$emit('decrement')"
       >{{ costToMax > 0 ? costToMax : "" }}</UpDownButtons
     >
+    <div v-else>
+      {{ unlock }}
+      <icon
+        :icon="faLock"
+        class="inline"
+        :class="{
+          'cursor-pointer': !unlock.startsWith('Task'),
+        }"
+        @click="$emit('unlock')"
+      />
+    </div>
   </div>
 </template>
 
@@ -21,16 +33,21 @@
 import TaillessWrap from "./TaillessWrap.vue";
 import UpDownButtons from "./UpDownButtons.vue";
 import { MaxItemTiers } from "../models/mercenary";
+import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons";
+import { computed } from "vue";
 
-defineProps({
+const props = defineProps({
   itemName: String,
   activeTier: Number,
   tiers: Array,
   costToMax: Number,
+  unlock: String,
+  unlocked: Boolean,
 });
 
 defineEmits<{
   (event: "increment"): void;
   (event: "decrement"): void;
+  (event: "unlock"): void;
 }>();
 </script>

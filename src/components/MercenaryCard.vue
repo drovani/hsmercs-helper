@@ -42,7 +42,7 @@
         <Attack :role="role" :attack="attack" />
         <TribeVue :tribe="tribe" />
         <Health :role="role" :health="health" />
-        <div v-if="costToMax > 0" class="col-span-2 text-center">
+        <div v-if="!isMaxed" class="col-span-2 text-center">
           <img
             src="/images/mercenary-coin.png"
             alt="Merc coins"
@@ -70,6 +70,7 @@
         v-bind="item"
         @increment="$emit('itemIncrement', mercName, item.itemName)"
         @decrement="$emit('itemDecrement', mercName, item.itemName)"
+        @unlock="$emit('itemUnlock', mercName, item.itemName)"
       />
     </div>
     <div>
@@ -129,11 +130,18 @@ const costToMax = computed(() => {
   return cost;
 });
 
+const isMaxed = computed(() => {
+  return (
+    costToMax.value <= 0 && props.equipment.every((item) => item.unlocked)
+  );
+});
+
 defineEmits<{
   (event: "abilityIncrement", mercName: string, abilityName: string): void;
   (event: "abilityDecrement", mercName: string, abilityName: string): void;
   (event: "itemIncrement", mercName: string, itemName: string): void;
   (event: "itemDecrement", mercName: string, itemName: string): void;
+  (event: "itemUnlock", mercName: string, itemName: string): void;
   (event: "addToCollection", mercName: string): void;
   (event: "removeFromCollection", mercName: string): void;
   (event: "taskIncrement", mercName: string): void;

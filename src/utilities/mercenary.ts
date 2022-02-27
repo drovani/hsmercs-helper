@@ -32,21 +32,21 @@ export function HydrateMercenary(merc: string | Mercenary, mercDto?: MercenaryDt
 
     if (Array.isArray(data.abilities)) {
         for (const ability of data.abilities) {
-            hydrate.abilities.push(HydrateAbility(ability))
+            hydrate.abilities.push(HydrateAbility(ability, null, { level: hydrate.level }))
         }
     } else {
         for (const abilityName in data.abilities) {
-            hydrate.abilities.push(HydrateAbility(abilityName, data.abilities[abilityName]));
+            hydrate.abilities.push(HydrateAbility(abilityName, data.abilities[abilityName], { level: hydrate.level }));
         }
     }
 
     if (Array.isArray(data.equipment)) {
         for (const item of data.equipment) {
-            hydrate.equipment.push(HydrateItem(item));
+            hydrate.equipment.push(HydrateItem(item, null, { tasksCompleted: hydrate.tasksCompleted, level: hydrate.level }));
         }
     } else {
         for (const itemName in data.equipment) {
-            hydrate.equipment.push(HydrateItem(itemName, data.equipment[itemName]));
+            hydrate.equipment.push(HydrateItem(itemName, data.equipment[itemName], { tasksCompleted: hydrate.tasksCompleted, level: hydrate.level }));
         }
     }
 
@@ -66,7 +66,7 @@ export function HydrateMercenary(merc: string | Mercenary, mercDto?: MercenaryDt
     };
 }
 
-function HydrateAbility(ability: string | MercAbility, abilityDto?: MercAbilityDto): MercAbility {
+function HydrateAbility(ability: string | MercAbility, abilityDto?: MercAbilityDto, merc?: Pick<Mercenary, "level">): MercAbility {
     const data = typeof ability === 'string' ? abilityDto : ability;
 
     const hydrate: Omit<MercAbility, "costToMax"> = {
@@ -78,7 +78,7 @@ function HydrateAbility(ability: string | MercAbility, abilityDto?: MercAbilityD
         tiers: [...data.tiers],
         cooldown: data.cooldown,
         activeTier: typeof ability === 'string' ? 1 : ability.activeTier,
-        unlocked: false
+        unlocked: merc?.level ? merc.level >= data.unlock : false
     };
 
     return {
@@ -97,7 +97,7 @@ function HydrateAbility(ability: string | MercAbility, abilityDto?: MercAbilityD
     //     }
     // })
 }
-function HydrateItem(item: string | MercItem, itemDto?: MercItemDto): MercItem {
+function HydrateItem(item: string | MercItem, itemDto?: MercItemDto, merc?: Pick<Mercenary, "tasksCompleted" | "level">): MercItem {
     const data = typeof item === 'string' ? itemDto : item;
 
     const tiers = typeof item === 'string' ?
@@ -112,12 +112,19 @@ function HydrateItem(item: string | MercItem, itemDto?: MercItemDto): MercItem {
         description: data.description,
         tiers: tiers,
         activeTier: typeof item === 'string' ? MaxItemTiers - tiers.length + 1 : item.activeTier,
-        unlocked: false
+        unlocked: typeof item === "string" ? false : item.unlocked
     };
+
+    if (merc?.tasksCompleted && hydrate.unlock.startsWith("Task ")) {
+        hydrate.unlocked = Number.parseInt(hydrate.unlock.substring("Task ".length)) <= merc.tasksCompleted;
+    } else if (merc?.level && hydrate.unlock.startsWith("Level ")) {
+        hydrate.unlocked = Number.parseInt(hydrate.unlock.substring("Level ".length)) <= merc.level;
+    }
+
 
     return {
         ...hydrate,
-        costToMax: ItemUpgradeCosts.slice(hydrate.activeTier).reduce((p, c) => p += c, 0)
+        costToMax: ItemUpgradeCosts.slice(hydrate.activeTier).reduce((p, c) => p += c, 0),
     };
 
     // return new Proxy<MercItem>(hydrate, {
@@ -168,6 +175,11 @@ export function ApplyCollectedMerc(merc: Mercenary, data: CollectedMerc) {
             const item = data.equipment[i.itemName];
             if (typeof item === 'number') {
                 i.activeTier = item;
+                if (i.unlock.startsWith("Task")) {
+                    i.unlocked = Number.parseInt(i.unlock.substring("Task ".length)) <= merc.tasksCompleted;
+                } else if (i.unlock.startsWith("Level")) {
+                    i.unlocked = Number.parseInt(i.unlock.substring("Level ".length)) <= merc.level;
+                }
             } else {
                 i.activeTier = item.activeTier;
                 i.unlocked = item.unlocked;

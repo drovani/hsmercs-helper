@@ -1,7 +1,4 @@
-import { Rarity } from "./rarities";
-import { Role } from "./roles";
-import { SpellSchool } from "./spellSchool";
-import { Tribe } from "./tribes";
+import { Rarity, Role, SpellSchool, Tribe } from "./constants";
 
 export const MaxItemTiers = 4;
 export const MaxAbilityTiers = 5;
@@ -43,7 +40,7 @@ export interface MercItem {
     itemName: string;
     unlock: string;
     position: "left" | "middle" | "right";
-    affects?: string;
+    affects?: string | string[];
     description: string;
     tiers: any[];
 

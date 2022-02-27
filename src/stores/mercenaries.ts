@@ -162,6 +162,17 @@ export const useMercStore = defineStore(MercStoreId, {
                 item.costToMax = ItemUpgradeCosts.slice(item.activeTier).reduce((p, c) => p += c, 0);
             }
         },
+        itemUnlock(mercName: string, itemName: string){
+            const merc  = (this as State).mercenaries.find(m => m.mercName === mercName);
+            const item = merc.equipment.find(i => i.itemName === itemName);
+
+            if (item.unlock.startsWith("Level")){
+                merc.level = Number.parseInt(item.unlock.substring("Level ".length));
+                item.unlocked = true;
+            }else if (item.unlock.startsWith("Defeat")){
+                item.unlocked = true;
+            }
+        },
         taskIncrement(mercName: string) {
             const merc = (this as State).mercenaries.find(m => m.mercName === mercName);
 
@@ -170,6 +181,10 @@ export const useMercStore = defineStore(MercStoreId, {
             }
             if (merc.tasksCompleted < MaxCompletedTasks) {
                 merc.tasksCompleted++;
+                merc.equipment.filter(item => item.unlock.startsWith("Task")).forEach(item => {
+                    const taskUnlock = Number.parseInt(item.unlock.substring("Task ".length));
+                    item.unlocked = taskUnlock <= merc.tasksCompleted;
+                })
             }
         },
         taskDecrement(mercName: string) {
@@ -180,6 +195,10 @@ export const useMercStore = defineStore(MercStoreId, {
             }
             if (merc.tasksCompleted > 0) {
                 merc.tasksCompleted--;
+                merc.equipment.filter(item => item.unlock.startsWith("Task")).forEach(item => {
+                    const taskUnlock = Number.parseInt(item.unlock.substring("Task ".length));
+                    item.unlocked = taskUnlock <= merc.tasksCompleted;
+                })
             }
         },
     }
