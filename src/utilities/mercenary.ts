@@ -141,7 +141,17 @@ export function ExtractCollectedMerc(merc: Mercenary): CollectedMerc {
         tasksCompleted: merc.tasksCompleted,
         itemEquipped: merc.itemEquipped,
         abilities: merc.abilities.reduce((p, c) => { p[c.abilityName] = c.activeTier; return p; }, {}),
-        equipment: merc.equipment.reduce((p, c) => { p[c.itemName] = c.activeTier; return p; }, {})
+        equipment: merc.equipment.reduce((p, c) => {
+            if (c.unlock.startsWith("Level") || c.unlock.startsWith("Task")) {
+                p[c.itemName] = c.activeTier;
+            } else {
+                p[c.itemName] = {
+                    activeTier: c.activeTier,
+                    unlocked: c.unlocked
+                }
+            }
+            return p;
+        }, {})
     }
 }
 
@@ -154,6 +164,14 @@ export function ApplyCollectedMerc(merc: Mercenary, data: CollectedMerc) {
         merc.tasksCompleted = data.tasksCompleted;
         merc.itemEquipped = data.itemEquipped;
         merc.abilities.forEach(a => a.activeTier = data.abilities[a.abilityName]);
-        merc.equipment.forEach(i => i.activeTier = data.equipment[i.itemName]);
+        merc.equipment.forEach(i => {
+            const item = data.equipment[i.itemName];
+            if (typeof item === 'number') {
+                i.activeTier = item;
+            } else {
+                i.activeTier = item.activeTier;
+                i.unlocked = item.unlocked;
+            }
+        });
     }
 }

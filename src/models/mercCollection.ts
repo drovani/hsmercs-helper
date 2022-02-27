@@ -11,6 +11,9 @@ export interface CollectedMerc {
         [name: string]: number
     }
     equipment: {
-        [name: string]: number
+        [name: string]: number | {
+            activeTier: number,
+            unlocked: boolean
+        }
     }
 }

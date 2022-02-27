@@ -187,7 +187,7 @@ export const useMercStore = defineStore(MercStoreId, {
 
 export function HSMercsPlugin({ store }: PiniaPluginContext) {
     if (store.$id === MercStoreId) {
-        store.$subscribe((mutation, state: State) => {
+        store.$subscribe((_, state: State) => {
             localStorage.setItem(store.$id, JSON.stringify(state));
         })
     }
