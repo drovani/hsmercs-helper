@@ -46,19 +46,23 @@ export const useMercStore = defineStore(MercStoreId, {
 
                 if (filter.sort !== undefined) {
                     if (filter.sort.field === "name") {
-                        mercs.sort((a, b) => a.mercName < b.mercName ? -1 : 1);
+                        if (filter.sort.direction === "ascending") {
+                            mercs.sort((a, b) => a.mercName.localeCompare(b.mercName));
+                        } else {
+                            mercs.sort((a, b) => b.mercName.localeCompare(a.mercName));
+                        }
                     } else if (filter.sort.field === "tasks") {
                         mercs.sort((a, b) => {
                             if (a.tasksCompleted == b.tasksCompleted) {
-                                return a.mercName < b.mercName ? -1 : 1
+                                return a.mercName.localeCompare(b.mercName)
                             } else {
-                                return a.tasksCompleted < b.tasksCompleted ? -1 : 1
+                                if (filter.sort.direction === "ascending") {
+                                    return a.tasksCompleted < b.tasksCompleted ? -1 : 1
+                                } else {
+                                    return a.tasksCompleted > b.tasksCompleted ? -1 : 1
+                                }
                             }
                         });
-                    }
-
-                    if (filter.sort.direction === "descending") {
-                        mercs.reverse();
                     }
                 }
 
@@ -70,6 +74,9 @@ export const useMercStore = defineStore(MercStoreId, {
             const result: MercCollection = {};
             collected.forEach(c => result[c.mercName] = ExtractCollectedMerc(c));
             return result;
+        },
+        getMercenary: (state) => (mercName: string) => {
+            return state.mercenaries.find(m => m.mercName === mercName);
         },
         getAbility: (state) => (mercName: string, abilityName: string): MercAbility => {
             return state.mercenaries.find(m => m.mercName === mercName).abilities.find(a => a.abilityName === abilityName);
@@ -162,14 +169,14 @@ export const useMercStore = defineStore(MercStoreId, {
                 item.costToMax = ItemUpgradeCosts.slice(item.activeTier).reduce((p, c) => p += c, 0);
             }
         },
-        itemUnlock(mercName: string, itemName: string){
-            const merc  = (this as State).mercenaries.find(m => m.mercName === mercName);
+        itemUnlock(mercName: string, itemName: string) {
+            const merc = (this as State).mercenaries.find(m => m.mercName === mercName);
             const item = merc.equipment.find(i => i.itemName === itemName);
 
-            if (item.unlock.startsWith("Level")){
+            if (item.unlock.startsWith("Level")) {
                 merc.level = Number.parseInt(item.unlock.substring("Level ".length));
                 item.unlocked = true;
-            }else if (item.unlock.startsWith("Defeat")){
+            } else if (item.unlock.startsWith("Defeat")) {
                 item.unlocked = true;
             }
         },
