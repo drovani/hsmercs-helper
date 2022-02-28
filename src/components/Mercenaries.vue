@@ -11,6 +11,7 @@
         @ability-decrement="abilityDecrement"
         @item-increment="itemIncrement"
         @item-decrement="itemDecrement"
+        @item-unlock="itemUnlock"
         @add-to-collection="addCollectedMerc"
         @remove-from-collection="removeCollectedMerc"
         @task-increment="taskIncrement"
