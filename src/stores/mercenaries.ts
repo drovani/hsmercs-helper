@@ -169,7 +169,7 @@ export const useMercStore = defineStore(MercStoreId, {
                 item.costToMax = ItemUpgradeCosts.slice(item.activeTier).reduce((p, c) => p += c, 0);
             }
         },
-        itemUnlock(mercName: string, itemName: string) {
+        itemToggleLock(mercName: string, itemName: string) {
             const merc = (this as State).mercenaries.find(m => m.mercName === mercName);
             const item = merc.equipment.find(i => i.itemName === itemName);
 
@@ -177,7 +177,12 @@ export const useMercStore = defineStore(MercStoreId, {
                 merc.level = Number.parseInt(item.unlock.substring("Level ".length));
                 item.unlocked = true;
             } else if (item.unlock.startsWith("Defeat")) {
-                item.unlocked = true;
+                item.unlocked = !item.unlocked;
+            }
+
+            if (!item.unlocked){
+                item.activeTier = MaxItemTiers - item.tiers.length + 1;
+                item.costToMax = ItemUpgradeCosts.slice(item.activeTier).reduce((p, c) => p += c, 0);
             }
         },
         taskIncrement(mercName: string) {

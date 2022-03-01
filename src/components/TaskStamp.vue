@@ -5,11 +5,11 @@
     </div>
     <div v-else class="flex-1">All Tasks Completed!</div>
     <UpDownButtons
-      down-icon="undo"
-      up-icon="check-circle"
+      :down-icon="faUndo"
+      :up-icon="faCheckCircle"
       :show-decrement="tasksCompleted > 0"
       :show-increment="tasksCompleted < 18"
-      :class="{ 'opacity-20': tasksCompleted >= 18 }"
+      :class="{ 'text-gray-200': tasksCompleted >= 18 }"
       title="Tasks Completed"
       @increment="$emit('taskComplete')"
       @decrement="$emit('taskUndo')"
@@ -19,6 +19,7 @@
 <script setup lang="ts">
 import { MercTask } from "../models/mercenary";
 import UpDownButtons from "./UpDownButtons.vue";
+import { faUndo, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 defineProps({
   tasksCompleted: {

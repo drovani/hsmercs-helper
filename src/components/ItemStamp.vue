@@ -23,7 +23,7 @@
         :class="{
           'cursor-pointer': !unlock.startsWith('Task'),
         }"
-        @click="$emit('unlock')"
+        @click="$emit('toggleLock')"
       />
     </div>
   </div>
@@ -48,6 +48,6 @@ const props = defineProps({
 defineEmits<{
   (event: "increment"): void;
   (event: "decrement"): void;
-  (event: "unlock"): void;
+  (event: "toggleLock"): void;
 }>();
 </script>

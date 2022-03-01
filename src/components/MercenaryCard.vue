@@ -70,7 +70,7 @@
         v-bind="item"
         @increment="$emit('itemIncrement', mercName, item.itemName)"
         @decrement="$emit('itemDecrement', mercName, item.itemName)"
-        @unlock="$emit('itemUnlock', mercName, item.itemName)"
+        @itemToggleLock="$emit('itemToggleLock', mercName, item.itemName)"
       />
     </div>
     <div>
@@ -141,7 +141,7 @@ defineEmits<{
   (event: "abilityDecrement", mercName: string, abilityName: string): void;
   (event: "itemIncrement", mercName: string, itemName: string): void;
   (event: "itemDecrement", mercName: string, itemName: string): void;
-  (event: "itemUnlock", mercName: string, itemName: string): void;
+  (event: "itemToggleLock", mercName: string, itemName: string): void;
   (event: "addToCollection", mercName: string): void;
   (event: "removeFromCollection", mercName: string): void;
   (event: "taskIncrement", mercName: string): void;

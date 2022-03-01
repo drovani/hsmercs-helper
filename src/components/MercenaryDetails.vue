@@ -1,102 +1,73 @@
 <template>
   <div
-    class="grid grid-rows-3 w-full rounded-md border-2 gap-y-1 pb-1 lg:max-w-6xl"
-    :class="{
-      'border-protector': role == 'Protector',
-      'border-fighter': role == 'Fighter',
-      'border-caster': role == 'Caster',
-    }"
+    class="grid grid-cols-4 w-full rounded-md border-2 gap-y-1 pb-1 max-w-[780px] mx-auto"
   >
-    <div>
-      <div
-        class="flex justify-between px-2 py-1 text-white bg-gray-700 gap-4"
-        :class="{
-          'bg-protector': role == 'Protector',
-          'bg-fighter': role == 'Fighter',
-          'bg-caster': role == 'Caster',
-        }"
-      >
-        <div class="cursor-pointer w-4">
-          <icon
-            v-if="collected"
-            :icon="['fas', 'check']"
-            @click="$emit('removeFromCollection', mercName)"
-            title="Remove from collection."
-          />
-          <icon
-            v-else
-            :icon="['fas', 'plus']"
-            @click="$emit('addToCollection', mercName)"
-            title="Add to collection."
-          />
-        </div>
-        <h2 class="font-bold text-xl whitespace-nowrap flex-1">
-          <router-link :to="'/merc/' + mercName" replace>
-            <TaillessWrap :text="mercName" />
-          </router-link>
-        </h2>
-        <RarityVue :rarity="rarity" />
-        <RoleVue :role="role" />
-      </div>
-      <div class="grid grid-cols-5 justify-around place-items-center px-2">
-        <Attack :role="role" :attack="attack" />
+    <div
+      class="row-span-2 text-center border-2 m-2 rounded-xl"
+      :class="{
+        'border-protector': role == 'Protector',
+        'border-fighter': role == 'Fighter',
+        'border-caster': role == 'Caster',
+      }"
+    >
+      <div class="text-2xl">{{ mercName }}</div>
+      <div class="text-center">{{ level }}</div>
+      <div class="grid grid-cols-3 justify-items-center">
+        <Attack :attack="attack" :role="role" />
         <TribeVue :tribe="tribe" />
-        <Health :role="role" :health="health" />
-        <div v-if="!isMaxed" class="col-span-2 text-center">
-          <img
-            src="/images/mercenary-coin.png"
-            alt="Merc coins"
-            title="Cost remaining to Max"
-            class="max-h-8 inline mr-2"
-          />{{ costToMax }}
-        </div>
-        <div v-else class="col-span-2 text-center">Maxed!</div>
+        <Health :health="health" :role="role" />
       </div>
     </div>
-    <div class="grid grid-cols-3 gap-x-1">
-      <AbilityStamp
-        v-for="ability in abilitiesOrdered"
-        :key="ability.abilityName"
-        v-bind="ability"
-        class="rounded"
-        @increment="$emit('abilityIncrement', mercName, ability.abilityName)"
-        @decrement="$emit('abilityDecrement', mercName, ability.abilityName)"
-      />
-    </div>
-    <div class="grid grid-cols-3 gap-x-1">
-      <ItemStamp
-        v-for="item in equipmentOrdered"
-        :key="item.itemName"
-        v-bind="item"
-        @increment="$emit('itemIncrement', mercName, item.itemName)"
-        @decrement="$emit('itemDecrement', mercName, item.itemName)"
-        @unlock="$emit('itemUnlock', mercName, item.itemName)"
-      />
-    </div>
-    <div>
-      <TaskStamp
-        :tasks-completed="tasksCompleted"
+    <div class="col-span-3 text-center text-3xl">Abilities</div>
+    <AbilityCard
+      v-for="ability of abilitiesOrdered"
+      :key="ability.abilityName"
+      v-bind="ability"
+      @increment="$emit('abilityIncrement', mercName, ability.abilityName)"
+      @decrement="$emit('abilityDecrement', mercName, ability.abilityName)"
+    />
+    <div class="row-span-2">
+      <TaskCard
         :tasks="tasks"
-        class="h-12 mx-2"
+        :tasks-completed="tasksCompleted"
         @task-complete="$emit('taskIncrement', mercName)"
         @task-undo="$emit('taskDecrement', mercName)"
       />
+      <div class="text-center text-3xl mt-2">
+        <div v-if="isMaxed">Maxed!</div>
+        <div v-else>
+          <img
+            src="/images/mercenary-coin.png"
+            alt="Cost to max"
+            title="Cost to max"
+            class="w-12 inline"
+          />
+          {{ costToMax }}
+        </div>
+      </div>
     </div>
+    <div class="col-span-3 text-center text-3xl">Equipment</div>
+    <ItemCard
+      v-for="item of equipmentOrdered"
+      :key="item.itemName"
+      v-bind="item"
+      @increment="$emit('itemIncrement', mercName, item.itemName)"
+      @decrement="$emit('itemDecrement', mercName, item.itemName)"
+      @toggleLock="$emit('itemToggleLock', mercName, item.itemName)"
+    />
   </div>
 </template>
 <script setup lang="ts">
-import AbilityStamp from "./AbilityStamp.vue";
 import Attack from "./Attack.vue";
 import Health from "./Health.vue";
-import ItemStamp from "./ItemStamp.vue";
-import RarityVue from "./Rarity.vue";
-import RoleVue from "./Role.vue";
 import TribeVue from "./Tribe.vue";
-import TaillessWrap from "./TaillessWrap.vue";
-import TaskStamp from "./TaskStamp.vue";
 import { MercAbility, MercItem, MercTask } from "../models/mercenary";
 import { computed } from "vue";
 import { Role, Rarity, Tribe } from "../models/constants";
+import { faCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
+import AbilityCard from "./AbilityCard.vue";
+import ItemCard from "./ItemCard.vue";
+import TaskCard from "./TaskCard.vue";
 
 const props = defineProps({
   mercName: String,
@@ -105,6 +76,7 @@ const props = defineProps({
   tribe: String as () => Tribe,
   attack: Number,
   health: Number,
+  level: Number,
   abilities: Array as () => MercAbility[],
   equipment: Array as () => MercItem[],
   tasks: Array as () => MercTask[],
@@ -131,9 +103,7 @@ const costToMax = computed(() => {
 });
 
 const isMaxed = computed(() => {
-  return (
-    costToMax.value <= 0 && props.equipment.every((item) => item.unlocked)
-  );
+  return costToMax.value <= 0 && props.equipment.every((item) => item.unlocked);
 });
 
 defineEmits<{
@@ -141,7 +111,7 @@ defineEmits<{
   (event: "abilityDecrement", mercName: string, abilityName: string): void;
   (event: "itemIncrement", mercName: string, itemName: string): void;
   (event: "itemDecrement", mercName: string, itemName: string): void;
-  (event: "itemUnlock", mercName: string, itemName: string): void;
+  (event: "itemToggleLock", mercName: string, itemName: string): void;
   (event: "addToCollection", mercName: string): void;
   (event: "removeFromCollection", mercName: string): void;
   (event: "taskIncrement", mercName: string): void;
