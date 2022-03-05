@@ -1,8 +1,8 @@
 import { createPinia, setActivePinia } from "pinia";
 import { beforeEach, describe, expect, it } from "vitest";
+import { HydrateMercenary } from "../../src/common/mercenary";
 import { MaxAbilityTiers, MaxItemTiers } from "../../src/models/mercenary";
 import { useMercStore } from "../../src/stores/mercenaries";
-import { HydrateMercenary } from "../../src/utilities/mercenary";
 import { BlademasterSamuro, JainaProudmoore, KingMukla } from "../constants";
 
 describe('mercStore Actions', () => {

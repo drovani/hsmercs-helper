@@ -30,7 +30,7 @@
             title="Add to collection."
           />
         </div>
-        <h2 class="font-bold text-xl whitespace-nowrap flex-1">
+        <h2 class="font-bold text-xl whitespace-nowrap flex-1 text-outline-1">
           <router-link :to="'/merc/' + mercName" replace>
             <TaillessWrap :text="mercName" />
           </router-link>
@@ -85,18 +85,18 @@
   </div>
 </template>
 <script setup lang="ts">
+import { computed } from "vue";
+import { Rarity, Role, Tribe } from "../models/constants";
+import { MercAbility, MercItem, MercTask } from "../models/mercenary";
 import AbilityStamp from "./AbilityStamp.vue";
 import Attack from "./Attack.vue";
 import Health from "./Health.vue";
 import ItemStamp from "./ItemStamp.vue";
 import RarityVue from "./Rarity.vue";
 import RoleVue from "./Role.vue";
-import TribeVue from "./Tribe.vue";
 import TaillessWrap from "./TaillessWrap.vue";
 import TaskStamp from "./TaskStamp.vue";
-import { MercAbility, MercItem, MercTask } from "../models/mercenary";
-import { computed } from "vue";
-import { Role, Rarity, Tribe } from "../models/constants";
+import TribeVue from "./Tribe.vue";
 
 const props = defineProps({
   mercName: String,

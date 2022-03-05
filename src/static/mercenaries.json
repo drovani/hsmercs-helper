@@ -102,8 +102,7 @@
                     "description": "Dragonqueen's Gambit restores Health to this Merc equal to the damage dealt.",
                     "modifier": {
                         "description": {
-                            "type": "append",
-                            "text": "Restore that much Health to this Merc."
+                            "append": "Restore that much Health to this Merc."
                         }
                     }
                 },
@@ -1137,7 +1136,7 @@
                 },
                 "Mirror Image": {
                     "unlock": 5,
-                    "description": "Choose an enemy. Summon {a copy} of this Merc that Attack{s} it and die{s} as the end of the turn.",
+                    "description": "Choose an enemy. Summon {a copy} of this Merc that Attack{s} it and die{s} at the end of the turn.",
                     "speed": 9,
                     "cooldown": 1,
                     "tiers": [
@@ -1240,7 +1239,11 @@
                     "affects": "Mirror Image",
                     "description": "Mirror Image summons an extra copy of this Merc.",
                     "modifier": {
-                        "description": "2 copies"
+                        "description": [
+                            "2 copies",
+                            "",
+                            ""
+                        ]
                     }
                 }
             },
@@ -2302,18 +2305,25 @@
                     "unlock": 5,
                     "speed": 3,
                     "cooldown": 1,
-                    "description": "Gain Taunt for {0} {turn}. Your characters are ({0}) Speed faster this turn{.}",
+                    "description": "Gain Taunt for {0} turn{s}. Your characters are ({0}) Speed faster this turn{.}",
                     "tiers": [
                         {
                             "description": [
                                 1,
-                                null,
+                                "",
                                 1
                             ]
                         },
                         {
                             "description": [
                                 1,
+                                "",
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
                                 null,
                                 2
                             ]
@@ -2321,21 +2331,14 @@
                         {
                             "description": [
                                 2,
-                                "turns",
-                                2
-                            ]
-                        },
-                        {
-                            "description": [
-                                2,
-                                "turns",
+                                null,
                                 3
                             ]
                         },
                         {
                             "description": [
                                 2,
-                                "turns",
+                                null,
                                 4
                             ]
                         }
@@ -4594,9 +4597,8 @@
                             "description": 20,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "If this Merc has {0} or less Health, BATTLE TO THE DEATH!",
-                                    "value": 20
+                                    "append": "If this Merc has {0} or less Health, BATTLE TO THE DEATH!",
+                                    "substitute": 20
                                 }
                             }
                         },
@@ -4604,9 +4606,8 @@
                             "description": 30,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "If this Merc has {0} or less Health, BATTLE TO THE DEATH!",
-                                    "value": 30
+                                    "append": "If this Merc has {0} or less Health, BATTLE TO THE DEATH!",
+                                    "substitute": 30
                                 }
                             }
                         },
@@ -4614,9 +4615,8 @@
                             "description": 40,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "If this Merc has {0} or less Health, BATTLE TO THE DEATH!",
-                                    "value": 40
+                                    "append": "If this Merc has {0} or less Health, BATTLE TO THE DEATH!",
+                                    "substitute": 40
                                 }
                             }
                         },
@@ -4624,9 +4624,8 @@
                             "description": 50,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "If this Merc has {0} or less Health, BATTLE TO THE DEATH!",
-                                    "value": 50
+                                    "append": "If this Merc has {0} or less Health, BATTLE TO THE DEATH!",
+                                    "substitute": 50
                                 }
                             }
                         }
@@ -7195,7 +7194,7 @@
                     "unlock": 15,
                     "speed": 6,
                     "cooldown": 1,
-                    "description": "Deal {0} damage. restore that much health to this Merc.",
+                    "description": "Deal {0} damage. Restore that much health to this Merc.",
                     "spell_school": "Fel",
                     "tiers": [
                         {
@@ -7246,9 +7245,8 @@
                             "description": 1,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Gain +{0} Fel Damage.",
-                                    "value": [
+                                    "append": "Gain +{0} Fel Damage.",
+                                    "substitute": [
                                         0,
                                         1
                                     ]
@@ -7259,9 +7257,8 @@
                             "description": 2,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Gain +{0} Fel Damage.",
-                                    "value": [
+                                    "append": "Gain +{0} Fel Damage.",
+                                    "substitute": [
                                         0,
                                         2
                                     ]
@@ -8122,9 +8119,8 @@
                             "description": 1,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Its next ability is ({0}) Speed slower.",
-                                    "value": 1
+                                    "append": "Its next ability is ({0}) Speed slower.",
+                                    "substitute": 1
                                 }
                             }
                         },
@@ -8132,9 +8128,8 @@
                             "description": 2,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Its next ability is ({0}) Speed slower.",
-                                    "value": 2
+                                    "append": "Its next ability is ({0}) Speed slower.",
+                                    "substitute": 2
                                 }
                             }
                         },
@@ -8142,9 +8137,8 @@
                             "description": 3,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Its next ability is ({0}) Speed slower.",
-                                    "value": 3
+                                    "append": "Its next ability is ({0}) Speed slower.",
+                                    "substitute": 3
                                 }
                             }
                         },
@@ -8152,9 +8146,8 @@
                             "description": 4,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Its next ability is ({0}) Speed slower.",
-                                    "value": 4
+                                    "append": "Its next ability is ({0}) Speed slower.",
+                                    "substitute": 4
                                 }
                             }
                         }
@@ -8436,8 +8429,7 @@
                             "description": 2,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Deal 2 damage to all enemies."
+                                    "append": "Deal 2 damage to all enemies."
                                 }
                             }
                         },
@@ -8445,8 +8437,7 @@
                             "description": 3,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Deal 3 damage to all enemies."
+                                    "append": "Deal 3 damage to all enemies."
                                 }
                             }
                         },
@@ -8454,8 +8445,7 @@
                             "description": 4,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Deal 4 damage to all enemies."
+                                    "append": "Deal 4 damage to all enemies."
                                 }
                             }
                         },
@@ -8463,8 +8453,7 @@
                             "description": 5,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Deal 5 damage to all enemies."
+                                    "append": "Deal 5 damage to all enemies."
                                 }
                             }
                         }
@@ -9553,9 +9542,8 @@
                             "description": 1,
                             "modifier": {
                                 "description": {
-                                    "type": "replace",
-                                    "text": "This Merc takes {0} less damage, gains Taunt, and cannot be Critically Damaged this turn.",
-                                    "value": 1
+                                    "replacement": "This Merc takes {0} less damage, gains Taunt, and cannot be Critically Damaged this turn.",
+                                    "substitute": 1
                                 }
                             }
                         },
@@ -9563,9 +9551,8 @@
                             "description": 2,
                             "modifier": {
                                 "description": {
-                                    "type": "replace",
-                                    "text": "This Merc takes {0} less damage, gains Taunt, and cannot be Critically Damaged this turn.",
-                                    "value": 2
+                                    "replacement": "This Merc takes {0} less damage, gains Taunt, and cannot be Critically Damaged this turn.",
+                                    "substitute": 2
                                 }
                             }
                         },
@@ -9573,9 +9560,8 @@
                             "description": 3,
                             "modifier": {
                                 "description": {
-                                    "type": "replace",
-                                    "text": "This Merc takes {0} less damage, gains Taunt, and cannot be Critically Damaged this turn.",
-                                    "value": 3
+                                    "replacement": "This Merc takes {0} less damage, gains Taunt, and cannot be Critically Damaged this turn.",
+                                    "substitute": 3
                                 }
                             }
                         }
@@ -10228,8 +10214,7 @@
                             "modifier": {
                                 "summon": {
                                     "description": {
-                                        "type": "append",
-                                        "text": "Divine Shield"
+                                        "append": "Divine Shield"
                                     },
                                     "attack": 2
                                 }
@@ -10240,8 +10225,7 @@
                             "modifier": {
                                 "summon": {
                                     "description": {
-                                        "type": "append",
-                                        "text": "Divine Shield"
+                                        "append": "Divine Shield"
                                     },
                                     "attack": 4
                                 }
@@ -10252,8 +10236,7 @@
                             "modifier": {
                                 "summon": {
                                     "description": {
-                                        "type": "append",
-                                        "text": "Divine Shield"
+                                        "append": "Divine Shield"
                                     },
                                     "attack": 6
                                 }
@@ -10264,8 +10247,7 @@
                             "modifier": {
                                 "summon": {
                                     "description": {
-                                        "type": "append",
-                                        "text": "Divine Shield"
+                                        "append": "Divine Shield"
                                     },
                                     "attack": 8
                                 }
@@ -10347,8 +10329,7 @@
                             "description": 2,
                             "modifier": {
                                 "description": {
-                                    "type": "prepend",
-                                    "text": "Gain +2 Attack and Divine Shield."
+                                    "prepend": "Gain +2 Attack and Divine Shield."
                                 }
                             }
                         },
@@ -10356,8 +10337,7 @@
                             "description": 3,
                             "modifier": {
                                 "description": {
-                                    "type": "prepend",
-                                    "text": "Gain +3 Attack and Divine Shield."
+                                    "prepend": "Gain +3 Attack and Divine Shield."
                                 }
                             }
                         },
@@ -10365,8 +10345,7 @@
                             "description": 4,
                             "modifier": {
                                 "description": {
-                                    "type": "prepend",
-                                    "text": "Gain +4 Attack and Divine Shield."
+                                    "prepend": "Gain +4 Attack and Divine Shield."
                                 }
                             }
                         },
@@ -10374,8 +10353,7 @@
                             "description": 5,
                             "modifier": {
                                 "description": {
-                                    "type": "prepend",
-                                    "text": "Gain +5 Attack and Divine Shield."
+                                    "prepend": "Gain +5 Attack and Divine Shield."
                                 }
                             }
                         }
@@ -12762,9 +12740,8 @@
                             "description": 1,
                             "modifier": {
                                 "description": {
-                                    "type": "prepend",
-                                    "text": "Gain +{0} Attack.",
-                                    "value": 1
+                                    "prepend": "Gain +{0} Attack.",
+                                    "substitute": 1
                                 }
                             }
                         },
@@ -12772,9 +12749,8 @@
                             "description": 2,
                             "modifier": {
                                 "description": {
-                                    "type": "prepend",
-                                    "text": "Gain +{0} Attack.",
-                                    "value": 2
+                                    "prepend": "Gain +{0} Attack.",
+                                    "substitute": 2
                                 }
                             }
                         },
@@ -12782,9 +12758,8 @@
                             "description": 3,
                             "modifier": {
                                 "description": {
-                                    "type": "prepend",
-                                    "text": "Gain +{0} Attack.",
-                                    "value": 3
+                                    "prepend": "Gain +{0} Attack.",
+                                    "substitute": 3
                                 }
                             }
                         },
@@ -12792,9 +12767,8 @@
                             "description": 4,
                             "modifier": {
                                 "description": {
-                                    "type": "prepend",
-                                    "text": "Gain +{0} Attack.",
-                                    "value": 4
+                                    "prepend": "Gain +{0} Attack.",
+                                    "substitute": 4
                                 }
                             }
                         }
@@ -13052,9 +13026,8 @@
                             "description": 2,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Bleed ({0})",
-                                    "value": 2
+                                    "append": "Bleed ({0})",
+                                    "substitute": 2
                                 }
                             }
                         },
@@ -13062,9 +13035,8 @@
                             "description": 3,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Bleed ({0})",
-                                    "value": 3
+                                    "append": "Bleed ({0})",
+                                    "substitute": 3
                                 }
                             }
                         },
@@ -13072,9 +13044,8 @@
                             "description": 4,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Bleed ({0})",
-                                    "value": 4
+                                    "append": "Bleed ({0})",
+                                    "substitute": 4
                                 }
                             }
                         },
@@ -13082,9 +13053,8 @@
                             "description": 5,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Bleed ({0})",
-                                    "value": 5
+                                    "append": "Bleed ({0})",
+                                    "substitute": 5
                                 }
                             }
                         }
@@ -14280,8 +14250,7 @@
                                     "summon": {
                                         "attack": 2,
                                         "description": {
-                                            "type": "prepend",
-                                            "text": "Rush"
+                                            "prepend": "Rush"
                                         }
                                     }
                                 }
@@ -14299,8 +14268,7 @@
                                     "summon": {
                                         "attack": 3,
                                         "description": {
-                                            "type": "prepend",
-                                            "text": "Rush"
+                                            "prepend": "Rush"
                                         }
                                     }
                                 }
@@ -14318,8 +14286,7 @@
                                     "summon": {
                                         "attack": 4,
                                         "description": {
-                                            "type": "prepend",
-                                            "text": "Rush"
+                                            "prepend": "Rush"
                                         }
                                     }
                                 }
@@ -14337,8 +14304,7 @@
                                     "summon": {
                                         "attack": 5,
                                         "description": {
-                                            "type": "prepend",
-                                            "text": "Rush"
+                                            "prepend": "Rush"
                                         }
                                     }
                                 }
@@ -14644,9 +14610,8 @@
                             "description": 4,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Restore {0} Health to this Merc.",
-                                    "value": [
+                                    "append": "Restore {0} Health to this Merc.",
+                                    "substitute": [
                                         0,
                                         0,
                                         4
@@ -14658,9 +14623,8 @@
                             "description": 6,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Restore {0} Health to this Merc.",
-                                    "value": [
+                                    "append": "Restore {0} Health to this Merc.",
+                                    "substitute": [
                                         0,
                                         0,
                                         6
@@ -14672,9 +14636,8 @@
                             "description": 8,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Restore {0} Health to this Merc.",
-                                    "value": [
+                                    "append": "Restore {0} Health to this Merc.",
+                                    "substitute": [
                                         0,
                                         0,
                                         8
@@ -14686,9 +14649,8 @@
                             "description": 10,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Restore {0} Health to this Merc.",
-                                    "value": [
+                                    "append": "Restore {0} Health to this Merc.",
+                                    "substitute": [
                                         0,
                                         0,
                                         10
@@ -15230,9 +15192,8 @@
                             ],
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "This Merc gains +{0}/+{0}.",
-                                    "value": [
+                                    "append": "This Merc gains +{0}/+{0}.",
+                                    "substitute": [
                                         0,
                                         0,
                                         1,
@@ -15248,9 +15209,8 @@
                             ],
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "This Merc gains +{0}/+{0}.",
-                                    "value": [
+                                    "append": "This Merc gains +{0}/+{0}.",
+                                    "substitute": [
                                         0,
                                         0,
                                         2,
@@ -15266,9 +15226,8 @@
                             ],
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "This Merc gains +{0}/+{0}.",
-                                    "value": [
+                                    "append": "This Merc gains +{0}/+{0}.",
+                                    "substitute": [
                                         0,
                                         0,
                                         3,
@@ -15284,9 +15243,8 @@
                             ],
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "This Merc gains +{0}/+{0}.",
-                                    "value": [
+                                    "append": "This Merc gains +{0}/+{0}.",
+                                    "substitute": [
                                         0,
                                         0,
                                         4,
@@ -16394,16 +16352,14 @@
                             "description": "",
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Deathblow: Gain Stealth."
+                                    "append": "Deathblow: Gain Stealth."
                                 }
                             }
                         },
                         {
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Deathblow: Gain Stealth."
+                                    "append": "Deathblow: Gain Stealth."
                                 },
                                 "speed": -1
                             }
@@ -16412,8 +16368,7 @@
                             "description": "is (2) Speed faster and",
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Deathblow: Gain Stealth."
+                                    "append": "Deathblow: Gain Stealth."
                                 },
                                 "speed": -2
                             }
@@ -16422,8 +16377,7 @@
                             "description": "is (3) Speed faster and",
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "Deathblow: Gain Stealth."
+                                    "append": "Deathblow: Gain Stealth."
                                 },
                                 "speed": -3
                             }
@@ -16633,9 +16587,8 @@
                             "description": 2,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "This Merc keeps up to {0} Attack.",
-                                    "value": 2
+                                    "append": "This Merc keeps up to {0} Attack.",
+                                    "substitute": 2
                                 }
                             }
                         },
@@ -16643,9 +16596,8 @@
                             "description": 3,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "This Merc keeps up to {0} Attack.",
-                                    "value": 3
+                                    "append": "This Merc keeps up to {0} Attack.",
+                                    "substitute": 3
                                 }
                             }
                         },
@@ -16653,9 +16605,8 @@
                             "description": 4,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "This Merc keeps up to {0} Attack.",
-                                    "value": 4
+                                    "append": "This Merc keeps up to {0} Attack.",
+                                    "substitute": 4
                                 }
                             }
                         },
@@ -16663,9 +16614,8 @@
                             "description": 5,
                             "modifier": {
                                 "description": {
-                                    "type": "append",
-                                    "text": "This Merc keeps up to {0} Attack.",
-                                    "value": 5
+                                    "append": "This Merc keeps up to {0} Attack.",
+                                    "substitute": 5
                                 }
                             }
                         }
@@ -17597,8 +17547,7 @@
                                 "summon": {
                                     "attack": 2,
                                     "description": {
-                                        "type": "append",
-                                        "text": ", Windfury"
+                                        "append": ", Windfury"
                                     }
                                 }
                             }
@@ -17609,8 +17558,7 @@
                                 "summon": {
                                     "attack": 3,
                                     "description": {
-                                        "type": "append",
-                                        "text": ", Windfury"
+                                        "append": ", Windfury"
                                     }
                                 }
                             }
@@ -17621,8 +17569,7 @@
                                 "summon": {
                                     "attack": 4,
                                     "description": {
-                                        "type": "append",
-                                        "text": ", Windfury"
+                                        "append": ", Windfury"
                                     }
                                 }
                             }
@@ -17633,8 +17580,7 @@
                                 "summon": {
                                     "attack": 5,
                                     "description": {
-                                        "type": "append",
-                                        "text": ", Windfury"
+                                        "append": ", Windfury"
                                     }
                                 }
                             }
@@ -18179,8 +18125,7 @@
                         },
                         {
                             "description": {
-                                "type": "replace",
-                                "text": "This Merc takes Critical Damage this turn. At the end of next turn, restore this Merc to full Health."
+                                "replacement": "This Merc takes Critical Damage this turn. At the end of next turn, restore this Merc to full Health."
                             }
                         }
                     ]
@@ -18261,8 +18206,7 @@
                             "description": 4,
                             "modifier": {
                                 "description": {
-                                    "type": "prepend",
-                                    "text": "Restore 4 Health to this Merc."
+                                    "prepend": "Restore 4 Health to this Merc."
                                 }
                             }
                         },
@@ -18270,8 +18214,7 @@
                             "description": 8,
                             "modifier": {
                                 "description": {
-                                    "type": "prepend",
-                                    "text": "Restore 8 Health to this Merc."
+                                    "prepend": "Restore 8 Health to this Merc."
                                 }
                             }
                         },
@@ -18279,8 +18222,7 @@
                             "description": 12,
                             "modifier": {
                                 "description": {
-                                    "type": "prepend",
-                                    "text": "Restore 12 Health to this Merc."
+                                    "prepend": "Restore 12 Health to this Merc."
                                 }
                             }
                         },
@@ -18288,8 +18230,7 @@
                             "description": 16,
                             "modifier": {
                                 "description": {
-                                    "type": "prepend",
-                                    "text": "Restore 16 Health to this Merc."
+                                    "prepend": "Restore 16 Health to this Merc."
                                 }
                             }
                         }

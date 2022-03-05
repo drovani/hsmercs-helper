@@ -1,17 +1,20 @@
 <template>
   <div
-    class="grid grid-cols-4 w-full rounded-md border-2 gap-y-1 pb-1 max-w-[780px] mx-auto"
+    class="grid grid-cols-4 w-full rounded-md border-2 gap-y-1 p-1 max-w-[780px] mx-auto space-x-1"
   >
     <div
-      class="row-span-2 text-center border-2 m-2 rounded-xl"
+      class="row-span-2 text-center border-2 rounded-xl"
       :class="{
         'border-protector': role == 'Protector',
         'border-fighter': role == 'Fighter',
         'border-caster': role == 'Caster',
       }"
     >
+    <div class="border-8 rounded-full h-48 m-2"></div>
       <div class="text-2xl">{{ mercName }}</div>
-      <div class="text-center">{{ level }}</div>
+      <div class="text-center text-white text-lg font-bold text-outline-2">
+        <RarityVue :rarity="rarity">{{ level }}</RarityVue>
+      </div>
       <div class="grid grid-cols-3 justify-items-center">
         <Attack :attack="attack" :role="role" />
         <TribeVue :tribe="tribe" />
@@ -33,14 +36,14 @@
         @task-complete="$emit('taskIncrement', mercName)"
         @task-undo="$emit('taskDecrement', mercName)"
       />
-      <div class="text-center text-3xl mt-2">
+      <div class="text-center text-2xl mt-2 text-white font-bold text-outline-2">
         <div v-if="isMaxed">Maxed!</div>
         <div v-else>
           <img
             src="/images/mercenary-coin.png"
             alt="Cost to max"
             title="Cost to max"
-            class="w-12 inline"
+            class="w-8 inline"
           />
           {{ costToMax }}
         </div>
@@ -58,16 +61,16 @@
   </div>
 </template>
 <script setup lang="ts">
+import { computed } from "vue";
+import { Rarity, Role, Tribe } from "../models/constants";
+import { MercAbility, MercItem, MercTask } from "../models/mercenary";
+import AbilityCard from "./AbilityCard.vue";
 import Attack from "./Attack.vue";
 import Health from "./Health.vue";
-import TribeVue from "./Tribe.vue";
-import { MercAbility, MercItem, MercTask } from "../models/mercenary";
-import { computed } from "vue";
-import { Role, Rarity, Tribe } from "../models/constants";
-import { faCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
-import AbilityCard from "./AbilityCard.vue";
 import ItemCard from "./ItemCard.vue";
+import RarityVue from "./Rarity.vue";
 import TaskCard from "./TaskCard.vue";
+import TribeVue from "./Tribe.vue";
 
 const props = defineProps({
   mercName: String,

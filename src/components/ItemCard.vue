@@ -41,11 +41,11 @@
 </template>
 
 <script setup lang="ts">
-import TaillessWrap from "./TaillessWrap.vue";
-import UpDownButtons from "./UpDownButtons.vue";
-import { MaxItemTiers } from "../models/mercenary";
 import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons";
 import { computed } from "vue";
+import { MaxItemTiers } from "../models/mercenary";
+import TaillessWrap from "./TaillessWrap.vue";
+import UpDownButtons from "./UpDownButtons.vue";
 
 const props = defineProps({
   itemName: String,

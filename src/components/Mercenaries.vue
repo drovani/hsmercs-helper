@@ -28,8 +28,8 @@
           :class="{ 'opacity-100': showingAllMercenaries }"
           @click.prevent="showAllMercenaries"
         >
-          <span class="inline md:hidden">All</span>
-          <span class="hidden md:inline">All Mercenaries</span>
+          <span class="inline md:hidden text-outline-1">All</span>
+          <span class="hidden md:inline text-outline-1">All Mercenaries</span>
         </div>
         <RoleFilter
           :enabled-roles="filter.roles"
@@ -99,23 +99,23 @@
 </template>
 <script setup lang="ts">
 import {
-  faArrowDown19,
-  faArrowDown91,
-  faArrowDownAZ,
-  faArrowDownZA,
-  IconDefinition,
+faArrowDown19,
+faArrowDown91,
+faArrowDownAZ,
+faArrowDownZA,
+IconDefinition
 } from "@fortawesome/free-solid-svg-icons";
 import { computed, onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
-import MercFilter from "../models/mercFilter";
+import { Rarities, Rarity, Role, Roles } from "../models/constants";
 import { Mercenary } from "../models/mercenary";
+import MercFilter from "../models/mercFilter";
 import mercjson from "../static/mercenaries.json";
+import { useMercStore } from "../stores/mercenaries";
 import MercenaryCard from "./MercenaryCard.vue";
 import MercenaryDetails from "./MercenaryDetails.vue";
 import RarityFilter from "./RarityFilter.vue";
 import RoleFilter from "./RoleFilter.vue";
-import { useMercStore } from "../stores/mercenaries";
-import { Roles, Rarities, Role, Rarity } from "../models/constants";
 
 const store = useMercStore();
 const route = useRoute();

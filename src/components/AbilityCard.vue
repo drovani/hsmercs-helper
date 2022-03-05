@@ -11,22 +11,30 @@
       'from-shadow': spell_school === 'Shadow',
     }"
   >
-    <div class="h-32 rounded-full border-8 my-4 mx-8 flex flex-col font-bold">
+    <div class="h-32 rounded-full border-8 my-2 mx-8 flex flex-col font-bold">
       <div
-        class="text-right bg-cooldown bg-no-repeat bg-right-top bg-contain py-0.5 pr-2.5 text-xl text-white"
+        class="text-right bg-cooldown bg-no-repeat bg-right-top bg-contain py-0.5 pr-3 text-3xl text-white text-outline-2"
         v-if="cooldown"
       >
         {{ cooldown }}
       </div>
       <div class="flex-grow"></div>
-      <div class="text-center text-3xl" v-if="speed">
+      <div class="text-center text-3xl text-white text-outline-2" v-if="speed">
         <img src="/images/speed.png" class="inline h-8 -mr-10" />{{ speed }}
       </div>
     </div>
-    <div>
+    <div class="font-semibold">
       <TaillessWrap :text="`${abilityName} ${activeTier}`" />
     </div>
-    <div class="flex-1 text-sm">{{ description }}</div>
+    <div
+      class="flex-1 text-sm px-1"
+      :class="{
+        'text-xs': activeDescription.length >= 85,
+      }"
+    >
+      <!-- <TaillessWrap :text="activeDescription" /> -->
+      {{ activeDescription }}
+    </div>
     <UpDownButtons
       :show-increment="activeTier < MaxAbilityTiers"
       :show-decrement="activeTier > 1"
@@ -42,12 +50,14 @@
 </template>
 
 <script setup lang="ts">
-import UpDownButtons from "./UpDownButtons.vue";
-import TaillessWrap from "./TaillessWrap.vue";
+import { computed } from "vue";
+import descriptionBuilder from "../common/description";
 import { SpellSchool } from "../models/constants";
 import { MaxAbilityTiers } from "../models/mercenary";
+import TaillessWrap from "./TaillessWrap.vue";
+import UpDownButtons from "./UpDownButtons.vue";
 
-defineProps({
+const props = defineProps({
   abilityName: String,
   spell_school: String as () => SpellSchool,
   activeTier: Number,
@@ -55,6 +65,19 @@ defineProps({
   speed: Number,
   cooldown: Number,
   description: String,
+  tiers: Array as () => any[],
+  itemEquippedModifier: {
+    type: Object,
+    required: false,
+  },
+});
+
+const activeDescription = computed(() => {
+  return descriptionBuilder(
+    props.description,
+    props.tiers[props.activeTier - 1].description,
+    props.itemEquippedModifier?.description
+  );
 });
 
 defineEmits<{ (event: "increment"): void; (event: "decrement"): void }>();
