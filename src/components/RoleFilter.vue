@@ -15,7 +15,7 @@
       :src="`/images/${role.toLowerCase()}-attack.png`"
       class="max-h-8 inline md:hidden lg:inline"
     />
-    <div class="hidden md:block">{{ role }}s</div>
+    <div class="hidden md:block text-outline-1">{{ role }}s</div>
     <div
       class="hidden md:block opacity-50"
       :class="{

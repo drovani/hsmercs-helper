@@ -30,18 +30,27 @@
             title="Add to collection."
           />
         </div>
-        <h2 class="font-bold text-xl whitespace-nowrap flex-1">
+        <h2 class="font-bold text-xl whitespace-nowrap flex-1 text-outline-1">
           <router-link :to="'/merc/' + mercName" replace>
             <TaillessWrap :text="mercName" />
           </router-link>
         </h2>
+        <RarityVue :rarity="rarity" />
         <RoleVue :role="role" />
       </div>
       <div class="grid grid-cols-5 justify-around place-items-center px-2">
         <Attack :role="role" :attack="attack" />
         <TribeVue :tribe="tribe" />
         <Health :role="role" :health="health" />
-        <RarityVue class="col-span-2" :rarity="rarity" />
+        <div v-if="!isMaxed" class="col-span-2 text-center">
+          <img
+            src="/images/mercenary-coin.png"
+            alt="Merc coins"
+            title="Cost remaining to Max"
+            class="max-h-8 inline mr-2"
+          />{{ costToMax }}
+        </div>
+        <div v-else class="col-span-2 text-center">Maxed!</div>
       </div>
     </div>
     <div class="grid grid-cols-3 gap-x-1">
@@ -61,6 +70,7 @@
         v-bind="item"
         @increment="$emit('itemIncrement', mercName, item.itemName)"
         @decrement="$emit('itemDecrement', mercName, item.itemName)"
+        @itemToggleLock="$emit('itemToggleLock', mercName, item.itemName)"
       />
     </div>
     <div>
@@ -75,22 +85,18 @@
   </div>
 </template>
 <script setup lang="ts">
+import { computed } from "vue";
+import { Rarity, Role, Tribe } from "../models/constants";
+import { MercAbility, MercItem, MercTask } from "../models/mercenary";
 import AbilityStamp from "./AbilityStamp.vue";
 import Attack from "./Attack.vue";
 import Health from "./Health.vue";
 import ItemStamp from "./ItemStamp.vue";
 import RarityVue from "./Rarity.vue";
 import RoleVue from "./Role.vue";
-import TribeVue from "./Tribe.vue";
 import TaillessWrap from "./TaillessWrap.vue";
 import TaskStamp from "./TaskStamp.vue";
-import {
-  MercAbility,
-  MercItem,
-  MercTask,
-} from "../models/mercenary";
-import { computed } from "vue";
-import { Role ,Rarity,Tribe} from "../models/constants";
+import TribeVue from "./Tribe.vue";
 
 const props = defineProps({
   mercName: String,
@@ -113,11 +119,29 @@ const equipmentOrdered = computed(() => {
   return props.equipment.sort((a, b) => a.position.localeCompare(b.position));
 });
 
+const costToMax = computed(() => {
+  let cost = 0;
+  for (const ability of props.abilities) {
+    cost += ability.costToMax;
+  }
+  for (const item of props.equipment) {
+    cost += item.costToMax;
+  }
+  return cost;
+});
+
+const isMaxed = computed(() => {
+  return (
+    costToMax.value <= 0 && props.equipment.every((item) => item.unlocked)
+  );
+});
+
 defineEmits<{
   (event: "abilityIncrement", mercName: string, abilityName: string): void;
   (event: "abilityDecrement", mercName: string, abilityName: string): void;
   (event: "itemIncrement", mercName: string, itemName: string): void;
   (event: "itemDecrement", mercName: string, itemName: string): void;
+  (event: "itemToggleLock", mercName: string, itemName: string): void;
   (event: "addToCollection", mercName: string): void;
   (event: "removeFromCollection", mercName: string): void;
   (event: "taskIncrement", mercName: string): void;

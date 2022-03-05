@@ -1,13 +1,16 @@
 {
     "compilerOptions": {
-        "module": "ESNext",
+        "module": "ES2022",
         "moduleResolution": "Node",
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "types": [
             "vite/client",
         ],
-        "alwaysStrict": true
+        "alwaysStrict": true,
+        "lib": [
+            "ES2021.String"
+        ]
     },
     "exclude": [
         "./node_modules/",

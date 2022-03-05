@@ -18,7 +18,7 @@ export interface MercenaryDto {
 export interface MercAbilityDto {
     unlock: number
     spell_school?: SpellSchool | string
-    description: string
+    description?: string
     speed?: number
     cooldown?: number
     tiers: any[]
@@ -29,7 +29,7 @@ export interface MercItemDto {
     unlock: string
     position: "left" | "middle" | "right" | string
     description: string
-    affects?: string
+    affects?: string | string[]
     tiers?: any[]
     modifier?: any
     [name: string]: any

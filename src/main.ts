@@ -1,5 +1,5 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faArrowCircleDown, faArrowCircleUp, faArrowDown19, faArrowDown91, faArrowDownAZ, faArrowDownZA, faArrowUpAZ, faBorderAll, faCheck, faCheckCircle, faCheckDouble, faFileExport, faFileImport, faMinusCircle, faPlus, faPlusCircle, faUndo } from "@fortawesome/free-solid-svg-icons";
+import { faArrowCircleDown, faArrowCircleUp, faArrowDown19, faArrowDown91, faArrowDownAZ, faArrowDownZA, faArrowUpAZ, faBorderAll, faCheck, faCheckCircle, faCheckDouble, faFileExport, faFileImport, faLock, faMinusCircle, faPlus, faPlusCircle, faUndo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { createPinia } from "pinia";
 import { createApp } from 'vue';
@@ -13,7 +13,7 @@ import { HSMercsPlugin } from "./stores/mercenaries";
 library.add(faArrowCircleUp, faArrowCircleDown, faCheck, faCheckDouble, faPlus,
     faCheckCircle, faUndo,
     faArrowUpAZ, faArrowDownAZ, faArrowDownZA, faPlusCircle, faMinusCircle, faBorderAll,
-    faFileExport, faFileImport, faArrowDown19, faArrowDown91);
+    faFileExport, faFileImport, faArrowDown19, faArrowDown91, faLock);
 
 const router = createRouter({
     history: createWebHistory(),

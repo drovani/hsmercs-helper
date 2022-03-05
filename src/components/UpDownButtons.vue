@@ -1,7 +1,7 @@
 <template>
   <div
     class="grid justify-center text-center text-lg md:text-base"
-    :class="{ 'grid-cols-3': $slots.default, 'grid-cols-2': !$slots.default }"
+    :class="[$slots.default ? 'grid-cols-3' : 'grid-cols-2']"
   >
     <button
       @click="$emit('decrement')"
@@ -9,7 +9,7 @@
       :class="{ invisible: !showDecrement }"
       :title="'Decrease ' + title"
     >
-      <icon :icon="['fas', downIcon]"></icon>
+      <icon :icon="downIcon"></icon>
     </button>
     <slot />
     <button
@@ -18,12 +18,17 @@
       :class="{ invisible: !showIncrement }"
       :title="'Increase ' + title"
     >
-      <icon :icon="['fas', upIcon]"></icon>
+      <icon :icon="upIcon"></icon>
     </button>
   </div>
 </template>
 
 <script lang="ts">
+import {
+faArrowCircleDown,
+faArrowCircleUp,
+IconDefinition
+} from "@fortawesome/free-solid-svg-icons";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -40,10 +45,13 @@ export default defineComponent({
       type: String,
       default: "Value",
     },
-    upIcon: { type: String, default: "arrow-circle-up" },
+    upIcon: {
+      type: Object as () => IconDefinition,
+      default: faArrowCircleUp,
+    },
     downIcon: {
-      type: String,
-      default: "arrow-circle-down",
+      type: Object as () => IconDefinition,
+      default: faArrowCircleDown,
     },
   },
   emits: ["decrement", "increment"],
