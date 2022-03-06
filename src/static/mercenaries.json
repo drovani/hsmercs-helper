@@ -4201,7 +4201,7 @@
                     "unlock": 5,
                     "speed": 7,
                     "cooldown": 1,
-                    "description": "Summon a Cannon to the left or right of this Merc. (Starts off cooldown)",
+                    "description": "Summon a 0/{0} Cannon to the left or right of this Merc. (Starts off cooldown)",
                     "info": {
                         "summon": {
                             "name": "Eudora's Cannon",
@@ -4222,6 +4222,7 @@
                     ],
                     "tiers": [
                         {
+                            "description": 6,
                             "info": {
                                 "summon": {
                                     "description": 5,
@@ -4230,6 +4231,7 @@
                             }
                         },
                         {
+                            "description": 10,
                             "info": {
                                 "summon": {
                                     "description": 9,
@@ -4238,6 +4240,7 @@
                             }
                         },
                         {
+                            "description": 14,
                             "info": {
                                 "summon": {
                                     "description": 13,
@@ -4246,6 +4249,7 @@
                             }
                         },
                         {
+                            "description": 16,
                             "info": {
                                 "summon": {
                                     "description": 14,
@@ -4254,6 +4258,7 @@
                             }
                         },
                         {
+                            "description": 18,
                             "info": {
                                 "summon": {
                                     "description": 15,
