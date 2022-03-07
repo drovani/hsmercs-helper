@@ -5,7 +5,7 @@
       <TaillessWrap :text="`${itemName} ${activeTier}`" />
     </div>
     <div class="flex-1 text-sm">
-      {{ activeDescription }}
+      <TaillessWrap :text="activeDescription" />
     </div>
     <UpDownButtons
       v-if="unlocked"

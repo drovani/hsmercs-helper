@@ -1411,35 +1411,35 @@
                 },
                 "Mind Thief": {
                     "unlock": 15,
-                    "description": "This is always a copy of {target} and is ({0}) Speed faster.",
+                    "description": "This is always a copy of {a random enemy ability} and is ({0}) Speed faster.",
                     "tiers": [
                         {
                             "description": [
-                                "a random enemy ability",
+                                null,
                                 1
                             ]
                         },
                         {
                             "description": [
-                                "a random enemy ability",
+                                null,
                                 2
                             ]
                         },
                         {
                             "description": [
-                                "a random enemy ability",
+                                null,
                                 3
                             ]
                         },
                         {
                             "description": [
-                                "a random enemy ability",
+                                null,
                                 4
                             ]
                         },
                         {
                             "description": [
-                                "a random enemy ability",
+                                null,
                                 5
                             ]
                         }

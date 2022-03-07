@@ -32,8 +32,7 @@
         'text-xs': activeDescription.length >= 85,
       }"
     >
-      <!-- <TaillessWrap :text="activeDescription" /> -->
-      {{ activeDescription }}
+      <TaillessWrap :text="activeDescription" />
     </div>
     <UpDownButtons
       :show-increment="activeTier < MaxAbilityTiers"
