@@ -25,7 +25,7 @@
           />
           <icon
             v-else-if="collected && isMaxed"
-            :icon="faStar"
+            :icon="faCheckDouble"
             @click="$emit('removeFromCollection', mercName)"
             title="Remove from collection."
           />
@@ -97,7 +97,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { faAward, faCheck, faPlus, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faAward, faCheck, faCheckDouble, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { computed } from "vue";
 import { Rarity, Role, Tribe } from "../models/constants";
 import { MercAbility, MercItem, MercTask } from "../models/mercenary";
