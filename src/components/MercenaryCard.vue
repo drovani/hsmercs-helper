@@ -18,14 +18,26 @@
       >
         <div class="cursor-pointer w-4">
           <icon
-            v-if="collected"
-            :icon="['fas', 'check']"
+            v-if="collected && isMaxed && tasksCompleted >= 18"
+            :icon="faAward"
+            @click="$emit('removeFromCollection', mercName)"
+            title="Remove from collection."
+          />
+          <icon
+            v-else-if="collected && isMaxed"
+            :icon="faStar"
+            @click="$emit('removeFromCollection', mercName)"
+            title="Remove from collection."
+          />
+          <icon
+            v-else-if="collected && !isMaxed"
+            :icon="faCheck"
             @click="$emit('removeFromCollection', mercName)"
             title="Remove from collection."
           />
           <icon
             v-else
-            :icon="['fas', 'plus']"
+            :icon="faPlus"
             @click="$emit('addToCollection', mercName)"
             title="Add to collection."
           />
@@ -85,6 +97,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { faAward, faCheck, faPlus, faStar } from "@fortawesome/free-solid-svg-icons";
 import { computed } from "vue";
 import { Rarity, Role, Tribe } from "../models/constants";
 import { MercAbility, MercItem, MercTask } from "../models/mercenary";
@@ -131,9 +144,7 @@ const costToMax = computed(() => {
 });
 
 const isMaxed = computed(() => {
-  return (
-    costToMax.value <= 0 && props.equipment.every((item) => item.unlocked)
-  );
+  return costToMax.value <= 0 && props.equipment.every((item) => item.unlocked);
 });
 
 defineEmits<{
