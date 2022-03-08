@@ -19152,21 +19152,6 @@
                     "quote": "None shall stand against the might of the Ice Lord!"
                 },
                 {
-                    "name": "A Storm is Coming",
-                    "description": "Destroy two enemies in one turn using Hail Storm 10 times.",
-                    "quote": "The ice storm rages!"
-                },
-                {
-                    "name": "Conquest of Alterac Valley",
-                    "description": "Deal 450 damage to Heroic bosses.",
-                    "quote": "With a thousand soldiers defeated, the Ice Lord's thirst is sated at last."
-                },
-                {
-                    "name": "Lokholar Drinks in Your Suffering!",
-                    "description": "Deal 500 Frost Damage with a team that includes this Mercenary.",
-                    "quote": "The cold night beckons."
-                },
-                {
                     "name": "Snowball's Chance",
                     "description": "Deal 100 damage using Snowball.",
                     "quote": "Bring them suffering and destruction."
@@ -19175,26 +19160,6 @@
                     "name": "Crushing Ice",
                     "description": "Deal 150 damage.",
                     "quote": "Bury them in ice that seals all sound."
-                },
-                {
-                    "name": "Puny Mortals",
-                    "description": "Complete 6 Bounties.",
-                    "quote": "Puny mortals, your time has come!"
-                },
-                {
-                    "name": "A Song of Ice",
-                    "description": "Deal 900 damage to Fighters.",
-                    "quote": "A slow and cold death for them."
-                },
-                {
-                    "name": "FREEZE!",
-                    "description": "Complete 4 Heroic Bounties",
-                    "quote": "Return victorious and you shall gain my favor."
-                },
-                {
-                    "name": "Snowstorm",
-                    "description": "Use the Boon: Protector coin 2 times.",
-                    "quote": "The ice storm rages!"
                 },
                 {
                     "name": "Snow Day!",
@@ -19207,9 +19172,24 @@
                     "quote": "A slow and cold death for them."
                 },
                 {
-                    "name": "Ballin' Out",
-                    "description": "Deal 50 or more damage in one turn using Snowball 10 times.",
-                    "quote": "Bring them suffering and destruction."
+                    "name": "The Lord of Ice",
+                    "description": "Complete 2 Heroic Bounties.",
+                    "quote": "Return victorious and you shall gain my favor."
+                },
+                {
+                    "name": "Snowstorm",
+                    "description": "Use the Boon: Protector coin 2 times.",
+                    "quote": "The ice storm rages!"
+                },
+                {
+                    "name": "Elementary, My Dear Mercenary",
+                    "description": "Deal 450 damage with Elementals with a team that includes this Mercenary.",
+                    "quote": "Puny mortals, your time has come!"
+                },
+                {
+                    "name": "Hail to the Ice Lord",
+                    "description": "Deal 30 or more damage in one turn using Hail Storm 10 times.",
+                    "quote": "Go forth and wreak havoc in Lokholar’s name."
                 },
                 {
                     "name": "Snow Way Out",
@@ -19217,19 +19197,39 @@
                     "quote": "Bury them in ice that seals all sound."
                 },
                 {
-                    "name": "The Lord of Ice",
-                    "description": "Defeat 2 Heroic bosses.",
+                    "name": "Ballin' Out",
+                    "description": "Deal 50 or more damage in one turn using Snowball 10 times.",
+                    "quote": "Bring them suffering and destruction."
+                },
+                {
+                    "name": "FREEZE!",
+                    "description": "Complete 4 Heroic Bounties",
                     "quote": "Return victorious and you shall gain my favor."
                 },
                 {
-                    "name": "Hail to the Ice Lord",
-                    "description": "Deal 30 or more damage in one turn using Hail Storm 10 times.",
-                    "quote": "Go forth and wreak havoc in Lokholar's name."
+                    "name": "A Song of Ice",
+                    "description": "Deal 900 damage to Fighters.",
+                    "quote": "A slow and cold death for them."
                 },
                 {
-                    "name": "Elementary, My Dear Mercenary",
-                    "description": "Deal 450 damage with Elementals with a team that includes this Mercenary.",
+                    "name": "Puny Mortals",
+                    "description": "Complete 6 Bounties.",
                     "quote": "Puny mortals, your time has come!"
+                },
+                {
+                    "name": "Lokholar Drinks in Your Suffering!",
+                    "description": "Deal 500 Frost Damage with a team that includes this Mercenary.",
+                    "quote": "The cold night beckons."
+                },
+                {
+                    "name": "A Storm is Coming",
+                    "description": "Destroy two enemies in one turn using Hail Storm 10 times.",
+                    "quote": "The ice storm rages!"
+                },
+                {
+                    "name": "Conquest of Alterac Valley",
+                    "description": "Deal 450 damage to Heroic bosses.",
+                    "quote": "With a thousand soldiers defeated, the Ice Lord's thirst is sated at last."
                 }
             ]
         },
