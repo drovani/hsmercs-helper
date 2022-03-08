@@ -3,21 +3,6 @@
     class="relative px-2 max-w-[400px] sm:max-w-[800px] lg:max-w-[1200px] xl:max-w-[1600px] 2xl:max-w-[2000px]"
   >
     <h1 class="text-2xl font-bold m-4 md:m-8">Collectable Mercenaries</h1>
-    <div v-if="selectedMerc">
-      <MercenaryDetails
-        v-bind="selectedMerc"
-        class="mx-auto"
-        @ability-increment="abilityIncrement"
-        @ability-decrement="abilityDecrement"
-        @item-increment="itemIncrement"
-        @item-decrement="itemDecrement"
-        @item-toggle-lock="itemToggleLock"
-        @add-to-collection="addCollectedMerc"
-        @remove-from-collection="removeCollectedMerc"
-        @task-increment="taskIncrement"
-        @task-decrement="taskDecrement"
-      />
-    </div>
     <div
       class="text-white font-bold text-xl mb-1 border-b-8 justify-center flex gap-2 md:gap-4 lg:gap-8 sticky top-0 bg-white"
       :class="[filterBorderColor]"
@@ -79,6 +64,23 @@
         </div>
       </div>
     </div>
+    <Transition name="fade">
+      <ModalOverlay v-if="selectedMerc" @close="unselectMerc">
+        <MercenaryDetails
+          v-bind="selectedMerc"
+          class="mx-auto"
+          @ability-increment="abilityIncrement"
+          @ability-decrement="abilityDecrement"
+          @item-increment="itemIncrement"
+          @item-decrement="itemDecrement"
+          @item-toggle-lock="itemToggleLock"
+          @add-to-collection="addCollectedMerc"
+          @remove-from-collection="removeCollectedMerc"
+          @task-increment="taskIncrement"
+          @task-decrement="taskDecrement"
+        />
+      </ModalOverlay>
+    </Transition>
     <div class="flex flex-wrap gap-2 justify-center">
       <MercenaryCard
         v-for="merc in mercenaries"
@@ -106,7 +108,7 @@ faArrowDownZA,
 IconDefinition
 } from "@fortawesome/free-solid-svg-icons";
 import { computed, onMounted, ref, watch } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { Rarities, Rarity, Role, Roles } from "../models/constants";
 import { Mercenary } from "../models/mercenary";
 import MercFilter from "../models/mercFilter";
@@ -114,10 +116,12 @@ import mercjson from "../static/mercenaries.json";
 import { useMercStore } from "../stores/mercenaries";
 import MercenaryCard from "./MercenaryCard.vue";
 import MercenaryDetails from "./MercenaryDetails.vue";
+import ModalOverlay from "./ModalOverlay.vue";
 import RarityFilter from "./RarityFilter.vue";
 import RoleFilter from "./RoleFilter.vue";
 
 const store = useMercStore();
+const router = useRouter();
 const route = useRoute();
 
 const filter = ref<MercFilter>({
@@ -246,6 +250,9 @@ function exportCollection() {
 function importCollection(event: InputEvent) {
   store.setMercCollection((<HTMLInputElement>event.target).files[0]);
 }
+function unselectMerc() {
+  router.push("/");
+}
 onMounted(() => {
   if (Object.keys(mercenaries.value ?? {}).length === 0) {
     store.setMercLibrary(mercjson.mercenaries);
@@ -265,3 +272,13 @@ watch(
   { immediate: true }
 );
 </script>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
