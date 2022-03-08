@@ -23,6 +23,9 @@
         <img src="/images/speed.png" class="inline h-8 -mr-10" />{{ speed }}
       </div>
     </div>
+    <div class="-mt-4 mb-2 font-bold text-outline-2 text-white h-4">
+      {{ spell_school }}
+    </div>
     <div class="font-semibold">
       <TaillessWrap :text="`${abilityName} ${activeTier}`" />
     </div>
