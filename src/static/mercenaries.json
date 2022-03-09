@@ -1495,7 +1495,7 @@
                     "unlock": "Level 30",
                     "position": "middle",
                     "affects": "Mana Blink",
-                    "description": "Mana Blink makes your characters' next ability an additional ({0}) Speed faster",
+                    "description": "Mana Blink makes your characters' next ability an additional ({0}) Speed faster.",
                     "tiers": [
                         {
                             "description": 1,
@@ -1521,7 +1521,7 @@
                     "unlock": "Task 7",
                     "position": "right",
                     "affects": "Mind Thief",
-                    "description": "Mind Thief always steals the last enemy ability cast last turn. It has no Cooldown",
+                    "description": "Mind Thief always steals the last enemy ability cast last turn. It has no Cooldown.",
                     "modifier": {
                         "description": [
                             "the last enemy ability played last turn. It has no cooldown",
@@ -4028,7 +4028,7 @@
                     ]
                 },
                 "Round of Drinks": {
-                    "unlock": "Task 7",
+                    "unlock": "Level 30",
                     "position": "middle",
                     "affects": "Assisted Strike",
                     "description": "Assisted Strike{slot1} always has Immune while Attacking.",
@@ -6989,7 +6989,7 @@
                 "Refreshing Bananas": {
                     "unlock": "Level 30",
                     "position": "left",
-                    "description": "Bananas give an additional +{0} Health",
+                    "description": "Bananas give an additional +{0} Health.",
                     "tiers": [
                         {
                             "description": 1
@@ -7227,16 +7227,28 @@
                     "description": "Passive: +{0} Attack. This Merc always deals Critical Damage to Demons.",
                     "tiers": [
                         {
-                            "description": 1
+                            "description": 1,
+                            "modifier": {
+                                "attack": 1
+                            }
                         },
                         {
-                            "description": 2
+                            "description": 2,
+                            "modifier": {
+                                "attack": 2
+                            }
                         },
                         {
-                            "description": 3
+                            "description": 3,
+                            "modifier": {
+                                "attack": 3
+                            }
                         },
                         {
-                            "description": 4
+                            "description": 4,
+                            "modifier": {
+                                "attack": 4
+                            }
                         }
                     ]
                 },
@@ -20457,7 +20469,7 @@
                     "unlock": 5,
                     "speed": 2,
                     "cooldown": 1,
-                    "description": "Gain Taunt and your other characters take {0} less damage for {0} turns",
+                    "description": "Gain Taunt and your other characters take {0} less damage for {0} turns.",
                     "tiers": [
                         {
                             "description": [
@@ -20530,28 +20542,40 @@
                     "description": "Bullish Fortitue reduces damage taken by {0} more, but has +{0} Cooldown",
                     "tiers": [
                         {
-                            "description": 2,
+                            "description": [
+                                2,
+                                1
+                            ],
                             "modifier": {
                                 "description": 2,
                                 "cooldown": 1
                             }
                         },
                         {
-                            "description": 3,
+                            "description": [
+                                3,
+                                1
+                            ],
                             "modifier": {
                                 "description": 3,
                                 "cooldown": 1
                             }
                         },
                         {
-                            "description": 4,
+                            "description": [
+                                4,
+                                1
+                            ],
                             "modifier": {
                                 "description": 4,
                                 "cooldown": 1
                             }
                         },
                         {
-                            "description": 5,
+                            "description": [
+                                5,
+                                1
+                            ],
                             "modifier": {
                                 "description": 5,
                                 "cooldown": 1
@@ -20801,19 +20825,19 @@
                         },
                         {
                             "description": 2,
-                            "cooldown": -1
+                            "speed": -1
                         },
                         {
                             "description": 3,
-                            "cooldown": -2
+                            "speed": -2
                         },
                         {
                             "description": 4,
-                            "cooldown": -3
+                            "speed": -3
                         },
                         {
                             "description": 5,
-                            "cooldown": -4
+                            "speed": -4
                         }
                     ]
                 }
@@ -21099,11 +21123,11 @@
                         },
                         {
                             "description": 3,
-                            "cooldown": -1
+                            "speed": -1
                         },
                         {
                             "description": 3,
-                            "cooldown": -2
+                            "speed": -2
                         }
                     ]
                 }

@@ -98,9 +98,9 @@ describe('Description helper function tests', () => {
         [
             "Attack an enemy then gain Stealth.",
             undefined,
-                        {
-                "prepend": "Gain +{0} Attack.",
-                "substitute": 1
+            {
+                prepend: "Gain +{0} Attack.",
+                substitute: 1
             },
             "Gain +1 Attack. Attack an enemy then gain Stealth."
         ]

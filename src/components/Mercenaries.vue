@@ -74,6 +74,7 @@
           @item-increment="itemIncrement"
           @item-decrement="itemDecrement"
           @item-toggle-lock="itemToggleLock"
+          @item-toggle-selected="itemToggleSelected"
           @add-to-collection="addCollectedMerc"
           @remove-from-collection="removeCollectedMerc"
           @task-increment="taskIncrement"
@@ -223,6 +224,9 @@ function itemDecrement(mercName: string, itemName: string): void {
 }
 function itemToggleLock(mercName: string, itemName: string): void {
   store.itemToggleLock(mercName, itemName);
+}
+function itemToggleSelected(mercName: string, itemName: string): void {
+  store.itemToggleSelected(mercName, itemName);
 }
 function taskIncrement(mercName: string): void {
   store.taskIncrement(mercName);

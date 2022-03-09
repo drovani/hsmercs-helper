@@ -1,6 +1,16 @@
 <template>
   <div class="flex flex-col border rounded text-sm sm:text-base text-center">
-    <div class="h-20 w-20 rounded border-8 my-8 mx-auto"></div>
+    <div
+      class="h-20 w-20 rounded border-8 my-8 mx-auto text-black flex flex-col"
+    >
+      <div class="flex-grow"></div>
+      <icon
+        v-if="unlocked"
+        :icon="selected ? faCheck : faThumbTack"
+        class="block self-end cursor-pointer"
+        @click="$emit('toggleSelected')"
+      />
+    </div>
     <div class="font-semibold">
       <TaillessWrap :text="`${itemName} ${activeTier}`" />
     </div>
@@ -41,8 +51,14 @@
 </template>
 
 <script setup lang="ts">
-import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons";
+import {
+faCheck,
+faLock,
+faThumbTack,
+faUnlock
+} from "@fortawesome/free-solid-svg-icons";
 import { computed } from "vue";
+import descriptionBuilder from "../common/description";
 import { MaxItemTiers } from "../models/mercenary";
 import TaillessWrap from "./TaillessWrap.vue";
 import UpDownButtons from "./UpDownButtons.vue";
@@ -55,41 +71,24 @@ const props = defineProps({
   costToMax: Number,
   unlock: String,
   unlocked: Boolean,
+  selected: Boolean,
 });
 
 const activeDescription = computed(() => {
-  let desc = props.description;
-  const tier = filledTiers.value[props.activeTier - 1];
-
-  if (tier.description !== undefined) {
-    const tierDesc = Array.isArray(tier.description)
-      ? tier.description
-      : [tier.description];
-
-    const regex = new RegExp(/\{([\w \(\)]+)\}/, "g");
-    const matches = Array.from(desc.matchAll(regex));
-    for (let i = 0; i < matches.length; i++) {
-      if (Number.parseInt(matches[i][1]) !== NaN) {
-        const baseValue = Number.parseInt(matches[i][1]);
-        const tierValue = Number.parseInt(tierDesc[i]);
-
-        desc = desc.replace(matches[i][0], String(baseValue + tierValue));
-      } else if (typeof tierDesc[i] === "string") {
-        desc = desc.replace(matches[i][0], tierDesc[i]);
-      }
-    }
-  }
-
-  return desc.replaceAll(/[\{\}]/g, "");
+  return descriptionBuilder(
+    props.description,
+    filledTiers.value[props.activeTier - 1].description
+  );
 });
 
 const filledTiers = computed(() => {
-  return [...Array(4 - props.tiers.length), ...props.tiers];
+  return [...Array(MaxItemTiers - props.tiers.length), ...props.tiers];
 });
 
 defineEmits<{
   (event: "increment"): void;
   (event: "decrement"): void;
   (event: "toggleLock"): void;
+  (event: "toggleSelected"): void;
 }>();
 </script>

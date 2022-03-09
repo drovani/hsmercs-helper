@@ -15,6 +15,7 @@ export function HydrateMercenary(merc: string | Mercenary, mercDto?: MercenaryDt
         health: data.health,
         abilities: [],
         equipment: [],
+        itemEquipped: data.itemEquipped,
         tasks: [],
         collected: false,
         level: 0,

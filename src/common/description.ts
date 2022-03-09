@@ -1,3 +1,4 @@
+
 export default function descriptionBuilder(base: string, tier: any, modifier?: any): string {
     let desc = `${base}`;
 
@@ -27,11 +28,11 @@ export default function descriptionBuilder(base: string, tier: any, modifier?: a
     for (let i = 0; i < matches.length; i++) {
         if (!Number.isNaN(Number(matches[i][1]))) {
             // Found {0}
-            const baseValue = Number(matches[i][1]);
+            const descValue = Number(matches[i][1]);
             const tierValue = Number(tierdesc.substitute[i]) || 0;
             const modValue = Number(moddesc.substitute[i]) || 0;
 
-            desc = desc.replace(matches[i][0], String(baseValue + tierValue + modValue));
+            desc = desc.replace(matches[i][0], String(descValue + tierValue + modValue));
         } else {
             // Found {string}
             if (typeof moddesc.substitute[i] !== "undefined" && moddesc.substitute[i] !== null) {
@@ -68,8 +69,8 @@ function normalizeDescriptionModifier(description: any): Description {
     } else if (typeof description.substitute === "string" || typeof description.substitute === "number") {
         // description.substitute = "string" || description.substitute = 0
         desc.substitute = [description.substitute];
-    } else {
-        // description.substitute = ["string", null, 0], or undefined
+    } else if (typeof description.substitute !== "undefined") {
+        // description.substitute = ["string", null, 0]
         desc.substitute = description.substitute;
     }
 

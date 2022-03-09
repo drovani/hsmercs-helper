@@ -29,7 +29,7 @@ export interface MercAbility {
     description: string;
     speed?: number;
     cooldown?: number;
-    tiers: any[];
+    tiers: AbilityTier[];
 
     activeTier: number;
     unlocked: boolean;
@@ -42,6 +42,7 @@ export interface MercItem {
     position: "left" | "middle" | "right";
     affects?: string | string[];
     description: string;
+    modifier?: any;
     tiers: any[];
 
     activeTier: number;
@@ -54,4 +55,17 @@ export interface MercTask {
     description: string;
     quote: string;
     ability?: string
+}
+
+interface AbilityTier {
+    speed?: number,
+    description?: string | number | (string | number | null)[] | {
+        replacement: string
+    },
+    summon?: {
+        description?: string | number | (string | number | null)[],
+        attack?: number,
+        health?: number
+    }
+    choose?: any[]
 }

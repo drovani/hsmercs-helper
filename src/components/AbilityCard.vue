@@ -14,13 +14,18 @@
     <div class="h-32 rounded-full border-8 my-2 mx-8 flex flex-col font-bold">
       <div
         class="text-right bg-cooldown bg-no-repeat bg-right-top bg-contain py-0.5 pr-3 text-3xl text-white text-outline-2"
-        v-if="cooldown"
+        v-if="activeCooldown"
       >
-        {{ cooldown }}
+        {{ activeCooldown }}
       </div>
       <div class="flex-grow"></div>
-      <div class="text-center text-3xl text-white text-outline-2" v-if="speed">
-        <img src="/images/speed.png" class="inline h-8 -mr-10" />{{ speed }}
+      <div
+        class="text-center text-3xl text-white text-outline-2"
+        v-if="activeSpeed"
+      >
+        <img src="/images/speed.png" class="inline h-8 -mr-10" />{{
+          activeSpeed
+        }}
       </div>
     </div>
     <div class="-mt-4 mb-2 font-bold text-outline-2 text-white h-4">
@@ -79,6 +84,20 @@ const activeDescription = computed(() => {
     props.description,
     props.tiers[props.activeTier - 1].description,
     props.itemEquippedModifier?.description
+  );
+});
+const activeSpeed = computed(() => {
+  return (
+    props.speed +
+    (props.tiers[props.activeTier - 1].speed || 0) +
+    (props.itemEquippedModifier?.speed || 0)
+  );
+});
+const activeCooldown = computed(() => {
+  return (
+    props.cooldown +
+    (props.tiers[props.activeTier - 1].cooldown || 0) +
+    (props.itemEquippedModifier?.cooldown || 0)
   );
 });
 

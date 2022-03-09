@@ -12,7 +12,8 @@ export interface MercenaryDto {
     health: number
     abilities: { [name: string]: MercAbilityDto }
     equipment: { [name: string]: MercItemDto }
-    tasks: MercTaskDto[]
+    tasks: MercTaskDto[],
+    itemEquipped?: string
 }
 
 export interface MercAbilityDto {
@@ -21,7 +22,7 @@ export interface MercAbilityDto {
     description?: string
     speed?: number
     cooldown?: number
-    tiers: any[]
+    tiers: MercAbilityTierDto[]
     [name: string]: any
 }
 
@@ -40,4 +41,17 @@ export interface MercTaskDto {
     description: string
     quote: string
     ability?: string
+}
+
+interface MercAbilityTierDto {
+    speed?: number,
+    description?: string | number | (string | number | null)[] | {
+        replacement: string
+    },
+    summon?: {
+        description?: string | number | (string | number | null)[],
+        attack?: number,
+        health?: number
+    }
+    choose?: any[]
 }
