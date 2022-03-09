@@ -82,6 +82,16 @@ function HydrateAbility(ability: string | MercAbility, abilityDto?: MercAbilityD
         unlocked: merc?.level ? merc.level >= data.unlock : false
     };
 
+    if (typeof data.summon !== "undefined") {
+        hydrate.summon = {
+            attack: data.summon.attack || 0,
+            health: data.summon.health || 0,
+            description: data.summon.description,
+            name: data.summon.name,
+            tribe: data.summon.tribe as Tribe
+        }
+    }
+
     return {
         ...hydrate,
         costToMax: AbilityUpgradeCosts.slice(hydrate.activeTier).reduce((p, c) => p += c, 0)

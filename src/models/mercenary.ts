@@ -30,6 +30,7 @@ export interface MercAbility {
     speed?: number;
     cooldown?: number;
     tiers: AbilityTier[];
+    summon?: AbilitySummon;
 
     activeTier: number;
     unlocked: boolean;
@@ -57,7 +58,7 @@ export interface MercTask {
     ability?: string
 }
 
-interface AbilityTier {
+export interface AbilityTier {
     speed?: number,
     description?: string | number | (string | number | null)[] | {
         replacement: string
@@ -68,4 +69,12 @@ interface AbilityTier {
         health?: number
     }
     choose?: any[]
+}
+
+export interface AbilitySummon {
+    name: string,
+    tribe: Tribe,
+    description: string,
+    attack: number,
+    health: number
 }
