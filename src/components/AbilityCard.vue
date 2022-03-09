@@ -34,8 +34,10 @@
     <div class="font-semibold">
       <TaillessWrap :text="`${abilityName} ${activeTier}`" />
     </div>
-    <div v-if="summon" class="flex-1 text-xs px-1">
-      {{ summon.description }}
+    <div v-if="summon" class="flex flex-col flex-1 text-xs px-1">
+      <div class="flex-1">
+        {{ summonDescription }}
+      </div>
       <div class="grid grid-cols-3 justify-items-center items-center">
         <Attack class="w-6 h-8" :attack="summonAttack" />
         <Tribe class="h-6" :tribe="summon.tribe" />
@@ -128,6 +130,15 @@ const summonHealth = computed(() => {
       props.summon.health +
       (props.tiers[props.activeTier - 1].summon?.health || 0) +
       (props.itemEquippedModifier?.summon?.health || 0)
+    );
+  }
+});
+const summonDescription = computed(() => {
+  if (props.summon) {
+    return descriptionBuilder(
+      props.summon.description,
+      props.tiers[props.activeTier - 1].summon?.description,
+      props.itemEquippedModifier?.summon?.description
     );
   }
 });

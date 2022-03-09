@@ -222,8 +222,12 @@ export const useMercStore = defineStore(MercStoreId, {
                 merc.equipment.filter(item => item.unlock.startsWith("Task")).forEach(item => {
                     const taskUnlock = Number.parseInt(item.unlock.substring("Task ".length));
                     item.unlocked = taskUnlock <= merc.tasksCompleted;
-                    if (merc.itemEquipped === item.itemName && !item.unlocked) {
-                        merc.itemEquipped = undefined;
+                    if (!item.unlocked) {
+                        item.activeTier = MaxItemTiers - item.tiers.length + 1;
+                        item.costToMax = ItemUpgradeCosts.slice(item.activeTier).reduce((p, c) => p += c, 0);
+                        if (merc.itemEquipped === item.itemName) {
+                            merc.itemEquipped = undefined;
+                        }
                     }
                 })
             }
