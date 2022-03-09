@@ -181,7 +181,12 @@ export function ApplyCollectedMerc(merc: Mercenary, data: CollectedMerc) {
         merc.level = data.level;
         merc.tasksCompleted = data.tasksCompleted;
         merc.itemEquipped = data.itemEquipped;
-        merc.abilities.forEach(a => a.activeTier = data.abilities[a.abilityName]);
+        merc.costToMax = 0;
+        merc.abilities.forEach(a => {
+            a.activeTier = data.abilities[a.abilityName];
+            a.costToMax = AbilityUpgradeCosts.slice(a.activeTier).reduce((p, c) => p += c, 0);
+            merc.costToMax += a.costToMax;
+        });
         merc.equipment.forEach(i => {
             const item = data.equipment[i.itemName];
             if (typeof item === 'number') {
@@ -195,6 +200,8 @@ export function ApplyCollectedMerc(merc: Mercenary, data: CollectedMerc) {
                 i.activeTier = item.activeTier;
                 i.unlocked = item.unlocked;
             }
+            i.costToMax = ItemUpgradeCosts.slice(i.activeTier).reduce((p, c) => p += c, 0);
+            merc.costToMax += i.costToMax;
         });
     }
 }
