@@ -34,7 +34,18 @@
     <div class="font-semibold">
       <TaillessWrap :text="`${abilityName} ${activeTier}`" />
     </div>
+    <div v-if="summon" class="flex flex-col flex-1 text-xs px-1">
+      <div class="flex-1">
+        {{ summonDescription }}
+      </div>
+      <div class="grid grid-cols-3 justify-items-center items-center">
+        <Attack class="w-6 h-8" :attack="summonAttack" />
+        <Tribe class="h-6" :tribe="summon.tribe" />
+        <Health class="w-6 h-8" :health="summonHealth" />
+      </div>
+    </div>
     <div
+      v-else
       class="flex-1 text-sm px-1"
       :class="{
         'text-xs': activeDescription.length >= 85,
@@ -60,8 +71,11 @@
 import { computed } from "vue";
 import descriptionBuilder from "../common/description";
 import { SpellSchool } from "../models/constants";
-import { MaxAbilityTiers } from "../models/mercenary";
+import { AbilitySummon, MaxAbilityTiers } from "../models/mercenary";
+import Attack from "./Attack.vue";
+import Health from "./Health.vue";
 import TaillessWrap from "./TaillessWrap.vue";
+import Tribe from "./Tribe.vue";
 import UpDownButtons from "./UpDownButtons.vue";
 
 const props = defineProps({
@@ -72,6 +86,7 @@ const props = defineProps({
   speed: Number,
   cooldown: Number,
   description: String,
+  summon: Object as () => AbilitySummon,
   tiers: Array as () => any[],
   itemEquippedModifier: {
     type: Object,
@@ -99,6 +114,33 @@ const activeCooldown = computed(() => {
     (props.tiers[props.activeTier - 1].cooldown || 0) +
     (props.itemEquippedModifier?.cooldown || 0)
   );
+});
+const summonAttack = computed(() => {
+  if (props.summon) {
+    return (
+      props.summon.attack +
+      (props.tiers[props.activeTier - 1].summon?.attack || 0) +
+      (props.itemEquippedModifier?.summon?.attack || 0)
+    );
+  }
+});
+const summonHealth = computed(() => {
+  if (props.summon) {
+    return (
+      props.summon.health +
+      (props.tiers[props.activeTier - 1].summon?.health || 0) +
+      (props.itemEquippedModifier?.summon?.health || 0)
+    );
+  }
+});
+const summonDescription = computed(() => {
+  if (props.summon) {
+    return descriptionBuilder(
+      props.summon.description,
+      props.tiers[props.activeTier - 1].summon?.description,
+      props.itemEquippedModifier?.summon?.description
+    );
+  }
 });
 
 defineEmits<{ (event: "increment"): void; (event: "decrement"): void }>();

@@ -51,9 +51,9 @@
         <RoleVue :role="role" />
       </div>
       <div class="grid grid-cols-5 justify-around place-items-center px-2">
-        <Attack :role="role" :attack="attack" />
+        <Attack :role="role" :attack="activeAttack" />
         <TribeVue :tribe="tribe" />
-        <Health :role="role" :health="health" />
+        <Health :role="role" :health="activeHealth" />
         <div v-if="!isMaxed" class="col-span-2 text-center">
           <img
             src="/images/mercenary-coin.png"
@@ -97,10 +97,20 @@
   </div>
 </template>
 <script setup lang="ts">
-import { faAward, faCheck, faCheckDouble, faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+faAward,
+faCheck,
+faCheckDouble,
+faPlus
+} from "@fortawesome/free-solid-svg-icons";
 import { computed } from "vue";
 import { Rarity, Role, Tribe } from "../models/constants";
-import { MercAbility, MercItem, MercTask } from "../models/mercenary";
+import {
+MaxItemTiers,
+MercAbility,
+MercItem,
+MercTask
+} from "../models/mercenary";
 import AbilityStamp from "./AbilityStamp.vue";
 import Attack from "./Attack.vue";
 import Health from "./Health.vue";
@@ -122,6 +132,7 @@ const props = defineProps({
   equipment: Array as () => MercItem[],
   tasks: Array as () => MercTask[],
   tasksCompleted: Number,
+  itemEquipped: String,
   collected: Boolean,
 });
 
@@ -132,6 +143,28 @@ const equipmentOrdered = computed(() => {
   return props.equipment.sort((a, b) => a.position.localeCompare(b.position));
 });
 
+const activeAttack = computed(() => {
+  return (
+    props.attack +
+    (isMaxed.value ? 1 : 0) +
+    (itemActiveTier.value?.modifier?.attack || 0)
+  );
+});
+const activeHealth = computed(() => {
+  return (
+    props.health +
+    (isMaxed.value ? 5 : 0) +
+    (itemActiveTier.value?.modifier?.health || 0)
+  );
+});
+const itemActiveTier = computed(() => {
+  if (props.itemEquipped) {
+    const item = props.equipment.find((i) => i.itemName === props.itemEquipped);
+    const activeTier =
+      item.tiers[item.activeTier - 1 - (MaxItemTiers - item.tiers.length)];
+    return activeTier;
+  }
+});
 const costToMax = computed(() => {
   let cost = 0;
   for (const ability of props.abilities) {

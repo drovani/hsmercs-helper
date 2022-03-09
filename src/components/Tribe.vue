@@ -1,11 +1,11 @@
 <template>
   <div
-    class="bg-center bg-no-repeat bg-contain h-10 whitespace-nowrap min-w-[6rem] text-center"
+    class="bg-center bg-no-repeat bg-contain h-10 whitespace-nowrap min-w-[6rem] flex justify-center items-center"
     :style="{
       'background-image': backgroundImage,
     }"
   >
-    <span class="align-middle">{{ tribe }}</span>
+    {{ tribe }}
   </div>
 </template>
 

@@ -23,6 +23,7 @@ export interface MercAbilityDto {
     speed?: number
     cooldown?: number
     tiers: MercAbilityTierDto[]
+    summon?: MercSummonDto,
     [name: string]: any
 }
 
@@ -54,4 +55,12 @@ interface MercAbilityTierDto {
         health?: number
     }
     choose?: any[]
+}
+
+interface MercSummonDto {
+    name: string,
+    tribe: Tribe | string,
+    description: string,
+    attack?: number,
+    health?: number
 }
