@@ -75,12 +75,12 @@ MercItem,
 MercTask
 } from "../models/mercenary";
 import AbilityCard from "./AbilityCard.vue";
-import Attack from "./Attack.vue";
-import Health from "./Health.vue";
+import Attack from "./atomic/Attack.vue";
+import Health from "./atomic/Health.vue";
+import RarityVue from "./atomic/Rarity.vue";
+import TribeVue from "./atomic/Tribe.vue";
 import ItemCard from "./ItemCard.vue";
-import RarityVue from "./Rarity.vue";
 import TaskCard from "./TaskCard.vue";
-import TribeVue from "./Tribe.vue";
 
 const props = defineProps({
   mercName: String,

@@ -4,8 +4,8 @@
   >
     <h1 class="text-2xl font-bold m-4 md:m-8">Collectable Mercenaries</h1>
     <div
-      class="text-white font-bold text-xl mb-1 border-b-8 justify-center flex gap-2 md:gap-4 lg:gap-8 sticky top-0 bg-white"
-      :class="[filterBorderColor]"
+      class="text-white font-bold text-xl border-b-8 justify-center flex flex-wrap gap-2 md:gap-4 lg:gap-8 sticky top-0 bg-white"
+      :class="[filterHighlightColor('border')]"
     >
       <div class="flex lg:gap-2">
         <div
@@ -22,11 +22,13 @@
           @toggle-role="toggleRole"
         />
       </div>
-      <RarityFilter
-        :enabled-rarities="filter.rarities"
-        @toggle-rarity="toggleRarity"
-        @filter-rarity="filterRarity"
-      />
+      <div class="bg-gray-800 rounded-t-md px-1 text-white">
+        <icon
+          class="cursor-pointer"
+          :icon="faFilter"
+          @click="showFilters = !showFilters"
+        />
+      </div>
       <div class="flex md:gap-2">
         <icon
           :icon="sortNameIcon"
@@ -64,6 +66,22 @@
         </div>
       </div>
     </div>
+    <div
+      v-if="showFilters"
+      class="px-2 pb-2"
+      :class="[filterHighlightColor('bg')]"
+    >
+      <RarityFilter
+        :enabled-rarities="filter.rarities"
+        @toggle-rarity="toggleRarity"
+        @filter-rarity="filterRarity"
+      />
+      <TribeFilter
+        :enabled-tribes="filter.tribes"
+        @toggle-tribe="toggleTribe"
+        @filter-tribe="filterTribe"
+      />
+    </div>
     <Transition name="fade">
       <ModalOverlay v-if="selectedMerc" @close="unselectMerc">
         <MercenaryDetails
@@ -82,7 +100,7 @@
         />
       </ModalOverlay>
     </Transition>
-    <div class="flex flex-wrap gap-2 justify-center">
+    <div class="flex flex-wrap gap-2 justify-center mt-1">
       <MercenaryCard
         v-for="merc in mercenaries"
         :key="merc.mercName"
@@ -106,25 +124,27 @@ faArrowDown19,
 faArrowDown91,
 faArrowDownAZ,
 faArrowDownZA,
+faFilter,
 IconDefinition
 } from "@fortawesome/free-solid-svg-icons";
 import { computed, onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { Rarities, Rarity, Role, Roles } from "../models/constants";
+import { Rarities, Rarity, Role, Roles, Tribe } from "../models/constants";
 import { Mercenary } from "../models/mercenary";
 import MercFilter from "../models/mercFilter";
 import mercjson from "../static/mercenaries.json";
 import { useMercStore } from "../stores/mercenaries";
+import ModalOverlay from "./atomic/ModalOverlay.vue";
+import RarityFilter from "./filters/RarityFilter.vue";
+import RoleFilter from "./filters/RoleFilter.vue";
 import MercenaryCard from "./MercenaryCard.vue";
 import MercenaryDetails from "./MercenaryDetails.vue";
-import ModalOverlay from "./ModalOverlay.vue";
-import RarityFilter from "./RarityFilter.vue";
-import RoleFilter from "./RoleFilter.vue";
 
 const store = useMercStore();
 const router = useRouter();
 const route = useRoute();
 
+const showFilters = ref(false);
 const filter = ref<MercFilter>({
   roles: [...Roles],
   rarities: [...Rarities],
@@ -144,11 +164,11 @@ const showingAllMercenaries = computed((): boolean => {
     filter.value.rarities.length === Rarities.length
   );
 });
-const filterBorderColor = computed((): string => {
+const filterHighlightColor = computed(() => (prefix: string): string => {
   if (filter.value.roles.length === 1) {
-    return "border-" + filter.value.roles[0].toLowerCase();
+    return `${prefix}-` + filter.value.roles[0].toLowerCase();
   } else {
-    return "border-gray-800";
+    return `${prefix}-gray-800`;
   }
 });
 const sortNameIcon = computed((): IconDefinition => {
@@ -196,6 +216,17 @@ function toggleRarity(rarity: Rarity): void {
     filter.value.rarities.push(rarity);
   } else {
     filter.value.rarities.splice(idx, 1);
+  }
+}
+function filterTribe(tribe: Tribe): void {
+  filter.value.tribes = [tribe];
+}
+function toggleTribe(tribe: Tribe): void {
+  const idx = filter.value.tribes.indexOf(tribe);
+  if (idx < 0) {
+    filter.value.tribes.push(tribe);
+  } else {
+    filter.value.tribes.splice(idx, 1);
   }
 }
 function toggleSort(field: "name" | "tasks"): void {

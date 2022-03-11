@@ -29,10 +29,10 @@
 </template>
 
 <script setup lang="ts">
-import UpDownButtons from "./UpDownButtons.vue";
-import TaillessWrap from "./TaillessWrap.vue";
 import { SpellSchool } from "../models/constants";
 import { MaxAbilityTiers } from "../models/mercenary";
+import TaillessWrap from "./atomic/TaillessWrap.vue";
+import UpDownButtons from "./UpDownButtons.vue";
 
 defineProps({
   abilityName: String,

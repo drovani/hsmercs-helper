@@ -60,7 +60,7 @@ faUnlock
 import { computed } from "vue";
 import descriptionBuilder from "../common/description";
 import { MaxItemTiers } from "../models/mercenary";
-import TaillessWrap from "./TaillessWrap.vue";
+import TaillessWrap from "./atomic/TaillessWrap.vue";
 import UpDownButtons from "./UpDownButtons.vue";
 
 const props = defineProps({

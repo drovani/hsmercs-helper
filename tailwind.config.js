@@ -3,6 +3,9 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   content: ["./index.html", "./src/**/*.{vue,ts}"],
+  safelist:[
+    'border-gray-800'
+  ],
   theme: {
     extend: {
       colors: {

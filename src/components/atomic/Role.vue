@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { Role } from "../models/constants";
+import { Role } from "../../models/constants";
 
 defineProps({
   role: {

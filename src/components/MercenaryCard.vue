@@ -112,14 +112,14 @@ MercItem,
 MercTask
 } from "../models/mercenary";
 import AbilityStamp from "./AbilityStamp.vue";
-import Attack from "./Attack.vue";
-import Health from "./Health.vue";
+import Attack from "./atomic/Attack.vue";
+import Health from "./atomic/Health.vue";
+import RarityVue from "./atomic/Rarity.vue";
+import RoleVue from "./atomic/Role.vue";
+import TaillessWrap from "./atomic/TaillessWrap.vue";
+import TribeVue from "./atomic/Tribe.vue";
 import ItemStamp from "./ItemStamp.vue";
-import RarityVue from "./Rarity.vue";
-import RoleVue from "./Role.vue";
-import TaillessWrap from "./TaillessWrap.vue";
 import TaskStamp from "./TaskStamp.vue";
-import TribeVue from "./Tribe.vue";
 
 const props = defineProps({
   mercName: String,
