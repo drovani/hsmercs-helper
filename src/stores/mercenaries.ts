@@ -43,6 +43,19 @@ export const useMercStore = defineStore(MercStoreId, {
                 if (Array.isArray(filter.tribes)) {
                     mercs = mercs.filter(m => filter.tribes.includes(m.tribe));
                 }
+                if (filter.collectedStatuses) {
+                    if (typeof filter.collectedStatuses.collected === "boolean") {
+                        mercs = mercs.filter(m => m.collected === filter.collectedStatuses.collected);
+                    }
+
+                    if (filter.collectedStatuses.status === 'unlocks') {
+                        mercs = mercs.filter(m => m.equipment.some(i => !i.unlocked));
+                    } else if (filter.collectedStatuses.status === 'maxed') {
+                        mercs = mercs.filter(m => m.costToMax === 0);
+                    } else if (filter.collectedStatuses.status === 'completed') {
+                        mercs = mercs.filter(m => m.costToMax === 0 && m.tasksCompleted >= MaxCompletedTasks);
+                    }
+                }
 
                 if (filter.sort !== undefined) {
                     if (filter.sort.field === "name") {
