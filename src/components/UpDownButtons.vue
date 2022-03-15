@@ -9,7 +9,7 @@
       :class="{ invisible: !showDecrement }"
       :title="'Decrease ' + title"
     >
-      <icon :icon="downIcon"></icon>
+      <fa-icon :icon="downIcon" />
     </button>
     <slot />
     <button
@@ -18,7 +18,7 @@
       :class="{ invisible: !showIncrement }"
       :title="'Increase ' + title"
     >
-      <icon :icon="upIcon"></icon>
+      <fa-icon :icon="upIcon" />
     </button>
   </div>
 </template>

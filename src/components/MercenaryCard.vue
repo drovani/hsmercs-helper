@@ -17,25 +17,25 @@
         }"
       >
         <div class="cursor-pointer w-4">
-          <icon
+          <fa-icon
             v-if="collected && isMaxed && tasksCompleted >= 18"
             :icon="faAward"
             @click="$emit('removeFromCollection', mercName)"
             title="Remove from collection."
           />
-          <icon
+          <fa-icon
             v-else-if="collected && isMaxed"
             :icon="faCheckDouble"
             @click="$emit('removeFromCollection', mercName)"
             title="Remove from collection."
           />
-          <icon
+          <fa-icon
             v-else-if="collected && !isMaxed"
             :icon="faCheck"
             @click="$emit('removeFromCollection', mercName)"
             title="Remove from collection."
           />
-          <icon
+          <fa-icon
             v-else
             :icon="faPlus"
             @click="$emit('addToCollection', mercName)"

@@ -17,7 +17,7 @@
     >
     <div v-else>
       {{ unlock }}
-      <icon
+      <fa-icon
         :icon="faLock"
         class="inline"
         :class="{
