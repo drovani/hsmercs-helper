@@ -1,5 +1,6 @@
+import { MercenaryDto } from "../src/models/mercLibrary";
 
-export const KingMukla = {
+export const KingMukla: MercenaryDto = {
     role: "Protector",
     rarity: "Epic",
     tribe: "Beast",
@@ -241,7 +242,7 @@ export const KingMukla = {
         "quote": ""
     }]
 };
-export const BlademasterSamuro: Mercenary = {
+export const BlademasterSamuro: MercenaryDto = {
     role: "Fighter",
     rarity: "Rare",
     tribe: "Orc",
@@ -472,7 +473,7 @@ export const BlademasterSamuro: Mercenary = {
         }
     ]
 };
-export const JainaProudmoore: Mercenary = {
+export const JainaProudmoore: MercenaryDto = {
     role: "Caster",
     rarity: "Legendary",
     tribe: "Human",
