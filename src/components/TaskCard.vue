@@ -33,7 +33,7 @@
       </div>
       <div v-else class="flex-1">
         All Tasks Completed!
-        <icon
+        <fa-icon
           :icon="faUndo"
           class="inline text-black-.2 cursor-pointer pl-2"
           @click="$emit('taskUndo')"

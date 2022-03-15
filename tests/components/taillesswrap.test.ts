@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
-import TaillessWrap from "../../src/components/TaillessWrap.vue";
+import TaillessWrap from "../../src/components/atomic/TaillessWrap.vue";
 
 describe.skip('TaillessWrap.Vue component', () => {
 

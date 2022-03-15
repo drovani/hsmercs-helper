@@ -17,25 +17,25 @@
         }"
       >
         <div class="cursor-pointer w-4">
-          <icon
+          <fa-icon
             v-if="collected && isMaxed && tasksCompleted >= 18"
             :icon="faAward"
             @click="$emit('removeFromCollection', mercName)"
             title="Remove from collection."
           />
-          <icon
+          <fa-icon
             v-else-if="collected && isMaxed"
             :icon="faCheckDouble"
             @click="$emit('removeFromCollection', mercName)"
             title="Remove from collection."
           />
-          <icon
+          <fa-icon
             v-else-if="collected && !isMaxed"
             :icon="faCheck"
             @click="$emit('removeFromCollection', mercName)"
             title="Remove from collection."
           />
-          <icon
+          <fa-icon
             v-else
             :icon="faPlus"
             @click="$emit('addToCollection', mercName)"
@@ -112,14 +112,14 @@ MercItem,
 MercTask
 } from "../models/mercenary";
 import AbilityStamp from "./AbilityStamp.vue";
-import Attack from "./Attack.vue";
-import Health from "./Health.vue";
+import Attack from "./atomic/Attack.vue";
+import Health from "./atomic/Health.vue";
+import RarityVue from "./atomic/Rarity.vue";
+import RoleVue from "./atomic/Role.vue";
+import TaillessWrap from "./atomic/TaillessWrap.vue";
+import TribeVue from "./atomic/Tribe.vue";
 import ItemStamp from "./ItemStamp.vue";
-import RarityVue from "./Rarity.vue";
-import RoleVue from "./Role.vue";
-import TaillessWrap from "./TaillessWrap.vue";
 import TaskStamp from "./TaskStamp.vue";
-import TribeVue from "./Tribe.vue";
 
 const props = defineProps({
   mercName: String,

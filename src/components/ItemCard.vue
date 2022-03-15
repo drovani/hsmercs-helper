@@ -4,7 +4,7 @@
       class="h-20 w-20 rounded border-8 my-8 mx-auto text-black flex flex-col"
     >
       <div class="flex-grow"></div>
-      <icon
+      <fa-icon
         v-if="unlocked"
         :icon="selected ? faCheck : faThumbTack"
         class="block self-end cursor-pointer"
@@ -29,7 +29,7 @@
       @decrement="$emit('decrement')"
       ><div>
         {{ costToMax > 0 ? costToMax : "" }}
-        <icon
+        <fa-icon
           v-if="unlock.startsWith('Defeat')"
           :icon="faUnlock"
           class="inline"
@@ -38,7 +38,7 @@
     ></UpDownButtons>
     <div v-else class="px-2">
       {{ unlock }}
-      <icon
+      <fa-icon
         :icon="faLock"
         class="inline"
         :class="{
@@ -60,7 +60,7 @@ faUnlock
 import { computed } from "vue";
 import descriptionBuilder from "../common/description";
 import { MaxItemTiers } from "../models/mercenary";
-import TaillessWrap from "./TaillessWrap.vue";
+import TaillessWrap from "./atomic/TaillessWrap.vue";
 import UpDownButtons from "./UpDownButtons.vue";
 
 const props = defineProps({

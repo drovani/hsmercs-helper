@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { Rarity, Rarities } from "../models/constants";
+import { Rarity } from "../../models/constants";
 
 defineProps({
   rarity: {

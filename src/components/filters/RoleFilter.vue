@@ -2,7 +2,7 @@
   <div
     v-for="role in Roles"
     :key="role"
-    class="rounded-t-md px-2 gap-2 cursor-pointer flex justify-between flex-nowrap"
+    class="rounded-t-md px-2 pt-1 gap-2 cursor-pointer flex justify-between flex-nowrap"
     :class="{
       'bg-protector': role === 'Protector',
       'bg-fighter': role === 'Fighter',
@@ -22,7 +22,7 @@
         'opacity-100': !isEnabled(role),
       }"
     >
-      <icon
+      <fa-icon
         :icon="['fas', isEnabled(role) ? 'minus-circle' : 'plus-circle']"
         @click.stop="$emit('toggleRole', role)"
       />
@@ -31,7 +31,7 @@
 </template>
 <script setup lang="ts">
 import { computed } from "vue";
-import { Role, Roles } from "../models/constants";
+import { Role, Roles } from "../../models/constants";
 
 const props = defineProps({
   enabledRoles: {

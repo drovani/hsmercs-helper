@@ -4,12 +4,12 @@
   >
     <h1 class="text-2xl font-bold m-4 md:m-8">Collectable Mercenaries</h1>
     <div
-      class="text-white font-bold text-xl mb-1 border-b-8 justify-center flex gap-2 md:gap-4 lg:gap-8 sticky top-0 bg-white"
-      :class="[filterBorderColor]"
+      class="text-white font-bold text-xl border-b-8 justify-center flex flex-wrap gap-2 md:gap-4 lg:gap-8 sticky top-0 bg-white"
+      :class="[filterHighlightColor('border')]"
     >
       <div class="flex lg:gap-2">
         <div
-          class="rounded-t-md px-2 cursor-pointer whitespace-nowrap bg-gray-800 opacity-50"
+          class="rounded-t-md px-2 pt-1 cursor-pointer whitespace-nowrap bg-gray-800 opacity-50"
           :class="{ 'opacity-100': showingAllMercenaries }"
           @click.prevent="showAllMercenaries"
         >
@@ -22,30 +22,84 @@
           @toggle-role="toggleRole"
         />
       </div>
-      <RarityFilter
-        :enabled-rarities="filter.rarities"
-        @toggle-rarity="toggleRarity"
-        @filter-rarity="filterRarity"
-      />
+      <div class="bg-gray-800 rounded-t-md px-1 w-10">
+        <fa-icon-layers
+          class="cursor-pointer"
+          @click="showFilters = !showFilters"
+        >
+          <fa-icon size="lg" :icon="faFilter" class="text-gray-400" />
+          <fa-icon
+            v-if="
+              filter.collectedStatuses.collected === false &&
+              filter.collectedStatuses.status === null
+            "
+            :icon="faPlus"
+            size="sm"
+            transform="down-2 right-2"
+            color="white"
+          />
+          <fa-icon
+            v-if="
+              filter.collectedStatuses.collected === true &&
+              filter.collectedStatuses.status === null
+            "
+            :icon="faCheck"
+            size="sm"
+            transform="down-2 right-2"
+            color="white"
+          />
+          <fa-icon
+            v-if="filter.collectedStatuses.status === 'unlocks'"
+            :icon="faLock"
+            size="sm"
+            transform="down-2 right-2"
+            color="white"
+          />
+          <fa-icon
+            v-if="filter.collectedStatuses.status === 'maxed'"
+            :icon="faCheckDouble"
+            size="sm"
+            transform="down-2 right-2"
+            color="white"
+          />
+          <fa-icon
+            v-if="filter.collectedStatuses.status === 'completed'"
+            :icon="faAward"
+            size="sm"
+            transform="down-2 right-2"
+            color="white"
+          />
+        </fa-icon-layers>
+      </div>
       <div class="flex md:gap-2">
-        <icon
-          :icon="sortNameIcon"
-          class="cursor-pointer rounded-t-md bg-gray-800 px-2 whitespace-nowrap h-full w-6"
+        <div
+          class="cursor-pointer flex flex-col justify-around bg-gray-800 rounded-t-md px-1"
           @click="toggleSort('name')"
-        />
-        <icon
-          :icon="sortTasksIcon"
-          class="cursor-pointer rounded-t-md bg-gray-800 px-2 whitespace-nowrap h-full w-6"
+        >
+          <fa-icon
+            :icon="sortNameIcon"
+            size="lg"
+            :class="{ 'text-gray-400': filter.sort.field !== 'name' }"
+          />
+        </div>
+        <div
+          class="cursor-pointer flex flex-col justify-around bg-gray-800 rounded-t-md px-1"
           @click="toggleSort('tasks')"
-        />
+        >
+          <fa-icon
+            :icon="sortTasksIcon"
+            size="lg"
+            :class="{ 'text-gray-400': filter.sort.field !== 'tasks' }"
+          />
+        </div>
       </div>
       <div class="flex md:gap-2 bg-gray-800 rounded-t-md px-1">
-        <div class="cursor-pointer">
+        <div class="cursor-pointer flex flex-col justify-around">
           <label
             for="importCollection"
             title="Import JSON Mercenary Collection"
           >
-            <icon :icon="['fas', 'file-import']" />
+            <fa-icon :icon="faFileImport" size="lg" />
             <input
               class="hidden"
               type="file"
@@ -54,15 +108,37 @@
             />
           </label>
         </div>
-        <div class="cursor-pointer">
+        <div class="cursor-pointer flex flex-col justify-around">
           <a
             @click.prevent="exportCollection"
             title="Export JSON Mercenary Collection"
           >
-            <icon :icon="['fas', 'file-export']" />
+            <fa-icon :icon="faFileExport" size="lg" />
           </a>
         </div>
       </div>
+    </div>
+    <div
+      v-if="showFilters"
+      class="px-2 pb-2 rounded-b-md flex gap-x-4"
+      :class="[filterHighlightColor('bg')]"
+    >
+      <RarityFilter
+        :enabled-rarities="filter.rarities"
+        @toggle-rarity="toggleRarity"
+        @filter-rarity="filterRarity"
+      />
+      <TribeFilter
+        :enabled-tribes="filter.tribes"
+        @toggle-tribe="toggleTribe"
+        @filter-tribe="filterTribe"
+        @toggle-faction="toggleFaction"
+      />
+      <CollectionFilter
+        :enabled-statuses="filter.collectedStatuses"
+        @filter-collected-state="filterCollectedState"
+        @toggle-collected-status="toggleCollectedStatus"
+      />
     </div>
     <Transition name="fade">
       <ModalOverlay v-if="selectedMerc" @close="unselectMerc">
@@ -82,7 +158,7 @@
         />
       </ModalOverlay>
     </Transition>
-    <div class="flex flex-wrap gap-2 justify-center">
+    <div class="flex flex-wrap gap-2 justify-center mt-1">
       <MercenaryCard
         v-for="merc in mercenaries"
         :key="merc.mercName"
@@ -106,28 +182,51 @@ faArrowDown19,
 faArrowDown91,
 faArrowDownAZ,
 faArrowDownZA,
+faAward,
+faCheck,
+faCheckDouble,
+faFileExport,
+faFileImport,
+faFilter,
+faLock,
+faPlus,
 IconDefinition
 } from "@fortawesome/free-solid-svg-icons";
 import { computed, onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { Rarities, Rarity, Role, Roles } from "../models/constants";
+import {
+Rarities,
+Rarity,
+Role,
+Roles,
+Tribe,
+Tribes
+} from "../models/constants";
 import { Mercenary } from "../models/mercenary";
 import MercFilter from "../models/mercFilter";
 import mercjson from "../static/mercenaries.json";
 import { useMercStore } from "../stores/mercenaries";
+import ModalOverlay from "./atomic/ModalOverlay.vue";
+import CollectionFilter from "./filters/CollectionFilter.vue";
+import RarityFilter from "./filters/RarityFilter.vue";
+import RoleFilter from "./filters/RoleFilter.vue";
+import TribeFilter from "./filters/TribeFilter.vue";
 import MercenaryCard from "./MercenaryCard.vue";
 import MercenaryDetails from "./MercenaryDetails.vue";
-import ModalOverlay from "./ModalOverlay.vue";
-import RarityFilter from "./RarityFilter.vue";
-import RoleFilter from "./RoleFilter.vue";
 
 const store = useMercStore();
 const router = useRouter();
 const route = useRoute();
 
+const showFilters = ref(false);
 const filter = ref<MercFilter>({
   roles: [...Roles],
   rarities: [...Rarities],
+  tribes: [...Tribes],
+  collectedStatuses: {
+    collected: "all",
+    status: null,
+  },
   sort: {
     field: "name",
     direction: "ascending",
@@ -141,14 +240,32 @@ const mercenaries = computed((): Mercenary[] => {
 const showingAllMercenaries = computed((): boolean => {
   return (
     filter.value.roles.length === Roles.length &&
-    filter.value.rarities.length === Rarities.length
+    filter.value.rarities.length === Rarities.length &&
+    filter.value.tribes.length === Tribes.length &&
+    filter.value.collectedStatuses.collected === "all" &&
+    filter.value.collectedStatuses.status === null
   );
 });
-const filterBorderColor = computed((): string => {
+const usingAdditionalFilters = computed((): boolean => {
+  const filteringRoles = filter.value.roles.length !== Roles.length;
+  const filteringRarities = filter.value.rarities.length !== Rarities.length;
+  const filteringTribes = filter.value.tribes.length !== Tribes.length;
+  const filteringCollected = filter.value.collectedStatuses.collected !== "all";
+  const filteringStatus = filter.value.collectedStatuses.status !== null;
+
+  return (
+    filteringRoles ||
+    filteringRarities ||
+    filteringTribes ||
+    filteringCollected ||
+    filteringStatus
+  );
+});
+const filterHighlightColor = computed(() => (prefix: string): string => {
   if (filter.value.roles.length === 1) {
-    return "border-" + filter.value.roles[0].toLowerCase();
+    return `${prefix}-` + filter.value.roles[0].toLowerCase();
   } else {
-    return "border-gray-800";
+    return `${prefix}-gray-800`;
   }
 });
 const sortNameIcon = computed((): IconDefinition => {
@@ -175,6 +292,9 @@ const sortTasksIcon = computed((): IconDefinition => {
 function showAllMercenaries(): void {
   filter.value.roles = [...Roles];
   filter.value.rarities = [...Rarities];
+  filter.value.tribes = [...Tribes];
+  filter.value.collectedStatuses.collected = "all";
+  filter.value.collectedStatuses.status = null;
 }
 function filterRole(role: Role): void {
   filter.value.roles = [role];
@@ -198,6 +318,27 @@ function toggleRarity(rarity: Rarity): void {
     filter.value.rarities.splice(idx, 1);
   }
 }
+function filterTribe(tribe: Tribe): void {
+  filter.value.tribes = [tribe];
+}
+function toggleTribe(tribe: Tribe): void {
+  const idx = filter.value.tribes.indexOf(tribe);
+  if (idx < 0) {
+    filter.value.tribes.push(tribe);
+  } else {
+    filter.value.tribes.splice(idx, 1);
+  }
+}
+function toggleFaction(tribes: Tribe[]): void {
+  if (tribes.every((t) => filter.value.tribes.includes(t))) {
+    filter.value.tribes = filter.value.tribes.filter(
+      (t) => !tribes.includes(t)
+    );
+  } else {
+    const tribeSet = new Set(filter.value.tribes.concat(tribes));
+    filter.value.tribes = Array.from(tribeSet);
+  }
+}
 function toggleSort(field: "name" | "tasks"): void {
   if (field === filter.value.sort.field) {
     filter.value.sort.direction =
@@ -207,6 +348,18 @@ function toggleSort(field: "name" | "tasks"): void {
       field: field,
       direction: "ascending",
     };
+  }
+}
+function filterCollectedState(status: true | false | "all"): void {
+  filter.value.collectedStatuses.collected = status;
+}
+function toggleCollectedStatus(
+  status: "unlocks" | "maxed" | "completed"
+): void {
+  if (filter.value.collectedStatuses.status === status) {
+    filter.value.collectedStatuses.status = null;
+  } else {
+    filter.value.collectedStatuses.status = status;
   }
 }
 
