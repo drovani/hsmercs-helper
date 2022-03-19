@@ -3,7 +3,7 @@
     <div v-if="tasksCompleted > 0">
       <div class="font-bold text-center">
         Task #{{ tasksCompleted }} Completed:<br />
-        {{ tasks[tasksCompleted - 1].name }}
+        {{ tasks[tasksCompleted - 1]?.name }}
       </div>
     </div>
     <div class="flex mt-2 pt-2 border-t-2">
@@ -22,13 +22,13 @@
           />
         </div>
         <div class="font-bold">
-          {{ tasks[tasksCompleted].name }}
+          {{ tasks[tasksCompleted]?.name }}
         </div>
         <div>
-          {{ tasks[tasksCompleted].description }}
+          {{ tasks[tasksCompleted]?.description }}
         </div>
         <blockquote class="px-2 border-l-2 text-sm">
-          {{ tasks[tasksCompleted].quote }}
+          {{ tasks[tasksCompleted]?.quote }}
         </blockquote>
       </div>
       <div v-else class="flex-1">

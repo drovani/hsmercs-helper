@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row">
     <div v-if="tasksCompleted < 18" class="flex-1">
-      Task #{{ tasksCompleted + 1 }}: {{ tasks[tasksCompleted].description }}
+      Task #{{ tasksCompleted + 1 }}: {{ tasks[tasksCompleted]?.description }}
     </div>
     <div v-else class="flex-1">All Tasks Completed!</div>
     <UpDownButtons
@@ -17,9 +17,9 @@
   </div>
 </template>
 <script setup lang="ts">
+import { faCheckCircle, faUndo } from "@fortawesome/free-solid-svg-icons";
 import { MercTask } from "../models/mercenary";
 import UpDownButtons from "./UpDownButtons.vue";
-import { faUndo, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 defineProps({
   tasksCompleted: {
