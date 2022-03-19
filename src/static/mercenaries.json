@@ -21315,6 +21315,1239 @@
                     "quote": "Your enemies will peer into your soul and use your darkest fears against you. Resist them."
                 }
             ]
+        },
+        "Drek'thar": {
+            "tribe": "Orc",
+            "rarity": "Legendary",
+            "role": "Caster",
+            "attack": 9,
+            "health": 68,
+            "abilities": {
+                "Blood Frenzy": {
+                    "unlock": 1,
+                    "speed": 5,
+                    "description": "Give your Orcs +{0} Attack until the end of the turn. Attack a random enemy. If you have Fell Corruption, Attack increases by +{0}.",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                6,
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "Spirit Guide": {
+                    "unlock": 5,
+                    "speed": 3,
+                    "cooldown": 1,
+                    "summon": {
+                        "name": "Spirit Guide",
+                        "description": "Battlecry: If you have Shamanism, gain Divine Shield and Rush."
+                    },
+                    "tiers": [
+                        {
+                            "summon": {
+                                "attack": 0,
+                                "health": 0
+                            }
+                        },
+                        {
+                            "summon": {
+                                "attack": 0,
+                                "health": 0
+                            }
+                        },
+                        {
+                            "summon": {
+                                "attack": 0,
+                                "health": 0
+                            }
+                        },
+                        {
+                            "summon": {
+                                "attack": 0,
+                                "health": 0
+                            }
+                        },
+                        {
+                            "summon": {
+                                "attack": 15,
+                                "health": 26
+                            }
+                        }
+                    ]
+                },
+                "Fel Corruption": {
+                    "unlock": 15,
+                    "speed": 7,
+                    "cooldown": 1,
+                    "description": "Deal {0} damage to all enemies. Deal {0} damage to your other characters. (After a friendly Orc dies, this transforms into Shamanism {0}.",
+                    "spell_school": "Fel",
+                    "transform": {
+                        "Shamanism": {
+                            "speed": 7,
+                            "cooldown": 1,
+                            "spell_school": "Nature",
+                            "description": "",
+                            "tiers": [
+                                {
+                                    "description": []
+                                },
+                                {
+                                    "description": []
+                                },
+                                {
+                                    "description": []
+                                },
+                                {
+                                    "description": []
+                                },
+                                {
+                                    "description": []
+                                }
+                            ]
+                        }
+                    },
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                19,
+                                5,
+                                5
+                            ]
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "Glacial Blade": {
+                    "unlock": "Level 30",
+                    "position": "left",
+                    "description": "Passive: +{0} Attack. After this Merc Attacks a character, Freeze them.",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                6
+                            ]
+                        }
+                    ]
+                },
+                "Drek'Thar's Spellbook": {
+                    "unlock": "Task 2",
+                    "position": "middle",
+                    "description": "Passive: Your chracters have +{0} Arcane Resistance",
+                    "tiers": [
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 5
+                        }
+                    ]
+                },
+                "Shimmerweed Potion": {
+                    "unlock": "Task 7",
+                    "position": "right",
+                    "description": "Battlecry: Give your characters +{0} Health.",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                10
+                            ]
+                        }
+                    ]
+                }
+            },
+            "tasks": []
+        },
+        "Deathwing": {
+            "tribe": "Dragon",
+            "rarity": "Legendary",
+            "role": "Protector",
+            "attack": 11,
+            "health": 85,
+            "abilities": {
+                "Claws of Terror": {
+                    "unlock": 1,
+                    "speed": 7,
+                    "description": "Attack an enemy. If it was damaged this turn, deal {0} damage to them.",
+                    "spell_school": "Fire",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                8
+                            ]
+                        }
+                    ]
+                },
+                "Elementium Armor": {
+                    "unlock": 5,
+                    "speed": 1,
+                    "description": "Gain Taunt this turn. After being Attacked this turn, summon a {0}/{0} Elementium Terror with Bleed ({0}).",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                12,
+                                15,
+                                3
+                            ]
+                        }
+                    ]
+                },
+                "Destroy All Life": {
+                    "unlock": 15,
+                    "speed": 8,
+                    "cooldown": 1,
+                    "description": "Deal {0} damage to all characters. If any die, repeat this.",
+                    "spell_school": "Fire",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                10
+                            ]
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "Heart of Unliving": {
+                    "unlock": "Level 30",
+                    "position": "left",
+                    "affects": "Claws of Terror",
+                    "description": "Claws of Terror deals {0} more damage and affects adjacent enemies.",
+                    "tiers": [
+                        {
+                            "description": [],
+                            "modifier": {
+                                "description": []
+                            }
+                        },
+                        {
+                            "description": [],
+                            "modifier": {
+                                "description": []
+                            }
+                        },
+                        {
+                            "description": [],
+                            "modifier": {
+                                "description": []
+                            }
+                        },
+                        {
+                            "description": [
+                                5
+                            ],
+                            "modifier": {
+                                "description": [
+                                    5
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "Resolve of Undying": {
+                    "unlock": "Task 2",
+                    "position": "middle",
+                    "description": "Passive: Restore {0} Health to this Merc after a friendly Elementium Terror is destroyed.",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                10
+                            ]
+                        }
+                    ]
+                },
+                "Demon Soul": {
+                    "unlock": "Task 7",
+                    "position": "right",
+                    "description": "Passive: +{0} Fel Damage. Whenever an enemy Dragon minion is summoned, gain control of it.",
+                    "tiers": [
+                        {
+                            "description": 1
+                        },
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        }
+                    ]
+                }
+            },
+            "tasks": []
+        },
+        "Leeroy Jenkins": {
+            "tribe": "Human",
+            "rarity": "Legendary",
+            "role": "Fighter",
+            "attack": 10,
+            "health": 64,
+            "abilities": {
+                "Wild Swing": {
+                    "unlock": 1,
+                    "speed": 7,
+                    "description": "Gain +{0} Attack for {0} turns. Attack a random enemy.",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                8,
+                                2
+                            ]
+                        }
+                    ]
+                },
+                "Get Chicken": {
+                    "unlock": 5,
+                    "speed": 2,
+                    "description": "Gain +{0} Health and become Immune while Attacking next turn.",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                10
+                            ]
+                        }
+                    ]
+                },
+                "Leeeeeroooy Jenkiiins!": {
+                    "unlock": 15,
+                    "speed": 0,
+                    "cooldown": 1,
+                    "description": "Attack all enemies, ignoring Taunt. All characters act immediately, in a random order.",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "Even Bigger Sword": {
+                    "unlock": "Level 30",
+                    "position": "left",
+                    "affects": "Wild Swing",
+                    "description": "Wild Swing grants an additional +{0} Attack.",
+                    "tiers": [
+                        {
+                            "description": [],
+                            "modifier": {
+                                "description": []
+                            }
+                        },
+                        {
+                            "description": [],
+                            "modifier": {
+                                "description": []
+                            }
+                        },
+                        {
+                            "description": [],
+                            "modifier": {
+                                "description": []
+                            }
+                        },
+                        {
+                            "description": [
+                                8
+                            ],
+                            "modifier": {
+                                "description": [
+                                    8
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "Heals!": {
+                    "unlock": "Task 2",
+                    "position": "middle",
+                    "description": "Passive: Restore {0} Health to this Merc whenever Health is restored to another one of your characters.",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                8
+                            ]
+                        }
+                    ]
+                },
+                "Ninja-Looting": {
+                    "unlock": "Task 7",
+                    "position": "right",
+                    "description": "Passive: Gain +{0} Attack whenever an enemy dies.",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                6
+                            ]
+                        }
+                    ]
+                }
+            },
+            "tasks": []
+        },
+        "Vanndar Stormpike": {
+            "tribe": "Dwarf",
+            "rarity": "Legendary",
+            "role": "Protector",
+            "attack": 12,
+            "health": 78,
+            "abilities": {
+                "Thunder Strike": {
+                    "unlock": 1,
+                    "speed": 7,
+                    "spell_school": "Nature",
+                    "description": "Attack an enemy. If they survive deal {0} damage to them and adjacent enemies. Their next ability is ({0}) Speed alower.",
+                    "tiers": [
+                        {
+                            "description": [
+                                2,
+                                1
+                            ]
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                6,
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "Push Forward": {
+                    "unlock": 5,
+                    "speed": 6,
+                    "description": "Friendly characters with Taunt gain +{0} Attack and Attack an enemy.",
+                    "tiers": [
+                        {
+                            "description": 1
+                        },
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 5
+                        }
+                    ]
+                },
+                "Avatar": {
+                    "unlock": 15,
+                    "speed": 8,
+                    "cooldown": 2,
+                    "description": "Gain +{0} Attack (increased by Health lost). Attack an enemy.",
+                    "tiers": [
+                        {
+                            "description": 1
+                        },
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 5
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "The Unstoppable Force": {
+                    "unlock": "Level 30",
+                    "position": "left",
+                    "description": "Passive: +{0} Attack. Can't be Frozen.",
+                    "tiers": [
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": 6
+                        }
+                    ]
+                },
+                "The Immovable Object": {
+                    "unlock": "Task 2",
+                    "position": "middle",
+                    "description": "Passive: +{0} Health. Taunt.",
+                    "tiers": [
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": 7
+                        }
+                    ]
+                },
+                "Avatar of Stormpike": {
+                    "unlock": "Task 7",
+                    "position": "right",
+                    "affects": "Avatar",
+                    "description": "Avatar also restores {0} Health to friendly Dwarves.",
+                    "tiers": [
+                        {
+                            "description": 4,
+                            "modifier": {
+                                "description": []
+                            }
+                        },
+                        {
+                            "description": [],
+                            "modifier": {
+                                "description": []
+                            }
+                        },
+                        {
+                            "description": [],
+                            "modifier": {
+                                "description": []
+                            }
+                        },
+                        {
+                            "description": 15,
+                            "modifier": {
+                                "description": []
+                            }
+                        }
+                    ]
+                }
+            },
+            "tasks": []
+        },
+        "Onyxia": {
+            "tribe": "Dragon",
+            "rarity": "Epic",
+            "role": "Caster",
+            "attack": 9,
+            "health": 65,
+            "abilities": {
+                "Insolent Mortals": {
+                    "unlock": 1,
+                    "speed": 4,
+                    "description": "Attack an enemy. If they have Taunt, first gain +{0} Attack and then block Taunt on them this turn.",
+                    "tiers": [
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 5
+                        },
+                        {
+                            "description": 6
+                        }
+                    ]
+                },
+                "Deep Breath": {
+                    "unlock": 5,
+                    "speed": 5,
+                    "cooldown": 1,
+                    "description": "Restore {0} Health to this Merc. Next turn, gain that much Fire Damage for {0} turn.",
+                    "tiers": [
+                        {
+                            "description": [
+                                3,
+                                1
+                            ]
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                15,
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "Cleanse the Nest": {
+                    "unlock": 15,
+                    "speed": 8,
+                    "cooldown": 1,
+                    "spell_school": "Fire",
+                    "description": "Deal {0} damage to all enemies. Deathblow: Summon a {0}/{0} Onyxian Whelp.",
+                    "tiers": [
+                        {
+                            "description": [
+                                3,
+                                4,
+                                4
+                            ]
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                15,
+                                12,
+                                12
+                            ]
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "Razor Sharp Claws": {
+                    "unlock": "Level 30",
+                    "position": "left",
+                    "affects": "Insolent Mortals",
+                    "description": "Insolent Mortals gives an additional +{0} Attack.",
+                    "tiers": [
+                        {
+                            "description": 3,
+                            "modifier": {
+                                "description": 3
+                            }
+                        },
+                        {
+                            "description": [],
+                            "modifier": {
+                                "description": []
+                            }
+                        },
+                        {
+                            "description": [],
+                            "modifier": {
+                                "description": []
+                            }
+                        },
+                        {
+                            "description": 8,
+                            "modifier": {
+                                "description": 8
+                            }
+                        }
+                    ]
+                },
+                "Deeper Breath": {
+                    "unlock": "Task 2",
+                    "position": "middle",
+                    "affects": "Deep Breath",
+                    "description": "Deep Breath restores {0} more Health and is ({0}) Speed slower.",
+                    "tiers": [
+                        {
+                            "description": [
+                                2,
+                                1
+                            ],
+                            "modifier": {
+                                "description": 2,
+                                "speed": 1
+                            }
+                        },
+                        {
+                            "description": [
+                                3,
+                                1
+                            ],
+                            "modifier": {
+                                "description": 3,
+                                "speed": 1
+                            }
+                        },
+                        {
+                            "description": [
+                                4,
+                                1
+                            ],
+                            "modifier": {
+                                "description": 4,
+                                "speed": 1
+                            }
+                        },
+                        {
+                            "description": [
+                                5,
+                                1
+                            ],
+                            "modifier": {
+                                "description": 5,
+                                "speed": 1
+                            }
+                        }
+                    ]
+                },
+                "Broodmother's Rage": {
+                    "unlock": "Task 7",
+                    "position": "right",
+                    "description": "Passive: After another friendly Dragon dies, deal {0} damage to all enemies.",
+                    "tiers": [
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": 7
+                        }
+                    ]
+                }
+            },
+            "tasks": []
+        },
+        "Kazakus, Golem Shaper": {
+            "tribe": "Troll",
+            "rarity": "Rare",
+            "role": "Caster",
+            "attack": 9,
+            "health": 70,
+            "abilities": {
+                "Shadow Claws": {
+                    "unlock": 1,
+                    "speed": 6,
+                    "spell_school": "Shadow",
+                    "description": "Deal {0} damage to a random enemy. Repeat for each of your Golens destroyed this game.",
+                    "tiers": [
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 5
+                        },
+                        {
+                            "description": 6
+                        }
+                    ]
+                },
+                "Build-A-Golem": {
+                    "unlock": 5,
+                    "speed": 4,
+                    "spell_school": "Shadow",
+                    "description": "Choose a Golem. Summon it.",
+                    "tiers": [
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        }
+                    ]
+                },
+                "True Shape": {
+                    "unlock": 15,
+                    "speed": 8,
+                    "spell_school": "Shadow",
+                    "description": "Become a Dragon. Destroy your Golems and gain their stats. (Transforms into Reshape {0}.)",
+                    "transform": {
+                        "Reshape": {
+                            "description": "Attack an enemy. Deathblow: Recreate them as a Golem with {0} Health.",
+                            "spell_school": "Shadow",
+                            "speed": 6,
+                            "tiers": [
+                                {
+                                    "description": []
+                                },
+                                {
+                                    "description": []
+                                },
+                                {
+                                    "description": []
+                                },
+                                {
+                                    "description": []
+                                },
+                                {
+                                    "description": 14
+                                }
+                            ]
+                        }
+                    },
+                    "tiers": [
+                        {
+                            "description": 1
+                        },
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 5
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "Mageroyal": {
+                    "unlock": "Level 30",
+                    "position": "left",
+                    "affects": "Shadow Claws",
+                    "description": "Shadow Claws deals {0} more damage.",
+                    "tiers": [
+                        {
+                            "description": 1,
+                            "modifier": {
+                                "description": 1
+                            }
+                        },
+                        {
+                            "description": 2,
+                            "modifier": {
+                                "description": 2
+                            }
+                        },
+                        {
+                            "description": 3,
+                            "modifier": {
+                                "description": 3
+                            }
+                        },
+                        {
+                            "description": 4,
+                            "modifier": {
+                                "description": 4
+                            }
+                        }
+                    ]
+                },
+                "Kingsblood": {
+                    "unlock": "Task 2",
+                    "position": "middle",
+                    "description": "Passive: Your Golems are ({0}) Speed faster.",
+                    "tiers": [
+                        {
+                            "description": 1
+                        },
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        }
+                    ]
+                },
+                "Wildvine": {
+                    "unlock": "Task 7",
+                    "position": "right",
+                    "description": "Battlecry: Give friendly characters +{0}/{0}",
+                    "tiers": [
+                        {
+                            "description": [
+                                1,
+                                1
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                3,
+                                3
+                            ]
+                        },
+                        {
+                            "description": [
+                                4,
+                                4
+                            ]
+                        }
+                    ]
+                }
+            },
+            "tasks": []
+        },
+        "Nefarian": {
+            "tribe": "Dragon",
+            "rarity": "Rare",
+            "role": "Fighter",
+            "attack": 14,
+            "health": 70,
+            "abilities": {
+                "Drakonid Rush": {
+                    "unlock": 1,
+                    "speed": 6,
+                    "description": "Attack an enemy. Summon a {0}/{0} Dragon{ }which also Attacks them.",
+                    "tiers": [
+                        {
+                            "description": [
+                                3,
+                                3
+                            ]
+                        },
+                        {
+                            "description": [
+                                6,
+                                6
+                            ]
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": [
+                                12,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                "Chromatic Infusion": {
+                    "unlock": 5,
+                    "speed": 3,
+                    "cooldown": 1,
+                    "spell_school": "Shadow",
+                    "description": "Choose a friendly Dragon. They steal {0} Attack from each other Dragon and restore that much Health.",
+                    "tiers": [
+                        {
+                            "description": 1
+                        },
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": 5
+                        }
+                    ]
+                },
+                "Shadowflame": {
+                    "unlock": 15,
+                    "speed": 7,
+                    "cooldown": 1,
+                    "spell_school": "Shadow",
+                    "description": "Each of your Dragons deals {0} damage to the characters opposite them.",
+                    "tiers": [
+                        {
+                            "description": 5
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": 15
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "Experimental Subjects": {
+                    "unlock": "Level 30",
+                    "position": "left",
+                    "affects": "Drakonid Rush",
+                    "description": "Drakonid has +{0} Attack and Divine Shield.",
+                    "tiers": [
+                        {
+                            "description": 2,
+                            "modifier": {
+                                "description": [
+                                    2,
+                                    0,
+                                    " with Divine Shield "
+                                ]
+                            }
+                        },
+                        {
+                            "description": [],
+                            "modifier": {
+                                "description": [
+                                    0,
+                                    0,
+                                    " with Divine Shield "
+                                ]
+                            }
+                        },
+                        {
+                            "description": [],
+                            "modifier": {
+                                "description": [
+                                    0,
+                                    0,
+                                    " with Divine Shield "
+                                ]
+                            }
+                        },
+                        {
+                            "description": 8,
+                            "modifier": {
+                                "description": [
+                                    8,
+                                    0,
+                                    " with Divine Shield "
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "Chromatic Dragonflight": {
+                    "unlock": "Task 2",
+                    "position": "middle",
+                    "description": "Start of Game: Give friendly Dragons +{0} Attack.",
+                    "tiers": [
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": 6
+                        }
+                    ]
+                },
+                "Spare Parts": {
+                    "unlock": "Task 7",
+                    "position": "right",
+                    "description": "Passive: After a Dragon dies, restore {0} Health to friendly Dragons.",
+                    "tiers": [
+                        {
+                            "description": 4
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": []
+                        },
+                        {
+                            "description": 10
+                        }
+                    ]
+                }
+            },
+            "tasks": []
         }
     }
 }
