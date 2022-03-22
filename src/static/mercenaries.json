@@ -21855,7 +21855,10 @@
                             ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                3,
+                                1
+                            ]
                         },
                         {
                             "description": []
@@ -21919,7 +21922,7 @@
             },
             "equipment": {
                 "The Unstoppable Force": {
-                    "unlock": "Level 30",
+                    "unlock": "Defeat Onyxia (Heroic)",
                     "position": "left",
                     "description": "Passive: +{0} Attack. Can't be Frozen.",
                     "tiers": [
@@ -21957,7 +21960,7 @@
                     ]
                 },
                 "Avatar of Stormpike": {
-                    "unlock": "Task 7",
+                    "unlock": "Level 30",
                     "position": "right",
                     "affects": "Avatar",
                     "description": "Avatar also restores {0} Health to friendly Dwarves.",
@@ -22084,7 +22087,7 @@
             },
             "equipment": {
                 "Razor Sharp Claws": {
-                    "unlock": "Level 30",
+                    "unlock": "Task 2",
                     "position": "left",
                     "affects": "Insolent Mortals",
                     "description": "Insolent Mortals gives an additional +{0} Attack.",
@@ -22116,7 +22119,7 @@
                     ]
                 },
                 "Deeper Breath": {
-                    "unlock": "Task 2",
+                    "unlock": "Level 30",
                     "position": "middle",
                     "affects": "Deep Breath",
                     "description": "Deep Breath restores {0} more Health and is ({0}) Speed slower.",
@@ -22164,7 +22167,7 @@
                     ]
                 },
                 "Broodmother's Rage": {
-                    "unlock": "Task 7",
+                    "unlock": "Defeat Onyxia (Heroic)",
                     "position": "right",
                     "description": "Passive: After another friendly Dragon dies, deal {0} damage to all enemies.",
                     "tiers": [
@@ -22288,7 +22291,7 @@
             },
             "equipment": {
                 "Mageroyal": {
-                    "unlock": "Level 30",
+                    "unlock": "Task 2",
                     "position": "left",
                     "affects": "Shadow Claws",
                     "description": "Shadow Claws deals {0} more damage.",
@@ -22320,7 +22323,7 @@
                     ]
                 },
                 "Kingsblood": {
-                    "unlock": "Task 2",
+                    "unlock": "Defeat Dragonbone Golem (Heroic)",
                     "position": "middle",
                     "description": "Passive: Your Golems are ({0}) Speed faster.",
                     "tiers": [
@@ -22339,7 +22342,7 @@
                     ]
                 },
                 "Wildvine": {
-                    "unlock": "Task 7",
+                    "unlock": "Level 30",
                     "position": "right",
                     "description": "Battlecry: Give friendly characters +{0}/{0}",
                     "tiers": [
@@ -22397,7 +22400,10 @@
                             ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                9,
+                                9
+                            ]
                         },
                         {
                             "description": []
@@ -22445,13 +22451,13 @@
                             "description": 5
                         },
                         {
-                            "description": []
+                            "description": 10
                         },
                         {
-                            "description": []
+                            "description": 13
                         },
                         {
-                            "description": []
+                            "description": 14
                         },
                         {
                             "description": 15
@@ -22461,7 +22467,7 @@
             },
             "equipment": {
                 "Experimental Subjects": {
-                    "unlock": "Level 30",
+                    "unlock": "Task 2",
                     "position": "left",
                     "affects": "Drakonid Rush",
                     "description": "Drakonid has +{0} Attack and Divine Shield.",
@@ -22509,7 +22515,7 @@
                     ]
                 },
                 "Chromatic Dragonflight": {
-                    "unlock": "Task 2",
+                    "unlock": "Level 30",
                     "position": "middle",
                     "description": "Start of Game: Give friendly Dragons +{0} Attack.",
                     "tiers": [
@@ -22528,7 +22534,7 @@
                     ]
                 },
                 "Spare Parts": {
-                    "unlock": "Task 7",
+                    "unlock": "Defeat Smolderwing (Heroic)",
                     "position": "right",
                     "description": "Passive: After a Dragon dies, restore {0} Health to friendly Dragons.",
                     "tiers": [
