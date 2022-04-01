@@ -1,7 +1,8 @@
 {
     "bounties": {
-        "The Barrens": {
-            "Ferocious Quilboar": {
+        "The Barrens": [
+            {
+                "name": "Ferocious Quilboar",
                 "role": "Fighter",
                 "levels": [
                     4,
@@ -13,7 +14,8 @@
                     "Xyrella"
                 ]
             },
-            "Air Elemental": {
+            {
+                "name": "Air Elemental",
                 "role": "Caster",
                 "levels": [
                     6,
@@ -25,7 +27,8 @@
                     "Rokara"
                 ]
             },
-            "Serena Bloodfeather": {
+            {
+                "name": "Serena Bloodfeather",
                 "role": "Fighter",
                 "levels": [
                     7,
@@ -37,7 +40,8 @@
                     "Guff Runetotem"
                 ]
             },
-            "Apothecary Helbrim": {
+            {
+                "name": "Apothecary Helbrim",
                 "role": "Caster",
                 "levels": [
                     8,
@@ -49,7 +53,8 @@
                     "Blink Fox"
                 ]
             },
-            "Sunwalker Proudhoof": {
+            {
+                "name": "Sunwalker Proudhoof",
                 "role": "Protector",
                 "levels": [
                     10,
@@ -61,7 +66,8 @@
                     "Millhouse Manastorm"
                 ]
             },
-            "Barak Kodobane": {
+            {
+                "name": "Barak Kodobane",
                 "role": "Fighter",
                 "levels": [
                     13,
@@ -73,7 +79,8 @@
                     "Cariel Roame"
                 ]
             },
-            "Mad Bomber": {
+            {
+                "name": "Mad Bomber",
                 "role": "Fighter",
                 "levels": [
                     15,
@@ -82,22 +89,24 @@
                 "rewards": [
                     "Tavish Stormpike",
                     "Rathorian",
-                    "Old Murk-eye"
+                    "Old Murk-Eye"
                 ]
             },
-            "Plaguemaw the Rotting": {
+            {
+                "name": "Plaguemaw the Rotting",
                 "role": "Caster",
                 "levels": [
                     17,
                     25
                 ],
                 "rewards": [
-                    "Kurtrus Ashfallen",
+                    "Kurtus Ashfallen",
                     "Tamsin Roame",
                     "Lady Anacondra"
                 ]
             },
-            "Neeru Fireblade": {
+            {
+                "name": "Neeru Fireblade",
                 "role": "Caster",
                 "levels": [
                     18,
@@ -109,9 +118,10 @@
                     "Scabbs Cutterbutter"
                 ]
             }
-        },
-        "Felwood": {
-            "Raven the Hunter": {
+        ],
+        "Felwood": [
+            {
+                "name": "Raven the Hunter",
                 "role": "Protector",
                 "levels": [
                     20,
@@ -120,10 +130,11 @@
                 "rewards": [
                     "Grommash Hellscream",
                     "Tyrande",
-                    "Kurtrus Ashfallen"
+                    "Kurtus Ashfallen"
                 ]
             },
-            "The Annointed Blades": {
+            {
+                "name": "The Annointed Blades",
                 "role": "Fighter",
                 "levels": [
                     21,
@@ -135,7 +146,8 @@
                     "Lady Anacondra"
                 ]
             },
-            "Fallen Guardians": {
+            {
+                "name": "Fallen Guardians",
                 "role": "Caster",
                 "levels": [
                     23,
@@ -147,7 +159,8 @@
                     "Tamsin Roame"
                 ]
             },
-            "Xaravan": {
+            {
+                "name": "Xaravan",
                 "role": "Fighter",
                 "levels": [
                     25,
@@ -159,7 +172,8 @@
                     "Blink Fox"
                 ]
             },
-            "Corrupted Ancient": {
+            {
+                "name": "Corrupted Ancient",
                 "role": "Protector",
                 "levels": [
                     27,
@@ -171,7 +185,8 @@
                     "Tavish Stormpike"
                 ]
             },
-            "Lord Banehollow": {
+            {
+                "name": "Lord Banehollow",
                 "role": "Protector",
                 "levels": [
                     28,
@@ -183,9 +198,10 @@
                     "Bru'kan"
                 ]
             }
-        },
-        "Winterspring": {
-            "Snowclaw": {
+        ],
+        "Winterspring": [
+            {
+                "name": "Snowclaw",
                 "role": "Caster",
                 "rewards": [
                     "Rexxar",
@@ -193,7 +209,8 @@
                     "Cariel Roame"
                 ]
             },
-            "Yeti Hunter Ranel": {
+            {
+                "name": "Yeti Hunter Ranel",
                 "role": "Fighter",
                 "rewards": [
                     "Garrosh Hellscream",
@@ -201,7 +218,8 @@
                     "Scabbs Cutterbutter"
                 ]
             },
-            "Avalanchan": {
+            {
+                "name": "Avalanchan",
                 "role": "Protector",
                 "rewards": [
                     "Ragnaros",
@@ -209,7 +227,8 @@
                     "Millhouse Manastorm"
                 ]
             },
-            "Ursula Windfury": {
+            {
+                "name": "Ursula Windfury",
                 "role": "Fighter",
                 "rewards": [
                     "Thrall",
@@ -217,7 +236,8 @@
                     "Morgl the Oracle"
                 ]
             },
-            "Icehowl": {
+            {
+                "name": "Icehowl",
                 "role": "Protector",
                 "rewards": [
                     "Alexstrasza",
@@ -225,25 +245,28 @@
                     "Cornelius Roame"
                 ]
             },
-            "Ahune the Frostlord": {
+            {
+                "name": "Ahune the Frostlord",
                 "role": "Caster",
                 "rewards": [
                     "Lord Jaraxxus",
-                    "Saurfang",
+                    "Varok Saurfang",
                     "Lady Anacondra"
                 ]
             }
-        },
-        "Blackrock Mountain": {
-            "Coren Direbrew": {
+        ],
+        "Blackrock Mountain": [
+            {
+                "name": "Coren Direbrew",
                 "role": "Fighter",
                 "rewards": [
                     "Uther Lightbringer",
                     "Mannoroth",
-                    "Old Murk-eye"
+                    "Old Murk-Eye"
                 ]
             },
-            "High Justice Grimstone": {
+            {
+                "name": "High Justice Grimstone",
                 "role": "Protector",
                 "rewards": [
                     "Sylvanas Windrunner",
@@ -251,7 +274,8 @@
                     "Varden Dawngrasp"
                 ]
             },
-            "Emperor Thaurissan": {
+            {
+                "name": "Emperor Thaurissan",
                 "role": "Protector",
                 "rewards": [
                     "Diablo",
@@ -259,7 +283,8 @@
                     "Blademaster Samuro"
                 ]
             },
-            "Garr": {
+            {
+                "name": "Garr",
                 "role": "Protector",
                 "rewards": [
                     "Jaina Proudmoore",
@@ -267,7 +292,8 @@
                     "Guff Runetotem"
                 ]
             },
-            "Baron Geddon": {
+            {
+                "name": "Baron Geddon",
                 "role": "Caster",
                 "rewards": [
                     "Illidan Stormrage",
@@ -275,7 +301,8 @@
                     "Xyrella"
                 ]
             },
-            "Majordomo Executus": {
+            {
+                "name": "Majordomo Executus",
                 "role": "Caster",
                 "rewards": [
                     "The Lich King",
@@ -283,7 +310,8 @@
                     "Rathorian"
                 ]
             },
-            "Highlord Omokk": {
+            {
+                "name": "Highlord Omokk",
                 "role": "Protector",
                 "rewards": [
                     "Malfurion Stormrage",
@@ -291,7 +319,8 @@
                     "Varden Dawngrasp"
                 ]
             },
-            "General Drakkisath": {
+            {
+                "name": "General Drakkisath",
                 "role": "Protector",
                 "rewards": [
                     "Diablo",
@@ -299,7 +328,8 @@
                     "Mr. Smite"
                 ]
             },
-            "Rend Blackhand": {
+            {
+                "name": "Rend Blackhand",
                 "role": "Fighter",
                 "rewards": [
                     "Edwin, Defias Kingpin",
@@ -307,7 +337,8 @@
                     "Cookie, the Cook"
                 ]
             },
-            "Razorgore": {
+            {
+                "name": "Razorgore",
                 "role": "Protector",
                 "rewards": [
                     "Lord Jaraxxus",
@@ -315,7 +346,8 @@
                     "Trigore the Lasher"
                 ]
             },
-            "Vaelastrasz": {
+            {
+                "name": "Vaelastrasz",
                 "role": "Protector",
                 "rewards": [
                     "Gul'dan",
@@ -323,14 +355,16 @@
                     "Lady Anacondra"
                 ]
             },
-            "Chromaggus": {
+            {
+                "name": "Chromaggus",
                 "rewards": [
                     "Alexstrasza",
                     "Sky Admiral Rogers",
                     "Cookie, the Cook"
                 ]
             },
-            "Nefarian": {
+            {
+                "name": "Nefarian",
                 "role": "Fighter",
                 "rewards": [
                     "Valeera Sanguinar",
@@ -338,9 +372,10 @@
                     "Mr. Smite"
                 ]
             }
-        },
-        "Alterac Valley": {
-            "Ravak": {
+        ],
+        "Alterac Valley": [
+            {
+                "name": "Ravak",
                 "role": "Protector",
                 "rewards": [
                     "Jaina Proudmoore",
@@ -348,15 +383,17 @@
                     "Sinestra"
                 ]
             },
-            "Louis Philips": {
+            {
+                "name": "Louis Philips",
                 "role": "Fighter",
                 "rewards": [
                     "Uther Lightbringer",
                     "Wrathion",
-                    "Kurtrus Ashfallen"
+                    "Kurtus Ashfallen"
                 ]
             },
-            "Galvangar": {
+            {
+                "name": "Galvangar",
                 "role": "Fighter",
                 "rewards": [
                     "Anduin Wrynn",
@@ -364,7 +401,8 @@
                     "Blink Fox"
                 ]
             },
-            "Popsicooler": {
+            {
+                "name": "Popsicooler",
                 "role": "Caster",
                 "rewards": [
                     "Balinda Stonehearth",
@@ -372,7 +410,8 @@
                     "Trigore the Lasher"
                 ]
             },
-            "Lokholar": {
+            {
+                "name": "Lokholar",
                 "role": "Protector",
                 "rewards": [
                     "Edwin, Defias Kingpin",
@@ -380,7 +419,8 @@
                     "Lokholar the Ice Lord"
                 ]
             },
-            "Drek'Thar": {
+            {
+                "name": "Drek'thar",
                 "role": "Caster",
                 "rewards": [
                     "Balinda Stonehearth",
@@ -388,7 +428,8 @@
                     "Tavish Stormpike"
                 ]
             },
-            "Rotimer": {
+            {
+                "name": "Rotimer",
                 "role": "Caster",
                 "rewards": [
                     "Rexxar",
@@ -396,7 +437,8 @@
                     "Yu'lon"
                 ]
             },
-            "Ichman": {
+            {
+                "name": "Ichman",
                 "role": "Fighter",
                 "rewards": [
                     "Long'xin",
@@ -404,7 +446,8 @@
                     "Trigore the Lasher"
                 ]
             },
-            "Balinda Stonehearth": {
+            {
+                "name": "Balinda Stonehearth",
                 "role": "Fighter",
                 "rewards": [
                     "Balinda Stonehearth",
@@ -412,7 +455,8 @@
                     "Niuzao"
                 ]
             },
-            "Ivus": {
+            {
+                "name": "Ivus",
                 "role": "Protector",
                 "rewards": [
                     "Valeera Sanguinar",
@@ -420,7 +464,8 @@
                     "Sinestra"
                 ]
             },
-            "Vanndar Stormpike": {
+            {
+                "name": "Vanndar Stormpike",
                 "role": "Protector",
                 "rewards": [
                     "Long'xin",
@@ -428,17 +473,19 @@
                     "Lokholar the Ice Lord"
                 ]
             },
-            "Kazakus": {
+            {
+                "name": "Kazakus, Golem Shaper",
                 "role": "Caster",
                 "rewards": [
                     "Garrosh Hellscream",
-                    "Chi Ji",
+                    "Chi-Ji",
                     "Varden Dawngrasp"
                 ]
             }
-        },
-        "Onyxia's Lair": {
-            "Smolderwing": {
+        ],
+        "Onyxia's Lair": [
+            {
+                "name": "Smolderwing",
                 "role": "Fighter",
                 "rewards": [
                     "Deathwing",
@@ -446,15 +493,17 @@
                     "Nefarian"
                 ]
             },
-            "Dragonbone Golem": {
+            {
+                "name": "Dragonbone Golem",
                 "role": "Fighter",
                 "rewards": [
-                    "Drek'Thar",
-                    "Chi Ji",
-                    "Kazakus"
+                    "Drek'thar",
+                    "Chi-Ji",
+                    "Kazakus, Golem Shaper"
                 ]
             },
-            "SI:7 Smuggler": {
+            {
+                "name": "SI:7 Smuggler",
                 "role": "Fighter",
                 "rewards": [
                     "Long'xin",
@@ -462,7 +511,8 @@
                     "Mr. Smite"
                 ]
             },
-            "Onyxia": {
+            {
+                "name": "Onyxia",
                 "role": "Caster",
                 "rewards": [
                     "Vanndar Stormpike",
@@ -470,14 +520,15 @@
                     "Niuzao"
                 ]
             },
-            "Undead Onyxia": {
+            {
+                "name": "Undead Onyxia",
                 "role": "Caster",
                 "rewards": [
                     "Deathwing",
                     "Onyxia",
-                    "Kazakus"
+                    "Kazakus, Golem Shaper"
                 ]
             }
-        }
+        ]
     }
 }

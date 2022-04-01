@@ -4,5 +4,6 @@
     "@atomic": "/src/components/atomic",
     "@filters": "/src/components/filters",
     "@mercs": "/src/components/mercs",
+    "@bounties": "/src/components/bounties",
   }
 }

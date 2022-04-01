@@ -1,6 +1,6 @@
 import { defineStore, PiniaPluginContext } from "pinia";
 import { ApplyCollectedMerc, ExtractCollectedMerc, HydrateMercenary } from "../common/mercenary";
-import { AbilityUpgradeCosts, ItemUpgradeCosts } from "../models/constants";
+import { AbilityUpgradeCosts, ItemUpgradeCosts, Rarities, Roles, Tribes } from "../models/constants";
 import { MercCollection } from "../models/mercCollection";
 import { MaxAbilityTiers, MaxCompletedTasks, MaxItemTiers, MercAbility, Mercenary, MercItem } from "../models/mercenary";
 import MercFilter from "../models/mercFilter";
@@ -34,14 +34,14 @@ export const useMercStore = defineStore(MercStoreId, {
 
                 let mercs = state.mercenaries;
 
-                if (Array.isArray(filter.roles)) {
+                if (Array.isArray(filter.roles) && filter.roles.length !== Roles.length) {
                     mercs = mercs.filter(m => filter.roles.includes(m.role));
                 }
-                if (Array.isArray(filter.rarities)) {
+                if (Array.isArray(filter.rarities) && filter.rarities.length !== Rarities.length) {
                     mercs = mercs.filter(m => filter.rarities.includes(m.rarity));
                 }
-                if (Array.isArray(filter.tribes)) {
-                    mercs = mercs.filter(m => filter.tribes.includes(m.tribe));
+                if (Array.isArray(filter.tribes) && filter.tribes.length !== Tribes.length) {
+                    mercs = mercs.filter(m => filter.tribes.includes(m.tribe || '(none)'));
                 }
                 if (filter.collectedStatuses) {
                     if (typeof filter.collectedStatuses.collected === "boolean") {

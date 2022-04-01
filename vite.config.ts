@@ -9,6 +9,7 @@ export default defineConfig({
       { find: '@atomic', replacement: '/src/components/atomic' },
       { find: '@filters', replacement: '/src/components/filters' },
       { find: '@mercs', replacement: '/src/components/mercs' },
+      { find: '@bounties', replacement: '/src/components/bounties' },
       { find: '@', replacement: '/src' }
     ]
   },

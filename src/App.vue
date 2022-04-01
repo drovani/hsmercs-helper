@@ -16,7 +16,7 @@
       </div>
     </div>
   </header>
-  <nav class="text-2xl font-bold flex gap-4">
+  <nav class="text-2xl font-bold flex gap-4 mx-6 my-4 underline">
     <h1>
       <router-link :to="{ name: 'mercs' }">
         Collectable Mercenaries
