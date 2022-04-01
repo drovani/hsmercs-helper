@@ -59,7 +59,7 @@ interface MercAbilityTierDto {
 
 interface MercSummonDto {
     name: string,
-    tribe: Tribe | string,
+    tribe?: Tribe | string,
     description: string,
     attack?: number,
     health?: number
