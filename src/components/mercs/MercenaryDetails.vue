@@ -66,21 +66,21 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from "vue";
-import { Rarity, Role, Tribe } from "../models/constants";
+import { Rarity, Role, Tribe } from "@/models/constants";
 import {
 MaxItemTiers,
 MercAbility,
 MercItem,
 MercTask
-} from "../models/mercenary";
-import AbilityCard from "./AbilityCard.vue";
-import Attack from "./atomic/Attack.vue";
-import Health from "./atomic/Health.vue";
-import RarityVue from "./atomic/Rarity.vue";
-import TribeVue from "./atomic/Tribe.vue";
-import ItemCard from "./ItemCard.vue";
-import TaskCard from "./TaskCard.vue";
+} from "@/models/mercenary";
+import Attack from "@atomic/Attack.vue";
+import Health from "@atomic/Health.vue";
+import RarityVue from "@atomic/Rarity.vue";
+import TribeVue from "@atomic/Tribe.vue";
+import AbilityCard from "@mercs/AbilityCard.vue";
+import ItemCard from "@mercs/ItemCard.vue";
+import TaskCard from "@mercs/TaskCard.vue";
+import { computed } from "vue";
 
 const props = defineProps({
   mercName: String,

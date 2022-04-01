@@ -51,6 +51,10 @@
 </template>
 
 <script setup lang="ts">
+import descriptionBuilder from "@/common/description";
+import { MaxItemTiers } from "@/models/mercenary";
+import TaillessWrap from "@atomic/TaillessWrap.vue";
+import UpDownButtons from "@atomic/UpDownButtons.vue";
 import {
 faCheck,
 faLock,
@@ -58,10 +62,6 @@ faThumbTack,
 faUnlock
 } from "@fortawesome/free-solid-svg-icons";
 import { computed } from "vue";
-import descriptionBuilder from "../common/description";
-import { MaxItemTiers } from "../models/mercenary";
-import TaillessWrap from "./atomic/TaillessWrap.vue";
-import UpDownButtons from "./UpDownButtons.vue";
 
 const props = defineProps({
   itemName: String,

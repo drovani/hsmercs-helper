@@ -27,13 +27,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import {
 AllianceTribes,
 HordeTribes,
 NeutralTribes,
 Tribe
-} from "../../models/constants";
+} from "@/models/constants";
+import { computed } from "vue";
 
 const props = defineProps({
   enabledTribes: {

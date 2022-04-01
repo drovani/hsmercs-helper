@@ -30,8 +30,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import { Role, Roles } from "@/models/constants";
 import { computed } from "vue";
-import { Role, Roles } from "../../models/constants";
 
 const props = defineProps({
   enabledRoles: {

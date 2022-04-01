@@ -17,9 +17,9 @@
   </div>
 </template>
 <script setup lang="ts">
+import { MercTask } from "@/models/mercenary";
+import UpDownButtons from "@atomic/UpDownButtons.vue";
 import { faCheckCircle, faUndo } from "@fortawesome/free-solid-svg-icons";
-import { MercTask } from "../models/mercenary";
-import UpDownButtons from "./UpDownButtons.vue";
 
 defineProps({
   tasksCompleted: {

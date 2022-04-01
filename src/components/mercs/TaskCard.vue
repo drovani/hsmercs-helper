@@ -43,9 +43,9 @@
   </div>
 </template>
 <script setup lang="ts">
+import UpDownButtons from "@/components/atomic/UpDownButtons.vue";
+import { MercTask } from "@/models/mercenary";
 import { faCheckCircle, faUndo } from "@fortawesome/free-solid-svg-icons";
-import { MercTask } from "../models/mercenary";
-import UpDownButtons from "./UpDownButtons.vue";
 
 defineProps({
   tasksCompleted: {

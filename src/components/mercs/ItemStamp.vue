@@ -30,10 +30,10 @@
 </template>
 
 <script setup lang="ts">
+import { MaxItemTiers } from "@/models/mercenary";
+import TaillessWrap from "@atomic/TaillessWrap.vue";
+import UpDownButtons from "@atomic/UpDownButtons.vue";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
-import { MaxItemTiers } from "../models/mercenary";
-import TaillessWrap from "./atomic/TaillessWrap.vue";
-import UpDownButtons from "./UpDownButtons.vue";
 
 const props = defineProps({
   itemName: String,

@@ -9,7 +9,7 @@
   >
     <div>
       <div
-        class="flex justify-between px-2 py-1 text-white bg-gray-700 gap-4"
+        class="flex justify-between px-2 py-1 text-white gap-4"
         :class="{
           'bg-protector': role == 'Protector',
           'bg-fighter': role == 'Fighter',
@@ -43,7 +43,10 @@
           />
         </div>
         <h2 class="font-bold text-xl whitespace-nowrap flex-1 text-outline-1">
-          <router-link :to="'/merc/' + mercName" replace>
+          <router-link
+            :to="{ name: 'mercs', params: { selectedMercName: mercName } }"
+            replace
+          >
             <TaillessWrap :text="mercName" />
           </router-link>
         </h2>
@@ -97,29 +100,29 @@
   </div>
 </template>
 <script setup lang="ts">
+import { Rarity, Role, Tribe } from "@/models/constants";
+import {
+MaxItemTiers,
+MercAbility,
+MercItem,
+MercTask
+} from "@/models/mercenary";
+import Attack from "@atomic/Attack.vue";
+import Health from "@atomic/Health.vue";
+import RarityVue from "@atomic/Rarity.vue";
+import RoleVue from "@atomic/Role.vue";
+import TaillessWrap from "@atomic/TaillessWrap.vue";
+import TribeVue from "@atomic/Tribe.vue";
 import {
 faAward,
 faCheck,
 faCheckDouble,
 faPlus
 } from "@fortawesome/free-solid-svg-icons";
+import AbilityStamp from "@mercs/AbilityStamp.vue";
+import ItemStamp from "@mercs/ItemStamp.vue";
+import TaskStamp from "@mercs/TaskStamp.vue";
 import { computed } from "vue";
-import { Rarity, Role, Tribe } from "../models/constants";
-import {
-MaxItemTiers,
-MercAbility,
-MercItem,
-MercTask
-} from "../models/mercenary";
-import AbilityStamp from "./AbilityStamp.vue";
-import Attack from "./atomic/Attack.vue";
-import Health from "./atomic/Health.vue";
-import RarityVue from "./atomic/Rarity.vue";
-import RoleVue from "./atomic/Role.vue";
-import TaillessWrap from "./atomic/TaillessWrap.vue";
-import TribeVue from "./atomic/Tribe.vue";
-import ItemStamp from "./ItemStamp.vue";
-import TaskStamp from "./TaskStamp.vue";
 
 const props = defineProps({
   mercName: String,

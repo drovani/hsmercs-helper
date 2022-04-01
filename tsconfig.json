@@ -10,7 +10,25 @@
         "alwaysStrict": true,
         "lib": [
             "ES2021.String"
-        ]
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@atomic/*": [
+                "./src/components/atomic/*"
+            ],
+            "@filters/*": [
+                "./src/components/filters/*"
+            ],
+            "@mercs/*": [
+                "./src/components/mercs/*"
+            ],
+            "@bounties/*": [
+                "./src/components/bounties/*"
+            ],
+            "@/*": [
+                "./src/*"
+            ]
+        }
     },
     "exclude": [
         "./node_modules/",

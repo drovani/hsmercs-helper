@@ -68,15 +68,15 @@
 </template>
 
 <script setup lang="ts">
+import descriptionBuilder from "@/common/description";
+import { SpellSchool } from "@/models/constants";
+import { AbilitySummon, MaxAbilityTiers } from "@/models/mercenary";
+import Attack from "@atomic/Attack.vue";
+import Health from "@atomic/Health.vue";
+import TaillessWrap from "@atomic/TaillessWrap.vue";
+import Tribe from "@atomic/Tribe.vue";
+import UpDownButtons from "@atomic/UpDownButtons.vue";
 import { computed } from "vue";
-import descriptionBuilder from "../common/description";
-import { SpellSchool } from "../models/constants";
-import { AbilitySummon, MaxAbilityTiers } from "../models/mercenary";
-import Attack from "./atomic/Attack.vue";
-import Health from "./atomic/Health.vue";
-import TaillessWrap from "./atomic/TaillessWrap.vue";
-import Tribe from "./atomic/Tribe.vue";
-import UpDownButtons from "./UpDownButtons.vue";
 
 const props = defineProps({
   abilityName: String,

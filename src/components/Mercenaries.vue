@@ -2,7 +2,6 @@
   <section
     class="relative px-2 max-w-[400px] sm:max-w-[800px] lg:max-w-[1200px] xl:max-w-[1600px] 2xl:max-w-[2000px]"
   >
-    <h1 class="text-2xl font-bold m-4 md:m-8">Collectable Mercenaries</h1>
     <div
       class="text-white font-bold text-xl border-b-8 justify-center flex flex-wrap gap-2 md:gap-4 lg:gap-8 sticky top-0 bg-white"
       :class="[filterHighlightColor('border')]"
@@ -141,7 +140,7 @@
       />
     </div>
     <Transition name="fade">
-      <ModalOverlay v-if="selectedMerc" @close="unselectMerc">
+      <ModalOverlay v-if="selectedMercName" @close="unselectMerc">
         <MercenaryDetails
           v-bind="selectedMerc"
           class="mx-auto"
@@ -178,6 +177,23 @@
 </template>
 <script setup lang="ts">
 import {
+Rarities,
+Rarity,
+Role,
+Roles,
+Tribe,
+Tribes
+} from "@/models/constants";
+import { Mercenary } from "@/models/mercenary";
+import MercFilter from "@/models/mercFilter";
+import mercjson from "@/static/mercenaries.json";
+import { useMercStore } from "@/stores/mercenaries";
+import ModalOverlay from "@atomic/ModalOverlay.vue";
+import CollectionFilter from "@filters/CollectionFilter.vue";
+import RarityFilter from "@filters/RarityFilter.vue";
+import RoleFilter from "@filters/RoleFilter.vue";
+import TribeFilter from "@filters/TribeFilter.vue";
+import {
 faArrowDown19,
 faArrowDown91,
 faArrowDownAZ,
@@ -192,31 +208,17 @@ faLock,
 faPlus,
 IconDefinition
 } from "@fortawesome/free-solid-svg-icons";
-import { computed, onMounted, ref, watch } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import {
-Rarities,
-Rarity,
-Role,
-Roles,
-Tribe,
-Tribes
-} from "../models/constants";
-import { Mercenary } from "../models/mercenary";
-import MercFilter from "../models/mercFilter";
-import mercjson from "../static/mercenaries.json";
-import { useMercStore } from "../stores/mercenaries";
-import ModalOverlay from "./atomic/ModalOverlay.vue";
-import CollectionFilter from "./filters/CollectionFilter.vue";
-import RarityFilter from "./filters/RarityFilter.vue";
-import RoleFilter from "./filters/RoleFilter.vue";
-import TribeFilter from "./filters/TribeFilter.vue";
-import MercenaryCard from "./MercenaryCard.vue";
-import MercenaryDetails from "./MercenaryDetails.vue";
+import MercenaryCard from "@mercs/MercenaryCard.vue";
+import MercenaryDetails from "@mercs/MercenaryDetails.vue";
+import { computed, onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
+
+const props = defineProps({
+  selectedMercName: String,
+});
 
 const store = useMercStore();
 const router = useRouter();
-const route = useRoute();
 
 const showFilters = ref(false);
 const filter = ref<MercFilter>({
@@ -232,10 +234,12 @@ const filter = ref<MercFilter>({
     direction: "ascending",
   },
 });
-const selectedMerc = ref<Mercenary>();
 
 const mercenaries = computed((): Mercenary[] => {
   return store.filteredLibrary(filter.value);
+});
+const selectedMerc = computed((): Mercenary => {
+  return store.getMercenary(props.selectedMercName);
 });
 const showingAllMercenaries = computed((): boolean => {
   return (
@@ -408,26 +412,13 @@ function importCollection(event: InputEvent) {
   store.setMercCollection((<HTMLInputElement>event.target).files[0]);
 }
 function unselectMerc() {
-  router.push("/");
+  router.push({ name: "mercs" });
 }
 onMounted(() => {
   if (Object.keys(mercenaries.value ?? {}).length === 0) {
     store.setMercLibrary(mercjson.mercenaries);
   }
 });
-watch(
-  () => route.params,
-  (toParams): void => {
-    if (typeof toParams?.mercname === "string") {
-      selectedMerc.value = mercenaries.value.find(
-        (m) => m.mercName === toParams.mercname
-      );
-    } else {
-      selectedMerc.value = undefined;
-    }
-  },
-  { immediate: true }
-);
 </script>
 <style scoped>
 .fade-enter-active,
