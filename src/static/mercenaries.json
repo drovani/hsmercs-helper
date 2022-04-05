@@ -19201,7 +19201,7 @@
                 {
                     "name": "Hail to the Ice Lord",
                     "description": "Deal 30 or more damage in one turn using Hail Storm 10 times.",
-                    "quote": "Go forth and wreak havoc in Lokholar’s name."
+                    "quote": "Go forth and wreak havoc in Lokholar's name."
                 },
                 {
                     "name": "Snow Way Out",
@@ -20962,7 +20962,7 @@
                 {
                     "name": "Will to Survive",
                     "description": "Complete 2 Heroic Bounties.",
-                    "quote": "As long as you keep going forward, your pace doesn’t matter."
+                    "quote": "As long as you keep going forward, your pace doesn't matter."
                 },
                 {
                     "name": "So Many Times",
@@ -21007,7 +21007,7 @@
                 {
                     "name": "Thrill of the Fight",
                     "description": "Complete 10 battles with 25 or more Attack.",
-                    "quote": "As long as you keep going forward, your pace doesn’t matter."
+                    "quote": "As long as you keep going forward, your pace doesn't matter."
                 },
                 {
                     "name": "Rising Up",
@@ -21272,7 +21272,7 @@
                 {
                     "name": "Dragons, Assemble!",
                     "description": "Deal 180 damage with Dragons with a team that includes this Mercenary.",
-                    "quote": "Seek harmony and don’t be afraid to take action in order to defend it."
+                    "quote": "Seek harmony and don't be afraid to take action in order to defend it."
                 },
                 {
                     "name": "Embodied Wisdom",
@@ -21326,19 +21326,31 @@
                 "Blood Frenzy": {
                     "unlock": 1,
                     "speed": 5,
-                    "description": "Give your Orcs +{0} Attack until the end of the turn. Attack a random enemy. If you have Fell Corruption, Attack increases by +{0}.",
+                    "description": "Give your Orcs +{0} Attack until the end of the turn. Attack a random enemy. If you have Fel Corruption, Attack increases by +{0}.",
                     "tiers": [
                         {
-                            "description": []
+                            "description": [
+                                2,
+                                1
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                3,
+                                1
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                4,
+                                1
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                5,
+                                1
+                            ]
                         },
                         {
                             "description": [
@@ -21353,38 +21365,38 @@
                     "speed": 3,
                     "cooldown": 1,
                     "summon": {
-                        "name": "Spirit Guide",
+                        "name": "Spirit Wolf",
                         "description": "Battlecry: If you have Shamanism, gain Divine Shield and Rush."
                     },
                     "tiers": [
                         {
                             "summon": {
-                                "attack": 0,
-                                "health": 0
+                                "attack": 4,
+                                "health": 6
                             }
                         },
                         {
                             "summon": {
-                                "attack": 0,
-                                "health": 0
+                                "attack": 8,
+                                "health": 11
                             }
                         },
                         {
                             "summon": {
-                                "attack": 0,
-                                "health": 0
+                                "attack": 12,
+                                "health": 15
                             }
                         },
                         {
                             "summon": {
-                                "attack": 0,
-                                "health": 0
+                                "attack": 14,
+                                "health": 18
                             }
                         },
                         {
                             "summon": {
                                 "attack": 15,
-                                "health": 26
+                                "health": 20
                             }
                         }
                     ]
@@ -21393,45 +21405,76 @@
                     "unlock": 15,
                     "speed": 7,
                     "cooldown": 1,
-                    "description": "Deal {0} damage to all enemies. Deal {0} damage to your other characters. (After a friendly Orc dies, this transforms into Shamanism {0}.",
+                    "description": "Deal {0} damage to all enemies. Deal {0} damage to your other characters. (After a friendly Orc dies, this transforms into Shamanism {0}.)",
                     "spell_school": "Fel",
                     "transform": {
                         "Shamanism": {
                             "speed": 7,
                             "cooldown": 1,
                             "spell_school": "Nature",
-                            "description": "",
+                            "description": "Deal {0} damage to all enemies. Restore {0} Health to your characters.",
                             "tiers": [
                                 {
-                                    "description": []
+                                    "description": [
+                                        8,
+                                        4
+                                    ]
                                 },
                                 {
-                                    "description": []
+                                    "description": [
+                                        12,
+                                        6
+                                    ]
                                 },
                                 {
-                                    "description": []
+                                    "description": [
+                                        17,
+                                        8
+                                    ]
                                 },
                                 {
-                                    "description": []
+                                    "description": [
+                                        18,
+                                        9
+                                    ]
                                 },
                                 {
-                                    "description": []
+                                    "description": [
+                                        19,
+                                        10
+                                    ]
                                 }
                             ]
                         }
                     },
                     "tiers": [
                         {
-                            "description": []
+                            "description": [
+                                8,
+                                5,
+                                1
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                12,
+                                5,
+                                2
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                17,
+                                5,
+                                3
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                18,
+                                5,
+                                4
+                            ]
                         },
                         {
                             "description": [
@@ -21445,28 +21488,26 @@
             },
             "equipment": {
                 "Glacial Blade": {
-                    "unlock": "Level 30",
+                    "unlock": "Task 2",
                     "position": "left",
                     "description": "Passive: +{0} Attack. After this Merc Attacks a character, Freeze them.",
                     "tiers": [
                         {
-                            "description": []
+                            "description": 2
                         },
                         {
-                            "description": []
+                            "description": 4
                         },
                         {
-                            "description": []
+                            "description": 5
                         },
                         {
-                            "description": [
-                                6
-                            ]
+                            "description": 6
                         }
                     ]
                 },
                 "Drek'Thar's Spellbook": {
-                    "unlock": "Task 2",
+                    "unlock": "Defeat Dragonbone Golem (Heroic)",
                     "position": "middle",
                     "description": "Passive: Your chracters have +{0} Arcane Resistance",
                     "tiers": [
@@ -21485,28 +21526,117 @@
                     ]
                 },
                 "Shimmerweed Potion": {
-                    "unlock": "Task 7",
+                    "unlock": "Level 30",
                     "position": "right",
                     "description": "Battlecry: Give your characters +{0} Health.",
                     "tiers": [
                         {
-                            "description": []
+                            "description": 7
                         },
                         {
-                            "description": []
+                            "description": 8
                         },
                         {
-                            "description": []
+                            "description": 9
                         },
                         {
-                            "description": [
-                                10
-                            ]
+                            "description": 10
                         }
                     ]
                 }
             },
-            "tasks": []
+            "tasks": [
+                {
+                    "name": "The Frostwolf Identity",
+                    "description": "Deal 55 damage using Blood Frenzy.",
+                    "quote": "Once again drums of war thunder in Alterac Valley. And the Frostwolf Clan heeds the call."
+                },
+                {
+                    "name": "Ancestors Guide Us",
+                    "description": "Summon a Spirit Guide 10 times.",
+                    "quote": "The spirits walk in step with you, Mercenary."
+                },
+                {
+                    "name": "Blood and Thunder",
+                    "description": "Deal 70 damage using Fel Corruption.",
+                    "quote": "The Frostwolf Clan kneels to no one."
+                },
+                {
+                    "name": "Fang and Steel",
+                    "description": "Deal 150 damage.",
+                    "quote": "Send them back to their ancestors."
+                },
+                {
+                    "name": "Blind Justice",
+                    "description": "Complete a bounty while at level 30.",
+                    "quote": "Destiny awaits. Follow my guidance and claim your own fate."
+                },
+                {
+                    "name": "Alliance Dogs!",
+                    "description": "Destroy 40 minions.",
+                    "quote": "Get that filth out of my keep!"
+                },
+                {
+                    "name": "The Frostwolf Supremacy",
+                    "description": "Defeat 2 Heroic bosses.",
+                    "quote": "Teach them a lesson. And make sure they'll remember it for a long time."
+                },
+                {
+                    "name": "Shamanistic Fortune",
+                    "description": "Use the Boon: Caster coin 4 times.",
+                    "quote": "When they see us, they will run for their lives!"
+                },
+                {
+                    "name": "Rally Our Forces!",
+                    "description": "Gain 120 Attack using Blood Frenzy.",
+                    "quote": "They're no match for our strength."
+                },
+                {
+                    "name": "Fury of the Horde",
+                    "description": "Deal 500 damage with Orcs with a team that includes this Mercenary.",
+                    "quote": "The Frostwolf Clan kneels to no one."
+                },
+                {
+                    "name": "Honored Warriors",
+                    "description": "Deal 450 damage.",
+                    "quote": "Send them back to their ancestors."
+                },
+                {
+                    "name": "Spirit Them Away",
+                    "description": "Summon a Spirit Guide 15 times.",
+                    "quote": "The spirits are restless."
+                },
+                {
+                    "name": "The Frostwolf Ultimatum",
+                    "description": "Complete 4 Heroic Bounties.",
+                    "quote": "Teach them a lesson. And make sure they'll remember it for a long time."
+                },
+                {
+                    "name": "Fel The Mighty",
+                    "description": "Deal 600 Fel Damage with this Mercenary.",
+                    "quote": "Don't make me yell at you from my keep."
+                },
+                {
+                    "name": "Slay Them All!",
+                    "description": "Complete 6 Bounties.",
+                    "quote": "When they see us, they will run for their lives!"
+                },
+                {
+                    "name": "Lok-tar En Garde",
+                    "description": "Deal 900 damage with Orcs with a team that includes this Mercenary.",
+                    "quote": "Destiny awaits. Follow my guidance and claim your own fate."
+                },
+                {
+                    "name": "Frost Tempered Blades",
+                    "description": "Complete 20 battles with 25 or more Attack.",
+                    "quote": "They're no match for our strength."
+                },
+                {
+                    "name": "The Frostwolf Legacy",
+                    "description": "Deal 450 damage to Heroic bosses.",
+                    "quote": "Today you proved to be a valuable ally of the Frostwolf Clan. For the Horde!"
+                }
+            ]
         },
         "Deathwing": {
             "tribe": "Dragon",
@@ -21522,21 +21652,19 @@
                     "spell_school": "Fire",
                     "tiers": [
                         {
-                            "description": []
+                            "description": 2
                         },
                         {
-                            "description": []
+                            "description": 4
                         },
                         {
-                            "description": []
+                            "description": 6
                         },
                         {
-                            "description": []
+                            "description": 7
                         },
                         {
-                            "description": [
-                                8
-                            ]
+                            "description": 8
                         }
                     ]
                 },
@@ -21546,16 +21674,32 @@
                     "description": "Gain Taunt this turn. After being Attacked this turn, summon a {0}/{0} Elementium Terror with Bleed ({0}).",
                     "tiers": [
                         {
-                            "description": []
+                            "description": [
+                                2,
+                                3,
+                                1
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                4,
+                                6,
+                                2
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                6,
+                                9,
+                                2
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                9,
+                                12,
+                                3
+                            ]
                         },
                         {
                             "description": [
@@ -21574,54 +21718,56 @@
                     "spell_school": "Fire",
                     "tiers": [
                         {
-                            "description": []
+                            "description": 3
                         },
                         {
-                            "description": []
+                            "description": 6
                         },
                         {
-                            "description": []
+                            "description": 8
                         },
                         {
-                            "description": []
+                            "description": 9
                         },
                         {
-                            "description": [
-                                10
-                            ]
+                            "description": 10
                         }
                     ]
                 }
             },
             "equipment": {
                 "Heart of Unliving": {
-                    "unlock": "Level 30",
+                    "unlock": "Task 2",
                     "position": "left",
                     "affects": "Claws of Terror",
                     "description": "Claws of Terror deals {0} more damage and affects adjacent enemies.",
                     "tiers": [
                         {
-                            "description": [],
+                            "description": 1,
                             "modifier": {
-                                "description": []
+                                "description": [
+                                    1
+                                ]
                             }
                         },
                         {
-                            "description": [],
+                            "description": 3,
                             "modifier": {
-                                "description": []
+                                "description": [
+                                    3
+                                ]
                             }
                         },
                         {
-                            "description": [],
+                            "description": 4,
                             "modifier": {
-                                "description": []
+                                "description": [
+                                    4
+                                ]
                             }
                         },
                         {
-                            "description": [
-                                5
-                            ],
+                            "description": 5,
                             "modifier": {
                                 "description": [
                                     5
@@ -21631,28 +21777,26 @@
                     ]
                 },
                 "Resolve of Undying": {
-                    "unlock": "Task 2",
+                    "unlock": "Level 30",
                     "position": "middle",
                     "description": "Passive: Restore {0} Health to this Merc after a friendly Elementium Terror is destroyed.",
                     "tiers": [
                         {
-                            "description": []
+                            "description": 4
                         },
                         {
-                            "description": []
+                            "description": 7
                         },
                         {
-                            "description": []
+                            "description": 9
                         },
                         {
-                            "description": [
-                                10
-                            ]
+                            "description": 10
                         }
                     ]
                 },
                 "Demon Soul": {
-                    "unlock": "Task 7",
+                    "unlock": "Defeat Smolderwing (Heroic)",
                     "position": "right",
                     "description": "Passive: +{0} Fel Damage. Whenever an enemy Dragon minion is summoned, gain control of it.",
                     "tiers": [
@@ -21671,7 +21815,98 @@
                     ]
                 }
             },
-            "tasks": []
+            "tasks": [
+                {
+                    "name": "BOW SUBJECTS!",
+                    "description": "Deal 35 damage using Claws of Terror.",
+                    "quote": "I have had many names throughout history, yet you shall know me best as Deathwing."
+                },
+                {
+                    "name": "ASPECT OF TASKS!",
+                    "description": "Use Elementium Armor 5 times.",
+                    "quote": "My hatred burns through the cavernous deeps."
+                },
+                {
+                    "name": "DESTROY ALL!",
+                    "description": "Deal 60 damage using Destroy All Life.",
+                    "quote": "Kingdoms quake beneath my rage!"
+                },
+                {
+                    "name": "SUCH LITTLE DAMAGE!",
+                    "description": "Deal 150 damage.",
+                    "quote": "I will not be denied by mere mortals."
+                },
+                {
+                    "name": "THE BOUNTY BREAKER!",
+                    "description": "Complete 1 Bounty while at level 30.",
+                    "quote": "Life is weak and fragile."
+                },
+                {
+                    "name": "IMPERFECT WORLD!",
+                    "description": "Destroy 40 minions.",
+                    "quote": "Destruction has come for this land."
+                },
+                {
+                    "name": "NO MORE HEROES!",
+                    "description": "Complete 2 Heroic bounties.",
+                    "quote": "Are you prepared for the unmaking of this world?"
+                },
+                {
+                    "name": "LOYAL FOLLOWERS!",
+                    "description": "Deal 120 damage with Dragons with a team that includes this Mercenary.",
+                    "quote": "Unleash the cataclysm upon my foes."
+                },
+                {
+                    "name": "BURN!",
+                    "description": "Deal 120 Fire Damage with a team that includes this Mercenary.",
+                    "quote": "Blast them to ashes."
+                },
+                {
+                    "name": "COMMAND THEM!",
+                    "description": "Deal 120 Fel Damage with a team that includes this Mercenary.",
+                    "quote": "Desolation comes upon the sky."
+                },
+                {
+                    "name": "NOT ENOUGH DAMAGE!",
+                    "description": "Deal 450 damage.",
+                    "quote": "My hatred burns through the cavernous deeps."
+                },
+                {
+                    "name": "FACE MY CLAWS!",
+                    "description": "Use Claws of Terror 7 times.",
+                    "quote": "Kingdoms quake beneath my rage!"
+                },
+                {
+                    "name": "VILLAINS PARADISE!",
+                    "description": "Complete 4 Heroic Bounties",
+                    "quote": "I will not be denied by mere mortals."
+                },
+                {
+                    "name": "WHELPS BURN!",
+                    "description": "Deal 250 Fire Damage with a team that includes this Mercenary.",
+                    "quote": "Life is weak and fragile."
+                },
+                {
+                    "name": "GOOD TO BE BAD!",
+                    "description": "Complete 6 Bounties.",
+                    "quote": "Destruction has come for this land."
+                },
+                {
+                    "name": "MY ARMOR, MY WEAPON!",
+                    "description": "Deal 250 damage with Elementals with a team that includes this Mercenary.",
+                    "quote": "Are you prepared for the unmaking of this world?"
+                },
+                {
+                    "name": "I STRIKE AGAIN!",
+                    "description": "Complete 5 Heroic Bounties.",
+                    "quote": "Unleash the cataclysm upon my foes."
+                },
+                {
+                    "name": "SEND MY REGARDS!",
+                    "description": "Deal 450 damage to Heroic bosses.",
+                    "quote": "Mortal, you have now borne witness to the ultimate truth: all life must end in death."
+                }
+            ]
         },
         "Leeroy Jenkins": {
             "tribe": "Human",
@@ -21686,16 +21921,28 @@
                     "description": "Gain +{0} Attack for {0} turns. Attack a random enemy.",
                     "tiers": [
                         {
-                            "description": []
+                            "description": [
+                                2,
+                                2
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                4,
+                                2
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                6,
+                                2
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                7,
+                                2
+                            ]
                         },
                         {
                             "description": [
@@ -21711,21 +21958,19 @@
                     "description": "Gain +{0} Health and become Immune while Attacking next turn.",
                     "tiers": [
                         {
-                            "description": []
+                            "description": 2
                         },
                         {
-                            "description": []
+                            "description": 4
                         },
                         {
-                            "description": []
+                            "description": 6
                         },
                         {
-                            "description": []
+                            "description": 8
                         },
                         {
-                            "description": [
-                                10
-                            ]
+                            "description": 10
                         }
                     ]
                 },
@@ -21733,107 +21978,200 @@
                     "unlock": 15,
                     "speed": 0,
                     "cooldown": 1,
-                    "description": "Attack all enemies, ignoring Taunt. All characters act immediately, in a random order.",
+                    "description": "Attack {all} enemies, ignoring Taunt. {All} characters act immediately, in a random order.",
                     "tiers": [
                         {
-                            "description": []
+                            "description": [
+                                "2",
+                                "2"
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                "3",
+                                "3"
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                "4",
+                                "4"
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                "5",
+                                "5"
+                            ]
                         },
-                        {
-                            "description": []
-                        }
+                        {}
                     ]
                 }
             },
             "equipment": {
                 "Even Bigger Sword": {
-                    "unlock": "Level 30",
+                    "unlock": "Task 2",
                     "position": "left",
                     "affects": "Wild Swing",
                     "description": "Wild Swing grants an additional +{0} Attack.",
                     "tiers": [
                         {
-                            "description": [],
+                            "description": 3,
                             "modifier": {
-                                "description": []
+                                "description": 3
                             }
                         },
                         {
-                            "description": [],
+                            "description": 5,
                             "modifier": {
-                                "description": []
+                                "description": 5
                             }
                         },
                         {
-                            "description": [],
+                            "description": 7,
                             "modifier": {
-                                "description": []
+                                "description": 7
                             }
                         },
                         {
-                            "description": [
-                                8
-                            ],
+                            "description": 8,
                             "modifier": {
-                                "description": [
-                                    8
-                                ]
+                                "description": 8
                             }
                         }
                     ]
                 },
                 "Heals!": {
-                    "unlock": "Task 2",
+                    "unlock": "Level 30",
                     "position": "middle",
                     "description": "Passive: Restore {0} Health to this Merc whenever Health is restored to another one of your characters.",
                     "tiers": [
                         {
-                            "description": []
+                            "description": 3
                         },
                         {
-                            "description": []
+                            "description": 5
                         },
                         {
-                            "description": []
+                            "description": 6
                         },
                         {
-                            "description": [
-                                8
-                            ]
+                            "description": 8
                         }
                     ]
                 },
                 "Ninja-Looting": {
-                    "unlock": "Task 7",
+                    "unlock": "Defeat M'da, Pure Void (Heroic)",
                     "position": "right",
                     "description": "Passive: Gain +{0} Attack whenever an enemy dies.",
                     "tiers": [
                         {
-                            "description": []
+                            "description": 2
                         },
                         {
-                            "description": []
+                            "description": 3
                         },
                         {
-                            "description": []
+                            "description": 4
                         },
                         {
-                            "description": [
-                                6
-                            ]
+                            "description": 6
                         }
                     ]
                 }
             },
-            "tasks": []
+            "tasks": [
+                {
+                    "name": "Joining a Raiding Guild",
+                    "description": "Deal 55 damage using Wild Swing.",
+                    "quote": "All right chum, let's do this! On the count of three: One—LEEEROY JENKINS!"
+                },
+                {
+                    "name": "Picking the Right Spec",
+                    "description": "Use Get Chicken 10 times.",
+                    "quote": "My advice to you? LESS ROLEPLAY AND MORE GO PLAY!"
+                },
+                {
+                    "name": "Grinding for Gear",
+                    "description": "Deal 70 damage using Leeeeeroooy Jenkiiins!.",
+                    "quote": "I never slow down. It's one of my greatest assets."
+                },
+                {
+                    "name": "Optimizing Talents",
+                    "description": "Deal 150 damage.",
+                    "quote": "Another “dive-in-head-first-and-ask-questions-later” kind of task."
+                },
+                {
+                    "name": "Preparing for Blackrock",
+                    "description": "Complete a bounty while at level 30.",
+                    "quote": "You might hurt yourself on this one, but I'm okay with that."
+                },
+                {
+                    "name": "It's Raiding Night!",
+                    "description": "Destroy 40 minions.",
+                    "quote": "Follow my lead and you'll be fine."
+                },
+                {
+                    "name": "Into the Blackrock Spire",
+                    "description": "Complete 2 Heroic Bounties.",
+                    "quote": "CHAAAAAAARGE!!!!!!!!! Oof, that felt good."
+                },
+                {
+                    "name": "Upward Path Secured",
+                    "description": "Use the Boon: Fighter coin 4 times.",
+                    "quote": "Don't call me hasty… I don't know what that means."
+                },
+                {
+                    "name": "Wipeout in the Rookery",
+                    "description": "Defeat 25 Dragons.",
+                    "quote": "If anything goes badly, just blame your healer. Works every time!"
+                },
+                {
+                    "name": "A Second Attempt",
+                    "description": "Deal 180 damage.",
+                    "quote": "Time's up, let's do this!"
+                },
+                {
+                    "name": "No luck!",
+                    "description": "Deal 450 damage with Humans with a team that includes this Mercenary.",
+                    "quote": "And that's the last one! Let's do it again someday, I love working with my fans!"
+                },
+                {
+                    "name": "Calculating Survival Chance",
+                    "description": "Deal 350 damage to Casters.",
+                    "quote": "All right chum, let's do this! On the count of three: One—LEEEROY JENKINS!"
+                },
+                {
+                    "name": "Better Odds than Last Time",
+                    "description": "Complete 4 Bounties.",
+                    "quote": "My advice to you? LESS ROLEPLAY AND GO PLAY!"
+                },
+                {
+                    "name": "Stick to the Plan",
+                    "description": "Deal 600 damage with Humans with a team that includes this Mercenary.",
+                    "quote": "I never slow down. It's one of my greatest assets."
+                },
+                {
+                    "name": "Leeroy: Awakened!",
+                    "description": "Complete 6 Heroic Bounties.",
+                    "quote": "Another “dive-in-head-first-and-ask-questions-later” kind of task."
+                },
+                {
+                    "name": "Alright",
+                    "description": "Deal 900 damage.",
+                    "quote": "You might hurt yourself on this one, but okay with that."
+                },
+                {
+                    "name": "Let's Do This!",
+                    "description": "Destroy 40 minions.",
+                    "quote": "Follow my lead and you'll be fine."
+                },
+                {
+                    "name": "LEEEROY JEEENKINS!",
+                    "description": "Deal 50 or more damage in one turn using Leeeeeroooy Jenkiiins! 20 times.",
+                    "quote": "CHAAAAAAARGE!!!!!!!!! Oof, that felt good."
+                }
+            ]
         },
         "Vanndar Stormpike": {
             "tribe": "Dwarf",
@@ -21861,10 +22199,16 @@
                             ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                4,
+                                1
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                5,
+                                1
+                            ]
                         },
                         {
                             "description": [
@@ -21930,10 +22274,10 @@
                             "description": 2
                         },
                         {
-                            "description": []
+                            "description": 4
                         },
                         {
-                            "description": []
+                            "description": 5
                         },
                         {
                             "description": 6
@@ -21949,10 +22293,10 @@
                             "description": 2
                         },
                         {
-                            "description": []
+                            "description": 4
                         },
                         {
-                            "description": []
+                            "description": 6
                         },
                         {
                             "description": 7
@@ -21972,13 +22316,13 @@
                             }
                         },
                         {
-                            "description": [],
+                            "description": 8,
                             "modifier": {
                                 "description": []
                             }
                         },
                         {
-                            "description": [],
+                            "description": 12,
                             "modifier": {
                                 "description": []
                             }
@@ -21992,7 +22336,98 @@
                     ]
                 }
             },
-            "tasks": []
+            "tasks": [
+                {
+                    "name": "The Battle Begins",
+                    "description": "Deal 35 damage using Thunder Strike.",
+                    "quote": "Attention, soldiers of Stormpike! The battle for Alterac Valley begins now."
+                },
+                {
+                    "name": "Push Forward!",
+                    "description": "Use Push Forward 10 times.",
+                    "quote": "We're bound for glory together."
+                },
+                {
+                    "name": "Stand and Fight",
+                    "description": "Gain 50 Attack using Avatar.",
+                    "quote": "Stand and fight together."
+                },
+                {
+                    "name": "For the Alliance!",
+                    "description": "Deal 150 damage.",
+                    "quote": "Yer General requests yer aid."
+                },
+                {
+                    "name": "Stormpike's Favor",
+                    "description": "Complete a bounty while at level 30.",
+                    "quote": "The valley will be ours."
+                },
+                {
+                    "name": "Fight with Honor",
+                    "description": "Destroy 40 minions.",
+                    "quote": "Fight with honor in yer heart."
+                },
+                {
+                    "name": "Bow to No One",
+                    "description": "Defeat 2 Heroic bosses.",
+                    "quote": "The Stormpike Clan bows to no one."
+                },
+                {
+                    "name": "Protect the Valley",
+                    "description": "Use the Boon: Protector coin 2 times.",
+                    "quote": "The valley will be ours."
+                },
+                {
+                    "name": "Take No Prisoners",
+                    "description": "Destroy 30 enemies using Thunder Strike.",
+                    "quote": "Fight with honor in yer heart."
+                },
+                {
+                    "name": "We Will Prevail",
+                    "description": "Deal 50 or more damage in one turn using Avatar 10 times.",
+                    "quote": "Victory is near!"
+                },
+                {
+                    "name": "Relentless Attacks",
+                    "description": "Deal 450 damage.",
+                    "quote": "Come! There's a battle to win and we need ya."
+                },
+                {
+                    "name": "Rest and Recuperate",
+                    "description": "Use the Spirit Healer coin 4 times.",
+                    "quote": "Yer General requests yer aid."
+                },
+                {
+                    "name": "Clan and Kin",
+                    "description": "Complete 4 Heroic Bounties",
+                    "quote": "The Stormpike Clan bows to no one."
+                },
+                {
+                    "name": "Fight the Fighters",
+                    "description": "Deal 500 damage to Fighters.",
+                    "quote": "Come! There's a battle to win and we need ya."
+                },
+                {
+                    "name": "Haul Them Away",
+                    "description": "Complete 6 Bounties.",
+                    "quote": "Haul them away and be quick about it."
+                },
+                {
+                    "name": "Thunder Strikes!",
+                    "description": "Deal 400 Nature Damage with a team that includes this Mercenary.",
+                    "quote": "Victory is near!"
+                },
+                {
+                    "name": "All of our Might",
+                    "description": "Complete 10 battles with 25 or more Attack.",
+                    "quote": "If ya ever miss the soldier's life, the Stormpike Clan would be glad to have ya."
+                },
+                {
+                    "name": "Alterac is Ours!",
+                    "description": "Deal 450 damage to Heroic bosses.",
+                    "quote": "Many stood against us, but Alterac Valley is finally ours, mercenary."
+                }
+            ]
         },
         "Onyxia": {
             "tribe": "Dragon",
@@ -22036,13 +22471,22 @@
                             ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                6,
+                                1
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                9,
+                                1
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                12,
+                                1
+                            ]
                         },
                         {
                             "description": [
@@ -22067,13 +22511,25 @@
                             ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                6,
+                                8,
+                                8
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                13,
+                                10,
+                                10
+                            ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                14,
+                                11,
+                                11
+                            ]
                         },
                         {
                             "description": [
@@ -22099,15 +22555,15 @@
                             }
                         },
                         {
-                            "description": [],
+                            "description": 5,
                             "modifier": {
-                                "description": []
+                                "description": 5
                             }
                         },
                         {
-                            "description": [],
+                            "description": 7,
                             "modifier": {
-                                "description": []
+                                "description": 7
                             }
                         },
                         {
@@ -22175,10 +22631,10 @@
                             "description": 3
                         },
                         {
-                            "description": []
+                            "description": 4
                         },
                         {
-                            "description": []
+                            "description": 5
                         },
                         {
                             "description": 7
@@ -22186,7 +22642,98 @@
                     ]
                 }
             },
-            "tasks": []
+            "tasks": [
+                {
+                    "name": "Insolent Whelps!",
+                    "description": "Use Insolent Mortals 15 times.",
+                    "quote": "There you are, mercenary. I was just thinking about you."
+                },
+                {
+                    "name": "Breathe In!",
+                    "description": "Restore 60 Health using Deep Breath.",
+                    "quote": "I expect you to handle it swiftly."
+                },
+                {
+                    "name": "Breathe Out!",
+                    "description": "Deal 70 damage using Cleanse The Nest.",
+                    "quote": "Good, you're here."
+                },
+                {
+                    "name": "Prestor Presto",
+                    "description": "Deal 150 damage.",
+                    "quote": "We have located our next target."
+                },
+                {
+                    "name": "Developing the Lair",
+                    "description": "Complete a bounty while at level 30.",
+                    "quote": "Mercenary, a moment of your time."
+                },
+                {
+                    "name": "Stopping the Heroes",
+                    "description": "Destroy 40 minions.",
+                    "quote": "We must hurry."
+                },
+                {
+                    "name": "Brooding Broodmother",
+                    "description": "Complete 2 Heroic Bounties.",
+                    "quote": "You know what must be done. Now go."
+                },
+                {
+                    "name": "Nefarious Rebirth",
+                    "description": "Use the Spirit Healer coin 4 times.",
+                    "quote": "Onwards, to glory!"
+                },
+                {
+                    "name": "Cleansing Breathe",
+                    "description": "Deal 180 damage using Cleanse The Nest.",
+                    "quote": "I'm asking you this with a heavy heart."
+                },
+                {
+                    "name": "Breathe of Fire",
+                    "description": "Deal 180 Fire Damage with this Mercenary.",
+                    "quote": "Is it power that you seek?"
+                },
+                {
+                    "name": "Villanous Turn",
+                    "description": "Deal 450 damage.",
+                    "quote": "Well done, mercenary. That will be everything…for now."
+                },
+                {
+                    "name": "Sibling Dragons",
+                    "description": "Deal 250 damage with Dragons with a team that includes this Mercenary.",
+                    "quote": "There you are, mercenary. I was just thinking about you."
+                },
+                {
+                    "name": "Enveloping Marsh",
+                    "description": "Complete 4 Heroic Bounties.",
+                    "quote": "I expect you to handle it swiftly."
+                },
+                {
+                    "name": "Mortal Snacks",
+                    "description": "Deal 900 Fire Damage with a team that includes this Mercenary.",
+                    "quote": "Good, you're here."
+                },
+                {
+                    "name": "Reign of Dragons",
+                    "description": "Complete 6 Bounties.",
+                    "quote": "We've located our next target."
+                },
+                {
+                    "name": "Raid Boss Down",
+                    "description": "Deal 550 Fire Damage with this Mercenary.",
+                    "quote": "Mercenary, a moment of your time."
+                },
+                {
+                    "name": "Onyx Hellfire",
+                    "description": "Deal 50 or more damage in one turn using Cleanse The Nest 40 times.",
+                    "quote": "We must hurry."
+                },
+                {
+                    "name": "Prestor Prevails!",
+                    "description": "Deal 450 damage with Dragons with a team that includes this Mercenary.",
+                    "quote": "You know what must be done. Now go."
+                }
+            ]
         },
         "Kazakus, Golem Shaper": {
             "tribe": "Troll",
@@ -22199,7 +22746,7 @@
                     "unlock": 1,
                     "speed": 6,
                     "spell_school": "Shadow",
-                    "description": "Deal {0} damage to a random enemy. Repeat for each of your Golens destroyed this game.",
+                    "description": "Deal {0} damage to a random enemy. Repeat for each of your Golems destroyed this game.",
                     "tiers": [
                         {
                             "description": 2
@@ -22224,21 +22771,11 @@
                     "spell_school": "Shadow",
                     "description": "Choose a Golem. Summon it.",
                     "tiers": [
-                        {
-                            "description": []
-                        },
-                        {
-                            "description": []
-                        },
-                        {
-                            "description": []
-                        },
-                        {
-                            "description": []
-                        },
-                        {
-                            "description": []
-                        }
+                        {},
+                        {},
+                        {},
+                        {},
+                        {}
                     ]
                 },
                 "True Shape": {
@@ -22253,16 +22790,16 @@
                             "speed": 6,
                             "tiers": [
                                 {
-                                    "description": []
+                                    "description": 4
                                 },
                                 {
-                                    "description": []
+                                    "description": 8
                                 },
                                 {
-                                    "description": []
+                                    "description": 12
                                 },
                                 {
-                                    "description": []
+                                    "description": 13
                                 },
                                 {
                                     "description": 14
@@ -22373,7 +22910,98 @@
                     ]
                 }
             },
-            "tasks": []
+            "tasks": [
+                {
+                    "name": "Looking for Mercenaries!",
+                    "description": "Deal 35 damage using Shadow Claws.",
+                    "quote": "Come, come mercenaries!"
+                },
+                {
+                    "name": "Bad Vibes",
+                    "description": "Use Build-A-Golem 10 times.",
+                    "quote": "There's always work for one with your skillset."
+                },
+                {
+                    "name": "Seeing Golem",
+                    "description": "Use True Shape 12 times.",
+                    "quote": "Are you here for another contract?"
+                },
+                {
+                    "name": "Layman's Clay Man",
+                    "description": "Deal 150 damage.",
+                    "quote": "Well, look at you!"
+                },
+                {
+                    "name": "Complete and Perfect",
+                    "description": "Complete a bounty while at level 30.",
+                    "quote": "Everyone has their price."
+                },
+                {
+                    "name": "Enscribing Truth",
+                    "description": "Destroy 40 minions.",
+                    "quote": "You won't regret accepting this one."
+                },
+                {
+                    "name": "Was It Wise?",
+                    "description": "Defeat 2 Heroic Bounties.",
+                    "quote": "This line of work is not for everybody."
+                },
+                {
+                    "name": "Protect the Kabal",
+                    "description": "Deal 120 Shadow Damage with a team that includes this Mercenary.",
+                    "quote": "Ahh, my favorite mercenary!"
+                },
+                {
+                    "name": "Gumshoe Golem",
+                    "description": "Use Build-A-Golem 8 times.",
+                    "quote": "Here. Go and make a mess."
+                },
+                {
+                    "name": "From Heat and Shadows",
+                    "description": "Destroy 40 minions.",
+                    "quote": "Let's make it a bit more interesting this time, hmm?"
+                },
+                {
+                    "name": "Enrage the Enemy",
+                    "description": "Deal 450 damage.",
+                    "quote": "You know what to do. Wait. You do, eh?"
+                },
+                {
+                    "name": "Guard the Trolls",
+                    "description": "Deal 300 damage with Trolls with a team that includes this Mercenary.",
+                    "quote": "Tick tock, time waits for no one."
+                },
+                {
+                    "name": "Come Back Stronger",
+                    "description": "Complete 4 Heroic Bounties",
+                    "quote": "Hello, hello! <_laughs_>"
+                },
+                {
+                    "name": "You Will Be Clay",
+                    "description": "Use True Shape 20 times.",
+                    "quote": "Let me guess-you're here for more."
+                },
+                {
+                    "name": "Help from Others",
+                    "description": "Complete 6 Bounties.",
+                    "quote": "Time to put your skill to the test. Excited?"
+                },
+                {
+                    "name": "Truth or Death?",
+                    "description": "Deal 250 damage using Shadow Claws.",
+                    "quote": "Now go and make yourself useful."
+                },
+                {
+                    "name": "Erasing Truth",
+                    "description": "Deal 250 damage with Dragons with a team that includes this Mercenary.",
+                    "quote": "Time to get your hands dirty."
+                },
+                {
+                    "name": "Left with Death",
+                    "description": "Deal 450 damage to Heroic bosses.",
+                    "quote": "<_chuckles_>"
+                }
+            ]
         },
         "Nefarian": {
             "tribe": "Dragon",
@@ -22406,7 +23034,10 @@
                             ]
                         },
                         {
-                            "description": []
+                            "description": [
+                                11,
+                                11
+                            ]
                         },
                         {
                             "description": [
@@ -22483,20 +23114,20 @@
                             }
                         },
                         {
-                            "description": [],
+                            "description": 5,
                             "modifier": {
                                 "description": [
-                                    0,
+                                    5,
                                     0,
                                     " with Divine Shield "
                                 ]
                             }
                         },
                         {
-                            "description": [],
+                            "description": 7,
                             "modifier": {
                                 "description": [
-                                    0,
+                                    7,
                                     0,
                                     " with Divine Shield "
                                 ]
@@ -22523,10 +23154,10 @@
                             "description": 2
                         },
                         {
-                            "description": []
+                            "description": 4
                         },
                         {
-                            "description": []
+                            "description": 5
                         },
                         {
                             "description": 6
@@ -22542,10 +23173,10 @@
                             "description": 4
                         },
                         {
-                            "description": []
+                            "description": 7
                         },
                         {
-                            "description": []
+                            "description": 9
                         },
                         {
                             "description": 10
@@ -22553,7 +23184,98 @@
                     ]
                 }
             },
-            "tasks": []
+            "tasks": [
+                {
+                    "name": "Welcome, Mortal",
+                    "description": "Use Drakonid Rush 10 times.",
+                    "quote": "Welcome, mortal. Serve me, and you shall be well rewarded."
+                },
+                {
+                    "name": "Chromatic Perfection",
+                    "description": "Restore 40 Health using Chromatic Infusion.",
+                    "quote": "Yes! My plans are coming to fruition."
+                },
+                {
+                    "name": "Deal with These Insects!",
+                    "description": "Deal 70 damage using Shadowflame.",
+                    "quote": "Why are you still here? Deal with these insects!"
+                },
+                {
+                    "name": "Might of Blackrock",
+                    "description": "Deal 150 damage.",
+                    "quote": "Such ordeals are beneath me. And that's why I have you."
+                },
+                {
+                    "name": "Pinnacle of Might",
+                    "description": "Complete a bounty while at level 30.",
+                    "quote": "Do I really need to spell it out for you? Make quick work of them and get back here."
+                },
+                {
+                    "name": "False Hope",
+                    "description": "Destroy 40 minions.",
+                    "quote": "Our foes cling to false hope. Take it away."
+                },
+                {
+                    "name": "Experimental Subjects",
+                    "description": "Defeat 2 Heroic bosses.",
+                    "quote": "Concentrate your efforts upon this target."
+                },
+                {
+                    "name": "Time to Fight",
+                    "description": "Use the Boon: Fighter coin 2 times.",
+                    "quote": "Fight at my command!"
+                },
+                {
+                    "name": "Dragon Warfare",
+                    "description": "Defeat 30 Dragons.",
+                    "quote": "Let not even one of them remain upon the battlefield."
+                },
+                {
+                    "name": "Failed Experiments",
+                    "description": "Deal 400 damage with Dragons with a team that includes this Mercenary.",
+                    "quote": "Succeed or join my other failed experiments."
+                },
+                {
+                    "name": "The Dark Horde",
+                    "description": "Deal 450 damage.",
+                    "quote": "Fight at my command!"
+                },
+                {
+                    "name": "Shadow and Flame",
+                    "description": "Deal 30 or more damage in one turn using Shadowflame 10 times.",
+                    "quote": "Such ordeals are beneath me. And that's why I have you."
+                },
+                {
+                    "name": "Plots and Schemes",
+                    "description": "Complete 4 Heroic Bounties",
+                    "quote": "Let not even one of them remain upon the battlefield."
+                },
+                {
+                    "name": "WEAKLINGS!",
+                    "description": "Deal 500 damage to Casters.",
+                    "quote": "Concentrate your efforts upon this target."
+                },
+                {
+                    "name": "The Blackwing Cabal",
+                    "description": "Complete 6 Bounties.",
+                    "quote": "Our foes cling to false hope. Take it away."
+                },
+                {
+                    "name": "Night of the Dragon",
+                    "description": "Deal 400 Shadow Damage with a team that includes this Mercenary.",
+                    "quote": "Yes! My plans are coming to fruition."
+                },
+                {
+                    "name": "A Valuable Asset",
+                    "description": "Complete 10 battles with 25 or more Attack.",
+                    "quote": "You have proven to be a valuable asset, mortal."
+                },
+                {
+                    "name": "My Trusted Servant",
+                    "description": "Deal 450 damage to Heroic bosses.",
+                    "quote": "Perhaps one day I shall call upon my trusted servant once more. And you better answer."
+                }
+            ]
         }
     }
 }
