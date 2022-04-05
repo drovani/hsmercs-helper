@@ -25,14 +25,18 @@
           </td>
           <td class="text-center">{{ bounty.levels?.[0] ?? 30 }}</td>
           <td class="text-center">{{ bounty.levels?.[1] ?? 30 }}</td>
-          <td class="pr-2">
-            <MercName :merc-name="bounty.rewards[0]" />
-          </td>
-          <td class="pr-2">
-            <MercName :merc-name="bounty.rewards[1]" />
-          </td>
-          <td>
-            <MercName :merc-name="bounty.rewards[2]" />
+          <td
+            v-for="reward in bounty.rewards"
+            :key="reward"
+            @mouseenter="highlightMerc(reward)"
+            @mouseleave="highlightMerc(null)"
+          >
+            <fa-icon class="pl-2 mr-1" :icon="faLock" v-if="hasUnlockable(bounty.name, reward)" />
+            <MercName
+              class="px-2 cursor-pointer"
+              :merc-name="reward"
+              :is-highlighted="reward === highlightedMerc"
+            />
           </td>
         </tr>
       </template>
@@ -42,10 +46,24 @@
 <script setup lang="ts">
 import { Bounty } from "@/models/bounty";
 import bountyjson from "@/static/bounties.json";
+import { useMercStore } from "@/stores/mercenaries";
 import MercName from "@bounties/MercName.vue";
-import { computed } from "vue";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { computed, ref } from "vue";
+
+const store = useMercStore();
+
+const highlightedMerc = ref<string>();
 
 const bounties = computed(
   () => bountyjson.bounties as { [zone: string]: Bounty[] }
 );
+
+const hasUnlockable = computed(() => (bountyName: string, mercName: string) => {
+  return store.getUnlocksForBounty(mercName, bountyName);
+});
+
+const highlightMerc = (mercName?: string) => {
+  highlightedMerc.value = mercName;
+};
 </script>

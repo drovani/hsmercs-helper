@@ -96,6 +96,11 @@ export const useMercStore = defineStore(MercStoreId, {
         },
         getItem: (state) => (mercName: string, itemName: string): MercItem => {
             return state.mercenaries.find(m => m.mercName === mercName).equipment.find(i => i.itemName === itemName);
+        },
+        getUnlocksForBounty: (state) => (mercName: string, bountyName: string): MercItem => {
+            const merc = state.mercenaries.find(m => m.mercName === mercName);
+            if (merc === undefined) console.debug(mercName);
+            return merc.equipment.find(i => i.unlock === `Defeat ${bountyName} (Heroic)`);
         }
     },
     actions: {

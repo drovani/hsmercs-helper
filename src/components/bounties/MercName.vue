@@ -1,10 +1,17 @@
 <template>
   <span
+    class="rounded"
     :class="[
-      {
-        'font-bold': isHighlighted,
-      },
-      merc.costToMax <= 0
+      isHighlighted
+        ? [
+            {
+              'bg-amber-500': merc.rarity === 'Legendary',
+              'bg-violet-500': merc.rarity === 'Epic',
+              'bg-blue-500': merc.rarity === 'Rare',
+            },
+            'text-black',
+          ]
+        : merc.costToMax <= 0
         ? ['line-through', 'text-gray-300']
         : {
             'text-amber-500': merc.rarity === 'Legendary',
