@@ -85,7 +85,7 @@
         v-bind="item"
         @increment="$emit('itemIncrement', mercName, item.itemName)"
         @decrement="$emit('itemDecrement', mercName, item.itemName)"
-        @itemToggleLock="$emit('itemToggleLock', mercName, item.itemName)"
+        @toggle-lock="$emit('itemToggleLock', mercName, item.itemName)"
       />
     </div>
     <div>

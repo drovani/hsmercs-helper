@@ -16,10 +16,15 @@
       >{{ costToMax > 0 ? costToMax : "" }}</UpDownButtons
     >
     <div v-else>
-      {{ unlock }}
+      <span
+        :class="{
+          'text-xs': unlock.length >= 25,
+        }"
+        >{{ unlock }}</span
+      >
       <fa-icon
         :icon="faLock"
-        class="inline"
+        class="inline pl-1"
         :class="{
           'cursor-pointer': !unlock.startsWith('Task'),
         }"
