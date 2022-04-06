@@ -4,12 +4,14 @@ import descriptionBuilder from "../../src/common/description";
 describe('Description helper function tests', () => {
 
     const cases = [
-        ["Deal {0} damage to an enemy, or restore {0} Health to a friendly character.",
+        [
+            "Deal {0} damage to an enemy, or restore {0} Health to a friendly character.",
             [4, 10],
             [],
             "Deal 4 damage to an enemy, or restore 10 Health to a friendly character."
         ],
-        ["Deal {0} damage to an enemy, or restore {0} Health to a friendly character.",
+        [
+            "Deal {0} damage to an enemy, or restore {0} Health to a friendly character.",
             [4, 10],
             [2, 2],
             "Deal 6 damage to an enemy, or restore 12 Health to a friendly character."
@@ -103,6 +105,18 @@ describe('Description helper function tests', () => {
                 substitute: 1
             },
             "Gain +1 Attack. Attack an enemy then gain Stealth."
+        ],
+        [
+            "Attack an enemy. {Combo: }Steal {0} Attack from them first.",
+            [null, 1],
+            null,
+            "Attack an enemy. Combo: Steal 1 Attack from them first."
+        ],
+        [
+            "Attack an enemy. {Combo: }Steal {0} Attack from them first.",
+            [null, 1],
+            ["", 0],
+            "Attack an enemy. Steal 1 Attack from them first."
         ]
     ]
 

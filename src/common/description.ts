@@ -19,10 +19,10 @@ export default function descriptionBuilder(base: string, tier: any, modifier?: a
         desc = `${moddesc.prepend} ${desc}`;
     }
 
-    // console.debug({ base, tier, modifier });
-    // console.debug({ desc, tierdesc, moddesc });
+    //  console.debug({ base, tier, modifier });
+    //  console.debug({ desc, tierdesc, moddesc });
 
-    const regex = new RegExp(/\{([\w \(\)\.]+)\}/, "g");
+    const regex = new RegExp(/\{([\w \(\)\.:]+)\}/, "g");
     const matches = Array.from(desc.matchAll(regex));
 
     for (let i = 0; i < matches.length; i++) {
@@ -31,6 +31,12 @@ export default function descriptionBuilder(base: string, tier: any, modifier?: a
             const descValue = Number(matches[i][1]);
             const tierValue = Number(tierdesc.substitute[i]) || 0;
             const modValue = Number(moddesc.substitute[i]) || 0;
+
+            // console.debug({
+            //     i,
+            //     match: matches[i][0],
+            //     descValue, tierValue, modValue
+            // })
 
             desc = desc.replace(matches[i][0], String(descValue + tierValue + modValue));
         } else {
