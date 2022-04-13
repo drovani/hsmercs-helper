@@ -117,6 +117,19 @@ describe('Description helper function tests', () => {
             [null, 1],
             ["", 0],
             "Attack an enemy. Steal 1 Attack from them first."
+        ],
+        [
+            "Gain +{0} Attack for each friendly Pirate{ and Attack a random enemy}. {Combo: }Gain Immune while Attacking this turn.",
+            3,
+            undefined,
+            "Gain +3 Attack for each friendly Pirate and Attack a random enemy. Combo: Gain Immune while Attacking this turn."
+        ],
+        [
+            "Gain +{0} Attack for each friendly Pirate{ and Attack a random enemy}. {Combo: }Gain Immune while Attacking this turn{.}",
+            3,
+            [0, "", "", " and Attack a random enemy."]
+            ,
+            "Gain +3 Attack for each friendly Pirate. Gain Immune while Attacking this turn and Attack a random enemy."
         ]
     ]
 
@@ -132,7 +145,7 @@ describe('Description helper function tests', () => {
                 })
             }
 
-            expect(expectedResult).to.equal(result);
+            expect(result).to.equal(expectedResult);
         })
 
 

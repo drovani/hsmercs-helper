@@ -284,6 +284,7 @@
             ]
         },
         "Anduin Wrynn": {
+            "alias": "Anduin",
             "role": "Caster",
             "rarity": "Legendary",
             "tribe": "Human",
@@ -836,8 +837,8 @@
             "role": "Caster",
             "rarity": "Epic",
             "tribe": "Elemental",
-            "attack": 10,
-            "health": 82,
+            "attack": 9,
+            "health": 81,
             "abilities": {
                 "Heating Up": {
                     "unlock": 1,
@@ -951,9 +952,9 @@
                             }
                         },
                         {
-                            "description": 4,
+                            "description": 7,
                             "modifier": {
-                                "description": 4
+                                "description": 7
                             }
                         }
                     ]
@@ -2273,6 +2274,7 @@
             ]
         },
         "Cairne Bloodhoof": {
+            "alias": "Cairne",
             "tribe": "Tauren",
             "role": "Protector",
             "rarity": "Epic",
@@ -2587,7 +2589,7 @@
             "tribe": "Human",
             "rarity": "Rare",
             "role": "Protector",
-            "attack": 10,
+            "attack": 11,
             "health": 73,
             "abilities": {
                 "Crusader's Blow": {
@@ -2608,7 +2610,7 @@
                             "description": 35
                         },
                         {
-                            "description": 40
+                            "description": 60
                         }
                     ]
                 },
@@ -2752,7 +2754,7 @@
                             "description": 6
                         },
                         {
-                            "description": 8
+                            "description": 12
                         }
                     ]
                 },
@@ -3852,6 +3854,7 @@
             ]
         },
         "Edwin, Defias Kingpin": {
+            "alias": "Edwin",
             "tribe": "Pirate",
             "rarity": "Legendary",
             "role": "Fighter",
@@ -3864,19 +3867,19 @@
                     "description": "Attack an enemy. If it hasn't acted yet this turn, gain +{0} Health and Attack it again.",
                     "tiers": [
                         {
-                            "description": 1
-                        },
-                        {
                             "description": 2
-                        },
-                        {
-                            "description": 3
                         },
                         {
                             "description": 4
                         },
                         {
-                            "description": 5
+                            "description": 6
+                        },
+                        {
+                            "description": 8
+                        },
+                        {
+                            "description": 10
                         }
                     ]
                 },
@@ -3884,7 +3887,7 @@
                     "unlock": 5,
                     "speed": 5,
                     "cooldown": 1,
-                    "description": "Gain +{0} Attack for each friendly Pirate and Attack a random enemy. {Combo: }Gain Immune while Attacking this turn.",
+                    "description": "Gain +{0} Attack for each friendly Pirate{ and Attack a random enemy}. {Combo: }Gain Immune while Attacking this turn{.}",
                     "tiers": [
                         {
                             "description": 1
@@ -3906,7 +3909,7 @@
                 "Kingpin's Bounty": {
                     "unlock": 15,
                     "speed": 4,
-                    "cooldown": 2,
+                    "cooldown": 1,
                     "description": "Deal {0} damage to an enemy. Repeat for each other Pirate you control. Deathblow: Restore {0} Health{slot1}.",
                     "tiers": [
                         {
@@ -3951,7 +3954,7 @@
                 "Black Flag": {
                     "unlock": "Task 2",
                     "position": "left",
-                    "description": "Passive: Adjacent Pirates are ({0}) Speed faster.",
+                    "description": "Passive: Your other Pirates are ({0}) Speed faster.",
                     "tiers": [
                         {
                             "description": 1
@@ -4014,13 +4017,13 @@
                         },
                         {
                             "description": [
-                                " restores 10 more Health and",
+                                " restores 15 more Health and",
                                 "characters"
                             ],
                             "modifier": {
                                 "description": [
                                     0,
-                                    10,
+                                    15,
                                     " to all friendly characters"
                                 ]
                             }
@@ -4038,7 +4041,9 @@
                             "modifier": {
                                 "description": [
                                     0,
-                                    ""
+                                    "",
+                                    "",
+                                    "and Attack a random enemy."
                                 ]
                             }
                         },
@@ -4047,7 +4052,9 @@
                             "modifier": {
                                 "description": [
                                     0,
-                                    ""
+                                    "",
+                                    "",
+                                    "and Attack a random enemy."
                                 ],
                                 "speed": -1
                             }
@@ -4057,7 +4064,9 @@
                             "modifier": {
                                 "description": [
                                     0,
-                                    ""
+                                    "",
+                                    "",
+                                    "and Attack a random enemy."
                                 ],
                                 "speed": -2
                             }
@@ -4067,7 +4076,9 @@
                             "modifier": {
                                 "description": [
                                     0,
-                                    ""
+                                    "",
+                                    "",
+                                    "and Attack a random enemy."
                                 ],
                                 "speed": -3
                             }
@@ -4483,7 +4494,7 @@
             "tribe": "Orc",
             "rarity": "Legendary",
             "role": "Protector",
-            "attack": 10,
+            "attack": 11,
             "health": 79,
             "abilities": {
                 "Mak'Gora": {
@@ -4718,11 +4729,11 @@
                             }
                         },
                         {
-                            "description": 10,
+                            "description": 15,
                             "modifier": {
                                 "description": [
                                     0,
-                                    " and restore 10 Health"
+                                    " and restore 15 Health"
                                 ]
                             }
                         }
@@ -5824,7 +5835,6 @@
                 "Rain of Destruction": {
                     "unlock": 5,
                     "speed": 8,
-                    "cooldown": 1,
                     "spell_school": "Fel",
                     "description": "Deal {0} damage to a random enemy. Repeat for each Fel ability you've cast this turn.",
                     "tiers": [
@@ -5938,7 +5948,7 @@
                 "Staff of Chaos": {
                     "unlock": "Task 7",
                     "position": "right",
-                    "description": "Passive: After an Orc dies, gain +{0} Fel Damage.",
+                    "description": "Passive: After an Orc or Demon dies, gain +{0} Fel Damage.",
                     "tiers": [
                         {
                             "description": 1
@@ -6956,7 +6966,7 @@
                         },
                         {
                             "description": 3,
-                            "speed": -2
+                            "speed": -3
                         }
                     ]
                 },
@@ -7001,7 +7011,7 @@
                             "description": 3
                         },
                         {
-                            "description": 4
+                            "description": 5
                         }
                     ]
                 },
@@ -7015,6 +7025,12 @@
                         },
                         {
                             "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
                         }
                     ]
                 },
@@ -8383,7 +8399,7 @@
                     "unlock": 15,
                     "speed": 2,
                     "cooldown": 1,
-                    "description": "Reduce the Attack of all enemies by {0} this turn.",
+                    "description": "Reduce the Attack of all enemies by {0} this turn. They lose Stealth.",
                     "tiers": [
                         {
                             "description": 3
@@ -8607,7 +8623,7 @@
             "rarity": "Rare",
             "role": "Caster",
             "attack": 5,
-            "health": 64,
+            "health": 69,
             "abilities": {
                 "Arcane Explosion": {
                     "unlock": 1,
@@ -8704,7 +8720,7 @@
                         {
                             "description": [
                                 null,
-                                15
+                                20
                             ]
                         }
                     ]
@@ -8715,30 +8731,42 @@
                     "unlock": "Level 30",
                     "position": "left",
                     "affects": "Arcane Explosion",
-                    "description": "Arcane Explosion deals {0} more damage.",
+                    "description": "Arcane Explosion deals {0} more damage and enemies lose Stealth.",
                     "tiers": [
-                        {
-                            "description": 1,
-                            "modifier": {
-                                "description": 1
-                            }
-                        },
                         {
                             "description": 2,
                             "modifier": {
-                                "description": 2
+                                "description": {
+                                    "append": "and enemies lose Stealth.",
+                                    "substitute": 2
+                                }
                             }
                         },
                         {
                             "description": 3,
                             "modifier": {
-                                "description": 3
+                                "description": {
+                                    "append": "and enemies lose Stealth.",
+                                    "substitute": 3
+                                }
                             }
                         },
                         {
                             "description": 4,
                             "modifier": {
-                                "description": 4
+                                "description": {
+                                    "append": "and enemies lose Stealth.",
+                                    "substitute": 4
+                                }
+                            }
+                        },
+                        {
+                            "description": 5,
+                            "modifier": {
+                                "description": {
+                                    "append": "and enemies lose Stealth.",
+                                    "substitute": 5
+                                }
                             }
                         }
                     ]
@@ -10808,7 +10836,7 @@
                     "unlock": 5,
                     "speed": 10,
                     "spell_school": "Fire",
-                    "description": "Deal {0} damage to a random enemy. Deathblow: Repeat this.",
+                    "description": "Deal {0} damage to a random enemy. It loses Stealth. Deathblow: Repeat this.",
                     "tiers": [
                         {
                             "description": 6
@@ -12101,6 +12129,7 @@
             ]
         },
         "Varok Saurfang": {
+            "alias": "Saurfang",
             "tribe": "Orc",
             "rarity": "Epic",
             "role": "Fighter",
@@ -12464,8 +12493,8 @@
             "tribe": "Gnome",
             "rarity": "Rare",
             "role": "Fighter",
-            "attack": 10,
-            "health": 72,
+            "attack": 12,
+            "health": 76,
             "abilities": {
                 "Tactical Strike": {
                     "unlock": 1,
@@ -12648,9 +12677,9 @@
                             }
                         },
                         {
-                            "description": 4,
+                            "description": 8,
                             "modifier": {
-                                "description": 4
+                                "description": 8
                             }
                         }
                     ]
@@ -12781,11 +12810,11 @@
                             }
                         },
                         {
-                            "description": 4,
+                            "description": 10,
                             "modifier": {
                                 "description": {
                                     "prepend": "Gain +{0} Attack.",
-                                    "substitute": 4
+                                    "substitute": 10
                                 }
                             }
                         }
@@ -12889,7 +12918,7 @@
             "tribe": "Pirate",
             "rarity": "Epic",
             "role": "Protector",
-            "attack": 6,
+            "attack": 8,
             "health": 72,
             "abilities": {
                 "Bzzz!!!": {
@@ -12944,7 +12973,7 @@
                         },
                         {
                             "description": [
-                                6,
+                                9,
                                 2
                             ]
                         }
@@ -13040,24 +13069,6 @@
                     "description": "Bzzz!!! gains Bleed ({0}).",
                     "tiers": [
                         {
-                            "description": 2,
-                            "modifier": {
-                                "description": {
-                                    "append": "Bleed ({0})",
-                                    "substitute": 2
-                                }
-                            }
-                        },
-                        {
-                            "description": 3,
-                            "modifier": {
-                                "description": {
-                                    "append": "Bleed ({0})",
-                                    "substitute": 3
-                                }
-                            }
-                        },
-                        {
                             "description": 4,
                             "modifier": {
                                 "description": {
@@ -13067,11 +13078,29 @@
                             }
                         },
                         {
-                            "description": 5,
+                            "description": 6,
                             "modifier": {
                                 "description": {
                                     "append": "Bleed ({0})",
-                                    "substitute": 5
+                                    "substitute": 6
+                                }
+                            }
+                        },
+                        {
+                            "description": 8,
+                            "modifier": {
+                                "description": {
+                                    "append": "Bleed ({0})",
+                                    "substitute": 8
+                                }
+                            }
+                        },
+                        {
+                            "description": 10,
+                            "modifier": {
+                                "description": {
+                                    "append": "Bleed ({0})",
+                                    "substitute": 10
                                 }
                             }
                         }
@@ -13080,30 +13109,30 @@
                 "Extra Blades": {
                     "unlock": "Task 7",
                     "position": "right",
-                    "description": "Sneed starts with Activate Saw {0} active for {0} turn.",
+                    "description": "Sneed starts with Activate Saw {0} active for {0} turns.",
                     "tiers": [
                         {
                             "description": [
                                 2,
-                                1
+                                2
                             ]
                         },
                         {
                             "description": [
                                 3,
-                                1
+                                2
                             ]
                         },
                         {
                             "description": [
                                 4,
-                                1
+                                2
                             ]
                         },
                         {
                             "description": [
                                 5,
-                                1
+                                2
                             ]
                         }
                     ]
@@ -14848,7 +14877,7 @@
                     "unlock": 5,
                     "speed": 6,
                     "spell_school": "Nature",
-                    "description": "Deal {0} damage to all enemies.",
+                    "description": "Deal {0} damage to all enemies. They lose Stealth.",
                     "tiers": [
                         {
                             "description": 2
@@ -15411,19 +15440,34 @@
                     "description": "Deal {0} damage to an enemy.",
                     "tiers": [
                         {
-                            "description": 4
+                            "description": [
+                                4,
+                                4
+                            ]
                         },
                         {
-                            "description": 8
+                            "description": [
+                                8,
+                                8
+                            ]
                         },
                         {
-                            "description": 12
+                            "description": [
+                                12,
+                                12
+                            ]
                         },
                         {
-                            "description": 13
+                            "description": [
+                                13,
+                                13
+                            ]
                         },
                         {
-                            "description": 14
+                            "description": [
+                                14,
+                                14
+                            ]
                         }
                     ]
                 },
@@ -15431,7 +15475,7 @@
                     "unlock": 5,
                     "speed": 5,
                     "spell_school": "Arcane",
-                    "description": "Deal {0} damage to two random enemies.",
+                    "description": "Deal {0} damage to two random enemies. If any die, repeat this.",
                     "tiers": [
                         {
                             "description": 2
@@ -15497,30 +15541,54 @@
                     "unlock": "Level 30",
                     "position": "left",
                     "affects": "Arcane Shot",
-                    "description": "Arcane Shot deals {0} more damage.",
+                    "description": "Arcane Shot deals {0} more damage if the enemy has already acted..",
                     "tiers": [
                         {
                             "description": 2,
                             "modifier": {
-                                "description": 2
+                                "description": {
+                                    "append": "If they have already acted, deal {0} instead.",
+                                    "substitute": [
+                                        0,
+                                        2
+                                    ]
+                                }
                             }
                         },
                         {
                             "description": 3,
                             "modifier": {
-                                "description": 3
+                                "description": {
+                                    "append": "If they have already acted, deal {0} instead.",
+                                    "substitute": [
+                                        0,
+                                        3
+                                    ]
+                                }
                             }
                         },
                         {
                             "description": 4,
                             "modifier": {
-                                "description": 4
+                                "description": {
+                                    "append": "If they have already acted, deal {0} instead.",
+                                    "substitute": [
+                                        0,
+                                        4
+                                    ]
+                                }
                             }
                         },
                         {
-                            "description": 5,
+                            "description": 15,
                             "modifier": {
-                                "description": 5
+                                "description": {
+                                    "append": "If they have already acted, deal {0} instead.",
+                                    "substitute": [
+                                        0,
+                                        15
+                                    ]
+                                }
                             }
                         }
                     ]
@@ -15664,6 +15732,7 @@
             ]
         },
         "Uther Lightbringer": {
+            "alias": "Uther",
             "tribe": "Human",
             "rarity": "Legendary",
             "role": "Caster",
@@ -15727,7 +15796,7 @@
                             "description": 8
                         },
                         {
-                            "description": 10
+                            "description": 14
                         }
                     ]
                 },
@@ -15801,12 +15870,12 @@
                         },
                         {
                             "description": [
-                                4,
+                                6,
                                 2
                             ],
                             "modifier": {
                                 "description": [
-                                    4,
+                                    6,
                                     2
                                 ]
                             }
@@ -15838,9 +15907,9 @@
                             }
                         },
                         {
-                            "description": 4,
+                            "description": 8,
                             "modifier": {
-                                "description": 4
+                                "description": 8
                             }
                         }
                     ]
@@ -15961,45 +16030,35 @@
                     "unlock": 1,
                     "speed": 5,
                     "spell_school": "Frost",
-                    "description": "Deal {0} damage to {a} random enemy Merc{s}. They are ({0}) Speed slower next turn.",
+                    "description": "Shoot three missiles at random enemies that deal {0} damage each and slow for ({0}) Speed next turn.",
                     "tiers": [
                         {
                             "description": [
-                                2,
-                                null,
-                                "",
+                                3,
                                 1
                             ]
                         },
                         {
                             "description": [
-                                3,
-                                "2",
-                                null,
-                                2
-                            ]
-                        },
-                        {
-                            "description": [
                                 4,
-                                "3",
-                                null,
                                 2
                             ]
                         },
                         {
                             "description": [
                                 5,
-                                "3",
-                                null,
                                 2
                             ]
                         },
                         {
                             "description": [
                                 6,
-                                "3",
-                                null,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                7,
                                 2
                             ]
                         }
@@ -16058,7 +16117,7 @@
                 "Chilling Amulet": {
                     "unlock": "Level 30",
                     "position": "right",
-                    "description": "Deathrattle: Deal {0} damage to all enemies. Freeze a random enemy until the end of next turn.",
+                    "description": "Deathrattle: Deal {0} damage to all enemies and Freeze a random enemy.",
                     "tiers": [
                         {
                             "description": 2
@@ -16070,7 +16129,7 @@
                             "description": 6
                         },
                         {
-                            "description": 8
+                            "description": 14
                         }
                     ]
                 },
@@ -16494,13 +16553,13 @@
             "tribe": "Pirate",
             "rarity": "Epic",
             "role": "Protector",
-            "attack": 9,
+            "attack": 12,
             "health": 70,
             "abilities": {
                 "Burgle Barrage": {
                     "unlock": 1,
                     "speed": 7,
-                    "description": "Attack an enemy. {Combo: }Steal {0} Attack from them.",
+                    "description": "Attack an enemy. {Combo: }Steal {0} Attack from them first.",
                     "tiers": [
                         {
                             "description": [
@@ -16628,11 +16687,11 @@
                             }
                         },
                         {
-                            "description": 5,
+                            "description": 10,
                             "modifier": {
                                 "description": {
                                     "append": "This Merc keeps up to {0} Attack.",
-                                    "substitute": 5
+                                    "substitute": 10
                                 }
                             }
                         }
@@ -16824,7 +16883,7 @@
                             "description": 11
                         },
                         {
-                            "description": 12
+                            "description": 15
                         }
                     ]
                 },
@@ -16832,7 +16891,7 @@
                     "unlock": 5,
                     "speed": 4,
                     "cooldown": 1,
-                    "description": "Deal {0} damage to an enemy. Your other Humans are permanently ({0}) Speed faster.",
+                    "description": "Deal {0} damage to an enemy. Your other Humans in play and bench are permanently ({0}) Speed faster.",
                     "tiers": [
                         {
                             "description": [
@@ -16869,22 +16928,37 @@
                 "Retaliation": {
                     "unlock": 15,
                     "speed": 2,
-                    "description": "After an enemy Attacks this turn, Gain +{0} Attack and Attack it.",
+                    "description": "After an enemy Attacks this turn, gain +{0}/+{0} and Attack it.",
                     "tiers": [
                         {
-                            "description": 1
+                            "description": [
+                                1,
+                                1
+                            ]
                         },
                         {
-                            "description": 2
+                            "description": [
+                                2,
+                                2
+                            ]
                         },
                         {
-                            "description": 3
+                            "description": [
+                                3,
+                                3
+                            ]
                         },
                         {
-                            "description": 4
+                            "description": [
+                                4,
+                                4
+                            ]
                         },
                         {
-                            "description": 5
+                            "description": [
+                                5,
+                                5
+                            ]
                         }
                     ]
                 }
@@ -16926,30 +17000,54 @@
                     "unlock": "Task 2",
                     "position": "right",
                     "affects": "Retaliation",
-                    "description": "Retaliation gives an additional +{0} Attack.",
+                    "description": "Retaliation gives an additional +{0}/+{0}.",
                     "tiers": [
                         {
-                            "description": 1,
+                            "description": [
+                                0,
+                                0
+                            ],
                             "modifier": {
-                                "description": 1
+                                "description": [
+                                    0,
+                                    0
+                                ]
                             }
                         },
                         {
-                            "description": 2,
+                            "description": [
+                                0,
+                                0
+                            ],
                             "modifier": {
-                                "description": 2
+                                "description": [
+                                    0,
+                                    0
+                                ]
                             }
                         },
                         {
-                            "description": 3,
+                            "description": [
+                                0,
+                                0
+                            ],
                             "modifier": {
-                                "description": 3
+                                "description": [
+                                    0,
+                                    0
+                                ]
                             }
                         },
                         {
-                            "description": 4,
+                            "description": [
+                                2,
+                                10
+                            ],
                             "modifier": {
-                                "description": 4
+                                "description": [
+                                    2,
+                                    10
+                                ]
                             }
                         }
                     ]
@@ -17414,7 +17512,7 @@
                 "Axe Throw": {
                     "unlock": 1,
                     "speed": 4,
-                    "description": "Deal {0} to an enemy and one of its neighbors.",
+                    "description": "Deal {0} to an enemy and one of its neighbors. They lose Stealth.",
                     "tiers": [
                         {
                             "description": 4
@@ -17429,7 +17527,7 @@
                             "description": 7
                         },
                         {
-                            "description": 8
+                            "description": 10
                         }
                     ]
                 },
@@ -17807,7 +17905,7 @@
                         },
                         {
                             "description": [
-                                15,
+                                20,
                                 3,
                                 20,
                                 20
@@ -17857,13 +17955,13 @@
                             }
                         },
                         {
-                            "description": 5,
+                            "description": 10,
                             "modifier": {
                                 "description": [
                                     0,
                                     0,
-                                    -5,
-                                    -5
+                                    -10,
+                                    -10
                                 ]
                             }
                         }
@@ -18068,6 +18166,7 @@
             ]
         },
         "Trigore the Lasher": {
+            "alias": "Trigore",
             "tribe": "Beast",
             "rarity": "Rare",
             "role": "Protector",
@@ -18092,14 +18191,14 @@
                             "description": 11
                         },
                         {
-                            "description": 12
+                            "description": 16
                         }
                     ]
                 },
                 "Backlash": {
                     "unlock": 5,
                     "speed": 5,
-                    "description": "Then next time an enemy damages an adjacent ally this turn, Gain +{0} Attack and deal this Merc's Attack damage to them.",
+                    "description": "Gain +{0} Attack. Each time an enemy damages an adjacent ally this turn, deal this Merc's Attack damage to them.",
                     "tiers": [
                         {
                             "description": 1
@@ -18117,7 +18216,7 @@
                             "speed": -3
                         },
                         {
-                            "description": 5,
+                            "description": 9,
                             "speed": -4
                         }
                     ]
@@ -18659,7 +18758,7 @@
             "rarity": "Epic",
             "role": "Fighter",
             "attack": 10,
-            "health": 66,
+            "health": 74,
             "abilities": {
                 "Rending Cleave": {
                     "unlock": 1,
@@ -18679,7 +18778,7 @@
                             "description": 7
                         },
                         {
-                            "description": 8
+                            "description": 12
                         }
                     ]
                 },
@@ -18795,7 +18894,7 @@
                             "description": 4
                         },
                         {
-                            "description": 5
+                            "description": 10
                         }
                     ]
                 },
@@ -19569,7 +19668,7 @@
             "rarity": "Epic",
             "role": "Fighter",
             "attack": 11,
-            "health": 68,
+            "health": 74,
             "abilities": {
                 "Creeping Madness": {
                     "unlock": 1,
@@ -19590,7 +19689,7 @@
                             "description": 18
                         },
                         {
-                            "description": 20
+                            "description": 25
                         }
                     ]
                 },
@@ -19733,7 +19832,7 @@
                             "description": 4
                         },
                         {
-                            "description": 5
+                            "description": 10
                         }
                     ]
                 },
@@ -23274,6 +23373,285 @@
                     "name": "My Trusted Servant",
                     "description": "Deal 450 damage to Heroic bosses.",
                     "quote": "Perhaps one day I shall call upon my trusted servant once more. And you better answer."
+                }
+            ]
+        },
+        "Murky": {
+            "role": "Fighter",
+            "rarity": "Epic",
+            "tribe": "Murloc",
+            "attack": 10,
+            "health": 74,
+            "abilities": {
+                "Slime Time": {
+                    "unlock": 1,
+                    "speed": 4,
+                    "spell_school": "Nature",
+                    "description": "Deal {0} damage to an emeny. Give it Taunt until the end of the next turn.",
+                    "tiers": [
+                        {
+                            "description": 6
+                        },
+                        {
+                            "description": 8
+                        },
+                        {
+                            "description": 10
+                        },
+                        {
+                            "description": 11
+                        },
+                        {
+                            "description": 12
+                        }
+                    ]
+                },
+                "Bubbly Bobble": {
+                    "unlock": 5,
+                    "speed": 4,
+                    "cooldown": 1,
+                    "spell_school": "Nature",
+                    "description": "Restore {0} Health to an adjacent Murloc. Swap places and both gain Divine Shield. Nature Combo: Repeat this.",
+                    "tiers": [
+                        {
+                            "description": 5
+                        },
+                        {
+                            "description": 9
+                        },
+                        {
+                            "description": 11
+                        },
+                        {
+                            "description": 12
+                        },
+                        {
+                            "description": 13
+                        }
+                    ]
+                },
+                "Pufferfisher": {
+                    "unlock": 15,
+                    "speed": 7,
+                    "cooldown": 1,
+                    "summon": {
+                        "name": "Pufferfisher",
+                        "tribe": "Murloc",
+                        "description": "Deathrattle: Deal damage equal to this minion's Attack to {0} random enemies."
+                    },
+                    "tiers": [
+                        {
+                            "summon": {
+                                "attack": 6,
+                                "health": 4,
+                                "description": 3
+                            }
+                        },
+                        {
+                            "summon": {
+                                "attack": 9,
+                                "health": 6,
+                                "description": 3
+                            }
+                        },
+                        {
+                            "summon": {
+                                "attack": 12,
+                                "health": 8,
+                                "description": 3
+                            }
+                        },
+                        {
+                            "summon": {
+                                "attack": 14,
+                                "health": 9,
+                                "description": 3
+                            }
+                        },
+                        {
+                            "summon": {
+                                "attack": 15,
+                                "health": 10,
+                                "description": 3
+                            }
+                        }
+                    ]
+                }
+            },
+            "equipment": {
+                "Time to Krill": {
+                    "unlock": "Task 2",
+                    "description": "Passive: Whenever a friendly Murloc Attacks an enemy with Taunt, give them +{0} Attack.",
+                    "tiers": [
+                        {
+                            "description": 1
+                        },
+                        {
+                            "description": 2
+                        },
+                        {
+                            "description": 3
+                        },
+                        {
+                            "description": 4
+                        }
+                    ]
+                },
+                "Slippery When Wet": {
+                    "unlock": "Level 30",
+                    "description": "Passive: After one of your characters loses Divine Shield{ or Frozen}, its next ability is ({0}) Speed faster.",
+                    "tiers": [
+                        {
+                            "description": [
+                                "",
+                                1
+                            ]
+                        },
+                        {
+                            "description": [
+                                null,
+                                1
+                            ]
+                        },
+                        {
+                            "description": [
+                                null,
+                                2
+                            ]
+                        },
+                        {
+                            "description": [
+                                null,
+                                3
+                            ]
+                        }
+                    ]
+                },
+                "March of the Murlocs": {
+                    "unlock": "unknown",
+                    "description": "Battlecry: Summon {0} {0}/{0} Murlocs.",
+                    "tiers": [
+                        {
+                            "description": [
+                                2,
+                                5,
+                                5
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
+                                8,
+                                8
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
+                                9,
+                                9
+                            ]
+                        },
+                        {
+                            "description": [
+                                2,
+                                10,
+                                10
+                            ]
+                        }
+                    ]
+                }
+            },
+            "tasks": [
+                {
+                    "name": "Into the Swamp",
+                    "description": "Deal 55 damage using Slime Time.",
+                    "quote": "<_playful mrglrgl sounds_>"
+                },
+                {
+                    "name": "Murloc Mischief",
+                    "description": "Use Bubbly Bobble 15 times.",
+                    "quote": "<_happy mrglrgl sounds_>"
+                },
+                {
+                    "name": "Generating Trouble",
+                    "description": "Use Pufferfisher 10 times.",
+                    "quote": "<_overly excited mrglrgl sounds_>"
+                },
+                {
+                    "name": "Account Management",
+                    "description": "Deal 150 damage.",
+                    "quote": "<_playful mrglrgl sounds_>"
+                },
+                {
+                    "name": "Ooh, shiny!",
+                    "description": "Complete a bounty while at level 30.",
+                    "quote": "<_happy mrglrgl sounds_>"
+                },
+                {
+                    "name": "Murloc Gambit",
+                    "description": "Destroy 40 minions.",
+                    "quote": "<_overly excited mrglrgl sounds_>"
+                },
+                {
+                    "name": "The Great Bobble",
+                    "description": "Complete 2 Heroic Bounties.",
+                    "quote": "<_playful mrglrgl sounds_>"
+                },
+                {
+                    "name": "A Season to Krill",
+                    "description": "Use the Boon: Fighter coin 4 times.",
+                    "quote": "<_happy mrglrgl sounds_>"
+                },
+                {
+                    "name": "Tidefin Tapdancing",
+                    "description": "Deal 180 damage.",
+                    "quote": "<_overly excited mrglrgl sounds_>"
+                },
+                {
+                    "name": "A Dinner with Cookie",
+                    "description": "Deal 180 damage using Slime Time.",
+                    "quote": "<_playful mrglrgl sounds_>"
+                },
+                {
+                    "name": "Murky, Murloc Omen",
+                    "description": "Deal 450 damage with Murlocs with a team that includes this Mercenary.",
+                    "quote": "<_happy mrglrgl sounds_>"
+                },
+                {
+                    "name": "The Bobble Gambit",
+                    "description": "Use Bubbly Bobble 15 times.",
+                    "quote": "<_overly excited mrglrgl sounds_>"
+                },
+                {
+                    "name": "Pufferfish Acupuncture",
+                    "description": "Complete 4 Heroic Bounties.",
+                    "quote": "<_playful mrglrgl sounds_>"
+                },
+                {
+                    "name": "Slime Time to Party",
+                    "description": "Deal 450 Nature Damage with a team that includes this Mercenary.",
+                    "quote": "<_happy mrglrgl sounds_>"
+                },
+                {
+                    "name": "Everyfin is Awesome",
+                    "description": "Complete 6 Bounties.",
+                    "quote": "<_overly excited mrglrgl sounds_>"
+                },
+                {
+                    "name": "Stillwater Murlocs",
+                    "description": "Deal 500 damage with Murlocs with a team that includes this Mercenary.",
+                    "quote": "<_playful mrglrgl sounds_>"
+                },
+                {
+                    "name": "Annoying Nature",
+                    "description": "Deal 400 damage to Heroic bosses.",
+                    "quote": "<_happy mrglrgl sounds_>"
+                },
+                {
+                    "name": "The Murky Lord",
+                    "description": "Deal 450 Nature Damage with this Mercenary.",
+                    "quote": "<_overly excited mrglrgl sounds_>"
                 }
             ]
         }

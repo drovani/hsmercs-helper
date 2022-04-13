@@ -40,6 +40,10 @@ export default function descriptionBuilder(base: string, tier: any, modifier?: a
 
             desc = desc.replace(matches[i][0], String(descValue + tierValue + modValue));
         } else {
+            // console.debug({
+            //     i,
+            //     match: matches[i][0]
+            // });
             // Found {string}
             if (typeof moddesc.substitute[i] !== "undefined" && moddesc.substitute[i] !== null) {
                 // replace {string} with modifier value
