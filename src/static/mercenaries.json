@@ -23481,6 +23481,7 @@
             "equipment": {
                 "Time to Krill": {
                     "unlock": "Task 2",
+                    "position": "left",
                     "description": "Passive: Whenever a friendly Murloc Attacks an enemy with Taunt, give them +{0} Attack.",
                     "tiers": [
                         {
@@ -23499,6 +23500,7 @@
                 },
                 "Slippery When Wet": {
                     "unlock": "Level 30",
+                    "position":"middle",
                     "description": "Passive: After one of your characters loses Divine Shield{ or Frozen}, its next ability is ({0}) Speed faster.",
                     "tiers": [
                         {
@@ -23528,7 +23530,7 @@
                     ]
                 },
                 "March of the Murlocs": {
-                    "unlock": "unknown",
+                    "unlock": "Defeat Vaelastrasz (Heroic)",
                     "description": "Battlecry: Summon {0} {0}/{0} Murlocs.",
                     "tiers": [
                         {
