@@ -112,7 +112,7 @@ export const useMercStore = defineStore(MercStoreId, {
                 if (typeof e.target.result === "string") {
                     const mercCollection = JSON.parse(e.target.result) as MercLibrary;
                     for (const collName in mercCollection.collection) {
-                        var merc = (this.mercenaries as Mercenary[]).find(m => m.mercName === collName);
+                        var merc = (this.mercenaries as Mercenary[]).find(m => m.mercName === collName || m.alias.includes(collName));
 
                         if (typeof merc === "undefined") {
                             throw new Error(`${collName} not found while setting collection data.`)

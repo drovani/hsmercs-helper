@@ -5,6 +5,7 @@ export interface MercLibrary {
 }
 
 export interface MercenaryDto {
+    alias?: string | string[]
     role: Role | string
     rarity: Rarity | string
     tribe?: Tribe | string

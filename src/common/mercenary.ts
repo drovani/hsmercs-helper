@@ -8,6 +8,7 @@ export function HydrateMercenary(merc: string | Mercenary, mercDto?: MercenaryDt
 
     const hydrate: Omit<Mercenary, "costToMax"> = {
         mercName: '',
+        alias: typeof data.alias === "string" ? [data.alias] : data.alias,
         role: data.role as Role,
         rarity: data.rarity as Rarity,
         tribe: data.tribe as Tribe,

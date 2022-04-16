@@ -6,6 +6,7 @@ export const MaxCompletedTasks = 18;
 
 export interface Mercenary {
     mercName: string;
+    alias: string[];
     role: Role;
     rarity: Rarity;
     tribe: Tribe | null;
