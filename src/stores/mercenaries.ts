@@ -131,6 +131,7 @@ export const useMercStore = defineStore(MercStoreId, {
                 mercs.push(newmerc);
             }
             this.mercenaries = mercs;
+            this.patch = patch;
         },
         setCollectedForMerc(mercName: string, collected: boolean) {
             const merc = (this as State).mercenaries.find(m => m.mercName === mercName);
