@@ -416,7 +416,7 @@ function unselectMerc() {
 }
 onMounted(() => {
   if (Object.keys(mercenaries.value ?? {}).length === 0) {
-    store.setMercLibrary(mercjson.mercenaries);
+    store.setMercLibrary(mercjson.patch, mercjson.mercenaries);
   }
 });
 </script>

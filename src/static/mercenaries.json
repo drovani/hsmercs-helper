@@ -1,4 +1,5 @@
 {
+    "patch": 23.0,
     "mercenaries": {
         "Alexstrasza": {
             "role": "Protector",
@@ -23500,7 +23501,7 @@
                 },
                 "Slippery When Wet": {
                     "unlock": "Level 30",
-                    "position":"middle",
+                    "position": "middle",
                     "description": "Passive: After one of your characters loses Divine Shield{ or Frozen}, its next ability is ({0}) Speed faster.",
                     "tiers": [
                         {
@@ -23531,6 +23532,7 @@
                 },
                 "March of the Murlocs": {
                     "unlock": "Defeat Vaelastrasz (Heroic)",
+                    "position": "right",
                     "description": "Battlecry: Summon {0} {0}/{0} Murlocs.",
                     "tiers": [
                         {

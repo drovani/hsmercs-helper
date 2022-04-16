@@ -7,7 +7,8 @@ import MercFilter from "../models/mercFilter";
 import { MercLibrary } from "../models/mercLibrary";
 
 export interface State {
-    mercenaries: Mercenary[];
+    patch: number
+    mercenaries: Mercenary[]
 }
 
 const MercStoreId = 'mercenaries' as const;
@@ -22,6 +23,7 @@ export const useMercStore = defineStore(MercStoreId, {
             }
         }
         return ({
+            patch: fromStorage?.patch ?? 0.0,
             mercenaries: mercs
         })
     },
@@ -122,7 +124,7 @@ export const useMercStore = defineStore(MercStoreId, {
             }
             reader.readAsText(payload);
         },
-        setMercLibrary(payload: MercLibrary) {
+        setMercLibrary(patch: number, payload: MercLibrary) {
             const mercs = [] as Mercenary[];
             for (const mercName in payload) {
                 const newmerc = HydrateMercenary(mercName, payload[mercName]);
