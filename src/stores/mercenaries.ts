@@ -112,7 +112,7 @@ export const useMercStore = defineStore(MercStoreId, {
                 if (typeof e.target.result === "string") {
                     const mercCollection = JSON.parse(e.target.result) as MercLibrary;
                     for (const collName in mercCollection.collection) {
-                        var merc = (this.mercenaries as Mercenary[]).find(m => m.mercName === collName || m.alias.includes(collName));
+                        var merc = (this.mercenaries as Mercenary[]).find(m => m.mercName === collName || m.alias?.includes(collName));
 
                         if (typeof merc === "undefined") {
                             throw new Error(`${collName} not found while setting collection data.`)
@@ -125,13 +125,30 @@ export const useMercStore = defineStore(MercStoreId, {
             reader.readAsText(payload);
         },
         setMercLibrary(patch: number, payload: MercLibrary) {
+            if (this.patch !== patch) {
+                console.debug(`Patching collection from ${this.patch} to ${patch}.`)
+            }
+
+            const collection = this.collectionData;
+
             const mercs = [] as Mercenary[];
             for (const mercName in payload) {
                 const newmerc = HydrateMercenary(mercName, payload[mercName]);
                 mercs.push(newmerc);
             }
+
             this.mercenaries = mercs;
             this.patch = patch;
+
+            for (const collName in collection) {
+                var merc = (this.mercenaries as Mercenary[]).find(m => m.mercName === collName || m.alias?.includes(collName));
+
+                if (typeof merc === "undefined") {
+                    throw new Error(`${collName} not found while setting collection data.`)
+                } else {
+                    ApplyCollectedMerc(merc, collection[collName]);
+                }
+            }
         },
         setCollectedForMerc(mercName: string, collected: boolean) {
             const merc = (this as State).mercenaries.find(m => m.mercName === mercName);

@@ -415,7 +415,7 @@ function unselectMerc() {
   router.push({ name: "mercs" });
 }
 onMounted(() => {
-  if (Object.keys(mercenaries.value ?? {}).length === 0) {
+  if ((mercenaries?.value?.length ?? 0) === 0 || store.patch < mercjson.patch) {
     store.setMercLibrary(mercjson.patch, mercjson.mercenaries);
   }
 });
